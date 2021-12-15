@@ -1,0 +1,337 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Open Sans", serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+.landing {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-color: rgba(238, 238, 238, 1);
+  width: 100vw;
+  height: 100vh;
+}
+
+.landing .section-cards {
+  position: absolute;
+  margin-left: 25%;
+  top: 400px;
+}
+
+.landing .card-container {
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  width: 326px;
+  height: 388px;
+  background-color: white;
+  display: block;
+  position: relative;
+}
+
+.landing .card-container .card1 {
+  display: block;
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  overflow-x: unset;
+  overflow-y: unset;
+  width: 326px;
+  height: 388px;
+}
+
+.landing .card-container .card1 .rankomat-text1 {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  line-height: 22px;
+  letter-spacing: 0px;
+  color: rgba(23, 24, 48, 1);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: Montserrat, Arial;
+  text-decoration: none;
+  box-shadow: none;
+  overflow-x: unset;
+  overflow-y: unset;
+  white-space: pre;
+  width: 256px;
+  height: 150px;
+  left: 38px;
+  top: 144px;
+}
+
+.landing .card-container .card1 .rankomat-text1 .rankomat-text1-0 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .card-container .card1 .rankomat-text1 .rankomat-text1-14 {
+  color: rgba(98, 0, 238, 1);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .card-container .card1 .rankomat-text1 .rankomat-text1-36 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .card-container .card1 .rankomat-text2 {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  text-align: center;
+  line-height: 33px;
+  letter-spacing: 0px;
+  color: rgba(23, 24, 48, 1);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  font-size: 22px;
+  font-weight: 700;
+  font-style: normal;
+  font-family: Montserrat, Arial;
+  text-decoration: none;
+  overflow-x: unset;
+  overflow-y: unset;
+  white-space: pre;
+  width: 264px;
+  height: 60px;
+  left: 31px;
+  top: 30px;
+}
+
+.landing .card-container .card1 .rankomat-text2 .rankomat-text2-0 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .card-container .card1 .rankomat-text2 .rankomat-text2-3 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 22px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .card-container .button-primary-contained {
+  background-color: rgba(98, 0, 238, 1) !important;
+  font-family: Montserrat, Arial;
+  top: 320px;
+}
+
+.landing .card-container .icon-candidates {
+  display: block;
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  overflow-x: unset;
+  overflow-y: unset;
+  background-color: transparent;
+  width: 36.82px;
+  height: 33.99px;
+  left: 141.18px;
+  top: 108px;
+}
+
+.landing .card-container .icon-candidates .path267 {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  fill: transparent;
+  box-shadow: none;
+  width: 33.99px;
+  height: 33.99px;
+  left: 0px;
+  top: 0px;
+}
+
+.landing .card-container .icon-candidates .path268 {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  fill: rgba(98, 0, 238, 1);
+  box-shadow: none;
+  width: 31.16px;
+  height: 19.83px;
+  left: 5.67px;
+  top: 7.08px;
+}
+
+.landing .card-container .icon-chat {
+  display: block;
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  overflow-x: unset;
+  overflow-y: unset;
+  background-color: transparent;
+  width: 36.82px;
+  height: 33.99px;
+  left: 8px;
+  top: -10px;
+}
+
+.landing .card-container .icon-wizard {
+  display: block;
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  overflow-x: unset;
+  overflow-y: unset;
+  background-color: transparent;
+  width: 36.82px;
+  height: 33.99px;
+  left: 8px;
+  top: 10px;
+}
+
+.landing .inspirator-card-container .path261 {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  fill: rgba(98, 0, 238, 1);
+  box-shadow: none;
+  width: 24.16px;
+  height: 24.16px;
+  left: 142.43px;
+  top: 118.42px;
+}
+
+.landing .kreator-card-container .path256 {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  fill: rgba(98, 0, 238, 1);
+  box-shadow: none;
+  width: 31.5px;
+  height: 31.5px;
+  left: 139.5px;
+  top: 92px;
+}
+
+.landing .text-landing {
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  opacity: 1;
+  cursor: default;
+  text-align: left;
+  line-height: 30px;
+  letter-spacing: 0px;
+  color: rgba(23, 24, 48, 1);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: Montserrat, Arial;
+  text-decoration: none;
+  box-shadow: none;
+  overflow-x: unset;
+  overflow-y: unset;
+  white-space: pre;
+  width: 809px;
+  height: 177px;
+  left: 15%;
+  top: 170px;
+}
+
+.landing .text-landing .text-landing-0 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .text-landing .text-landing-4 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.landing .text-landing .text-landing-46 {
+  color: rgba(23, 24, 48, 1);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  font-family: Montserrat, Arial;
+  letter-spacing: 0;
+  text-decoration: none;
+}
