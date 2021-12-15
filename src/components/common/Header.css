@@ -1,49 +1,50 @@
 .navbar {
-    position: absolute;
-      box-sizing: content-box;
-      opacity: 1;
-      background-color: rgba(250, 250, 250, 1);
-      box-shadow: none;
-      width: 100vw;
-      display:flex;
-      flex-direction: row;
-    height: 80.00px;
-    left: 0.00px;
-    top: 0.00px;
-    z-index: 100 !important;
-    font-family: Montserrat, Arial;
-    -webkit-filter: drop-shadow(0px 3px 10px rgba(17, 21, 36, 0.09019607843137255));
-    filter: drop-shadow(0px 3px 10px rgba(17, 21, 36, 0.09019607843137255));
-
+  position: absolute;
+  box-sizing: content-box;
+  opacity: 1;
+  background-color: rgba(250, 250, 250, 1);
+  box-shadow: none;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  left: 0px;
+  top: 0px;
+  z-index: 100 !important;
+  font-family: Montserrat, Arial;
+  -webkit-filter: drop-shadow(
+    0px 3px 10px rgba(17, 21, 36, 0.09019607843137255)
+  );
+  filter: drop-shadow(0px 3px 10px rgba(17, 21, 36, 0.09019607843137255));
 }
 
 .navbar .aira {
-    position: absolute;
-      box-sizing: content-box;
-      -ms-transform: rotate(0.00deg);
-    -webkit-transform: rotate(0.00deg);
-    transform: rotate(0.00deg);
-    -ms-transform-origin: center;
-    -webkit-transform-origin: center;
-    transform-origin: center;
-      text-align: left;
-      line-height: 50.00px;
-      letter-spacing: 0.00px;
-      color: rgba(23, 24, 48, 1);
-      -webkit-text-stroke: 1.00px rgba(0, 0, 0, 0);
-      font-size: 36.00px;
-      font-weight: 700;
-    font-style: normal;
-      font-family: Montserrat, Arial;
-      text-decoration: none;
-      box-shadow: none;
-      overflow-x: unset;
-      overflow-y: unset;
-      white-space: pre;
-      width: 92.00px;
-    height: 44.00px;
-    left: 15%;
-    top: 18.00px;
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  text-align: left;
+  line-height: 50px;
+  letter-spacing: 0px;
+  color: rgba(23, 24, 48, 1);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  font-size: 36px;
+  font-weight: 700;
+  font-style: normal;
+  font-family: Montserrat, Arial;
+  text-decoration: none;
+  box-shadow: none;
+  overflow-x: unset;
+  overflow-y: unset;
+  white-space: pre;
+  width: 92px;
+  height: 44px;
+  left: 15%;
+  top: 18px;
 }
 
 .navbar .aira:hover {
@@ -51,44 +52,31 @@
 }
 
 .navbar .oAplikacji {
-    position: absolute;
-      box-sizing: content-box;
-      -ms-transform: rotate(0.00deg);
-    -webkit-transform: rotate(0.00deg);
-    transform: rotate(0.00deg);
-    -ms-transform-origin: center;
-    -webkit-transform-origin: center;
-    transform-origin: center;
-      opacity: 1;
-      cursor: default;
-      margin-top: 0.00px;
-      margin-right: 0.00px;
-      margin-bottom: 0.00px;
-      margin-left: 0.00px;
-      padding-top: 0.00px;
-      padding-right: 0.00px;
-      padding-bottom: 0.00px;
-      padding-left: 0.00px;
-      background-color: rgba(255, 255, 255, 0);
-      text-align: left;
-      line-height: 48.00px;
-      letter-spacing: 0.00px;
-      color: rgba(23, 24, 48, 1);
-      -webkit-text-stroke: 1.00px rgba(0, 0, 0, 0);
-      font-size: 14.00px;
-      font-weight: 400;
-    font-style: normal;
-      font-family: Montserrat, Arial;
-      text-decoration: none;
-      box-shadow: none;
-      overflow-x: unset;
-      overflow-y: unset;
-      white-space: pre;
-      width: 89.00px;
-    height: 18.00px;
-    left: 70%;
-    top: 21.00px;
-
+  position: absolute;
+  box-sizing: content-box;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -ms-transform-origin: center;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  line-height: 48px;
+  letter-spacing: 0px;
+  color: rgba(23, 24, 48, 1);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: Montserrat, Arial;
+  text-decoration: none;
+  box-shadow: none;
+  overflow-x: unset;
+  overflow-y: unset;
+  white-space: pre;
+  width: 89px;
+  height: 18px;
+  left: 75%;
+  top: 21px;
 }
-
-
