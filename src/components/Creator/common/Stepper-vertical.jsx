@@ -7,7 +7,7 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import './Stepper.css'
+import './Stepper-vertical.css'
 
 const steps = [
   {
@@ -46,11 +46,7 @@ export default function StepperVertical() {
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
-              optional={
-                index === 2 ? (
-                  <Typography variant="caption">Last step</Typography>
-                ) : null
-              }
+              icon={' '}
             >
               {step.label}
             </StepLabel>

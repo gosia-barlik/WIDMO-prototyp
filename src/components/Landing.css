@@ -27,11 +27,14 @@ body {
   background-color: rgba(238, 238, 238, 1);
   width: 100vw;
   height: 100vh;
+  padding: 20%;
 }
 
 .landing .section-cards {
+  display: flex;
+  align-items: center;
+  justify-content:center;
   position: absolute;
-  margin-left: 25%;
   top: 400px;
 }
 
