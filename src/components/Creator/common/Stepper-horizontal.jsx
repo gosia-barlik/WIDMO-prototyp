@@ -7,7 +7,8 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Check from '@material-ui/icons/Check';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import './Stepper.css'
+import { NavLink } from "react-router-dom";
+import './Stepper-horizontal.css'
 
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
@@ -83,15 +84,15 @@ QontoStepIcon.propTypes = {
 };
 
 
-const steps = ['Główne informacje', 'Treść ogłoszenia', 'Przetwarzanie danych', 'Podsumowanie'];
+const steps = [{name:'Główne informacje', navlink:'/creator/maininfo'}, {name:'Treść ogłoszenia',  navlink:'/creator'}, {name:'Przetwarzanie danych',  navlink:'/creator'}, {name:'Podsumowanie',  navlink:'/creator'}];
 
 export default function StepperHorizontal() {
   return (
     <Stack sx={{ width: '80%' }} spacing={4} className="stepper-horizontal-container">
       <Stepper alternativeLabel activeStep={0} connector={<QontoConnector />}>
         {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
+          <Step key={label.name}>
+            <NavLink to={label.navlink} className='horizontal-stepper-navlink'><StepLabel StepIconComponent={QontoStepIcon}>{label.name}</StepLabel></NavLink>
           </Step>
         ))}
       </Stepper>

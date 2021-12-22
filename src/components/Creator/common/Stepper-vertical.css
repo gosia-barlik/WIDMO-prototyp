@@ -2,7 +2,8 @@
 
 .stepper-vertical-container {
     margin-top: 50px;
-    margin-left: 10%;
+    margin-left: 5%;
+    padding-left:10%;
     max-width: 250px !important;
 }
 
@@ -19,6 +20,15 @@
 }
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
     color: #784af4 !important;
+ }
+
+ .css-9tmuzo-MuiStepper-root {
+    max-width: 80px 
+ }
+
+ .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
+     width: 180px;
+     margin-left: 20px
  }
 
 .css-ahj2mt-MuiTypography-root {
