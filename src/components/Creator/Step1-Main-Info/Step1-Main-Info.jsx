@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import Grid from "@mui/material/Grid";
 import Paper from '@mui/material/Paper';
 import Typography from "@mui/material/Typography";
@@ -9,6 +9,20 @@ import JobOffer from "./Job-offer.jsx";
 import "./Step1-Main-Info.css";
 
 export default function Step1MainInfo() {
+
+  const [searchedPosition, setSearchedPosition] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  
+  const onSetSearchedPosition = (searchedPhrase) => {
+    setSearchedPosition (searchedPhrase); 
+  }
+
+  const onShowResults = () => {
+    setShowResults (true); 
+    console.log(showResults);
+  }
+
+  
   return (
     <Grid container spacing={4}>
       <StepperVertical />
@@ -17,8 +31,8 @@ export default function Step1MainInfo() {
         Obszar roboczy
       </Typography>
         <Paper className='form-container'>
-         <SearchBar />
-         <SearchResults />
+         <SearchBar onSetSearchedPosition={onSetSearchedPosition} onShowResults={onShowResults}/>
+         { showResults ? <SearchResults /> : null }
         </Paper>
       </Grid>
       <Grid item xs={4} style={{marginTop:'50px', textAlign: 'left'}}>
@@ -26,7 +40,7 @@ export default function Step1MainInfo() {
         Twoje ogłoszenie
       </Typography>
         <Paper className='job-offer-container' >
-          <JobOffer/>
+          <JobOffer searchedPosition={searchedPosition}/>
         </Paper>
       </Grid>
     </Grid>
