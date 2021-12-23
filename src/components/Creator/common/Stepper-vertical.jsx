@@ -25,24 +25,11 @@ const steps = [
   },
 ];
 
-export default function StepperVertical() {
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+export default function StepperVertical(props) {
 
   return (
     <Box sx={{ maxWidth: 400 }} className="stepper-vertical-container">
-      <Stepper activeStep={activeStep} orientation="vertical">
+      <Stepper activeStep={props.activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
             <StepLabel
@@ -57,14 +44,14 @@ export default function StepperVertical() {
           </Step>
         ))}
       </Stepper>
-      {activeStep === steps.length && (
+      {/* {props.activeStep === steps.length && (
         <Paper square elevation={0} sx={{ p: 3 }}>
           <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+          <Button onClick={props.handleReset} sx={{ mt: 1, mr: 1 }}>
             Reset
           </Button>
         </Paper>
-      )}
+      )} */}
     </Box>
   );
 }

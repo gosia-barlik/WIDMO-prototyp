@@ -12,6 +12,21 @@ export default function Step1MainInfo() {
 
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    console.log(activeStep)
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
   
   const onSetSearchedPosition = (searchedPhrase) => {
     setSearchedPosition (searchedPhrase); 
@@ -19,20 +34,20 @@ export default function Step1MainInfo() {
 
   const onShowResults = () => {
     setShowResults (true); 
-    console.log(showResults);
+   
   }
 
   
   return (
     <Grid container spacing={4}>
-      <StepperVertical />
+      <StepperVertical activeStep={activeStep}/>
       <Grid item xs={4} style={{marginTop:'50px', textAlign: 'left'}}>
       <Typography variant='subtitle2' gutterBottom component='div'>
         Obszar roboczy
       </Typography>
         <Paper className='form-container'>
          <SearchBar onSetSearchedPosition={onSetSearchedPosition} onShowResults={onShowResults}/>
-         { showResults ? <SearchResults /> : null }
+         { showResults ? <SearchResults handleNext={handleNext} handleBack={handleBack}/> : null }
         </Paper>
       </Grid>
       <Grid item xs={4} style={{marginTop:'50px', textAlign: 'left'}}>

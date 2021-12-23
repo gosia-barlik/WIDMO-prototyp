@@ -1,56 +1,75 @@
 /* VERTICAL */
 
 .stepper-vertical-container {
-    margin-top: 50px;
-    margin-left: 5%;
-    padding-left:10%;
-    max-width: 250px !important;
+  margin-top: 50px;
+  margin-left: 5%;
+  padding-left: 10%;
+  max-width: 250px !important;
 }
 
-.stepper-vertical-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
-    color: #784af4 !important;
-    width: 12px;
-    height: 12px;
-    margin-left: 9px
+.stepper-vertical-container
+  .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: #784af4 !important;
+  width: 12px;
+  height: 12px;
+  margin-left: 9px;
 }
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
-    width: 8px!important;
-    height: 8px!important;
-    margin-left: 9px
+  width: 8px !important;
+  height: 8px !important;
+  margin-left: 9px;
 }
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
-    color: #784af4 !important;
- }
+  color: #784af4 !important;
+}
 
- .css-9tmuzo-MuiStepper-root {
-    max-width: 80px 
- }
+.css-9tmuzo-MuiStepper-root {
+  max-width: 80px;
+}
 
- .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
-     width: 180px;
-     margin-left: 20px
- }
+.css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
+  width: 180px;
+  margin-left: 20px;
+}
 
 .css-ahj2mt-MuiTypography-root {
-    font-size: smaller !important;
+  font-size: smaller !important;
 }
 
-.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active {
-   margin-left:-100px;
+.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active,
+.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
+  margin-left: -100px;
 }
+
+.stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
+  margin-left: -125px;
+}
+
+.stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{
+    margin-left: -25px;
+  }
+
+.stepper-vertical-container .MuiStepper-root .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label {
+    margin-left: -80px;
+  }
+
+
 .stepper-vertical-container .css-ahj2mt-MuiTypography-root {
-    text-align: right;
-    margin-left: -200px;
-    margin-right: 240px
+  text-align: right;
+  margin-left: -200px;
+  margin-right: 240px;
 }
 
-.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-disabled{
-   margin-left:-125px;
+.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-disabled {
+  margin-left: -125px;
 }
-.stepper-vertical-container .MuiStepper-vertical  .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label.Mui-disabled{
-    margin-left:-80px;
+.stepper-vertical-container
+  .MuiStepper-vertical
+  .css-8wcvy5-MuiStep-root:nth-child(5)
+  .css-qivjh0-MuiStepLabel-label.Mui-disabled {
+  margin-left: -80px;
 }
 
 .stepper-vertical-container .css-1sn4lm3-MuiTypography-root {
-    margin-left:-80px;
+  margin-left: -80px;
 }
