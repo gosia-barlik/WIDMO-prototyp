@@ -9,16 +9,16 @@ import './Stepper-vertical.css'
 
 const steps = [
   {
-    label: 'Stanowisko',
-    description: `Aby przejść dalej musisz wpisać nazwę stanowiska, na które rekrutujesz.`,
+    label: 'Zakres obowiązków',
+    description: `Pole opcjonalne.`,
   },
   {
-    label: 'Wynagrodzenie',
+    label: 'Wymagania',
     description:
       'Pole opcjonalne.',
   },
   {
-    label: 'O firmie',
+    label: 'Benefity',
     description: `Pole opcjonalne.`,
   },
 ];
@@ -42,14 +42,7 @@ export default function StepperVertical(props) {
           </Step>
         ))}
       </Stepper>
-      {/* {props.activeStep === steps.length && (
-        <Paper square elevation={0} sx={{ p: 3 }}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={props.handleReset} sx={{ mt: 1, mr: 1 }}>
-            Reset
-          </Button>
-        </Paper>
-      )} */}
+ 
     </Box>
   );
 }

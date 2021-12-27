@@ -5,8 +5,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+
 
 export default function SearchResults(props) {
   return (
@@ -57,16 +56,6 @@ export default function SearchResults(props) {
           </Typography>
         </AccordionDetails>
       </Accordion>
-
-      <Stack spacing={2} direction='row' style={{justifyContent:'right', paddingTop: '5px'}}>
-        <Button className='button-outlined' variant='outlined' onClick={props.handleBack}>
-          Wróć
-        </Button>
-        <Button className='button-contained' variant='contained' onClick={props.handleNext}>
-          Dalej
-        </Button>
-      </Stack>
-
     </Paper>
   );
 }
