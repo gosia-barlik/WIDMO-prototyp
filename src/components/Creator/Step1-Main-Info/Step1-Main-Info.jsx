@@ -7,65 +7,24 @@ import Stack from "@mui/material/Stack";
 import StepperVertical from "../common/Stepper-vertical.jsx";
 import SearchBar from "./form/Job-Position-Search-Bar";
 import SearchResults from "./form/Job-Position-Search-Results";
-import JobOffer from "./Job-offer.jsx";
+import JobOffer from "../common/Job-offer.jsx";
 import Salary from "./form/Salary";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
 
 export default function Step1MainInfo(props) {
-  const [searchedPosition, setSearchedPosition] = useState("");
-  const [showResults, setShowResults] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
 
-  const [salaryType, setSalaryType] = useState("");
-  const [salaryFrom, setSalaryFrom] = useState("");
-  const [salaryTo, setSalaryTo] = useState("");
-  const [salaryTime, setSalaryTime] = useState("");
-  const [salaryContract, setSalaryContract] = useState("");
-
-  const [aboutCompany, setAboutCompany] = useState("");
-
-// STEPPER
+  // STEPPER
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    console.log(activeStep);
   };
-
-// JOB POSITION
-  const onSetSearchedPosition = (searchedPhrase) => {
-    setSearchedPosition(searchedPhrase);
-  };
-  const onShowResults = () => {
-    setShowResults(true);
-  };
-
-//SALARY
-  const onSetSalaryType = (salaryType) => {
-    setSalaryType(salaryType);
-  };
-  const onSetSalaryFrom = (salaryFrom) => {
-    setSalaryFrom(salaryFrom);
-  };
-  const onSetSalaryTo = (salaryTo) => {
-    setSalaryTo(salaryTo);
-  };
-  const onSetSalaryTime = (salaryTime) => {
-    setSalaryTime(salaryTime);
-  };
-  const onSetSalaryContract = (salaryContract) => {
-    setSalaryContract(salaryContract);
-  };
-
-//ABOUT COMPANY
-const onSetAboutCompany = (aboutCompany) => {
-  setAboutCompany(aboutCompany);
-};
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} className='step-1-container'>
       <StepperVertical activeStep={activeStep} />
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography variant='subtitle2' gutterBottom component='div'>
@@ -74,26 +33,24 @@ const onSetAboutCompany = (aboutCompany) => {
         <Paper className='form-container'>
           {activeStep === 0 ? (
             <SearchBar
-              onSetSearchedPosition={onSetSearchedPosition}
-              onShowResults={onShowResults}
+              onSetSearchedPosition={props.onSetSearchedPosition}
+              onShowResults={props.onShowResults}
             />
           ) : null}
-          {activeStep === 0 && showResults ? <SearchResults /> : null}
+          {activeStep === 0 && props.showResults ? <SearchResults /> : null}
           {activeStep === 1 ? (
             <Salary
-              onSetSalaryType={onSetSalaryType}
-              onSetSalaryTo={onSetSalaryTo}
-              onSetSalaryFrom={onSetSalaryFrom}
-              onSetSalaryTime={onSetSalaryTime}
-              onSetSalaryContract={onSetSalaryContract}
+              onSetSalaryType={props.onSetSalaryType}
+              onSetSalaryTo={props.onSetSalaryTo}
+              onSetSalaryFrom={props.onSetSalaryFrom}
+              onSetSalaryTime={props.onSetSalaryTime}
+              onSetSalaryContract={props.onSetSalaryContract}
             />
           ) : null}
-           {activeStep === 2 ? (
-            <AboutCompany
-              onSetAboutCompany={onSetAboutCompany}
-            />
+          {activeStep === 2 ? (
+            <AboutCompany onSetAboutCompany={props.onSetAboutCompany} />
           ) : null}
-          {showResults && (activeStep !== 2 ) ? (
+          {props.showResults && activeStep !== 2 ? (
             <Stack
               spacing={2}
               direction='row'
@@ -112,7 +69,7 @@ const onSetAboutCompany = (aboutCompany) => {
               </Button>
             </Stack>
           ) : null}
-          {showResults && (activeStep === 2 ) ? (
+          {props.showResults && activeStep === 2 ? (
             <Stack
               spacing={2}
               direction='row'
@@ -120,7 +77,7 @@ const onSetAboutCompany = (aboutCompany) => {
               <Button
                 className='button-outlined'
                 variant='outlined'
-                onClick={props.handleBack}>
+                onClick={handleBack}>
                 Wróć
               </Button>
               <Button
@@ -139,13 +96,14 @@ const onSetAboutCompany = (aboutCompany) => {
         </Typography>
         <Paper className='job-offer-container'>
           <JobOffer
-            searchedPosition={searchedPosition}
-            salaryTo={salaryTo}
-            salaryFrom={salaryFrom}
-            salaryTime={salaryTime}
-            salaryType={salaryType}
-            salaryContract={salaryContract}
-            aboutCompany={aboutCompany}
+            activeStep={props.activeStep}
+            searchedPosition={props.searchedPosition}
+            salaryTo={props.salaryTo}
+            salaryFrom={props.salaryFrom}
+            salaryTime={props.salaryTime}
+            salaryType={props.salaryType}
+            salaryContract={props.salaryContract}
+            aboutCompany={props.aboutCompany}
           />
         </Paper>
       </Grid>

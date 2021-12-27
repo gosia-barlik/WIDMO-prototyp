@@ -27,41 +27,41 @@
     max-width: 80px;
   }
   
-  .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
+  .step-2-container .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
     width: 180px;
-    margin-left: 20px;
+    margin-left: 30px;
   }
   
-  .css-ahj2mt-MuiTypography-root {
+  .step-2-container .css-ahj2mt-MuiTypography-root {
     font-size: smaller !important;
   }
   
-  .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active,
-  .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
-    margin-left: -100px;
+  .step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active,
+  .step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
+    margin-left: -150px;
   }
   
-  .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
-    margin-left: -125px;
+  .step-2-container .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
+    margin-left: -155px;
   }
   
-  .stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{
+  .step-2-container .stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{
       margin-left: -25px;
     }
   
-  .stepper-vertical-container .MuiStepper-root .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label {
+    .step-2-container .stepper-vertical-container .MuiStepper-root .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label {
       margin-left: -80px;
     }
   
   
-  .stepper-vertical-container .css-ahj2mt-MuiTypography-root {
+    .step-2-container  .stepper-vertical-container .css-ahj2mt-MuiTypography-root {
     text-align: right;
     margin-left: -200px;
     margin-right: 240px;
   }
   
-  .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-disabled {
-    margin-left: -125px;
+  .step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-disabled {
+    margin-left: -104px;
   }
   .stepper-vertical-container
     .MuiStepper-vertical
