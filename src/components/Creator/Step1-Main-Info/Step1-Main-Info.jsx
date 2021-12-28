@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import StepperVertical from "../common/Stepper-vertical.jsx";
 import SearchBar from "./form/Job-Position-Search-Bar";
 import SearchResults from "./form/Job-Position-Search-Results";
 import JobOffer from "../common/Job-offer.jsx";
+import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import Salary from "./form/Salary";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
@@ -51,42 +50,10 @@ export default function Step1MainInfo(props) {
             <AboutCompany onSetAboutCompany={props.onSetAboutCompany} />
           ) : null}
           {props.showResults && activeStep !== 2 ? (
-            <Stack
-              spacing={2}
-              direction='row'
-              style={{ justifyContent: "right", paddingTop: "5px" }}>
-              <Button
-                className='button-outlined'
-                variant='outlined'
-                onClick={handleBack}>
-                Wróć
-              </Button>
-              <Button
-                className='button-contained'
-                variant='contained'
-                onClick={handleNext}>
-                Dalej
-              </Button>
-            </Stack>
+            <MainActionButtons handleBack={handleBack} handleNext={handleNext} />
           ) : null}
           {props.showResults && activeStep === 2 ? (
-            <Stack
-              spacing={2}
-              direction='row'
-              style={{ justifyContent: "right", paddingTop: "5px" }}>
-              <Button
-                className='button-outlined'
-                variant='outlined'
-                onClick={handleBack}>
-                Wróć
-              </Button>
-              <Button
-                className='button-contained'
-                variant='contained'
-                onClick={props.handleNext}>
-                Dalej
-              </Button>
-            </Stack>
+            <MainActionButtons handleBack={handleBack} handleNext={props.handleMainStepperNext} />
           ) : null}
         </Paper>
       </Grid>

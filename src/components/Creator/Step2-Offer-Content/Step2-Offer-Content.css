@@ -1,14 +1,22 @@
 .step-2-container .styled-button {
-    color: #784af4 !important;
-    padding: 25px !important;
-    display:flex !important;
-    background-color: white;
-    display: block;
-    text-align: left !important; 
-    display: flex;
-    justify-content: left;
+  color: #784af4 !important;
+  padding: 25px !important;
+  display: flex !important;
+  background-color: white;
+  display: block;
+  text-align: left !important;
+  display: flex;
+  justify-content: left;
 }
 
 .step-2-container .styled-button:hover {
-    background-color: #F2F2F2;
+  background-color: #f2f2f2;
+}
+
+.step-2-container .styled-button .styled-icon-button {
+  margin: 0 24px;
+  height: 42px;
+  width: 42px;
+  color: #784af4;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
 }

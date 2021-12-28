@@ -15,6 +15,11 @@ export default function Creator() {
   const [salaryContract, setSalaryContract] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
   const [responsibilities, setResponsibilities] = useState([]);
+  const [qualificationName, setQualificationName] = useState("");
+  const [qualificationCharacteristic, setQualificationCharacteristic] = useState("");
+  const [qualificationEffects, setQualificationEffects] = useState([]);
+  const [coppiedQualificationEffects, setCoppiedQualificationEffects] = useState([]);
+  const [requirements, setRequirements] = useState([]);
 
   // JOB POSITION
   const onSetSearchedPosition = (searchedPhrase) => {
@@ -45,20 +50,65 @@ export default function Creator() {
   const onSetAboutCompany = (aboutCompany) => {
     setAboutCompany(aboutCompany);
   };
+
   //RESPONSIBILITIES
   const onSetResponsibilities = () => {
     setResponsibilities([
       "diagnozowanie usterek mechanicznych",
       "wykonywanie napraw",
+      "bieżące usuwanie awarii i usterek",
     ]);
-    console.log(responsibilities);
   };
 
+  //QUALIFICATION INFORMATION
+  const onSetQualificationInfo = () => {
+    setQualificationName("Elektromechanik pojazdów samochodowych");
+    setQualificationCharacteristic(
+      "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych"
+    );
+    setQualificationEffects([
+      {
+        name: "Podstawy motoryzacji",
+        effects: [
+          "Rozróżnia zjawiska związane z elektrycznością",
+          "Charakteryzuje zjawiska związane z elektromagnetyzmem",
+          "Przeprowadza pomiary warsztatowe",
+        ],
+      },
+      {
+        name: "Przeprowadzanie obsługi i konserwacji mechatronicznych systemów pojazdów samochodowych",
+        effects: [
+          "Rozróżnia zjawiska związane z elektrycznością",
+          "Charakteryzuje zjawiska związane z elektromagnetyzmem",
+          "Przeprowadza pomiary warsztatowe",
+        ],
+      },
+    ]);
+  };
+
+  const copyQualificationEffect = (e) => {
+    setCoppiedQualificationEffects((oldArray) => [...oldArray, e]);
+  };
+
+  //REQUIREMENTS
+  const onSetRequirements = () => {
+    setRequirements([
+      "wiedza z zakresu mechaniki/elektromechaniki",
+      "wykształcenie zawodowe lub średnie techniczne",
+      "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
+    ]);
+  };
+
+  //EDUCATION AND EXPERIENCE
+  const onSetEducationInfo = () => {
+    console.log('działam')
+  }
+
   // STEPPER
-  const handleNext = () => {
+  const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
-  const handleBack = () => {
+  const handleMainStepperBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -68,8 +118,8 @@ export default function Creator() {
       {activeStep === 0 ? (
         <Step1MainInfo
           activeStep={activeStep}
-          handleBack={handleBack}
-          handleNext={handleNext}
+          handleMainStepperBack={handleMainStepperBack}
+          handleMainStepperNext={handleMainStepperNext}
           onSetSearchedPosition={onSetSearchedPosition}
           onShowResults={onShowResults}
           showResults={showResults}
@@ -91,8 +141,8 @@ export default function Creator() {
       {activeStep === 1 ? (
         <Step2OfferContent
           activeStep={activeStep}
-          handleBack={handleBack}
-          handleNext={handleNext}
+          handleMainStepperBack={handleMainStepperBack}
+          handleMainStepperNext={handleMainStepperNext}
           searchedPosition={searchedPosition}
           salaryType={salaryType}
           salaryFrom={salaryFrom}
@@ -102,6 +152,15 @@ export default function Creator() {
           aboutCompany={aboutCompany}
           onSetResponsibilities={onSetResponsibilities}
           responsibilities={responsibilities}
+          onSetQualificationInfo={onSetQualificationInfo}
+          qualificationName={qualificationName}
+          qualificationCharacteristic={qualificationCharacteristic}
+          qualificationEffects={qualificationEffects}
+          copyQualificationEffect={copyQualificationEffect}
+          coppiedQualificationEffects={coppiedQualificationEffects}
+          onSetEducationInfo={onSetEducationInfo}
+          onSetRequirements={onSetRequirements}
+          requirements={requirements}
         />
       ) : null}
     </>

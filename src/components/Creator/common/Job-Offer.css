@@ -1,5 +1,5 @@
 .styled-accordion {
-    margin-top: 15px;
+    top:-10px;
     width: calc(100% + 18px) !important;
     left:-9px
 }

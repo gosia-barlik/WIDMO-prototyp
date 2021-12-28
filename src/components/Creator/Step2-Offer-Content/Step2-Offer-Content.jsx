@@ -3,17 +3,14 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import AddIcon from "@material-ui/icons/Add";
 import { styled } from "@mui/material/styles";
 import StepperVertical from "./Stepper-vertical.jsx";
 import JobOffer from "../common/Job-offer.jsx";
+import AddResponsibilitiesButtons from "./form/Add-Responsibilities-Buttons.jsx";
+import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
+import MainActionButtons from "../common/Main-Action-Buttons.jsx";
+import QualificationInformation from "./form/Qualification-Information.jsx";
 import "./Step2-Offer-Content.css";
-
-const ColorButton = styled(Button)(() => ({
-  textTransform: "none",
-  width: "100%",
-}));
 
 export default function Step2OfferContent(props) {
   const [activeStep, setActiveStep] = useState(0);
@@ -34,41 +31,44 @@ export default function Step2OfferContent(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container'>
-          {activeStep === 0 ? (
-            <Stack
-              spacing={2}
-              direction='column'
-              style={{ justifyContent: "right", paddingTop: "5px" }}>
-              <ColorButton className="styled-button" variant='contained' onClick={props.onSetResponsibilities}>
-                <AddIcon style={{ marginRight: "8px" }} />
-                Dodaj najczęściej poszukiwane umiejętności na rynku pracy
-              </ColorButton>
-              <ColorButton className="styled-button" variant='contained'>
-                <AddIcon style={{ marginRight: "8px" }} />
-                Dodaj informacje z opisów kwalifikacji i zestawów efektów
-                uczenia się
-              </ColorButton>
-            </Stack>
+          {activeStep === 0 && props.qualificationName.length < 1 ? (
+            <>
+              <AddResponsibilitiesButtons
+                onSetResponsibilities={props.onSetResponsibilities}
+                onSetQualificationInfo={props.onSetQualificationInfo}
+              />
+              <MainActionButtons
+                handleBack={props.handleMainStepperBack}
+                handleNext={handleNext}
+              />
+            </>
+          ) : null}
+          {activeStep === 0 && props.qualificationName ? (
+            <>
+              <QualificationInformation
+                qualificationName={props.qualificationName}
+                qualificationCharacteristic={props.qualificationCharacteristic}
+                qualificationEffects={props.qualificationEffects}
+                copyQualificationEffect={props.copyQualificationEffect}
+              />
+              <MainActionButtons
+                handleBack={props.handleMainStepperBack}
+                handleNext={handleNext}
+              />
+            </>
           ) : null}
 
-          {activeStep === 0 ? (
-            <Stack
-              spacing={2}
-              direction='row'
-              style={{ justifyContent: "right", paddingTop: "5px" }}>
-              <Button
-                className='button-outlined'
-                variant='outlined'
-                onClick={props.handleBack}>
-                Wróć
-              </Button>
-              <Button
-                className='button-contained'
-                variant='contained'
-                onClick={handleNext}>
-                Dalej
-              </Button>
-            </Stack>
+          {activeStep === 1 ? (
+            <>
+              <AddRequirementsButtons
+                onSetRequirements={props.onSetRequirements}
+                onSetEducationInfo={props.onSetEducationInfo}
+              />
+              <MainActionButtons
+                handleBack={handleBack}
+                handleNext={handleNext}
+              />
+            </>
           ) : null}
         </Paper>
       </Grid>
@@ -87,6 +87,8 @@ export default function Step2OfferContent(props) {
             salaryContract={props.salaryContract}
             aboutCompany={props.aboutCompany}
             responsibilities={props.responsibilities}
+            coppiedQualificationEffects={props.coppiedQualificationEffects}
+            requirements={props.requirements}
           />
         </Paper>
       </Grid>

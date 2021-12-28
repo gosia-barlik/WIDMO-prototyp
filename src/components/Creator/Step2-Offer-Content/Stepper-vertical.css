@@ -1,7 +1,7 @@
 /* VERTICAL */
 
 .stepper-vertical-container {
-    margin-top: 50px;
+    margin-top: 80px;
     margin-left: 5%;
     padding-left: 10%;
     max-width: 250px !important;
@@ -44,6 +44,10 @@
   .step-2-container .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
     margin-left: -155px;
   }
+
+  .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active {
+    margin-left: -100px;
+}
   
   .step-2-container .stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{
       margin-left: -25px;

@@ -5,7 +5,7 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import './Job-Offer.css'
+import "./Job-Offer.css";
 
 export default function JobOffer(props) {
   return (
@@ -22,7 +22,7 @@ export default function JobOffer(props) {
             variant='subtitle2'
             gutterBottom
             component='div'
-            style={{ color: "#784af4" }}>
+            style={{ color: "#784af4", fontWeight: "800" }}>
             Główne informacje
           </Typography>
           <Typography variant='subtitle2' gutterBottom component='div'>
@@ -61,34 +61,21 @@ export default function JobOffer(props) {
 
       {props.activeStep === 1 ? (
         <>
-          <Accordion className="styled-accordion" >
+          <Accordion className='styled-accordion'>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls='panel1a-content'
               id='panel1a-header'>
-              <Typography
-                variant='subtitle2'
-                gutterBottom
-                component='div'
-                >
+              <Typography variant='subtitle2' gutterBottom component='div'>
                 Główne informacje
               </Typography>
             </AccordionSummary>
 
-            <AccordionDetails
-            style={{flexDirection:'column'}}>
-              <Typography
-                variant='subtitle2'
-                gutterBottom
-                component='div'
-                >
+            <AccordionDetails style={{ flexDirection: "column" }}>
+              <Typography variant='subtitle2' gutterBottom component='div'>
                 Stanowisko
               </Typography>
-              <Typography
-                variant='body2'
-                gutterBottom
-                component='div'
-                style={{}}>
+              <Typography variant='body2' gutterBottom component='div'>
                 {props.searchedPosition}
               </Typography>
               {props.salaryType ||
@@ -103,11 +90,7 @@ export default function JobOffer(props) {
                     style={{}}>
                     Wynagrodzenie
                   </Typography>
-                  <Typography
-                    variant='body2'
-                    gutterBottom
-                    component='div'
-                    style={{}}>
+                  <Typography variant='body2' gutterBottom component='div'>
                     {"od " + props.salaryFrom} {"do " + props.salaryTo}{" "}
                     {"/" + props.salaryTime} {props.salaryType}{" "}
                     {props.salaryContract}
@@ -116,18 +99,10 @@ export default function JobOffer(props) {
               ) : null}
               {props.aboutCompany ? (
                 <>
-                  <Typography
-                    variant='subtitle2'
-                    gutterBottom
-                    component='div'
-                    style={{}}>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
                     O firmie
                   </Typography>
-                  <Typography
-                    variant='body2'
-                    gutterBottom
-                    component='div'
-                    style={{}}>
+                  <Typography variant='body2' gutterBottom component='div'>
                     {props.aboutCompany}
                   </Typography>
                 </>
@@ -139,7 +114,7 @@ export default function JobOffer(props) {
             variant='subtitle2'
             gutterBottom
             component='div'
-            style={{ color: "#784af4", marginTop:'25px'}}>
+            style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
             Treść ogłoszenia
           </Typography>
 
@@ -155,6 +130,37 @@ export default function JobOffer(props) {
                   gutterBottom
                   component='div'>
                   {responsibility}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+          {props.coppiedQualificationEffects ? (
+            <>
+              {props.coppiedQualificationEffects.map((effect) => (
+                <Typography
+                  key={effect}
+                  variant='body2'
+                  gutterBottom
+                  component='div'>
+                  {effect}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+          {props.requirements.length > 0 ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Wymagania
+              </Typography>
+              {props.requirements.map((requirement) => (
+                <Typography
+                  key={requirement}
+                  variant='body2'
+                  gutterBottom
+                  component='div'>
+                  {requirement}
                 </Typography>
               ))}
             </>
