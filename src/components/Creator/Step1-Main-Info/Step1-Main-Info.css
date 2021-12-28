@@ -24,9 +24,26 @@
   width: 96%;
   padding: 12px;
   border: none !important;
+  border-radius: 4px;
   outline: none;
   resize: none;
   -webkit-box-shadow: -3px 7px 9px -11px rgba(66, 68, 90, 1);
   -moz-box-shadow: -3px 7px 9px -11px rgba(66, 68, 90, 1);
   box-shadow: -3px 7px 9px -11px rgba(66, 68, 90, 1);
+  letter-spacing: 0.05em
+}
+
+.form-container button {
+  text-decoration:none;
+  font-family: Arial;
+  border-radius: 4px;
+  padding: 4px 16px 3px 16px;
+}
+
+.form-container .button-contained{
+    background-color:  #6200EE !important;
+    color:white;
+}
+.form-container input {
+  font-size: 14px !important;;
 }

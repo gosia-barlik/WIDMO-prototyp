@@ -169,7 +169,13 @@ body {
   background-color: rgba(98, 0, 238, 1) !important;
   font-family: Montserrat, Arial;
   top: 320px;
+  border-radius: 4px;
+  color:white;
+  text-decoration:none !important;
+  padding:5px 12px;
 }
+
+a:link,a:visited,a:hover,a:active { text-decoration: none }
 
 .landing .card-container .icon-candidates {
   display: block;

@@ -11,16 +11,10 @@ import JobOffer from "../common/Job-offer.jsx";
 import "./Step2-Offer-Content.css";
 
 const ColorButton = styled(Button)(() => ({
-  color: "#784af4",
   textTransform: "none",
   width: "100%",
-  padding: "15px",
-  justifyContent: "left",
-  backgroundColor: "white",
-  "&:hover": {
-    backgroundColor: "#F2F2F2",
-  },
 }));
+
 export default function Step2OfferContent(props) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -45,11 +39,11 @@ export default function Step2OfferContent(props) {
               spacing={2}
               direction='column'
               style={{ justifyContent: "right", paddingTop: "5px" }}>
-              <ColorButton variant='contained' onClick={props.onSetResponsibilities}>
+              <ColorButton className="styled-button" variant='contained' onClick={props.onSetResponsibilities}>
                 <AddIcon style={{ marginRight: "8px" }} />
                 Dodaj najczęściej poszukiwane umiejętności na rynku pracy
               </ColorButton>
-              <ColorButton variant='contained'>
+              <ColorButton className="styled-button" variant='contained'>
                 <AddIcon style={{ marginRight: "8px" }} />
                 Dodaj informacje z opisów kwalifikacji i zestawów efektów
                 uczenia się

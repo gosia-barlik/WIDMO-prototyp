@@ -1,0 +1,14 @@
+.step-2-container .styled-button {
+    color: #784af4 !important;
+    padding: 25px !important;
+    display:flex !important;
+    background-color: white;
+    display: block;
+    text-align: left !important; 
+    display: flex;
+    justify-content: left;
+}
+
+.step-2-container .styled-button:hover {
+    background-color: #F2F2F2;
+}
