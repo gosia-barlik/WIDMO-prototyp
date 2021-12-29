@@ -92,6 +92,8 @@ export default function Step2OfferContent(props) {
             <>
               <EducationExperience
                 onSetEducationLevel={props.onSetEducationLevel}
+                onSetStudiesName={props.onSetStudiesName}
+                onSetStudiesStage={props.onSetStudiesStage}
               />
               <MainActionButtons
                 handleBack={handleBackAndReset}
@@ -119,6 +121,10 @@ export default function Step2OfferContent(props) {
             coppiedQualificationEffects={props.coppiedQualificationEffects}
             requirements={props.requirements}
             updateState={props.updateState}
+
+            educationLevel={props.educationLevel}
+            studiesName={props.studiesName}
+            studiesStage={props.studiesStage}
           />
         </Paper>
       </Grid>

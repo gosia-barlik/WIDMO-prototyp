@@ -23,7 +23,9 @@ export default function Creator() {
   const [coppiedQualificationEffects, setCoppiedQualificationEffects] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showEducationForm, setShowEducationForm] = useState(false);
-  const [educationLevel, setEducationLevel] = useState("");
+  const [educationLevel, setEducationLevel] = useState([]);
+  const [studiesName, setStudiesName] = useState([])
+  const [studiesStage, setStudiesStage] = useState([])
 
   // JOB POSITION
   const onSetSearchedPosition = (searchedPhrase) => {
@@ -113,8 +115,16 @@ export default function Creator() {
   };
   const onSetEducationLevel = (educationLevel) => {
     setEducationLevel(educationLevel);
-    console.log(educationLevel)
   };
+  const onSetStudiesName = (studiesName) => {
+    setStudiesName(studiesName);
+    console.log(studiesName)
+  };
+  const onSetStudiesStage = (studiesStage) => {
+    setStudiesStage(studiesStage);
+    console.log(studiesStage)
+  };
+  
 
   // STEPPER
   const handleMainStepperNext = () => {
@@ -190,6 +200,10 @@ export default function Creator() {
           updateState={updateState}
           educationLevel={educationLevel}
           onSetEducationLevel={onSetEducationLevel}
+          studiesName={studiesName}
+          onSetStudiesName={onSetStudiesName}
+          studiesStage={studiesStage}
+          onSetStudiesStage={onSetStudiesStage}
         />
       ) : null}
     </>

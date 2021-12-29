@@ -6,6 +6,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./Job-Offer.css";
+import { StorageRounded } from "@material-ui/icons";
 
 export default function JobOffer(props) {
   return (
@@ -74,9 +75,7 @@ export default function JobOffer(props) {
                 <AccordionDetails style={{ flexDirection: "column" }}>
                   {props.responsibilities ? (
                     <>
-                      <Typography
-                        variant='subtitle2'
-                        component='div'>
+                      <Typography variant='subtitle2' component='div'>
                         Zakres obowiązków
                       </Typography>
                       {props.responsibilities.map((responsibility) => (
@@ -90,35 +89,37 @@ export default function JobOffer(props) {
                     </>
                   ) : null}
 
-                   {props.coppiedQualificationEffects ? (
-            <>
-              {props.coppiedQualificationEffects.map((effect) => (
-                <Typography
-                  key={effect}
-                  variant='body2'
-                  component='div'>
-                  {effect}
-                </Typography>
-              ))}
-            </>
-          ) : null}
+                  {props.coppiedQualificationEffects ? (
+                    <>
+                      {props.coppiedQualificationEffects.map((effect) => (
+                        <Typography
+                          key={effect}
+                          variant='body2'
+                          component='div'>
+                          {effect}
+                        </Typography>
+                      ))}
+                    </>
+                  ) : null}
 
-          {props.requirements.length > 0 ? (
-            <>
-              <Typography variant='subtitle2' gutterBottom component='div'>
-                Wymagania
-              </Typography>
-              {props.requirements.map((requirement) => (
-                <Typography
-                  key={requirement}
-                  variant='body2'
-                  component='div'>
-                  {requirement}
-                </Typography>
-              ))}
-            </>
-          ) : null}
-
+                  {props.requirements.length > 0 ? (
+                    <>
+                      <Typography
+                        variant='subtitle2'
+                        gutterBottom
+                        component='div'>
+                        Wymagania
+                      </Typography>
+                      {props.requirements.map((requirement) => (
+                        <Typography
+                          key={requirement}
+                          variant='body2'
+                          component='div'>
+                          {requirement}
+                        </Typography>
+                      ))}
+                    </>
+                  ) : null}
                 </AccordionDetails>
               </Accordion>
             </>
@@ -228,6 +229,39 @@ export default function JobOffer(props) {
                   gutterBottom
                   component='div'>
                   {requirement}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+          {props.educationLevel.length > 0 ? (
+            <>
+              <Typography variant='body2' gutterBottom component='div'>
+                Wykształcenie
+              </Typography>
+              {props.educationLevel.map((level) => (
+                <Typography key={level} variant='body2' component='div'>
+                  {level}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+          {props.studiesName.length > 0 ? (
+            <>
+              {props.studiesName.map((name) => (
+                <Typography key={name} variant='body2'inline>
+                  {name}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+          {props.studiesStage.length > 0 ? (
+            <>
+              {props.studiesStage.map((stage) => (
+                <Typography key={stage} variant='body2'inline>
+                  {stage}
                 </Typography>
               ))}
             </>

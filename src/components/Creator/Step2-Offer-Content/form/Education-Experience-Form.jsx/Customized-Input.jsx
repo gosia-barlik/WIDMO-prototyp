@@ -186,6 +186,16 @@ export default function CustomizedInput(props) {
       props.onSetEducationLevel(value);
   }, [value]); 
 
+  useEffect(() => {
+    if(props.onSetStudiesName)
+      props.onSetStudiesName(value);
+  }, [value]);
+
+  useEffect(() => {
+    if(props.onSetStudiesStage)
+      props.onSetStudiesStage(value);
+  }, [value]);
+
   return (
     <Root>
       <div {...getRootProps()}>
