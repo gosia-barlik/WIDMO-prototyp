@@ -234,36 +234,27 @@ export default function JobOffer(props) {
             </>
           ) : null}
 
-          {props.educationLevel.length > 0 ? (
+          {props.educationLevel.length > 0 ||
+          props.studiesName.length > 0 ||
+          props.studiesStage.length > 0 ? (
             <>
               <Typography variant='body2' gutterBottom component='div'>
                 Wykształcenie
               </Typography>
-              {props.educationLevel.map((level) => (
-                <Typography key={level} variant='body2' component='div'>
-                  {level}
-                </Typography>
-              ))}
-            </>
-          ) : null}
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.educationLevel.map((level) => (
+                  <span key={level}>{level} &nbsp;</span> 
+                ))}
+                <span>na kierunku </span>
 
-          {props.studiesName.length > 0 ? (
-            <>
-              {props.studiesName.map((name) => (
-                <Typography key={name} variant='body2'inline>
-                  {name}
-                </Typography>
-              ))}
-            </>
-          ) : null}
+                {props.studiesName.map((name) => (
+                  <span key={name}>{name}&nbsp;</span>
+                ))}
 
-          {props.studiesStage.length > 0 ? (
-            <>
-              {props.studiesStage.map((stage) => (
-                <Typography key={stage} variant='body2'inline>
-                  {stage}
-                </Typography>
-              ))}
+                {props.studiesStage.map((stage) => (
+                  <span key={stage}>{stage}&nbsp;</span>
+                ))}
+              </Typography>
             </>
           ) : null}
         </>

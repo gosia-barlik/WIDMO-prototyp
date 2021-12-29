@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import StepperHorizontal from "./common/Stepper-horizontal.jsx";
 import Step1MainInfo from "./Step1-Main-Info/Step1-Main-Info.jsx";
 import Step2OfferContent from "./Step2-Offer-Content/Step2-Offer-Content.jsx";
+import Step3DataProcessing from "./Step3-Data-Processing/Step3-Data-Processing.jsx";
 import "./Creator.css";
 
 export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const [salaryType, setSalaryType] = useState("");
   const [salaryFrom, setSalaryFrom] = useState("");
   const [salaryTo, setSalaryTo] = useState("");
@@ -18,14 +19,16 @@ export default function Creator() {
   const [responsibilities, setResponsibilities] = useState([]);
   const [showQualificationForm, setShowQualificationForm] = useState(false);
   const [qualificationName, setQualificationName] = useState("");
-  const [qualificationCharacteristic, setQualificationCharacteristic] = useState("");
+  const [qualificationCharacteristic, setQualificationCharacteristic] =
+    useState("");
   const [qualificationEffects, setQualificationEffects] = useState([]);
-  const [coppiedQualificationEffects, setCoppiedQualificationEffects] = useState([]);
+  const [coppiedQualificationEffects, setCoppiedQualificationEffects] =
+    useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showEducationForm, setShowEducationForm] = useState(false);
   const [educationLevel, setEducationLevel] = useState([]);
-  const [studiesName, setStudiesName] = useState([])
-  const [studiesStage, setStudiesStage] = useState([])
+  const [studiesName, setStudiesName] = useState([]);
+  const [studiesStage, setStudiesStage] = useState([]);
 
   // JOB POSITION
   const onSetSearchedPosition = (searchedPhrase) => {
@@ -118,13 +121,12 @@ export default function Creator() {
   };
   const onSetStudiesName = (studiesName) => {
     setStudiesName(studiesName);
-    console.log(studiesName)
+    console.log(studiesName);
   };
   const onSetStudiesStage = (studiesStage) => {
     setStudiesStage(studiesStage);
-    console.log(studiesStage)
+    console.log(studiesStage);
   };
-  
 
   // STEPPER
   const handleMainStepperNext = () => {
@@ -141,7 +143,7 @@ export default function Creator() {
 
   return (
     <>
-      <StepperHorizontal activeStep={1} />
+      <StepperHorizontal activeStep={activeStep} />
       {activeStep === 0 ? (
         <Step1MainInfo
           activeStep={activeStep}
@@ -204,6 +206,27 @@ export default function Creator() {
           onSetStudiesName={onSetStudiesName}
           studiesStage={studiesStage}
           onSetStudiesStage={onSetStudiesStage}
+        />
+      ) : null}
+      {activeStep === 2 ? (
+        <Step3DataProcessing
+          activeStep={activeStep}
+          handleMainStepperBack={handleMainStepperBack}
+          handleMainStepperNext={handleMainStepperNext}
+          searchedPosition={searchedPosition}
+          salaryTo={salaryTo}
+          salaryFrom={salaryFrom}
+          salaryTime={salaryTime}
+          salaryType={salaryType}
+          salaryContract={salaryContract}
+          aboutCompany={aboutCompany}
+          responsibilities={responsibilities}
+          coppiedQualificationEffects={coppiedQualificationEffects}
+          requirements={requirements}
+          updateState={updateState}
+          educationLevel={educationLevel}
+          studiesName={studiesName}
+          studiesStage={studiesStage}
         />
       ) : null}
     </>

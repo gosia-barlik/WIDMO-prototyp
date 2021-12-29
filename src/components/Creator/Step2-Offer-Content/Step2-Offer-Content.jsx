@@ -39,10 +39,13 @@ export default function Step2OfferContent(props) {
     resetShowQualificationForm();
     resetShowEducationForm();
   };
+  const handleReset = () => {
+    resetShowQualificationForm();
+  }
 
   return (
     <Grid container spacing={4} className='step-2-container'>
-      <StepperVertical activeStep={1} />
+      <StepperVertical activeStep={activeStep} />
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
@@ -69,7 +72,7 @@ export default function Step2OfferContent(props) {
                 copyQualificationEffect={props.copyQualificationEffect}
               />
               <MainActionButtons
-                handleBack={props.handleMainStepperBackAndReset}
+                handleBack={handleReset}
                 handleNext={handleNextAndReset}
               />
             </>
@@ -83,7 +86,7 @@ export default function Step2OfferContent(props) {
               />
               <MainActionButtons
                 handleBack={handleBack}
-                handleNext={handleNext}
+                handleNext={props.handleMainStepperNext}
               />
             </>
           ) : null}
