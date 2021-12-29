@@ -20,3 +20,32 @@
   color: #784af4;
   box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
 }
+
+.step-2-container .css-1pysi21-MuiFormLabel-root-MuiInputLabel-root {
+  font-size: 12px !important;
+}
+
+.step-2-container
+  .css-l9cwc5-MuiAutocomplete-root
+  .MuiOutlinedInput-root.MuiInputBase-sizeSmall
+  .MuiAutocomplete-input {
+  font-size: 14px !important;
+}
+
+.step-2-container .css-1tm81ay {
+  border: none;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
+}
+
+.step-2-container .css-7h1qul.focused {
+  border-color: #784af4;
+  box-shadow: 0 0 0 2px rgba(57, 59, 61, 0.2);
+}
+
+.step-2-container .css-7h1qul:hover {
+  border-color: #784af4;
+}
+
+.step-2-container .css-1k181zl li[aria-selected="true"] svg {
+  color: #784af4;
+}

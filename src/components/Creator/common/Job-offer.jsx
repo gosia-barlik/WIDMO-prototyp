@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Accordion from "@material-ui/core/Accordion";
@@ -54,6 +54,73 @@ export default function JobOffer(props) {
               <Typography variant='body2' gutterBottom component='div'>
                 {props.aboutCompany}
               </Typography>
+            </>
+          ) : null}
+
+          {props.updateState > 0 ? (
+            <>
+              <Accordion
+                className='styled-accordion'
+                style={{ marginTop: "20px" }}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls='panel1a-content'
+                  id='panel1a-header'>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Treść ogłoszenia
+                  </Typography>
+                </AccordionSummary>
+
+                <AccordionDetails style={{ flexDirection: "column" }}>
+                  {props.responsibilities ? (
+                    <>
+                      <Typography
+                        variant='subtitle2'
+                        component='div'>
+                        Zakres obowiązków
+                      </Typography>
+                      {props.responsibilities.map((responsibility) => (
+                        <Typography
+                          key={responsibility}
+                          variant='body2'
+                          component='div'>
+                          {responsibility}
+                        </Typography>
+                      ))}
+                    </>
+                  ) : null}
+
+                   {props.coppiedQualificationEffects ? (
+            <>
+              {props.coppiedQualificationEffects.map((effect) => (
+                <Typography
+                  key={effect}
+                  variant='body2'
+                  component='div'>
+                  {effect}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+          {props.requirements.length > 0 ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Wymagania
+              </Typography>
+              {props.requirements.map((requirement) => (
+                <Typography
+                  key={requirement}
+                  variant='body2'
+                  component='div'>
+                  {requirement}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+
+                </AccordionDetails>
+              </Accordion>
             </>
           ) : null}
         </>
