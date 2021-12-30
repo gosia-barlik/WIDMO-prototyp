@@ -9,7 +9,7 @@ export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(2);
   const [salaryType, setSalaryType] = useState("");
   const [salaryFrom, setSalaryFrom] = useState("");
   const [salaryTo, setSalaryTo] = useState("");
@@ -19,16 +19,16 @@ export default function Creator() {
   const [responsibilities, setResponsibilities] = useState([]);
   const [showQualificationForm, setShowQualificationForm] = useState(false);
   const [qualificationName, setQualificationName] = useState("");
-  const [qualificationCharacteristic, setQualificationCharacteristic] =
-    useState("");
+  const [qualificationCharacteristic, setQualificationCharacteristic] = useState("");
   const [qualificationEffects, setQualificationEffects] = useState([]);
-  const [coppiedQualificationEffects, setCoppiedQualificationEffects] =
-    useState([]);
+  const [coppiedQualificationEffects, setCoppiedQualificationEffects] = useState([]);
+  const [coppiedSelectedText, setCoppiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showEducationForm, setShowEducationForm] = useState(false);
   const [educationLevel, setEducationLevel] = useState([]);
   const [studiesName, setStudiesName] = useState([]);
   const [studiesStage, setStudiesStage] = useState([]);
+  const [RODO, setRODO] = useState('');
 
   // JOB POSITION
   const onSetSearchedPosition = (searchedPhrase) => {
@@ -103,6 +103,14 @@ export default function Creator() {
     setCoppiedQualificationEffects((oldArray) => [...oldArray, e]);
   };
 
+  const getSelectedText = () =>{
+    if (window.getSelection) {
+      setCoppiedSelectedText((oldArray) => [...oldArray,(window.getSelection().toString())]);
+    } else if (document.selection) {
+        console.log (document.selection.createRange().text);
+    }
+  console.log(coppiedSelectedText)}
+
   //REQUIREMENTS
   const onSetRequirements = () => {
     setRequirements([
@@ -121,12 +129,15 @@ export default function Creator() {
   };
   const onSetStudiesName = (studiesName) => {
     setStudiesName(studiesName);
-    console.log(studiesName);
   };
   const onSetStudiesStage = (studiesStage) => {
     setStudiesStage(studiesStage);
-    console.log(studiesStage);
   };
+
+  //DATA PROCESSING
+  const onSetRODO = (value) => {
+    setRODO(value);
+  }
 
   // STEPPER
   const handleMainStepperNext = () => {
@@ -194,6 +205,8 @@ export default function Creator() {
           qualificationEffects={qualificationEffects}
           copyQualificationEffect={copyQualificationEffect}
           coppiedQualificationEffects={coppiedQualificationEffects}
+          getSelectedText={getSelectedText}
+          coppiedSelectedText={coppiedSelectedText}
           onSetEducationInfo={onSetEducationInfo}
           showEducationForm={showEducationForm}
           setShowEducationForm={setShowEducationForm}
@@ -227,6 +240,8 @@ export default function Creator() {
           educationLevel={educationLevel}
           studiesName={studiesName}
           studiesStage={studiesStage}
+          onSetRODO={onSetRODO}
+          RODO={RODO}
         />
       ) : null}
     </>

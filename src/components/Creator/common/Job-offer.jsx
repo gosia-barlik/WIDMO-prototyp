@@ -6,7 +6,6 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./Job-Offer.css";
-import { StorageRounded } from "@material-ui/icons";
 
 export default function JobOffer(props) {
   return (
@@ -177,7 +176,6 @@ export default function JobOffer(props) {
               ) : null}
             </AccordionDetails>
           </Accordion>
-
           <Typography
             variant='subtitle2'
             gutterBottom
@@ -185,7 +183,6 @@ export default function JobOffer(props) {
             style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
             Treść ogłoszenia
           </Typography>
-
           {props.responsibilities ? (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
@@ -202,16 +199,20 @@ export default function JobOffer(props) {
               ))}
             </>
           ) : null}
-
           {props.coppiedQualificationEffects ? (
             <>
               {props.coppiedQualificationEffects.map((effect) => (
-                <Typography
-                  key={effect}
-                  variant='body2'
-                  gutterBottom
-                  component='div'>
+                <Typography key={effect} variant='body2' component='div'>
                   {effect}
+                </Typography>
+              ))}
+            </>
+          ) : null}
+          {props.coppiedSelectedText ? (
+            <>
+              {props.coppiedSelectedText.map((text) => (
+                <Typography key={text} variant='body2' component='div'>
+                  {text}
                 </Typography>
               ))}
             </>
@@ -223,27 +224,26 @@ export default function JobOffer(props) {
                 Wymagania
               </Typography>
               {props.requirements.map((requirement) => (
-                <Typography
-                  key={requirement}
-                  variant='body2'
-                  gutterBottom
-                  component='div'>
+                <Typography key={requirement} variant='body2' component='div'>
                   {requirement}
                 </Typography>
               ))}
             </>
           ) : null}
-
           {props.educationLevel.length > 0 ||
           props.studiesName.length > 0 ||
           props.studiesStage.length > 0 ? (
             <>
-              <Typography variant='body2' gutterBottom component='div'>
+              <Typography
+                variant='body2'
+                gutterBottom
+                component='div'
+                style={{ marginTop: "4px" }}>
                 Wykształcenie
               </Typography>
-              <Typography variant='body2' gutterBottom component='div'>
+              <Typography variant='body2' component='div'>
                 {props.educationLevel.map((level) => (
-                  <span key={level}>{level} &nbsp;</span> 
+                  <span key={level}>{level} &nbsp;</span>
                 ))}
                 <span>na kierunku </span>
 
@@ -260,11 +260,75 @@ export default function JobOffer(props) {
         </>
       ) : null}
 
-      {/* {props.activeStep === 1 ? (
+      {props.activeStep === 2 ? (
         <>
-          
+          <Accordion className='styled-accordion'>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel1a-content'
+              id='panel1a-header'>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Główne informacje
+              </Typography>
+            </AccordionSummary>
+
+            <AccordionDetails style={{ flexDirection: "column" }}>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Stanowisko
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.searchedPosition}
+              </Typography>
+              {props.salaryType ||
+              props.salaryFrom ||
+              props.salaryTo ||
+              props.salaryTime ? (
+                <>
+                  <Typography
+                    variant='subtitle2'
+                    gutterBottom
+                    component='div'
+                    style={{}}>
+                    Wynagrodzenie
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {"od " + props.salaryFrom} {"do " + props.salaryTo}{" "}
+                    {"/" + props.salaryTime} {props.salaryType}{" "}
+                    {props.salaryContract}
+                  </Typography>
+                </>
+              ) : null}
+              {props.aboutCompany ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    O firmie
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.aboutCompany}
+                  </Typography>
+                </>
+              ) : null}
+            </AccordionDetails>
+          </Accordion>
+          <Typography
+            variant='subtitle2'
+            gutterBottom
+            component='div'
+            style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
+            Przetwarzanie danych
+          </Typography>
+          {props.RODO ? (
+            <>
+                <Typography
+                  variant='caption'
+                  gutterBottom
+                  component='div'>
+                  {props.RODO}
+                </Typography>
+            </>
+          ) : null}
         </>
-      ) : null} */}
+      ) : null}
     </Paper>
   );
 }

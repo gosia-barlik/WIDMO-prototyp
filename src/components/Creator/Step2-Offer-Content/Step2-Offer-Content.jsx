@@ -70,6 +70,7 @@ export default function Step2OfferContent(props) {
                 qualificationCharacteristic={props.qualificationCharacteristic}
                 qualificationEffects={props.qualificationEffects}
                 copyQualificationEffect={props.copyQualificationEffect}
+                getSelectedText={props.getSelectedText}
               />
               <MainActionButtons
                 handleBack={handleReset}
@@ -122,6 +123,7 @@ export default function Step2OfferContent(props) {
             aboutCompany={props.aboutCompany}
             responsibilities={props.responsibilities}
             coppiedQualificationEffects={props.coppiedQualificationEffects}
+            coppiedSelectedText={props.coppiedSelectedText}
             requirements={props.requirements}
             updateState={props.updateState}
 

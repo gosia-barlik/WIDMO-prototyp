@@ -10,6 +10,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Stack from "@mui/material/Stack";
 
 export default function QualificationInformation(props) {
+
   return (
     <>
       <Typography variant='subtitle2' gutterBottom component='div'>
@@ -29,7 +30,8 @@ export default function QualificationInformation(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "left",
-        }}>
+        }}
+        onMouseUp = {props.getSelectedText}>
         {props.qualificationCharacteristic}
       </Paper>
 

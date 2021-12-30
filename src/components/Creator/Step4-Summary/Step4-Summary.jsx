@@ -5,11 +5,11 @@ import Typography from "@mui/material/Typography";
 import JobOffer from "../common/Job-offer.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import DataProcessing from "./form/DataProcessing.jsx";
-import "./Step3-Data-Processing.css";
+import "./Step4-Summary.css";
 
-export default function Step3DataProcessing(props) {
+export default function Step4Summary(props) {
   return (
-    <Grid container spacing={4} className='step-3-container'>
+    <Grid container spacing={4} className='step-4-container'>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy

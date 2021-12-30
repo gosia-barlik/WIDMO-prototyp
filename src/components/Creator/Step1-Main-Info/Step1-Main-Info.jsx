@@ -50,10 +50,16 @@ export default function Step1MainInfo(props) {
             <AboutCompany onSetAboutCompany={props.onSetAboutCompany} />
           ) : null}
           {props.showResults && activeStep !== 2 ? (
-            <MainActionButtons handleBack={handleBack} handleNext={handleNext} />
+            <MainActionButtons
+              handleBack={handleBack}
+              handleNext={handleNext}
+            />
           ) : null}
           {props.showResults && activeStep === 2 ? (
-            <MainActionButtons handleBack={handleBack} handleNext={props.handleMainStepperNext} />
+            <MainActionButtons
+              handleBack={handleBack}
+              handleNext={props.handleMainStepperNext}
+            />
           ) : null}
         </Paper>
       </Grid>
@@ -71,11 +77,10 @@ export default function Step1MainInfo(props) {
             salaryType={props.salaryType}
             salaryContract={props.salaryContract}
             aboutCompany={props.aboutCompany}
-
             responsibilities={props.responsibilities}
             updateState={props.updateState}
-          coppiedQualificationEffects={props.coppiedQualificationEffects}
-          requirements={props.requirements}
+            coppiedQualificationEffects={props.coppiedQualificationEffects}
+            requirements={props.requirements}
           />
         </Paper>
       </Grid>

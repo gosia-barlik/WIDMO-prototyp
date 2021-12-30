@@ -48,8 +48,8 @@ const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
     fontSize: 18,
   },
   '& .QontoStepIcon-circle': {
-    width: 12,
-    height: 12,
+    width: 11,
+    height: 11,
     borderRadius: '50%',
     backgroundColor: 'currentColor',
   },
