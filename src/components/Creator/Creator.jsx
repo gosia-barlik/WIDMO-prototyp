@@ -10,7 +10,7 @@ export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
   const [salaryType, setSalaryType] = useState("");
   const [salaryFrom, setSalaryFrom] = useState("");
   const [salaryTo, setSalaryTo] = useState("");
@@ -18,12 +18,15 @@ export default function Creator() {
   const [salaryContract, setSalaryContract] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
   const [responsibilities, setResponsibilities] = useState([]);
-  const [showResponsibilitiesButton, setShowResponsibilitiesButton] = useState(true);
+  const [showResponsibilitiesButton, setShowResponsibilitiesButton] =
+    useState(true);
   const [showQualificationForm, setShowQualificationForm] = useState(false);
   const [qualificationName, setQualificationName] = useState("");
-  const [qualificationCharacteristic, setQualificationCharacteristic] = useState("");
+  const [qualificationCharacteristic, setQualificationCharacteristic] =
+    useState("");
   const [qualificationEffects, setQualificationEffects] = useState([]);
-  const [coppiedQualificationEffects, setCoppiedQualificationEffects] = useState([]);
+  const [coppiedQualificationEffects, setCoppiedQualificationEffects] =
+    useState([]);
   const [coppiedSelectedText, setCoppiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showRequirementsButton, setShowRequirementsButton] = useState(true);
@@ -31,7 +34,11 @@ export default function Creator() {
   const [educationLevel, setEducationLevel] = useState([]);
   const [studiesName, setStudiesName] = useState([]);
   const [studiesStage, setStudiesStage] = useState([]);
-  const [RODO, setRODO] = useState('');
+  const [certificateName, setCertificateName] = useState([]);
+  const [certificateStage, setCertificateStage] = useState([]);
+  const [benefits, setBenefits] = useState([]);
+  const [showBenefitsButton, setShowBenefitsButton] = useState(true);
+  const [RODO, setRODO] = useState("");
 
   // JOB POSITION
   const onSetSearchedPosition = (searchedPhrase) => {
@@ -72,7 +79,7 @@ export default function Creator() {
     ]);
     setShowResponsibilitiesButton(false);
   };
- 
+
   //QUALIFICATION INFORMATION
   const onSetQualificationInfo = () => {
     setShowQualificationForm(true);
@@ -107,13 +114,17 @@ export default function Creator() {
     setCoppiedQualificationEffects((oldArray) => [...oldArray, e]);
   };
 
-  const getSelectedText = () =>{
+  const getSelectedText = () => {
     if (window.getSelection) {
-      setCoppiedSelectedText((oldArray) => [...oldArray,(window.getSelection().toString())]);
+      setCoppiedSelectedText((oldArray) => [
+        ...oldArray,
+        window.getSelection().toString(),
+      ]);
     } else if (document.selection) {
-        console.log (document.selection.createRange().text);
+      console.log(document.selection.createRange().text);
     }
-  console.log(coppiedSelectedText)}
+    console.log(coppiedSelectedText);
+  };
 
   //REQUIREMENTS
   const onSetRequirements = () => {
@@ -122,7 +133,7 @@ export default function Creator() {
       "wykształcenie zawodowe lub średnie techniczne",
       "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
     ]);
-    setShowRequirementsButton(false)
+    setShowRequirementsButton(false);
   };
 
   //EDUCATION AND EXPERIENCE
@@ -138,11 +149,23 @@ export default function Creator() {
   const onSetStudiesStage = (studiesStage) => {
     setStudiesStage(studiesStage);
   };
+  const onSetCertificateName = (certificateName) => {
+    setCertificateName(certificateName);
+  };
+  const onSetCertificateStage = (certificateStage) => {
+    setCertificateStage(certificateStage);
+  };
+
+  //BENEFITS
+  const onSetBenefits = () => {
+    setBenefits(["bla", "bla"]);
+    setShowBenefitsButton(false);
+  };
 
   //DATA PROCESSING
   const onSetRODO = (value) => {
     setRODO(value);
-  }
+  };
 
   // STEPPER
   const handleMainStepperNext = () => {
@@ -160,7 +183,6 @@ export default function Creator() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setShowEducationForm(false);
   };
-  
 
   return (
     <>
@@ -207,7 +229,7 @@ export default function Creator() {
           aboutCompany={aboutCompany}
           onSetResponsibilities={onSetResponsibilities}
           responsibilities={responsibilities}
-          showResponsibilitiesButton = {showResponsibilitiesButton}
+          showResponsibilitiesButton={showResponsibilitiesButton}
           onSetQualificationInfo={onSetQualificationInfo}
           setShowQualificationForm={setShowQualificationForm}
           showQualificationForm={showQualificationForm}
@@ -231,7 +253,14 @@ export default function Creator() {
           onSetStudiesName={onSetStudiesName}
           studiesStage={studiesStage}
           onSetStudiesStage={onSetStudiesStage}
+          certificateName={certificateName}
+          onSetCertificateName={onSetCertificateName}
+          certificateStage={certificateStage}
+          onSetCertificateStage={onSetCertificateStage}
           handleMainStepperNextAndReset={handleMainStepperNextAndReset}
+          onSetBenefits={onSetBenefits}
+          benefits={benefits}
+          showBenefitsButton={showBenefitsButton}
         />
       ) : null}
       {activeStep === 2 ? (
@@ -259,7 +288,7 @@ export default function Creator() {
         />
       ) : null}
 
-{activeStep === 3 ? (
+      {activeStep === 3 ? (
         <Step4Summary
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}

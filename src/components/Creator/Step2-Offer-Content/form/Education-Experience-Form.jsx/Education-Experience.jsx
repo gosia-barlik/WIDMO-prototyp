@@ -12,6 +12,13 @@ export default function EducationExperience(props) {
   const stageLabel = "Etap";
   const stage = ["ukończone", "w trakcie", "rozpoczęte"];
 
+  const certificateLabel = "Cetyfikat";
+  const certificateName = ["Mechanik Pojazdów Samochodowych", "Technik mechanik"];
+
+  const stageCertificateLabel = "Etap";
+  const stageCertificate = ["ukończone", "w trakcie", "rozpoczęte"]
+
+
   return (
     <>
       <Typography variant='subtitle2' gutterBottom component='div'>
@@ -32,6 +39,21 @@ export default function EducationExperience(props) {
         label={stageLabel}
         options={stage}
         onSetStudiesStage={props.onSetStudiesStage}
+      />
+
+      <Typography variant='subtitle2' gutterBottom component='div' style={{marginTop:'18px'}}>
+        Edukacja nieformalna/certyfikaty/uprawnienia
+      </Typography>
+
+      <CustomizedInput
+        label={certificateLabel}
+        options={certificateName}
+        onSetCertificateName={props.onSetCertificateName}
+      />
+      <CustomizedInput
+        label={stageCertificateLabel}
+        options={stageCertificate}
+        onSetCertificateStage={props.onSetCertificateStage}
       />
     </>
   );

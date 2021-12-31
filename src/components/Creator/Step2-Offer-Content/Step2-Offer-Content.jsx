@@ -6,6 +6,7 @@ import StepperVertical from "./Stepper-vertical.jsx";
 import JobOffer from "../common/Job-offer.jsx";
 import AddResponsibilitiesButtons from "./form/Add-Responsibilities-Buttons.jsx";
 import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
+import AddBenefitsButtons from "./form/Add-Benefits-Buttons.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import QualificationInformation from "./form/Qualification-Information.jsx";
 import EducationExperience from "./form/Education-Experience-Form.jsx/Education-Experience.jsx";
@@ -41,7 +42,7 @@ export default function Step2OfferContent(props) {
   };
   const handleReset = () => {
     resetShowQualificationForm();
-  }
+  };
 
   return (
     <Grid container spacing={4} className='step-2-container'>
@@ -89,7 +90,7 @@ export default function Step2OfferContent(props) {
               />
               <MainActionButtons
                 handleBack={handleBack}
-                handleNext={props.handleMainStepperNext}
+                handleNext={handleNext}
               />
             </>
           ) : null}
@@ -100,13 +101,30 @@ export default function Step2OfferContent(props) {
                 onSetEducationLevel={props.onSetEducationLevel}
                 onSetStudiesName={props.onSetStudiesName}
                 onSetStudiesStage={props.onSetStudiesStage}
+                onSetCertificateName={props.onSetCertificateName}
+                onSetCertificateStage={props.onSetCertificateStage}
               />
               <MainActionButtons
                 handleBack={handleBackAndReset}
+                handleNext={handleNextAndReset}
+              />
+            </>
+          ) : null}
+
+          {activeStep === 2 ? (
+            <>
+              <AddBenefitsButtons
+              onSetBenefits={props.onSetBenefits}
+              showBenefitsButton={props.showBenefitsButton}
+              />
+              <MainActionButtons
+                handleBack={handleBack}
                 handleNext={props.handleMainStepperNextAndReset}
               />
             </>
           ) : null}
+
+
         </Paper>
       </Grid>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
@@ -131,6 +149,9 @@ export default function Step2OfferContent(props) {
             educationLevel={props.educationLevel}
             studiesName={props.studiesName}
             studiesStage={props.studiesStage}
+            certificateName={props.certificateName}
+            certificateStage={props.certificateStage}
+            benefits={props.benefits}
           />
         </Paper>
       </Grid>

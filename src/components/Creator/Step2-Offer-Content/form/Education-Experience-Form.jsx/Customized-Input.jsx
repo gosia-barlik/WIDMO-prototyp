@@ -196,6 +196,16 @@ export default function CustomizedInput(props) {
       props.onSetStudiesStage(value);
   }, [value]);
 
+  useEffect(() => {
+    if(props.onSetCertificateName)
+      props.onSetCertificateName(value);
+  }, [value]);
+
+  useEffect(() => {
+    if(props.onSetCertificateStage)
+      props.onSetCertificateStage(value);
+  }, [value]);
+
   return (
     <Root>
       <div {...getRootProps()}>

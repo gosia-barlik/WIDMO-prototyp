@@ -220,7 +220,11 @@ export default function JobOffer(props) {
 
           {props.requirements.length > 0 ? (
             <>
-              <Typography variant='subtitle2' gutterBottom component='div'style={{ marginTop: "6px" }}>
+              <Typography
+                variant='subtitle2'
+                gutterBottom
+                component='div'
+                style={{ marginTop: "6px" }}>
                 Wymagania
               </Typography>
               {props.requirements.map((requirement) => (
@@ -241,20 +245,46 @@ export default function JobOffer(props) {
                 style={{ marginTop: "4px" }}>
                 Wykształcenie
               </Typography>
-              <Typography variant='body2' component='div'>
+              <Typography variant='body2'>
                 {props.educationLevel.map((level) => (
-                  <span key={level}>{level} &nbsp;</span>
+                  <span key={level}>{level}&nbsp;</span>
                 ))}
-                <span>na kierunku </span>
+                {props.studiesName ? <span>na kierunku </span> : null}
 
                 {props.studiesName.map((name) => (
                   <span key={name}>{name}&nbsp;</span>
                 ))}
-
                 {props.studiesStage.map((stage) => (
                   <span key={stage}>{stage}&nbsp;</span>
                 ))}
+                <br></br>
+                {props.certificateName ? (
+                  <span> Mile widziana certyfikacja </span>
+                ) : null}
+                {props.certificateName.map((name) => (
+                  <span key={name}>{name}&nbsp;</span>
+                ))}
+                {props.certificateStage.map((stage) => (
+                  <span key={stage}>{stage}&nbsp;</span>
+                ))}
               </Typography>
+            </>
+          ) : null}
+          
+          {props.benefits.length > 0 ? (
+            <>
+              <Typography
+                variant='subtitle2'
+                gutterBottom
+                component='div'
+                style={{ marginTop: "6px" }}>
+                Benefity
+              </Typography>
+              {props.benefits.map((benefit) => (
+                <Typography key={benefit} variant='body2' component='div'>
+                  {benefit}
+                </Typography>
+              ))}
             </>
           ) : null}
         </>
@@ -319,12 +349,9 @@ export default function JobOffer(props) {
           </Typography>
           {props.RODO ? (
             <>
-                <Typography
-                  variant='caption'
-                  gutterBottom
-                  component='div'>
-                  {props.RODO}
-                </Typography>
+              <Typography variant='caption' gutterBottom component='div'>
+                {props.RODO}
+              </Typography>
             </>
           ) : null}
         </>
