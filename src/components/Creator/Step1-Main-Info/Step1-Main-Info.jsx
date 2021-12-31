@@ -12,32 +12,32 @@ import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
 
 export default function Step1MainInfo(props) {
-  const [activeStep, setActiveStep] = useState(0);
+  // const [activeStep, setActiveStep] = useState(0);
 
   // STEPPER
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  // const handleNext = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  // };
+  // const handleBack = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  // };
 
   return (
     <Grid container spacing={4} className='step-1-container'>
-      <StepperVertical activeStep={activeStep} />
+      <StepperVertical activeStep={props.activeVerticalStep} />
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container'>
-          {activeStep === 0 ? (
+          {props.activeVerticalStep === 0 ? (
             <SearchBar
               onSetSearchedPosition={props.onSetSearchedPosition}
               onShowResults={props.onShowResults}
             />
           ) : null}
-          {activeStep === 0 && props.showResults ? <SearchResults /> : null}
-          {activeStep === 1 ? (
+          {props.activeVerticalStep === 0 && props.showResults ? <SearchResults searchedPosition={props.searchedPosition}/> : null}
+          {props.activeVerticalStep === 1 ? (
             <Salary
               onSetSalaryType={props.onSetSalaryType}
               onSetSalaryTo={props.onSetSalaryTo}
@@ -46,18 +46,18 @@ export default function Step1MainInfo(props) {
               onSetSalaryContract={props.onSetSalaryContract}
             />
           ) : null}
-          {activeStep === 2 ? (
+          {props.activeVerticalStep === 2 ? (
             <AboutCompany onSetAboutCompany={props.onSetAboutCompany} />
           ) : null}
-          {props.showResults && activeStep !== 2 ? (
+          {props.showResults && props.activeVerticalStep !== 2 ? (
             <MainActionButtons
-              handleBack={handleBack}
-              handleNext={handleNext}
+              handleBack={props.handleVerticalStepperBack}
+              handleNext={props.handleVerticalStepperNext}
             />
           ) : null}
-          {props.showResults && activeStep === 2 ? (
+          {props.showResults && props.activeVerticalStep === 2 ? (
             <MainActionButtons
-              handleBack={handleBack}
+              handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleMainStepperNext}
             />
           ) : null}

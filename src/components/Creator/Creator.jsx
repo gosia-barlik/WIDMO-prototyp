@@ -10,7 +10,7 @@ export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const [salaryType, setSalaryType] = useState("");
   const [salaryFrom, setSalaryFrom] = useState("");
   const [salaryTo, setSalaryTo] = useState("");
@@ -39,6 +39,8 @@ export default function Creator() {
   const [benefits, setBenefits] = useState([]);
   const [showBenefitsButton, setShowBenefitsButton] = useState(true);
   const [RODO, setRODO] = useState("");
+  //VERTICAL STEPPER
+  const [activeVerticalStep, setActiveVerticalStep] = useState(0);
 
   // JOB POSITION
   const onSetSearchedPosition = (searchedPhrase) => {
@@ -123,7 +125,6 @@ export default function Creator() {
     } else if (document.selection) {
       console.log(document.selection.createRange().text);
     }
-    console.log(coppiedSelectedText);
   };
 
   //REQUIREMENTS
@@ -167,12 +168,13 @@ export default function Creator() {
     setRODO(value);
   };
 
-  // STEPPER
+  // MAIN STEPPER
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
   const handleMainStepperBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveVerticalStep(3);
   };
   const handleMainStepperBackAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -184,11 +186,20 @@ export default function Creator() {
     setShowEducationForm(false);
   };
 
+  // VERTICAL STEPPER
+  const handleVerticalStepperNext = () => {
+    setActiveVerticalStep((prevActiveStep) => prevActiveStep + 1);
+  };
+  const handleVerticalStepperBack = () => {
+    setActiveVerticalStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
     <>
       <StepperHorizontal activeStep={activeStep} />
       {activeStep === 0 ? (
         <Step1MainInfo
+        
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
@@ -212,6 +223,11 @@ export default function Creator() {
           responsibilities={responsibilities}
           coppiedQualificationEffects={coppiedQualificationEffects}
           requirements={requirements}
+
+          handleVerticalStepperNext={handleVerticalStepperNext}
+          handleVerticalStepperBack={handleVerticalStepperBack}
+          activeVerticalStep={activeVerticalStep}
+
         />
       ) : null}
       {activeStep === 1 ? (
