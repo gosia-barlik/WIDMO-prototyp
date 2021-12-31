@@ -220,7 +220,7 @@ export default function JobOffer(props) {
 
           {props.requirements.length > 0 ? (
             <>
-              <Typography variant='subtitle2' gutterBottom component='div'>
+              <Typography variant='subtitle2' gutterBottom component='div'style={{ marginTop: "6px" }}>
                 Wymagania
               </Typography>
               {props.requirements.map((requirement) => (

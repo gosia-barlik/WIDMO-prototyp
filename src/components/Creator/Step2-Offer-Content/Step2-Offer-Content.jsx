@@ -56,6 +56,7 @@ export default function Step2OfferContent(props) {
               <AddResponsibilitiesButtons
                 onSetResponsibilities={props.onSetResponsibilities}
                 onSetQualificationInfo={props.onSetQualificationInfo}
+                showResponsibilitiesButton={props.showResponsibilitiesButton}
               />
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
@@ -84,6 +85,7 @@ export default function Step2OfferContent(props) {
               <AddRequirementsButtons
                 onSetRequirements={props.onSetRequirements}
                 onSetEducationInfo={props.onSetEducationInfo}
+                showRequirementsButton={props.showRequirementsButton}
               />
               <MainActionButtons
                 handleBack={handleBack}
@@ -101,7 +103,7 @@ export default function Step2OfferContent(props) {
               />
               <MainActionButtons
                 handleBack={handleBackAndReset}
-                handleNext={handleNextAndReset}
+                handleNext={props.handleMainStepperNextAndReset}
               />
             </>
           ) : null}
@@ -126,7 +128,6 @@ export default function Step2OfferContent(props) {
             coppiedSelectedText={props.coppiedSelectedText}
             requirements={props.requirements}
             updateState={props.updateState}
-
             educationLevel={props.educationLevel}
             studiesName={props.studiesName}
             studiesStage={props.studiesStage}

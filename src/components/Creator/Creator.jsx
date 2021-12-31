@@ -3,13 +3,14 @@ import StepperHorizontal from "./common/Stepper-horizontal.jsx";
 import Step1MainInfo from "./Step1-Main-Info/Step1-Main-Info.jsx";
 import Step2OfferContent from "./Step2-Offer-Content/Step2-Offer-Content.jsx";
 import Step3DataProcessing from "./Step3-Data-Processing/Step3-Data-Processing.jsx";
+import Step4Summary from "./Step4-Summary/Step4-Summary.jsx";
 import "./Creator.css";
 
 export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(0);
   const [salaryType, setSalaryType] = useState("");
   const [salaryFrom, setSalaryFrom] = useState("");
   const [salaryTo, setSalaryTo] = useState("");
@@ -17,6 +18,7 @@ export default function Creator() {
   const [salaryContract, setSalaryContract] = useState("");
   const [aboutCompany, setAboutCompany] = useState("");
   const [responsibilities, setResponsibilities] = useState([]);
+  const [showResponsibilitiesButton, setShowResponsibilitiesButton] = useState(true);
   const [showQualificationForm, setShowQualificationForm] = useState(false);
   const [qualificationName, setQualificationName] = useState("");
   const [qualificationCharacteristic, setQualificationCharacteristic] = useState("");
@@ -24,6 +26,7 @@ export default function Creator() {
   const [coppiedQualificationEffects, setCoppiedQualificationEffects] = useState([]);
   const [coppiedSelectedText, setCoppiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
+  const [showRequirementsButton, setShowRequirementsButton] = useState(true);
   const [showEducationForm, setShowEducationForm] = useState(false);
   const [educationLevel, setEducationLevel] = useState([]);
   const [studiesName, setStudiesName] = useState([]);
@@ -67,8 +70,9 @@ export default function Creator() {
       "wykonywanie napraw",
       "bieżące usuwanie awarii i usterek",
     ]);
+    setShowResponsibilitiesButton(false);
   };
-
+ 
   //QUALIFICATION INFORMATION
   const onSetQualificationInfo = () => {
     setShowQualificationForm(true);
@@ -118,6 +122,7 @@ export default function Creator() {
       "wykształcenie zawodowe lub średnie techniczne",
       "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
     ]);
+    setShowRequirementsButton(false)
   };
 
   //EDUCATION AND EXPERIENCE
@@ -151,6 +156,11 @@ export default function Creator() {
     resetShowQualificationForm();
     setUpdateState((prevState) => prevState + 1);
   };
+  const handleMainStepperNextAndReset = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setShowEducationForm(false);
+  };
+  
 
   return (
     <>
@@ -197,6 +207,7 @@ export default function Creator() {
           aboutCompany={aboutCompany}
           onSetResponsibilities={onSetResponsibilities}
           responsibilities={responsibilities}
+          showResponsibilitiesButton = {showResponsibilitiesButton}
           onSetQualificationInfo={onSetQualificationInfo}
           setShowQualificationForm={setShowQualificationForm}
           showQualificationForm={showQualificationForm}
@@ -212,6 +223,7 @@ export default function Creator() {
           setShowEducationForm={setShowEducationForm}
           onSetRequirements={onSetRequirements}
           requirements={requirements}
+          showRequirementsButton={showRequirementsButton}
           updateState={updateState}
           educationLevel={educationLevel}
           onSetEducationLevel={onSetEducationLevel}
@@ -219,6 +231,7 @@ export default function Creator() {
           onSetStudiesName={onSetStudiesName}
           studiesStage={studiesStage}
           onSetStudiesStage={onSetStudiesStage}
+          handleMainStepperNextAndReset={handleMainStepperNextAndReset}
         />
       ) : null}
       {activeStep === 2 ? (
@@ -235,6 +248,32 @@ export default function Creator() {
           aboutCompany={aboutCompany}
           responsibilities={responsibilities}
           coppiedQualificationEffects={coppiedQualificationEffects}
+          coppiedSelectedText={coppiedSelectedText}
+          requirements={requirements}
+          updateState={updateState}
+          educationLevel={educationLevel}
+          studiesName={studiesName}
+          studiesStage={studiesStage}
+          onSetRODO={onSetRODO}
+          RODO={RODO}
+        />
+      ) : null}
+
+{activeStep === 3 ? (
+        <Step4Summary
+          activeStep={activeStep}
+          handleMainStepperBack={handleMainStepperBack}
+          handleMainStepperNext={handleMainStepperNext}
+          searchedPosition={searchedPosition}
+          salaryTo={salaryTo}
+          salaryFrom={salaryFrom}
+          salaryTime={salaryTime}
+          salaryType={salaryType}
+          salaryContract={salaryContract}
+          aboutCompany={aboutCompany}
+          responsibilities={responsibilities}
+          coppiedQualificationEffects={coppiedQualificationEffects}
+          coppiedSelectedText={coppiedSelectedText}
           requirements={requirements}
           updateState={updateState}
           educationLevel={educationLevel}

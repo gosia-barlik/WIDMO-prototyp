@@ -40,6 +40,11 @@
   .step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
     margin-left: -150px;
   }
+
+  .step-2-container .stepper-vertical-container .MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-completed {
+    margin-left: -80px;
+  }
+  
   
   .step-2-container .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
     margin-left: -155px;

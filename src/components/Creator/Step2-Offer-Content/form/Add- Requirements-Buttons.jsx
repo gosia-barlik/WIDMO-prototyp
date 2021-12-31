@@ -16,14 +16,15 @@ export default function AddRequirementsButtons(props) {
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-      <ColorButton className='styled-button' variant='contained'>
+        {props.showRequirementsButton ? <ColorButton className='styled-button' variant='contained'>
         <IconButton className='styled-icon-button'
           component='span'
           onClick={props.onSetRequirements}>
           <AddIcon />
         </IconButton>
         Dodaj najczęstsze wymagania na to stanowisko
-      </ColorButton>
+      </ColorButton> : null }
+      
       <ColorButton className='styled-button' variant='contained'>
         <IconButton className='styled-icon-button'
           component='span'

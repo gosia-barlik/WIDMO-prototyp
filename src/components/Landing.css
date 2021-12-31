@@ -51,6 +51,7 @@ body {
   overflow-y: unset;
   width: 326px;
   height: 388px;
+  align-self: center !important;
 }
 
 .landing .card-container .card1 .rankomat-text1 {
@@ -163,6 +164,7 @@ body {
   color:white;
   text-decoration:none !important;
   padding:5px 12px;
+  margin-left: 30%;
 }
 
 a:link,a:visited,a:hover,a:active { text-decoration: none }

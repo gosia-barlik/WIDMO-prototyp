@@ -1,4 +1,28 @@
 .step-4-container {
-    left: 30%;
-    margin-left:19% !important;
-    }
+  margin-top: 70px !important;
+  margin-left: 20% !important;
+}
+
+.step-4-container .form-container {
+  width: 55%;
+}
+
+.step-4-container .job-offer-summary {
+  box-sizing:border-box;
+    width: 100%;
+    min-height: 600px;
+    background-color: white;
+    border-radius:4px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    outline: 0px solid transparent;
+    padding: 30px;
+    padding-left: 60px;
+
+}
+
+.step-4-container .job-offer-summary span{
+  font-weight: 500;
+}
+.step-4-container .job-offer-summary li {
+  list-style-type: none;
+}

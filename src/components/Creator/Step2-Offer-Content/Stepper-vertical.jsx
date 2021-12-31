@@ -17,10 +17,10 @@ const steps = [
     description:
       'Pole opcjonalne.',
   },
-  {
-    label: 'Benefity',
-    description: `Pole opcjonalne.`,
-  },
+  // {
+  //   label: 'Benefity',
+  //   description: `Pole opcjonalne.`,
+  // },
 ];
 
 export default function StepperVertical(props) {

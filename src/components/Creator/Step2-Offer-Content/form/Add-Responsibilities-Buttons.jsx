@@ -16,7 +16,8 @@ export default function AddResponsibilitiesButtons(props) {
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-      <ColorButton className='styled-button' variant='contained'>
+        {props.showResponsibilitiesButton?
+        <ColorButton className='styled-button' variant='contained'>
         <IconButton
           className='styled-icon-button'
           component='span'
@@ -24,7 +25,7 @@ export default function AddResponsibilitiesButtons(props) {
           <AddIcon />
         </IconButton>
         Dodaj najczęściej poszukiwane umiejętności na rynku pracy
-      </ColorButton>
+      </ColorButton> : null }
       <ColorButton className='styled-button' variant='contained'>
         <IconButton
           className='styled-icon-button'
