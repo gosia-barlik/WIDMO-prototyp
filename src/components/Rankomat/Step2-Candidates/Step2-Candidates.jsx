@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import MainActionButtons from "../common/MainActionButtons";
+import Step2Dropzone from "./Step2-Dropzone";
 import "./Step2-Candidates.css";
 
-const Input = styled("input")({
-  display: "none",
-});
 
 export default function Step2Candidates(props) {
   return (
@@ -20,7 +16,7 @@ export default function Step2Candidates(props) {
         <Typography variant='body2' gutterBottom component='div'>
         Wprowadź życiorysy kandydatów, które chciałbyś dopasować do ogłoszenia o pracę
         </Typography>
-    
+    <Step2Dropzone />
         <MainActionButtons
           handleBack={props.handleStepperBack}
           handleNext={props.handleStepperNext}

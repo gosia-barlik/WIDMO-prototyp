@@ -1,0 +1,42 @@
+.dropzone-container {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+ul {
+  margin: 0;
+}
+
+span {
+  font-size: 2rem;
+  color: #777;
+}
+
+.dropzone {
+  text-align: center;
+  padding: 20px;
+  border: 3px dashed #eeeeee;
+  background-color: #fafafa;
+  color: #bdbdbd;
+  margin-bottom: 20px;
+}
+
+.accept {
+  border-color: #107c10 !important;
+}
+
+.reject {
+  border-color: #d83b01 !important;
+}
+
+.accepted-files {
+  display: inline-block;
+  width: 80px !important;
+  height: 150px;
+  border-radius: 4px;
+  margin-right: 30px;
+  background-color: white;
+  border: none;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    overflow:hidden;
+}
