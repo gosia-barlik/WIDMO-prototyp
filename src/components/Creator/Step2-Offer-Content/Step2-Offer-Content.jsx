@@ -23,13 +23,6 @@ export default function Step2OfferContent(props) {
     props.setShowEducationForm(false);
   };
 
-  // STEPPER
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
   const handleNextAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     resetShowQualificationForm();
@@ -46,13 +39,13 @@ export default function Step2OfferContent(props) {
 
   return (
     <Grid container spacing={4} className='step-2-container'>
-      <StepperVertical activeStep={activeStep} />
+      <StepperVertical activeStep={props.activeVerticalStep} />
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container'>
-          {activeStep === 0 && props.showQualificationForm === false ? (
+          {props.activeVerticalStep === 0 && props.showQualificationForm === false ? (
             <>
               <AddResponsibilitiesButtons
                 onSetResponsibilities={props.onSetResponsibilities}
@@ -61,11 +54,11 @@ export default function Step2OfferContent(props) {
               />
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
-                handleNext={handleNext}
+                handleNext={props.handleVerticalStepperNext}
               />
             </>
           ) : null}
-          {activeStep === 0 && props.showQualificationForm === true ? (
+          {props.activeVerticalStep === 0 && props.showQualificationForm === true ? (
             <>
               <QualificationInformation
                 qualificationName={props.qualificationName}
@@ -81,7 +74,7 @@ export default function Step2OfferContent(props) {
             </>
           ) : null}
 
-          {activeStep === 1 && props.showEducationForm === false ? (
+          {props.activeVerticalStep === 1 && props.showEducationForm === false ? (
             <>
               <AddRequirementsButtons
                 onSetRequirements={props.onSetRequirements}
@@ -89,8 +82,8 @@ export default function Step2OfferContent(props) {
                 showRequirementsButton={props.showRequirementsButton}
               />
               <MainActionButtons
-                handleBack={handleBack}
-                handleNext={handleNext}
+                handleBack={props.handleVerticalStepperBack}
+                handleNext={props.handleVerticalStepperNext}
               />
             </>
           ) : null}
@@ -111,14 +104,14 @@ export default function Step2OfferContent(props) {
             </>
           ) : null}
 
-          {activeStep === 2 ? (
+          {props.activeVerticalStep === 2 ? (
             <>
               <AddBenefitsButtons
               onSetBenefits={props.onSetBenefits}
               showBenefitsButton={props.showBenefitsButton}
               />
               <MainActionButtons
-                handleBack={handleBack}
+                handleBack={props.handleVerticalStepperBack}
                 handleNext={props.handleMainStepperNextAndReset}
               />
             </>

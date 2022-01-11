@@ -270,7 +270,7 @@ export default function JobOffer(props) {
               </Typography>
             </>
           ) : null}
-          
+
           {props.benefits.length > 0 ? (
             <>
               <Typography
@@ -340,6 +340,130 @@ export default function JobOffer(props) {
               ) : null}
             </AccordionDetails>
           </Accordion>
+
+          <Accordion className='styled-accordion'>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel1a-content'
+              id='panel1a-header'>
+              <Typography variant='subtitle2' component='div'>
+                Treść ogłoszenia
+              </Typography>
+            </AccordionSummary>
+
+            <AccordionDetails style={{ flexDirection: "column" }}>
+              {props.responsibilities ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Zakres obowiązków
+                  </Typography>
+                  {props.responsibilities.map((responsibility) => (
+                    <Typography
+                      key={responsibility}
+                      variant='body2'
+                      component='div'>
+                      {responsibility}
+                    </Typography>
+                  ))}
+                </>
+              ) : null}
+
+              {props.coppiedQualificationEffects ? (
+                <>
+                  {props.coppiedQualificationEffects.map((effect) => (
+                    <Typography key={effect} variant='body2' component='div'>
+                      {effect}
+                    </Typography>
+                  ))}
+                </>
+              ) : null}
+
+              {props.coppiedSelectedText ? (
+                <>
+                  {props.coppiedSelectedText.map((text) => (
+                    <Typography key={text} variant='body2' component='div'>
+                      {text}
+                    </Typography>
+                  ))}
+                </>
+              ) : null}
+
+              {props.requirements.length > 0 ? (
+                <>
+                  <Typography
+                    variant='subtitle2'
+                    gutterBottom
+                    component='div'
+                    style={{ marginTop: "6px" }}>
+                    Wymagania
+                  </Typography>
+                  {props.requirements.map((requirement) => (
+                    <Typography
+                      key={requirement}
+                      variant='body2'
+                      component='div'>
+                      {requirement}
+                    </Typography>
+                  ))}
+                </>
+              ) : null}
+
+              {props.educationLevel.length > 0 ||
+              props.studiesName.length > 0 ||
+              props.studiesStage.length > 0 ? (
+                <>
+                  <Typography
+                    variant='body2'
+                    gutterBottom
+                    component='div'
+                    style={{ marginTop: "4px" }}>
+                    Wykształcenie
+                  </Typography>
+                  <Typography variant='body2'>
+                    {props.educationLevel.map((level) => (
+                      <span key={level}>{level}&nbsp;</span>
+                    ))}
+                    {props.studiesName ? <span>na kierunku </span> : null}
+
+                    {props.studiesName.map((name) => (
+                      <span key={name}>{name}&nbsp;</span>
+                    ))}
+                    {props.studiesStage.map((stage) => (
+                      <span key={stage}>{stage}&nbsp;</span>
+                    ))}
+                    <br></br>
+                    {props.certificateName ? (
+                      <span> Mile widziana certyfikacja </span>
+                    ) : null}
+                    {props.certificateName.map((name) => (
+                      <span key={name}>{name}&nbsp;</span>
+                    ))}
+                    {props.certificateStage.map((stage) => (
+                      <span key={stage}>{stage}&nbsp;</span>
+                    ))}
+                  </Typography>
+                </>
+              ) : null}
+
+              {props.benefits.length > 0 ? (
+                <>
+                  <Typography
+                    variant='subtitle2'
+                    gutterBottom
+                    component='div'
+                    style={{ marginTop: "6px" }}>
+                    Benefity
+                  </Typography>
+                  {props.benefits.map((benefit) => (
+                    <Typography key={benefit} variant='body2' component='div'>
+                      {benefit}
+                    </Typography>
+                  ))}
+                </>
+              ) : null}
+            </AccordionDetails>
+          </Accordion>
+
           <Typography
             variant='subtitle2'
             gutterBottom

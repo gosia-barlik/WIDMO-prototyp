@@ -16,7 +16,7 @@ export default function Step3DataProcessing(props) {
         </Typography>
         <Paper className='form-container'>
           <>
-            <DataProcessing onSetRODO={props.onSetRODO}/>
+            <DataProcessing onSetRODO={props.onSetRODO} />
             <MainActionButtons
               handleBack={props.handleMainStepperBack}
               handleNext={props.handleMainStepperNext}
@@ -47,6 +47,9 @@ export default function Step3DataProcessing(props) {
             educationLevel={props.educationLevel}
             studiesName={props.studiesName}
             studiesStage={props.studiesStage}
+            certificateName={props.certificateName}
+            certificateStage={props.certificateStage}
+            benefits={props.benefits}
             RODO={props.RODO}
           />
         </Paper>

@@ -171,15 +171,17 @@ export default function Creator() {
   // MAIN STEPPER
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveVerticalStep(0);
   };
   const handleMainStepperBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    setActiveVerticalStep(3);
+    setActiveVerticalStep(2);
   };
   const handleMainStepperBackAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     resetShowQualificationForm();
     setUpdateState((prevState) => prevState + 1);
+    setActiveVerticalStep(2);
   };
   const handleMainStepperNextAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -277,6 +279,10 @@ export default function Creator() {
           onSetBenefits={onSetBenefits}
           benefits={benefits}
           showBenefitsButton={showBenefitsButton}
+
+          handleVerticalStepperNext={handleVerticalStepperNext}
+          handleVerticalStepperBack={handleVerticalStepperBack}
+          activeVerticalStep={activeVerticalStep}
         />
       ) : null}
       {activeStep === 2 ? (
@@ -298,7 +304,10 @@ export default function Creator() {
           updateState={updateState}
           educationLevel={educationLevel}
           studiesName={studiesName}
+          certificateName ={certificateName}
           studiesStage={studiesStage}
+          certificateStage={certificateStage}
+          benefits={benefits}
           onSetRODO={onSetRODO}
           RODO={RODO}
         />

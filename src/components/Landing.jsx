@@ -127,9 +127,11 @@ class Landing extends React.Component {
               </div>
             </CardContent>
             <CardActions className='card1'>
+            <NavLink to='/rankomat'>
               <Button variant='contained' className='button-primary-contained'>
                 Rozpocznij
               </Button>
+              </NavLink>
             </CardActions>
           </Card>
 
