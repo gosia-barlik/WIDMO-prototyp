@@ -58,13 +58,13 @@ const img = {
 // };
 
 export default function Step2Dropzone(props) {
-  const [files, setFiles] = useState([]);
+  // const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     noClick: true,
     noKeyboard: true,
     accept: "image/*, .doc, .docx, .pdf",
     onDrop: (acceptedFiles) => {
-      setFiles(
+      props.onSetResumes(
         acceptedFiles.map((file) =>
           Object.assign(file, {
             preview: URL.createObjectURL(file),
@@ -74,18 +74,18 @@ export default function Step2Dropzone(props) {
     },
   });
 
-  const thumbs = files.map((file) => (
-    <div style={thumb} key={file.name}>
+  const thumbs = props.resumes.map((resume) => (
+    <div style={thumb} key={resume.name}>
       <div style={thumbInner}>
-        <img src={file.preview} style={img} alt={file.name}/>
+        <img src={resume.preview} style={img} alt={resume.name}/>
       </div>
     </div>
   ));
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks
-    files.forEach((file) => URL.revokeObjectURL(file.preview));
-  }, [files]);
+    props.resumes.forEach((resume) => URL.revokeObjectURL(resume.preview));
+  }, [props.resumes]);
 
   return (
     <section className='container'>

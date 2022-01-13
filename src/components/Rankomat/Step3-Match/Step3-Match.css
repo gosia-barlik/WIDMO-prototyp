@@ -1,4 +1,3 @@
-
 .rankomat {
         left: 30%;
         margin-left:19% !important;
@@ -6,4 +5,7 @@
 
 .MuiListItemText-root span {
     color:white
+}
+.styled-checkbox svg {
+    color: white
 }
