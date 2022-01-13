@@ -64,6 +64,8 @@ export default function Step2Dropzone(props) {
     noKeyboard: true,
     accept: "image/*, .doc, .docx, .pdf",
     onDrop: (acceptedFiles) => {
+      let i = 0;
+      acceptedFiles.forEach((file)=>(file.id= i++));
       props.onSetResumes(
         acceptedFiles.map((file) =>
           Object.assign(file, {

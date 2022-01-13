@@ -51,6 +51,7 @@ export default function Rankomat() {
         <Step3Match
           handleStepperBack={handleStepperBack}
           handleStepperNext={handleStepperNext}
+          resumes={resumes}
         />
       ) : null}
     </>

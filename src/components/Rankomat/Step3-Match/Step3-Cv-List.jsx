@@ -26,7 +26,7 @@ const checkBoxStyles = theme => ({
 
 
 
-export default function CvList() {
+export default function CvList(props) {
   const classes = useStyles();
   
   const [checked, setChecked] = React.useState([1]);
@@ -62,31 +62,32 @@ export default function CvList() {
 
   return (
     <List dense className={classes.root}>
-      {[0, 1, 2, 3, 4].map((value) => {
-        const labelId = `checkbox-list-secondary-label-${value}`;
-        const color = getColor(value);
+      
+      {props.resumes.map((resume) => {
+        const labelId = `checkbox-list-secondary-label-${resume.id}`;
+        const color = getColor(resume.id);
         return (
           <ListItem
-            key={value}
+            key={resume.id}
             button
             style={{ backgroundColor: color, marginBottom: "2px", borderRadius:"4px" }}>
             <ListItemAvatar>
               <Avatar
-                alt={`Avatar n°${value + 1}`}
-                src={`/static/images/avatar/${value + 1}.jpg`}
+                alt={`Avatar n°${resume.id + 1}`}
+                src={`/static/images/avatar/${resume.id + 1}.jpg`}
               />
             </ListItemAvatar>
             <ListItemText
               id={labelId}
-              primary={`Line item ${value + 1}`}
+              primary={`${resume.name} ${resume.id + 1}`}
               style={{ color: "white" }}
             />
             <ListItemSecondaryAction>
               <Checkbox
               className="styled-checkbox"
                 edge='end'
-                onChange={handleToggle(value)}
-                checked={checked.indexOf(value) !== -1}
+                onChange={handleToggle(resume.id)}
+                checked={checked.indexOf(resume.id) !== -1}
                 inputProps={{ "aria-labelledby": labelId }}
               />
             </ListItemSecondaryAction>
