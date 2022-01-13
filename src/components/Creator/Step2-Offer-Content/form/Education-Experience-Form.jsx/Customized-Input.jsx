@@ -181,27 +181,27 @@ export default function CustomizedInput(props) {
   });
 
   // Podobnie do metod componentDidMount i componentDidUpdate:
-  useEffect((props) => {
+  useEffect(() => {
     if(props.onSetEducationLevel)
       props.onSetEducationLevel(value);
   }, [value]); 
 
-  useEffect((props) => {
+  useEffect(() => {
     if(props.onSetStudiesName)
       props.onSetStudiesName(value);
   }, [value]);
 
-  useEffect((props) => {
+  useEffect(() => {
     if(props.onSetStudiesStage)
       props.onSetStudiesStage(value);
   }, [value]);
 
-  useEffect((props) => {
+  useEffect(() => {
     if(props.onSetCertificateName)
       props.onSetCertificateName(value);
   }, [value]);
 
-  useEffect((props) => {
+  useEffect(() => {
     if(props.onSetCertificateStage)
       props.onSetCertificateStage(value);
   }, [value]);
