@@ -18,6 +18,7 @@ span {
   background-color: #fafafa;
   color: #bdbdbd;
   margin-bottom: 20px;
+  
 }
 
 .accept {
@@ -33,10 +34,22 @@ span {
   width: 80px !important;
   height: 150px;
   border-radius: 4px;
-  margin-right: 30px;
+  margin-right: 5px;
   background-color: white;
   border: none;
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-    overflow:hidden;
+  overflow: hidden;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 8px 12px 8px 0;
+}
+
+.carousel-container  {
+  /* top: -190px !important; */
+  margin-left: 25px;;
+}
+.react-multi-carousel-track li {
+  width: 100px !important;
+  
 }

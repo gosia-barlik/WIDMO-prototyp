@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
 import CustomizedInput from "./Customized-Input";
 
 export default function EducationExperience(props) {
   const educationLabel = "Poziom wykształcenia";
-  const educationLevel = ["podstawowe", "średnie", , "zawodowe", "wyższe"];
+  const educationLevel = ["podstawowe", "średnie", "zawodowe", "wyższe"];
 
   const studiesLabel = "Nazwa kierunku";
   const studiesName = ["Technik pojazdów samochodowych", "Technik mechanik"];

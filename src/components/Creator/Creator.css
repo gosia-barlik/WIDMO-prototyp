@@ -2,17 +2,20 @@ body {
   height: 100% !important;
   width: 100%;
   background-color: rgb(250, 248, 248);
+  font-family: Arial !important;
 }
 
 .button-outlined {
   margin: 15px 5px 0 5px !important;
-  border: 1px solid #784af4 !important;
-  color: #784af4 !important;
+  border: 1px solid #6200EE !important;
+  color: #6200EE !important;
+  font-family: Arial !important;
 }
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
-  background-color: #784af4 !important;
+  background-color: #6200EE !important;
+  font-family: Arial !important;
 }
 
 

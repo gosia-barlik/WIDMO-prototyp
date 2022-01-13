@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import StepperHorizontal from "./common/Stepper-horizontal.jsx";
 import Step1JobOffer from "./Step1-Job-Offer/Step1-Job-Offer.jsx";
-import "./Rankomat.css";
 import Step2Candidates from "./Step2-Candidates/Step2-Candidates.jsx";
+import Step3Match from "./Step3-Match/Step3-Match.jsx";
+import "./Rankomat.css";
 
 export default function Rankomat() {
   const [activeStep, setActiveStep] = useState(0);
@@ -11,7 +12,6 @@ export default function Rankomat() {
   //ABOUT COMPANY
   const onSetJobOffer = (jobOffer) => {
     setJobOffer(jobOffer);
-    console.log(jobOffer);
   };
   // STEPPER
   const handleStepperNext = () => {
@@ -34,7 +34,13 @@ export default function Rankomat() {
 
 {activeStep === 1 ? (
         <Step2Candidates
-          onSetJobOffer={onSetJobOffer}
+          handleStepperBack={handleStepperBack}
+          handleStepperNext={handleStepperNext}
+        />
+      ) : null}
+
+{activeStep === 2 ? (
+        <Step3Match
           handleStepperBack={handleStepperBack}
           handleStepperNext={handleStepperNext}
         />

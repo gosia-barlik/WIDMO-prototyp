@@ -4,7 +4,7 @@ import { useAutocomplete } from '@mui/base/AutocompleteUnstyled';
 import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import { styled } from '@mui/material/styles';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 const Root = styled('div')(
   ({ theme }) => `
@@ -181,27 +181,27 @@ export default function CustomizedInput(props) {
   });
 
   // Podobnie do metod componentDidMount i componentDidUpdate:
-  useEffect(() => {
+  useEffect((props) => {
     if(props.onSetEducationLevel)
       props.onSetEducationLevel(value);
   }, [value]); 
 
-  useEffect(() => {
+  useEffect((props) => {
     if(props.onSetStudiesName)
       props.onSetStudiesName(value);
   }, [value]);
 
-  useEffect(() => {
+  useEffect((props) => {
     if(props.onSetStudiesStage)
       props.onSetStudiesStage(value);
   }, [value]);
 
-  useEffect(() => {
+  useEffect((props) => {
     if(props.onSetCertificateName)
       props.onSetCertificateName(value);
   }, [value]);
 
-  useEffect(() => {
+  useEffect((props) => {
     if(props.onSetCertificateStage)
       props.onSetCertificateStage(value);
   }, [value]);

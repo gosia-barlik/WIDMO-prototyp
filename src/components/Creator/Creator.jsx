@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StepperHorizontal from "./common/Stepper-horizontal.jsx";
 import Step1MainInfo from "./Step1-Main-Info/Step1-Main-Info.jsx";
 import Step2OfferContent from "./Step2-Offer-Content/Step2-Offer-Content.jsx";
