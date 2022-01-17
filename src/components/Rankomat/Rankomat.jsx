@@ -9,16 +9,42 @@ export default function Rankomat() {
   const [activeStep, setActiveStep] = useState(0);
   const [jobOffer, setJobOffer] = useState("");
   const [resumes, setResumes] = useState([]);
+  const [qualificationName, setQualificationName] = useState([]);
+  const [experienceLevel, setExperienceLevel] = useState([]);
+  const [jobPosition, setJobPosition] = useState([]);
+  const [companyName, setCompanyName] = useState([]);
+  const [certificateStage, setCertificateStage] = useState([]);
+  const [keyWord, setKeyWord] = useState([]);
 
   //JOB OFFER
   const onSetJobOffer = (jobOffer) => {
     setJobOffer(jobOffer);
   };
-  //RESUMES
+  //CANDIDATES
   const onSetResumes = (resumes) => {
     setResumes(resumes);
-    console.log(resumes)
   };
+
+  //FILTERS
+  const onSetQualificationName = (qualificationName) => {
+    setQualificationName(qualificationName);
+  };
+  const onSetExperienceLevel = (experienceLevel) => {
+    setExperienceLevel(experienceLevel);
+  };
+  const onSetPosition = (jobPosition) => {
+    setJobPosition(jobPosition);
+  };
+  const onSetCompanyName = (companyName) => {
+    setCompanyName(companyName);
+  };
+  const onSetCertificateStage = (certificateStage) => {
+    setCertificateStage(certificateStage);
+  };
+  const onSetKeyWord = (keyWord) => {
+    setKeyWord(keyWord);
+  };
+
   // STEPPER
   const handleStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -52,6 +78,18 @@ export default function Rankomat() {
           handleStepperBack={handleStepperBack}
           handleStepperNext={handleStepperNext}
           resumes={resumes}
+          onSetQualificationName={onSetQualificationName}
+        
+          onSetExperienceLevel={onSetExperienceLevel}
+        
+          onSetPosition={onSetPosition}
+          
+          onSetCompanyName={onSetCompanyName}
+        
+          onSetCertificateStage={onSetCertificateStage}
+          
+          onSetKeyWord={onSetKeyWord}
+         
         />
       ) : null}
     </>

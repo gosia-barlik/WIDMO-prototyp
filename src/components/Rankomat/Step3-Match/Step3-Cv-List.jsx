@@ -33,17 +33,37 @@ export default function CvList(props) {
 
   function getColor(n) {
     return n === 0
-      ? "#640DFF"
+      ? "#660DFF"
       : n === 1
-      ? "#7F39FB"
+      ? "#6A15FF"
       : n === 2
-      ? "#9054FB"
+      ? "#6F1EFF"
       : n === 3
-      ? "#985EFF"
+      ? "#7F2BFF"
       : n === 4
-      ? "#B579FE"
+      ? "#8B39FF"
       : n === 5
-      ? "#BB86FC"
+      ? "#9341FF"
+      : n === 6
+      ? "#994BFF"
+      : n === 7
+      ? "#A051FF"
+      : n === 8
+      ? "#A358FF"
+      : n === 9
+      ? "#A361FF"
+      : n === 10
+      ? "#A869FF"
+      : n === 11
+      ? "#AD6FFF"
+      : n === 12
+      ? "#B47BFF"
+      : n === 13
+      ? "#BD87FF"
+      : n === 14
+      ? "#BD8EFF"
+      : n === 15
+      ? "#C19CFF"
       : n === "#dcdcdc";
   }
 
@@ -71,12 +91,12 @@ export default function CvList(props) {
             key={resume.id}
             button
             style={{ backgroundColor: color, marginBottom: "2px", borderRadius:"4px" }}>
-            <ListItemAvatar>
+            {/* <ListItemAvatar>
               <Avatar
                 alt={`Avatar n°${resume.id + 1}`}
                 src={`/static/images/avatar/${resume.id + 1}.jpg`}
               />
-            </ListItemAvatar>
+            </ListItemAvatar> */}
             <ListItemText
               id={labelId}
               primary={`${resume.name} ${resume.id + 1}`}

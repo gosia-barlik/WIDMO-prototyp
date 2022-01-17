@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import CvList from "./Step3-Cv-List";
 import MainActionButtons from "../common/MainActionButtons";
+import Step3Filters from "./Step3-Filters/Step3-Filters";
 import "./Step3-Match.css";
 
 export default function Step3Match(props) {
@@ -18,18 +19,25 @@ export default function Step3Match(props) {
             <CvList resumes={props.resumes} />
           </Paper>
           <MainActionButtons
-        handleBack={props.handleStepperBack}
-        handleNext={props.handleStepperNext}
-      />
+            handleBack={props.handleStepperBack}
+            handleNext={props.handleStepperNext}
+          />
         </Grid>
         <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
           <Typography variant='subtitle2' gutterBottom component='div'>
             Filtry
           </Typography>
-          <Paper className='job-offer-container'></Paper>
+          <Paper className='job-offer-container'>
+            <Step3Filters
+              onSetQualificationName={props.onSetQualificationName}
+              onSetExperienceLevel={props.onSetExperienceLevel}
+              onSetPosition={props.onSetPosition}
+              onSetCompanyName={props.onSetCompanyName}
+              onSetKeyWord={props.onSetKeyWord}
+            />
+          </Paper>
         </Grid>
       </Grid>
-    
     </>
   );
 }
