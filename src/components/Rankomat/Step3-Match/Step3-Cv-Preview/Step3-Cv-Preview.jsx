@@ -8,7 +8,7 @@ export default function CvPreview (props) {
         <div className='end-text-item'>
           <div>
             <p id='correctedTextLabel'></p>
-            <div className='corrected-text' style={{whiteSpace: "pre-line"}}>{parse(props.text)}</div>
+            <div className='corrected-text' style={{whiteSpace: "pre-line", lineHeight: 2}}>{parse(props.text)}</div>
           </div>
         </div>
       </div>
