@@ -9,3 +9,36 @@
 .styled-checkbox svg {
     color: white
 }
+
+/* FILTERS */
+.filters-checkbox-0 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: rgb(176, 71, 200) !important;
+  }
+
+  .filters-checkbox-1 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: rgb(219, 105, 167) !important;
+  }
+
+  .filters-checkbox-2 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: #fc9286 !important;
+  }
+
+  .filters-checkbox-3 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: rgb(199, 155, 164)!important;
+  }
+
+  .filters-checkbox-4 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: rgb(149, 129, 133)!important;
+  }
+
+  .filters-checkbox-5 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: rgb(78, 78, 78)!important;
+  }
+
+  .filters-checkbox-6 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: #A0B2A6 !important;
+  }
+
+  .filters-checkbox-7 .MuiCheckbox-colorPrimary.Mui-checked {
+    color: #61988E !important;
+  }
