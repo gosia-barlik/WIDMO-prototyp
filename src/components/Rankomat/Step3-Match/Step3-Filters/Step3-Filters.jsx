@@ -85,13 +85,13 @@ export default function Step3Filters(props) {
       <FormGroup row className='o-form checkbox-container'>
         {checkboxes.map((checkbox) => (
           <FormControlLabel
+          key={checkbox.value}
           className={`filters-checkbox-${checkbox.id}`}
             control={
               <Checkbox
                 name={checkbox.name}
                 value={checkbox.value}
-                id={checkbox.id}
-                key={checkbox.value}
+                id={checkbox.id.toString()}
                 color='primary'
                 onChange={handleToggle(checkbox)}
                 checked={checked.indexOf(checkbox.id) !== -1}
