@@ -69,11 +69,8 @@ export default function Step3Filters(props) {
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
     setChecked(newChecked);
-    console.log(newChecked);
     console.log(checkbox.value);
-
   };
 
   return (

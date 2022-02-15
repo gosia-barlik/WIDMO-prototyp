@@ -84,7 +84,7 @@ QontoStepIcon.propTypes = {
 };
 
 
-const steps = [{name:'Ogłoszenie', navlink:'/rankomat/jobOffer'}, {name:'Kandydaci',  navlink:'/rankomat'}, {name:'Dopasowanie',  navlink:'/rankomat'}, {name:'Raport',  navlink:'/rankomat'}];
+const steps = [{name:'Ogłoszenie'}, {name:'Kandydaci'}, {name:'Dopasowanie'}, {name:'Raport'}];
 
 export default function StepperHorizontal(props) {
   return (
@@ -92,11 +92,10 @@ export default function StepperHorizontal(props) {
       <Stepper alternativeLabel activeStep={props.activeStep} connector={<QontoConnector />}>
         {steps.map((label) => (
           <Step key={label.name}>
-            <NavLink to={label.navlink} className='horizontal-stepper-navlink'><StepLabel StepIconComponent={QontoStepIcon}>{label.name}</StepLabel></NavLink>
+            <StepLabel StepIconComponent={QontoStepIcon}>{label.name}</StepLabel>
           </Step>
         ))}
       </Stepper>
-
     </Stack>
   );
 }

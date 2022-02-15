@@ -1,130 +1,133 @@
 .rankomat {
-        left: 30%;
-        margin-left:19% !important;
-        }
+  left: 30%;
+  margin-left: 19% !important;
+}
 
 .MuiListItemText-root span {
-    color:white
+  color: white;
 }
 .styled-checkbox svg {
-    color: white
+  color: white;
 }
 
 /* FILTERS */
 .filters-checkbox-0 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: rgb(176, 71, 200) !important;
-  }
-
-  .filters-checkbox-1 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: rgb(219, 105, 167) !important;
-  }
-
-  .filters-checkbox-2 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: #fc9286 !important;
-  }
-
-  .filters-checkbox-3 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: rgb(199, 155, 164)!important;
-  }
-
-  .filters-checkbox-4 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: rgb(149, 129, 133)!important;
-  }
-
-  .filters-checkbox-5 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: rgb(78, 78, 78)!important;
-  }
-
-  .filters-checkbox-6 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: #A0B2A6 !important;
-  }
-
-  .filters-checkbox-7 .MuiCheckbox-colorPrimary.Mui-checked {
-    color: #61988E !important;
-  }
-
-  /* CHECKBOXES */
-
-/* Benefit */
-
-.corrected-text .benefit {
-background-color: rgba(252,198,150,0.95) !important;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
+  color: rgb(176, 71, 200) !important;
 }
 
-/* Company */
-
-.corrected-text .company {
-background-color: rgba(248, 157, 121, 0.95) !important;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
+.filters-checkbox-1 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: rgb(219, 105, 167) !important;
 }
 
-/* Education */
-
-.corrected-text .educatn {
-background-color: #fc9286 !important;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
+.filters-checkbox-2 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: #fc9286 !important;
 }
 
-/* Experience */
+.filters-checkbox-3 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: rgb(199, 155, 164) !important;
+}
 
-.corrected-text .experce {
-background-color: rgba(218,102,136,0.95) !important;
-color: white;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
+.filters-checkbox-4 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: rgb(149, 129, 133) !important;
+}
+
+.filters-checkbox-5 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: rgb(78, 78, 78) !important;
+}
+
+.filters-checkbox-6 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: #a0b2a6 !important;
+}
+
+.filters-checkbox-7 .MuiCheckbox-colorPrimary.Mui-checked {
+  color: #61988e !important;
+}
+
+/* HIGHLIGHTS */
+
+/* Professional Skill */
+.corrected-text .profskl {
+  background-color: rgb(176, 71, 200);
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Soft Skill */
+.corrected-text .softskl {
+  background-color: rgb(219, 105, 167) !important;
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Language Skill */
-
 .corrected-text .langskl {
-background-color: rgba(171,85,150,0.95)!important;
-color: white;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
+  background-color: #fc9286 !important;
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Education */
+.corrected-text .educatn {
+  background-color: rgb(199, 155, 164) !important;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Experience */
+.corrected-text .experce {
+  background-color: rgb(149, 129, 133) !important;
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Certificates */
+.corrected-text .certifi {
+  background-color: rgb(78, 78, 78) !important;
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Occupation name*/
+.corrected-text .occname {
+  background-color: #a0b2a6 !important;
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Company */
+.corrected-text .company {
+  background-color: #61988e !important;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Occupation */
 
 .corrected-text .ocupnam {
-background-color: rgba(125,68,149,0.95) !important;
-color:white;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
-}
-
-/* Proffesional Skill */
-
-.corrected-text .profskl {
-background-color: rgba(87, 69, 128, 0.95);
-color:white;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
-}
-
-/* Soft Skill */
-
-.corrected-text .softskl {
-background-color: rgba(52, 41, 81, 0.95) !important;
-color: white;
-padding: 4px 5px 4px 5px;
-border-radius: 5px;
-cursor:pointer;
+  background-color: rgba(125, 68, 149, 0.95) !important;
+  color: white;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .annotation-name {
-border-radius: 3px;
-background-color: rgba(255, 255, 255, 0.7) !important;
-font-size: 70%;
-color: rgb(0, 0, 0);
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 70%;
+  color: rgb(0, 0, 0);
 }
