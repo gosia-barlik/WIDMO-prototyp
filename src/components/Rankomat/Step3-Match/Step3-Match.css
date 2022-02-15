@@ -46,83 +46,114 @@
 /* HIGHLIGHTS */
 
 /* Professional Skill */
-.corrected-text .profskl {
-  background-color: rgb(176, 71, 200);
-  color: white;
+.corrected-text .profskl,
+.cv-details-item-Professional {
+  background-color: rgb(244, 197, 255);
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* Soft Skill */
-.corrected-text .softskl {
-  background-color: rgb(219, 105, 167) !important;
-  color: white;
+.corrected-text .softskl,
+.cv-details-item-Soft {
+  background-color: rgb(255, 206, 233) !important;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* Language Skill */
 .corrected-text .langskl {
   background-color: #fc9286 !important;
-  color: white;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* Education */
-.corrected-text .educatn {
-  background-color: rgb(199, 155, 164) !important;
+.corrected-text .educatn,
+.cv-details-item-Education {
+  background-color: rgb(250, 216, 223) !important;
+  color: rgb(91, 63, 168);
+  line-height: 1.5;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* Experience */
-.corrected-text .experce {
-  background-color: rgb(149, 129, 133) !important;
-  color: white;
+.corrected-text .experce,
+.cv-details-item-Experience {
+  background-color: rgb(204, 186, 190) !important;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
   cursor: pointer;
 }
 
 /* Certificates */
-.corrected-text .certifi {
-  background-color: rgb(78, 78, 78) !important;
-  color: white;
+.corrected-text .certifi,
+.cv-details-item-Certificate {
+  background-color: rgb(211, 188, 188) !important;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* Occupation name*/
 .corrected-text .occname {
-  background-color: #a0b2a6 !important;
-  color: white;
+  background-color: #b1c7b8 !important;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
 /* Company */
-.corrected-text .company {
-  background-color: #61988e !important;
+.corrected-text .company,
+.cv-details-item-Company {
+  background-color: #95ecdc !important;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-/* Occupation */
-
-.corrected-text .ocupnam {
-  background-color: rgba(125, 68, 149, 0.95) !important;
-  color: white;
+/* IT skill*/
+.corrected-text .itskill,
+.cv-details-item-IT {
+  background-color: #b9cac7 !important;
+  color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
+}
+
+.cv-details-label-IT,
+.cv-details-label-Company,
+.cv-details-label-Certificate,
+.cv-details-label-Experience,
+.cv-details-label-Education,
+.cv-details-label-Soft,
+.cv-details-label-Professional {
+  background-color: #ffffff !important;
+  padding: 4px 5px 4px 5px;
+  max-width:100px;
+  border-radius: 5px;
+  max-height: 36px;
 }
 
 .annotation-name {

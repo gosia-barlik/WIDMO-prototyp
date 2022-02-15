@@ -6,8 +6,6 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -67,7 +65,6 @@ export default function CvList(props) {
   };
 
   return (
-    <>
       <List dense className={classes.root}>
         {props.resumes.map((resume) => {
           const labelId = `checkbox-list-secondary-label-${resume.id}`;
@@ -100,7 +97,5 @@ export default function CvList(props) {
           );
         })}
       </List>
-     
-    </>
   );
 }

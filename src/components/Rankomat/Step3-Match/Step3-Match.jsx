@@ -8,6 +8,7 @@ import Step3Filters from "./Step3-Filters/Step3-Filters";
 import config from "../../../config";
 import { useEffect } from "react";
 import CvPreview from "./Step3-Cv-Preview/Step3-Cv-Preview";
+import CvDetails from "./Step3-Cv-Preview/Step3-Cv-Details";
 import "./Step3-Match.css";
 import { ContactSupportOutlined } from "@material-ui/icons";
 
@@ -16,10 +17,11 @@ export default function Step3Match(props) {
   const [annotatedText, setAnnotatedText] = useState("");
   const [response, setResponse] = useState([]);
   const [annotations, setAnnotations] = useState({
-    Benefit: true, //TODO: zamienić na zwracane z backendu code-namy
+    "IT skill": true, //TODO: zamienić na zwracane z backendu code-namy
     Company: true,
     Education: true,
     Experience: true,
+    Certificate: true,
     "Language skill": true,
     "Occupation name": true,
     "Professional skill": true,
@@ -33,10 +35,9 @@ export default function Step3Match(props) {
       return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
     };
   }, []);
-  
+
   useEffect(() => {
-    if(response.length > 0 && text.length > 0)
-      addHighlightedLabels();
+    if (response.length > 0 && text.length > 0) addHighlightedLabels();
   }, [response, text]);
 
   const handleOnClick = (e) => {
@@ -47,7 +48,7 @@ export default function Step3Match(props) {
       method: "POST",
       body: JSON.stringify({
         text: "Wykształcenie: - 1997 – 2002 - Politechnika Poznańska Wydział Architektury i Urbanistyki ukończone z tytułem magister inżynier architekt- 1993-1997 - Liceum Ogólnokształcące nr 12 w Poznaniu Kwalifikacje: - uprawnienia budowlane do projektowania bez ograniczeń w specjalności architektonicznej - znajomość przepisów z zakresu prawa budowlanego, warunków technicznych, kpa oraz procesów prawnych towarzyszących projektowaniu i realizacji inwestycji - znajomość obsługi komputera (pakiet Office) - znajomość komputerowych programów wspomagających projektowanie: Autocad, Nemtschek - znajomość komputerowych programów graficznych: Corel Draw, Photoshop - prawo jazdy kat. B Doświadczenie: - II.2012-obecnie – projektant API Sp. z o.o. Zakres obowiązków: prowadzenie i przygotowanie projektów we wszystkich stadiach dla inwestycji centra handlowe - III.2007-I.2012 – projektant Spółka Projektowania Architektonicznego Sadowski, Sadowska Zakres obowiązków: prowadzenie i przygotowanie projektów we wszystkich stadiach dla inwestycji użyteczności publicznej Predyspozycje zawodowe:- dokładność, samodyscyplina - łatwość w nawiązywaniu kontaktów-bezkonfliktowa praca w zespole",
-      }),//TODO::text from CV will be send here 
+      }), //TODO::text from CV will be send here
     })
       .then((response) => {
         return response.json();
@@ -56,8 +57,8 @@ export default function Step3Match(props) {
         setText(data.text);
         sortLabels(data.entities);
         setResponse(data.entities);
-      })
-   };
+      });
+  };
 
   const sortLabels = (data) => {
     data.sort((a, b) =>
@@ -68,8 +69,8 @@ export default function Step3Match(props) {
   const getClass = (annotation) => {
     //all classes names must be the same length
     switch (annotation.label) {
-      case "Benefit":
-        return "benefit";
+      case "IT skill":
+        return "itskill";
 
       case "Company":
         return "company";
@@ -91,14 +92,15 @@ export default function Step3Match(props) {
 
       case "Occupation name":
         return "ocupnam";
+
+      case "Certificate":
+        return "certifi";
     }
   };
 
   const highlightLabels = (annotation, i, baseText) => {
     const startSpan = `<span class="${getClass(annotation)}" id="${i + 1000}">`;
-    const endSpan = `<span class="annotation-name"> ${getClass(
-      annotation
-    )} </span></span>`;
+    const endSpan = `</span>`;
     const spansLength = (startSpan.length + endSpan.length) * i;
     const startPosition = annotation.start_char + spansLength;
     const endPosition =
@@ -125,7 +127,7 @@ export default function Step3Match(props) {
   return (
     <>
       <Grid container spacing={4} className='rankomat step-1-container'>
-        {/* {response.length == 0 && ( */}
+        {response.length == 0 && (
           <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
             <Typography variant='subtitle2' gutterBottom component='div'>
               Lista życiorysów
@@ -138,8 +140,8 @@ export default function Step3Match(props) {
               handleNext={props.handleStepperNext}
             />
           </Grid>
-        )
-        {/* } */}
+        )}
+
         {response.length !== 0 && (
           <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
             <Typography variant='subtitle2' gutterBottom component='div'>
@@ -168,6 +170,16 @@ export default function Step3Match(props) {
           </Grid>
         )}
 
+        {response.length !== 0 && (
+          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+            <Typography variant='subtitle2' gutterBottom component='div'>
+              Statystyki
+            </Typography>
+            <Paper className='job-offer-container'>
+              <CvDetails response={response} />
+            </Paper>
+          </Grid>
+        )}
       </Grid>
     </>
   );
