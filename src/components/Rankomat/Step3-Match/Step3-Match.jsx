@@ -16,6 +16,7 @@ export default function Step3Match(props) {
   const [text, setText] = useState("");
   const [annotatedText, setAnnotatedText] = useState("");
   const [response, setResponse] = useState([]);
+  const [sortedResponse, setSortedResponse] = useState([]);
   const [annotations, setAnnotations] = useState({
     "IT skill": true, //TODO: zamienić na zwracane z backendu code-namy
     Company: true,
@@ -57,7 +58,8 @@ export default function Step3Match(props) {
         setText(data.text);
         sortLabels(data.entities);
         setResponse(data.entities);
-      });
+        sortResponse(data.entities);
+      })
   };
 
   const sortLabels = (data) => {
@@ -121,8 +123,20 @@ export default function Step3Match(props) {
     });
 
     setAnnotatedText(baseText);
-    console.log(baseText);
+    // console.log(baseText);
   };
+
+  const sortResponse = (array) => {
+    const sorted=[...array]
+    sorted.sort(function(a, b) {
+      return (a.label < b.label) ? -1 : (a.label > b.label) ? 1 : 0;
+  });
+  setSortedResponse(sorted)
+  }
+
+  const clearPreview = () => {
+    setResponse([]);
+  }
 
   return (
     <>
@@ -150,6 +164,10 @@ export default function Step3Match(props) {
             <Paper className='form-container'>
               <CvPreview text={annotatedText}></CvPreview>
             </Paper>
+            <MainActionButtons
+              handleBack={clearPreview}
+              handleNext={props.handleStepperNext}
+            />
           </Grid>
         )}
 
@@ -176,7 +194,7 @@ export default function Step3Match(props) {
               Statystyki
             </Typography>
             <Paper className='job-offer-container'>
-              <CvDetails response={response} />
+              <CvDetails response={sortedResponse} />
             </Paper>
           </Grid>
         )}

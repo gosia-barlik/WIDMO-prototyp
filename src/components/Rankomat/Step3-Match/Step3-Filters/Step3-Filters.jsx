@@ -2,10 +2,49 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import CustomizedInput from "./Customized-Input";
 import { FormControlLabel, FormGroup, Checkbox } from "@material-ui/core";
+import { alpha, withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@mui/material/Button";
+import { styled } from '@mui/material/styles';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputBase from '@mui/material/InputBase';
+
+const BootstrapInput = withStyles((theme) => ({
+  root: {
+    "label + &": {
+      marginTop: theme.spacing(3),
+    },
+  },
+  input: {
+    borderRadius: 4,
+    position: "relative",
+    backgroundColor: theme.palette.common.white,
+    border: "1px solid #ced4da",
+    fontSize: 12,
+    maxWidth: 80,
+    padding: "10px 12px",
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '"Segoe UI"',
+      "Roboto",
+      "Arial",
+      "sans-serif",
+    ].join(","),
+    "&:focus": {
+      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+      borderColor: theme.palette.primary.main,
+    },
+  },
+}))(InputBase);
 
 export default function Step3Filters(props) {
   const [checked, setChecked] = React.useState([]);
+  const [weight, setWeight] = React.useState('');
+
+ 
   let checkboxes = [
     {
       name: "Professional skill",
@@ -59,6 +98,10 @@ export default function Step3Filters(props) {
 
   const keyWordLabel = "Słowo kluczowe";
   const keyWord = ["IPS", "technologie DLP", "PKI", "AZURE/MS365"];
+  
+  const handleChange = (event) => {
+    setWeight(event.target.value);
+  };
 
   const handleToggle = (checkbox) => () => {
     const currentIndex = checked.indexOf(checkbox.id);
@@ -79,11 +122,11 @@ export default function Step3Filters(props) {
         Filtry zaawansowane
       </Typography>
 
-      <FormGroup row className='o-form checkbox-container'>
-        {checkboxes.map((checkbox) => (
+      {checkboxes.map((checkbox) => (
+        <FormGroup row className='o-form checkbox-container'>
           <FormControlLabel
-          key={checkbox.value}
-          className={`filters-checkbox-${checkbox.id}`}
+            key={checkbox.value}
+            className={`filters-checkbox-${checkbox.id}`}
             control={
               <Checkbox
                 name={checkbox.name}
@@ -96,8 +139,20 @@ export default function Step3Filters(props) {
             }
             label={checkbox.label}
           />
-        ))}
-      </FormGroup>
+          <FormControl sx={{ m: 1 }} variant='standard'>
+            <InputLabel>Waga</InputLabel>
+            <Select
+              id={`filters-weight-${checkbox.id}`}
+              value={weight}
+              onChange={handleChange}
+              input={<BootstrapInput />}>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+            </Select>
+          </FormControl>
+        </FormGroup>
+      ))}
 
       {/*<CustomizedInput
         label={qualificationLabel}
@@ -124,7 +179,10 @@ export default function Step3Filters(props) {
         options={keyWord}
         onSetKeyWord={props.onSetKeyWord}
       />
-      <Button variant='contained' className='button-contained' style={{marginLeft:"40%", marginTop:"20px"}}>
+      <Button
+        variant='contained'
+        className='button-contained'
+        style={{ marginLeft: "40%", marginTop: "20px" }}>
         Filtruj
       </Button>
     </>

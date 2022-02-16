@@ -11,6 +11,32 @@
 }
 
 /* FILTERS */
+
+.checkbox-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.checkbox-container .MuiFormControl-root.css-e363es-MuiFormControl-root{
+  width: 100px;
+  top:-10px
+}
+
+.checkbox-container .MuiFormControlLabel-root{
+  width: 220px;
+}
+
+#menu- ul {
+  width: 100px !important;
+  display: flex;
+  flex-direction: column !important;
+}
+
+#menu- li {
+  display: block !important;
+  padding-left: 12px
+}
+
 .filters-checkbox-0 .MuiCheckbox-colorPrimary.Mui-checked {
   color: rgb(176, 71, 200) !important;
 }
@@ -43,10 +69,17 @@
   color: #61988e !important;
 }
 
+.checkbox-container .MuiIconButton-root {
+  width:10px !important
+}
+.checkbox-container .MuiOutlinedInput-input {
+  font-size: 0.875rem !important;
+}
+
 /* HIGHLIGHTS */
 
 /* Professional Skill */
-.corrected-text .profskl,
+.cv-text .profskl,
 .cv-details-item-Professional {
   background-color: rgb(244, 197, 255);
   color: rgb(91, 63, 168);
@@ -57,7 +90,7 @@
 }
 
 /* Soft Skill */
-.corrected-text .softskl,
+.cv-text .softskl,
 .cv-details-item-Soft {
   background-color: rgb(255, 206, 233) !important;
   color: rgb(91, 63, 168);
@@ -68,7 +101,7 @@
 }
 
 /* Language Skill */
-.corrected-text .langskl {
+.cv-text .langskl {
   background-color: #fc9286 !important;
   color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
@@ -78,7 +111,7 @@
 }
 
 /* Education */
-.corrected-text .educatn,
+.cv-text .educatn,
 .cv-details-item-Education {
   background-color: rgb(250, 216, 223) !important;
   color: rgb(91, 63, 168);
@@ -90,7 +123,7 @@
 }
 
 /* Experience */
-.corrected-text .experce,
+.cv-text .experce,
 .cv-details-item-Experience {
   background-color: rgb(204, 186, 190) !important;
   color: rgb(91, 63, 168);
@@ -100,7 +133,7 @@
 }
 
 /* Certificates */
-.corrected-text .certifi,
+.cv-text .certifi,
 .cv-details-item-Certificate {
   background-color: rgb(211, 188, 188) !important;
   color: rgb(91, 63, 168);
@@ -111,7 +144,7 @@
 }
 
 /* Occupation name*/
-.corrected-text .occname {
+.cv-text .occname {
   background-color: #b1c7b8 !important;
   color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
@@ -121,7 +154,7 @@
 }
 
 /* Company */
-.corrected-text .company,
+.cv-text .company,
 .cv-details-item-Company {
   background-color: #95ecdc !important;
   color: rgb(91, 63, 168);
@@ -132,7 +165,7 @@
 }
 
 /* IT skill*/
-.corrected-text .itskill,
+.cv-text .itskill,
 .cv-details-item-IT {
   background-color: #b9cac7 !important;
   color: rgb(91, 63, 168);
@@ -156,9 +189,11 @@
   max-height: 36px;
 }
 
-.annotation-name {
+/* .annotation-name {
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.7) !important;
   font-size: 70%;
   color: rgb(0, 0, 0);
-}
+} */
+
+
