@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
@@ -9,7 +9,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 500,
+    maxWidth: 800,
   },
 }));
 
@@ -77,6 +77,7 @@ export default function CvList(props) {
                 backgroundColor: color,
                 marginBottom: "2px",
                 borderRadius: "4px",
+                width: "100%"
               }}
               onClick={props.handleOnClick}>
               <ListItemText

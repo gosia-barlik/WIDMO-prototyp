@@ -10,7 +10,6 @@ import { useEffect } from "react";
 import CvPreview from "./Step3-Cv-Preview/Step3-Cv-Preview";
 import CvDetails from "./Step3-Cv-Preview/Step3-Cv-Details";
 import "./Step3-Match.css";
-import { ContactSupportOutlined } from "@material-ui/icons";
 
 export default function Step3Match(props) {
   const [text, setText] = useState("");
@@ -140,9 +139,9 @@ export default function Step3Match(props) {
 
   return (
     <>
-      <Grid container spacing={4} className='rankomat step-1-container'>
-        {response.length == 0 && (
-          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+      <Grid container spacing={4} className='rankomat' style={{width: "auto"}}>
+        {response.length === 0 && (
+          <Grid item xs={5} style={{ marginTop: "50px", textAlign: "left" }}>
             <Typography variant='subtitle2' gutterBottom component='div'>
               Lista życiorysów
             </Typography>
@@ -171,17 +170,17 @@ export default function Step3Match(props) {
           </Grid>
         )}
 
-        {response.length == 0 && (
-          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+        {response.length === 0 && (
+          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }} className='filters-container'>
             <Typography variant='subtitle2' gutterBottom component='div'>
               Filtry
             </Typography>
-            <Paper className='job-offer-container'>
+            <Paper >
               <Step3Filters
-                onSetQualificationName={props.onSetQualificationName}
-                onSetExperienceLevel={props.onSetExperienceLevel}
-                onSetPosition={props.onSetPosition}
-                onSetCompanyName={props.onSetCompanyName}
+                // onSetQualificationName={props.onSetQualificationName}
+                // onSetExperienceLevel={props.onSetExperienceLevel}
+                // onSetPosition={props.onSetPosition}
+                // onSetCompanyName={props.onSetCompanyName}
                 onSetKeyWord={props.onSetKeyWord}
               />
             </Paper>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState  } from "react";
 import StepperHorizontal from "./common/Stepper-horizontal.jsx";
 import Step1JobOffer from "./Step1-Job-Offer/Step1-Job-Offer.jsx";
 import Step2Candidates from "./Step2-Candidates/Step2-Candidates.jsx";
@@ -9,11 +9,6 @@ export default function Rankomat() {
   const [activeStep, setActiveStep] = useState(0);
   const [jobOffer, setJobOffer] = useState("");
   const [resumes, setResumes] = useState([]);
-  const [qualificationName, setQualificationName] = useState([]);
-  const [experienceLevel, setExperienceLevel] = useState([]);
-  const [jobPosition, setJobPosition] = useState([]);
-  const [companyName, setCompanyName] = useState([]);
-  const [certificateStage, setCertificateStage] = useState([]);
   const [keyWord, setKeyWord] = useState([]);
 
   //JOB OFFER
@@ -26,21 +21,6 @@ export default function Rankomat() {
   };
 
   //FILTERS
-  const onSetQualificationName = (qualificationName) => {
-    setQualificationName(qualificationName);
-  };
-  const onSetExperienceLevel = (experienceLevel) => {
-    setExperienceLevel(experienceLevel);
-  };
-  const onSetPosition = (jobPosition) => {
-    setJobPosition(jobPosition);
-  };
-  const onSetCompanyName = (companyName) => {
-    setCompanyName(companyName);
-  };
-  const onSetCertificateStage = (certificateStage) => {
-    setCertificateStage(certificateStage);
-  };
   const onSetKeyWord = (keyWord) => {
     setKeyWord(keyWord);
   };
@@ -78,16 +58,6 @@ export default function Rankomat() {
           handleStepperBack={handleStepperBack}
           handleStepperNext={handleStepperNext}
           resumes={resumes}
-          onSetQualificationName={onSetQualificationName}
-        
-          onSetExperienceLevel={onSetExperienceLevel}
-        
-          onSetPosition={onSetPosition}
-          
-          onSetCompanyName={onSetCompanyName}
-        
-          onSetCertificateStage={onSetCertificateStage}
-          
           onSetKeyWord={onSetKeyWord}
          
         />

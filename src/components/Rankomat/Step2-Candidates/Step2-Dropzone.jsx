@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import Carousel from "react-multi-carousel";
-import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import Button from "@mui/material/Button";
 import "react-multi-carousel/lib/styles.css";
 

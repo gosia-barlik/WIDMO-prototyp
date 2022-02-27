@@ -178,26 +178,25 @@ export default function CustomizedInput(props) {
     getOptionLabel: (option) => option,
   });
 
-  // Podobnie do metod componentDidMount i componentDidUpdate:
-  useEffect(() => {
-    if(props.onSetQualificationName)
-      props.onSetQualificationName(value);
-  }, [value]); 
+  // useEffect(() => {
+  //   if(props.onSetQualificationName)
+  //     props.onSetQualificationName(value);
+  // }, [value]); 
 
-  useEffect(() => {
-    if(props.onSetExperienceLevel)
-      props.onSetExperienceLevel(value);
-  }, [value]); 
+  // useEffect(() => {
+  //   if(props.onSetExperienceLevel)
+  //     props.onSetExperienceLevel(value);
+  // }, [value]); 
 
-  useEffect(() => {
-    if(props.onSetPosition)
-      props.onSetPosition(value);
-  }, [value]); 
+  // useEffect(() => {
+  //   if(props.onSetPosition)
+  //     props.onSetPosition(value);
+  // }, [value]); 
 
-  useEffect(() => {
-    if(props.onSetCompanyName)
-      props.onSetCompanyName(value);
-  }, [value]);
+  // useEffect(() => {
+  //   if(props.onSetCompanyName)
+  //     props.onSetCompanyName(value);
+  // }, [value]);
 
   useEffect(() => {
     if(props.onSetKeyWord)

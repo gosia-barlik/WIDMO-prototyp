@@ -7,7 +7,6 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Check from '@material-ui/icons/Check';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import { NavLink } from "react-router-dom";
 import './Stepper-horizontal.css'
 
 
