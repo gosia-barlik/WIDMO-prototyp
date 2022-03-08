@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import RichTextEditor from "./RichTextEditor"
 import "./Step4-Summary.css";
 
 export default function Step4Summary(props) {
@@ -11,7 +12,9 @@ export default function Step4Summary(props) {
     <Grid container spacing={4} className='step-4-container'>
       <Typography variant='subtitle2' gutterBottom component='div'></Typography>
       <Paper className='form-container'>
+       
         <>
+        <RichTextEditor searchedPosition={props.searchedPosition}/>
           <div
             className='job-offer-summary'
             contentEditable='true'
