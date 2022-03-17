@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import RichTextEditor from "./RichTextEditor"
+import RichTextEditor from "./RichTextEditor";
 import "./Step4-Summary.css";
 
 export default function Step4Summary(props) {
@@ -12,10 +12,25 @@ export default function Step4Summary(props) {
     <Grid container spacing={4} className='step-4-container'>
       <Typography variant='subtitle2' gutterBottom component='div'></Typography>
       <Paper className='form-container'>
-       
         <>
-        <RichTextEditor searchedPosition={props.searchedPosition}/>
-          <div
+          <RichTextEditor
+            searchedPosition={props.searchedPosition}
+            salaryTo={props.salaryTo}
+            salaryFrom={props.salaryFrom}
+            salaryTime={props.salaryTime}
+            salaryType={props.salaryType}
+            salaryContract={props.salaryContract}
+            aboutCompany={props.aboutCompany}
+            responsibilities={props.responsibilities}
+            copiedQualificationEffects={props.copiedQualificationEffects}
+            copiedSelectedText={props.copiedSelectedText}
+            requirements={props.requirements}
+            educationLevel={props.educationLevel}
+            studiesName={props.studiesName}
+            studiesStage={props.studiesStage}
+            RODO={props.RODO}
+          />
+          {/* <div
             className='job-offer-summary'
             contentEditable='true'
             style={{ fontSize: "18px" }}>
@@ -44,13 +59,13 @@ export default function Step4Summary(props) {
                       {responsibility} &nbsp;
                     </li>
                   ))}
-                  {props.coppiedQualificationEffects.map((effect) => (
+                  {props.copiedQualificationEffects.map((effect) => (
                     <li key={effect}>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       {effect} &nbsp;
                     </li>
                   ))}
-                  {props.coppiedSelectedText.map((text) => (
+                  {props.copiedSelectedText.map((text) => (
                     <li key={text}>
                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       {text} &nbsp;
@@ -87,12 +102,18 @@ export default function Step4Summary(props) {
             <h6>
               Przetwarzanie <br></br>danych:
               <p>
-              <p style={{ fontSize: "11px", width:"80%", paddingLeft:'10%', fontWeight:'400' }}>
-                {props.RODO}
-              </p>
+                <p
+                  style={{
+                    fontSize: "11px",
+                    width: "80%",
+                    paddingLeft: "10%",
+                    fontWeight: "400",
+                  }}>
+                  {props.RODO}
+                </p>
               </p>
             </h6>
-          </div>
+          </div> */}
           <Stack
             spacing={2}
             direction='row'

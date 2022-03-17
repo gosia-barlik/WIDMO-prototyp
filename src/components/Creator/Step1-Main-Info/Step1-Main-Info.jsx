@@ -79,7 +79,7 @@ export default function Step1MainInfo(props) {
             aboutCompany={props.aboutCompany}
             responsibilities={props.responsibilities}
             updateState={props.updateState}
-            coppiedQualificationEffects={props.coppiedQualificationEffects}
+            copiedQualificationEffects={props.copiedQualificationEffects}
             requirements={props.requirements}
           />
         </Paper>

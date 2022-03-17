@@ -88,9 +88,9 @@ export default function JobOffer(props) {
                     </>
                   ) : null}
 
-                  {props.coppiedQualificationEffects ? (
+                  {props.copiedQualificationEffects ? (
                     <>
-                      {props.coppiedQualificationEffects.map((effect) => (
+                      {props.copiedQualificationEffects.map((effect) => (
                         <Typography
                           key={effect}
                           variant='body2'
@@ -199,18 +199,18 @@ export default function JobOffer(props) {
               ))}
             </>
           ) : null}
-          {props.coppiedQualificationEffects ? (
+          {props.copiedQualificationEffects ? (
             <>
-              {props.coppiedQualificationEffects.map((effect) => (
+              {props.copiedQualificationEffects.map((effect) => (
                 <Typography key={effect} variant='body2' component='div'>
                   {effect}
                 </Typography>
               ))}
             </>
           ) : null}
-          {props.coppiedSelectedText ? (
+          {props.copiedSelectedText ? (
             <>
-              {props.coppiedSelectedText.map((text) => (
+              {props.copiedSelectedText.map((text) => (
                 <Typography key={text} variant='body2' component='div'>
                   {text}
                 </Typography>
@@ -368,9 +368,9 @@ export default function JobOffer(props) {
                 </>
               ) : null}
 
-              {props.coppiedQualificationEffects ? (
+              {props.copiedQualificationEffects ? (
                 <>
-                  {props.coppiedQualificationEffects.map((effect) => (
+                  {props.copiedQualificationEffects.map((effect) => (
                     <Typography key={effect} variant='body2' component='div'>
                       {effect}
                     </Typography>
@@ -378,9 +378,9 @@ export default function JobOffer(props) {
                 </>
               ) : null}
 
-              {props.coppiedSelectedText ? (
+              {props.copiedSelectedText ? (
                 <>
-                  {props.coppiedSelectedText.map((text) => (
+                  {props.copiedSelectedText.map((text) => (
                     <Typography key={text} variant='body2' component='div'>
                       {text}
                     </Typography>

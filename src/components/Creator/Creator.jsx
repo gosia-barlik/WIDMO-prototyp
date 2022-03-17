@@ -25,9 +25,9 @@ export default function Creator() {
   const [qualificationCharacteristic, setQualificationCharacteristic] =
     useState("");
   const [qualificationEffects, setQualificationEffects] = useState([]);
-  const [coppiedQualificationEffects, setCoppiedQualificationEffects] =
+  const [copiedQualificationEffects, setcopiedQualificationEffects] =
     useState([]);
-  const [coppiedSelectedText, setCoppiedSelectedText] = useState([]);
+  const [copiedSelectedText, setcopiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showRequirementsButton, setShowRequirementsButton] = useState(true);
   const [showEducationForm, setShowEducationForm] = useState(false);
@@ -113,12 +113,12 @@ export default function Creator() {
   };
 
   const copyQualificationEffect = (e) => {
-    setCoppiedQualificationEffects((oldArray) => [...oldArray, e]);
+    setcopiedQualificationEffects((oldArray) => [...oldArray, e]);
   };
 
   const getSelectedText = () => {
     if (window.getSelection) {
-      setCoppiedSelectedText((oldArray) => [
+      setcopiedSelectedText((oldArray) => [
         ...oldArray,
         window.getSelection().toString(),
       ]);
@@ -223,7 +223,7 @@ export default function Creator() {
           aboutCompany={aboutCompany}
           updateState={updateState}
           responsibilities={responsibilities}
-          coppiedQualificationEffects={coppiedQualificationEffects}
+          copiedQualificationEffects={copiedQualificationEffects}
           requirements={requirements}
 
           handleVerticalStepperNext={handleVerticalStepperNext}
@@ -255,9 +255,9 @@ export default function Creator() {
           qualificationCharacteristic={qualificationCharacteristic}
           qualificationEffects={qualificationEffects}
           copyQualificationEffect={copyQualificationEffect}
-          coppiedQualificationEffects={coppiedQualificationEffects}
+          copiedQualificationEffects={copiedQualificationEffects}
           getSelectedText={getSelectedText}
-          coppiedSelectedText={coppiedSelectedText}
+          copiedSelectedText={copiedSelectedText}
           onSetEducationInfo={onSetEducationInfo}
           showEducationForm={showEducationForm}
           setShowEducationForm={setShowEducationForm}
@@ -298,8 +298,8 @@ export default function Creator() {
           salaryContract={salaryContract}
           aboutCompany={aboutCompany}
           responsibilities={responsibilities}
-          coppiedQualificationEffects={coppiedQualificationEffects}
-          coppiedSelectedText={coppiedSelectedText}
+          copiedQualificationEffects={copiedQualificationEffects}
+          copiedSelectedText={copiedSelectedText}
           requirements={requirements}
           updateState={updateState}
           educationLevel={educationLevel}
@@ -326,8 +326,8 @@ export default function Creator() {
           salaryContract={salaryContract}
           aboutCompany={aboutCompany}
           responsibilities={responsibilities}
-          coppiedQualificationEffects={coppiedQualificationEffects}
-          coppiedSelectedText={coppiedSelectedText}
+          copiedQualificationEffects={copiedQualificationEffects}
+          copiedSelectedText={copiedSelectedText}
           requirements={requirements}
           updateState={updateState}
           educationLevel={educationLevel}

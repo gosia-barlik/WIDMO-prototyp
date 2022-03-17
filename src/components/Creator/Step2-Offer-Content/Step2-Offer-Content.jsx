@@ -135,8 +135,8 @@ export default function Step2OfferContent(props) {
             salaryContract={props.salaryContract}
             aboutCompany={props.aboutCompany}
             responsibilities={props.responsibilities}
-            coppiedQualificationEffects={props.coppiedQualificationEffects}
-            coppiedSelectedText={props.coppiedSelectedText}
+            copiedQualificationEffects={props.copiedQualificationEffects}
+            copiedSelectedText={props.copiedSelectedText}
             requirements={props.requirements}
             updateState={props.updateState}
             educationLevel={props.educationLevel}

@@ -20,12 +20,14 @@
 
 }
 
-.step-4-container .job-offer-summary span{
+.job-offer-summary span{
   font-weight: 500;
 }
-.step-4-container .job-offer-summary li {
+.job-offer-summary .rdw-editor span {
   list-style-type: none;
 }
+
+
 
 /* RICH TEXT EDITOR */
 
@@ -56,7 +58,6 @@
   opacity: 0.3;
   cursor: default;
 }
-
 .rdw-dropdown-wrapper {
   height: 30px;
   background: white;
@@ -872,6 +873,9 @@
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
+  padding: 12px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
 }
 .rdw-editor-toolbar {
   padding: 6px 5px 0;
@@ -885,6 +889,10 @@
   margin-bottom: 5px;
   user-select: none;
 }
+
+/* .DraftEditor-editorContainer {
+  font-size: 12px;
+} */
 .public-DraftStyleDefault-block {
   margin: 1em 0;
 }
@@ -902,4 +910,15 @@
   background: #f1f1f1;
   border-radius: 3px;
   padding: 1px 10px;
+}
+
+.public-DraftEditor-content h6 span {
+  font-size: 16px
+}
+
+.public-DraftEditor-content .summary-p {
+  font-size: 11px;
+  width: "80%";
+  padding-left: "10%";
+  font-weight: "400";
 }
