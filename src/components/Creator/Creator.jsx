@@ -16,6 +16,14 @@ export default function Creator() {
   const [salaryTo, setSalaryTo] = useState("");
   const [salaryTime, setSalaryTime] = useState("");
   const [salaryContract, setSalaryContract] = useState("");
+  const [addressCountry, setAddressCountry] = useState("");
+  const [addressCity, setAddressCity] = useState("");
+  const [addressStreet, setAddressStreet] = useState("");
+  const [recruitmentMode, setRecruitmentMode] = useState("");
+  const [workMode, setWorkMode] = useState("");
+  const [contractType, setContractType] = useState("");
+  const [workModel, setWorkModel] = useState("");
+
   const [aboutCompany, setAboutCompany] = useState("");
   const [responsibilities, setResponsibilities] = useState([]);
   const [showResponsibilitiesButton, setShowResponsibilitiesButton] =
@@ -25,8 +33,9 @@ export default function Creator() {
   const [qualificationCharacteristic, setQualificationCharacteristic] =
     useState("");
   const [qualificationEffects, setQualificationEffects] = useState([]);
-  const [copiedQualificationEffects, setcopiedQualificationEffects] =
-    useState([]);
+  const [copiedQualificationEffects, setcopiedQualificationEffects] = useState(
+    []
+  );
   const [copiedSelectedText, setcopiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showRequirementsButton, setShowRequirementsButton] = useState(true);
@@ -66,7 +75,29 @@ export default function Creator() {
   const onSetSalaryContract = (salaryContract) => {
     setSalaryContract(salaryContract);
   };
-
+  const onSetAddressCountry = (addressCountry) => {
+    setAddressCountry(addressCountry);
+  };
+  const onSetAddressCity = (addressCity) => {
+    setAddressCity(addressCity);
+  };
+  const onSetAddressStreet = (addressStreet) => {
+    setAddressStreet(addressStreet);
+  };
+  const onSetRecruitmentMode = (recruitmentMode) => {
+    setRecruitmentMode(recruitmentMode);
+  };
+  const onSetWorkMode = (workMode) => {
+    setWorkMode(workMode);
+  };
+  const onSetContractType = (contractType) => {
+    setContractType(contractType);
+  };
+  const onSetWorkModel = (workModel) => {
+    setWorkModel(workModel);
+  };
+ 
+ 
   //ABOUT COMPANY
   const onSetAboutCompany = (aboutCompany) => {
     setAboutCompany(aboutCompany);
@@ -201,7 +232,6 @@ export default function Creator() {
       <StepperHorizontal activeStep={activeStep} />
       {activeStep === 0 ? (
         <Step1MainInfo
-        
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
@@ -219,17 +249,30 @@ export default function Creator() {
           salaryTime={salaryTime}
           onSetSalaryContract={onSetSalaryContract}
           salaryContract={salaryContract}
+          onSetAddressCountry={onSetAddressCountry}
+          addressCountry={addressCountry}
+          onSetAddressCity={onSetAddressCity}
+          addressCity={addressCity}
+          onSetAddressStreet={onSetAddressStreet}
+          addressStreet={addressStreet}
+          onSetRecruitmentMode={onSetRecruitmentMode}
+          recruitmentMode={recruitmentMode}
+          onSetWorkMode={onSetWorkMode}
+          workMode={workMode}
+          onSetContractType={onSetContractType}
+          contractType ={contractType}
+          onSetWorkModel={onSetWorkModel}
+          workModel={workModel}
+
           onSetAboutCompany={onSetAboutCompany}
           aboutCompany={aboutCompany}
           updateState={updateState}
           responsibilities={responsibilities}
           copiedQualificationEffects={copiedQualificationEffects}
           requirements={requirements}
-
           handleVerticalStepperNext={handleVerticalStepperNext}
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
-
         />
       ) : null}
       {activeStep === 1 ? (
@@ -245,6 +288,13 @@ export default function Creator() {
           salaryTime={salaryTime}
           salaryContract={salaryContract}
           aboutCompany={aboutCompany}
+          workModel={workModel}
+          contractType ={contractType}
+          workMode={workMode}
+          recruitmentMode={recruitmentMode}
+          addressStreet={addressStreet}
+          addressCity={addressCity}
+          addressCountry={addressCountry}
           onSetResponsibilities={onSetResponsibilities}
           responsibilities={responsibilities}
           showResponsibilitiesButton={showResponsibilitiesButton}
@@ -279,7 +329,6 @@ export default function Creator() {
           onSetBenefits={onSetBenefits}
           benefits={benefits}
           showBenefitsButton={showBenefitsButton}
-
           handleVerticalStepperNext={handleVerticalStepperNext}
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
@@ -304,7 +353,7 @@ export default function Creator() {
           updateState={updateState}
           educationLevel={educationLevel}
           studiesName={studiesName}
-          certificateName ={certificateName}
+          certificateName={certificateName}
           studiesStage={studiesStage}
           certificateStage={certificateStage}
           benefits={benefits}

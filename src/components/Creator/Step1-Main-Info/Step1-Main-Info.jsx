@@ -7,7 +7,7 @@ import SearchBar from "./form/Job-Position-Search-Bar";
 import SearchResults from "./form/Job-Position-Search-Results";
 import JobOffer from "../common/Job-offer.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
-import Salary from "./form/Salary";
+import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
 
@@ -36,17 +36,26 @@ export default function Step1MainInfo(props) {
               onShowResults={props.onShowResults}
             />
           ) : null}
-          {props.activeVerticalStep === 0 && props.showResults ? <SearchResults searchedPosition={props.searchedPosition}/> : null}
-          {props.activeVerticalStep === 1 ? (
-            <Salary
+          {props.activeVerticalStep === 0 && props.showResults ? (
+            <SearchResults searchedPosition={props.searchedPosition} />
+          ) : null}
+          {props.activeVerticalStep === 2 ? (
+            <AdditionalInformation
               onSetSalaryType={props.onSetSalaryType}
               onSetSalaryTo={props.onSetSalaryTo}
               onSetSalaryFrom={props.onSetSalaryFrom}
               onSetSalaryTime={props.onSetSalaryTime}
               onSetSalaryContract={props.onSetSalaryContract}
+              onSetAddressCountry={props.onSetAddressCountry}
+              onSetAddressCity={props.onSetAddressCity}
+              onSetAddressStreet={props.onSetAddressStreet}
+              onSetRecruitmentMode={props.onSetRecruitmentMode}
+              onSetWorkMode={props.onSetWorkMode}
+              onSetContractType={props.onSetContractType}
+              onSetWorkModel={props.onSetWorkModel}
             />
           ) : null}
-          {props.activeVerticalStep === 2 ? (
+          {props.activeVerticalStep === 1 ? (
             <AboutCompany onSetAboutCompany={props.onSetAboutCompany} />
           ) : null}
           {props.showResults && props.activeVerticalStep !== 2 ? (
@@ -76,6 +85,13 @@ export default function Step1MainInfo(props) {
             salaryTime={props.salaryTime}
             salaryType={props.salaryType}
             salaryContract={props.salaryContract}
+            addressCountry={props.addressCountry}
+            addressCity={props.addressCity}
+            addressStreet={props.addressStreet}
+            workMode={props.workMode}
+            contractType ={props.contractType}
+            recruitmentMode={props.recruitmentMode}
+            workModel={props.workModel}
             aboutCompany={props.aboutCompany}
             responsibilities={props.responsibilities}
             updateState={props.updateState}

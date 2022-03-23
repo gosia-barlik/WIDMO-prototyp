@@ -84,7 +84,7 @@ QontoStepIcon.propTypes = {
 };
 
 
-const steps = [{name:'Główne informacje', navlink:'/creator/maininfo'}, {name:'Treść ogłoszenia',  navlink:'/creator'}, {name:'Przetwarzanie danych',  navlink:'/creator'}, {name:'Podsumowanie',  navlink:'/creator'}];
+const steps = [{name:'Główne informacje', navlink:'/creator/maininfo'}, {name:'Treść ogłoszenia',  navlink:'/creator'}, {name:'Informacje uzupełniające',  navlink:'/creator'}, {name:'Podsumowanie',  navlink:'/creator'}];
 
 export default function StepperHorizontal(props) {
   return (

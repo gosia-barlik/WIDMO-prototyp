@@ -23,18 +23,15 @@ export default function RichTextEditor(props) {
   <ul>
     ${props.responsibilities.map(
       (responsibility) =>
-        `<li key=${responsibility}> ${responsibility} 
-        </li>`
+        `<li key=${responsibility}>${responsibility}</li>`
     )}
  ${props.copiedQualificationEffects.map(
    (effect) =>
-     `<li key=${effect}> ${effect} 
-      </li>`
+     `<li key=${effect}>${effect}</li>`
  )}
  ${props.copiedSelectedText.map(
    (text) =>
-     `<li key=${text}> ${text}
-      </li>`
+     `<li key=${text}>${text}</li>`
  )}
  </ul> </span>
 </h6>
@@ -43,8 +40,7 @@ export default function RichTextEditor(props) {
      <li>wykształcenie ${props.educationLevel} ${props.studiesName} ${props.studiesStage}
     </li>
     ${props.requirements.map((requirement) =>
-    `<li key=${requirement}> ${requirement} 
-    </li>`)}</ul></span>
+    `<li key=${requirement}>${requirement}</li>`)}</ul></span>
 </h6>
 <h6> O firmie: <span> ${props.aboutCompany} </span>
 </h6>
@@ -66,6 +62,7 @@ export default function RichTextEditor(props) {
     setEditorState(editorState);
     const editorCurrentValue = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     console.log(editorCurrentValue);
+    console.log(props.responsibilities)
   };
 
   return (
@@ -75,6 +72,7 @@ export default function RichTextEditor(props) {
         wrapperClassName='text-editor-wrapper'
         editorClassName='text-editor'
         onEditorStateChange={onEditorStateChange}
+        editorStyle={{lineHeight: '90%'}}
       />
       {/* <textarea
           disabled

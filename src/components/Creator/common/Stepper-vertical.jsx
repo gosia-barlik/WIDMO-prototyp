@@ -13,13 +13,13 @@ const steps = [
     description: `Aby przejść dalej musisz wpisać nazwę stanowiska, na które rekrutujesz.`,
   },
   {
-    label: 'Wynagrodzenie',
-    description:
-      'Pole opcjonalne.',
-  },
-  {
     label: 'O firmie',
     description: `Pole opcjonalne.`,
+  },
+  {
+    label: 'Dodatkowe informacje',
+    description:
+      'Pole opcjonalne.',
   },
 ];
 

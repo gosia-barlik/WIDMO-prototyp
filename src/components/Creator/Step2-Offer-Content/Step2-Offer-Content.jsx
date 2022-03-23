@@ -134,6 +134,14 @@ export default function Step2OfferContent(props) {
             salaryType={props.salaryType}
             salaryContract={props.salaryContract}
             aboutCompany={props.aboutCompany}
+            workModel={props.workModel}
+            contractType ={props.contractType}
+            workMode={props.workMode}
+            recruitmentMode={props.recruitmentMode}
+            addressStreet={props.addressStreet}
+            addressCity={props.addressCity}
+            addressCountry={props.addressCountry}
+
             responsibilities={props.responsibilities}
             copiedQualificationEffects={props.copiedQualificationEffects}
             copiedSelectedText={props.copiedSelectedText}

@@ -31,6 +31,18 @@ export default function JobOffer(props) {
           <Typography variant='body2' gutterBottom component='div'>
             {props.searchedPosition}
           </Typography>
+
+          {props.aboutCompany ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                O firmie
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.aboutCompany}
+              </Typography>
+            </>
+          ) : null}
+
           {props.salaryType ||
           props.salaryFrom ||
           props.salaryTo ||
@@ -46,13 +58,47 @@ export default function JobOffer(props) {
               </Typography>
             </>
           ) : null}
-          {props.aboutCompany ? (
+
+          {props.workModel ? (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
-                O firmie
+                Tryb pracy
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.aboutCompany}
+                {props.workModel}
+              </Typography>
+            </>
+          ) : null}
+
+          {props.contractType ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Rodzaj umowy
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.contractType}
+              </Typography>
+            </>
+          ) : null}
+
+          {props.workMode ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Wymiar zatrudnienia
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.workMode}
+              </Typography>
+            </>
+          ) : null}
+
+          {props.recruitmentMode ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Tryb rekrutacji
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.recruitmentMode}
               </Typography>
             </>
           ) : null}
@@ -145,6 +191,16 @@ export default function JobOffer(props) {
               <Typography variant='body2' gutterBottom component='div'>
                 {props.searchedPosition}
               </Typography>
+              {props.aboutCompany ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    O firmie
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.aboutCompany}
+                  </Typography>
+                </>
+              ) : null}
               {props.salaryType ||
               props.salaryFrom ||
               props.salaryTo ||
@@ -164,16 +220,50 @@ export default function JobOffer(props) {
                   </Typography>
                 </>
               ) : null}
-              {props.aboutCompany ? (
-                <>
-                  <Typography variant='subtitle2' gutterBottom component='div'>
-                    O firmie
-                  </Typography>
-                  <Typography variant='body2' gutterBottom component='div'>
-                    {props.aboutCompany}
-                  </Typography>
-                </>
-              ) : null}
+              {props.workModel ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Tryb pracy
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.workModel}
+              </Typography>
+            </>
+          ) : null}
+
+          {props.contractType ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Rodzaj umowy
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.contractType}
+              </Typography>
+            </>
+          ) : null}
+
+          {props.workMode ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Wymiar zatrudnienia
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.workMode}
+              </Typography>
+            </>
+          ) : null}
+
+          {props.recruitmentMode ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Tryb rekrutacji
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.recruitmentMode}
+              </Typography>
+            </>
+          ) : null}
+              
             </AccordionDetails>
           </Accordion>
           <Typography

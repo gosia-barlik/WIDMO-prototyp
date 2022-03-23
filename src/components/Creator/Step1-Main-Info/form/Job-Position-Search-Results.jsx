@@ -14,17 +14,20 @@ export default function SearchResults(props) {
       elevation={0}
       style={{ marginTop: "20px" }}>
       <Typography style={{ display: "inline-block" }}>
-        Wyniki wyszukiwania dla:{" "}
+        Dla stanowiska 
       </Typography>
-      <Paper
+      {/* <Paper
         style={{
           display: "inline-block",
           height: "25px",
           padding: "8px 12px 5px 12px",
           marginLeft: "20px",
-        }}>
-        <Typography>mechanik samochodowy</Typography>
-      </Paper>
+        }}> */}
+        <Typography variant={"subtitle2"} style={{ display: "inline-block" }}> &nbsp; {props.searchedPosition} </Typography>
+      {/* </Paper> */}
+      <Typography style={{ display: "inline" }}>
+      &nbsp; znaleźliśmy poniższe kwalifikacje i standardy kompetencji zawodowych. Na ich podstawie formułowane będą podpowiedzi na dalszych etapach tworzenia ogłoszenia:
+      </Typography>
       <Accordion style={{ marginTop: "10px" }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
