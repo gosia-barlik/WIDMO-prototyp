@@ -7,6 +7,7 @@ import Step4Summary from "./Step4-Summary/Step4-Summary.jsx";
 import "./Creator.css";
 
 export default function Creator() {
+  //Step1
   const [updateState, setUpdateState] = useState(0);
   const [searchedPosition, setSearchedPosition] = useState("");
   const [showResults, setShowResults] = useState(false);
@@ -23,8 +24,9 @@ export default function Creator() {
   const [workMode, setWorkMode] = useState("");
   const [contractType, setContractType] = useState("");
   const [workModel, setWorkModel] = useState("");
-
   const [aboutCompany, setAboutCompany] = useState("");
+  const [logo, setLogo] = useState("");
+  //Step2
   const [responsibilities, setResponsibilities] = useState([]);
   const [showResponsibilitiesButton, setShowResponsibilitiesButton] =
     useState(true);
@@ -36,7 +38,7 @@ export default function Creator() {
   const [copiedQualificationEffects, setcopiedQualificationEffects] = useState(
     []
   );
-  const [copiedSelectedText, setcopiedSelectedText] = useState([]);
+  const [copiedSelectedText, setCopiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showRequirementsButton, setShowRequirementsButton] = useState(true);
   const [showEducationForm, setShowEducationForm] = useState(false);
@@ -96,11 +98,20 @@ export default function Creator() {
   const onSetWorkModel = (workModel) => {
     setWorkModel(workModel);
   };
- 
- 
+
   //ABOUT COMPANY
   const onSetAboutCompany = (aboutCompany) => {
     setAboutCompany(aboutCompany);
+  };
+  const onSetLogo = (e) => {
+    setLogo(e.target.files[0]);
+    console.log(logo);
+  };
+  const onFileUpload = () => {
+    // const formData = new FormData();
+    // formData.append("myFile", logo, logo.name);
+    console.log(logo);
+    // axios.post("api/uploadfile", formData);
   };
 
   //RESPONSIBILITIES
@@ -149,7 +160,7 @@ export default function Creator() {
 
   const getSelectedText = () => {
     if (window.getSelection) {
-      setcopiedSelectedText((oldArray) => [
+      setCopiedSelectedText((oldArray) => [
         ...oldArray,
         window.getSelection().toString(),
       ]);
@@ -260,12 +271,14 @@ export default function Creator() {
           onSetWorkMode={onSetWorkMode}
           workMode={workMode}
           onSetContractType={onSetContractType}
-          contractType ={contractType}
+          contractType={contractType}
           onSetWorkModel={onSetWorkModel}
           workModel={workModel}
-
           onSetAboutCompany={onSetAboutCompany}
           aboutCompany={aboutCompany}
+          onSetLogo={onSetLogo}
+          onFileUpload={onFileUpload}
+          
           updateState={updateState}
           responsibilities={responsibilities}
           copiedQualificationEffects={copiedQualificationEffects}
@@ -289,7 +302,7 @@ export default function Creator() {
           salaryContract={salaryContract}
           aboutCompany={aboutCompany}
           workModel={workModel}
-          contractType ={contractType}
+          contractType={contractType}
           workMode={workMode}
           recruitmentMode={recruitmentMode}
           addressStreet={addressStreet}
@@ -346,6 +359,13 @@ export default function Creator() {
           salaryType={salaryType}
           salaryContract={salaryContract}
           aboutCompany={aboutCompany}
+          workModel={workModel}
+          contractType={contractType}
+          workMode={workMode}
+          recruitmentMode={recruitmentMode}
+          addressStreet={addressStreet}
+          addressCity={addressCity}
+          addressCountry={addressCountry}
           responsibilities={responsibilities}
           copiedQualificationEffects={copiedQualificationEffects}
           copiedSelectedText={copiedSelectedText}
@@ -374,6 +394,13 @@ export default function Creator() {
           salaryType={salaryType}
           salaryContract={salaryContract}
           aboutCompany={aboutCompany}
+          workModel={workModel}
+          contractType={contractType}
+          workMode={workMode}
+          recruitmentMode={recruitmentMode}
+          addressStreet={addressStreet}
+          addressCity={addressCity}
+          addressCountry={addressCountry}
           responsibilities={responsibilities}
           copiedQualificationEffects={copiedQualificationEffects}
           copiedSelectedText={copiedSelectedText}

@@ -102,6 +102,17 @@ export default function JobOffer(props) {
               </Typography>
             </>
           ) : null}
+          {props.addressStreet || props.addressCity || props.addressCountry ? (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Miejsce pracy
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {props.addressStreet + " "} {props.addressCity + " "}
+                {props.addressCountry}
+              </Typography>
+            </>
+          ) : null}
 
           {props.updateState > 0 ? (
             <>
@@ -221,48 +232,62 @@ export default function JobOffer(props) {
                 </>
               ) : null}
               {props.workModel ? (
-            <>
-              <Typography variant='subtitle2' gutterBottom component='div'>
-                Tryb pracy
-              </Typography>
-              <Typography variant='body2' gutterBottom component='div'>
-                {props.workModel}
-              </Typography>
-            </>
-          ) : null}
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Tryb pracy
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.workModel}
+                  </Typography>
+                </>
+              ) : null}
 
-          {props.contractType ? (
-            <>
-              <Typography variant='subtitle2' gutterBottom component='div'>
-                Rodzaj umowy
-              </Typography>
-              <Typography variant='body2' gutterBottom component='div'>
-                {props.contractType}
-              </Typography>
-            </>
-          ) : null}
+              {props.contractType ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Rodzaj umowy
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.contractType}
+                  </Typography>
+                </>
+              ) : null}
 
-          {props.workMode ? (
-            <>
-              <Typography variant='subtitle2' gutterBottom component='div'>
-                Wymiar zatrudnienia
-              </Typography>
-              <Typography variant='body2' gutterBottom component='div'>
-                {props.workMode}
-              </Typography>
-            </>
-          ) : null}
+              {props.workMode ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Wymiar zatrudnienia
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.workMode}
+                  </Typography>
+                </>
+              ) : null}
 
-          {props.recruitmentMode ? (
-            <>
-              <Typography variant='subtitle2' gutterBottom component='div'>
-                Tryb rekrutacji
-              </Typography>
-              <Typography variant='body2' gutterBottom component='div'>
-                {props.recruitmentMode}
-              </Typography>
-            </>
-          ) : null}
+              {props.recruitmentMode ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Tryb rekrutacji
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.recruitmentMode}
+                  </Typography>
+                </>
+              ) : null}
+
+              {props.addressStreet ||
+              props.addressCity ||
+              props.addressCountry ? (
+                <>
+                  <Typography variant='subtitle2' gutterBottom component='div'>
+                    Miejsce pracy
+                  </Typography>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    {props.addressStreet + " "} {props.addressCity + " "}
+                    {props.addressCountry}
+                  </Typography>
+                </>
+              ) : null}
               
             </AccordionDetails>
           </Accordion>

@@ -56,7 +56,11 @@ export default function Step1MainInfo(props) {
             />
           ) : null}
           {props.activeVerticalStep === 1 ? (
-            <AboutCompany onSetAboutCompany={props.onSetAboutCompany} />
+            <AboutCompany
+              onSetAboutCompany={props.onSetAboutCompany}
+              onSetLogo={props.onSetLogo}
+              onFileUpload={props.onFileUpload}
+            />
           ) : null}
           {props.showResults && props.activeVerticalStep !== 2 ? (
             <MainActionButtons
@@ -89,7 +93,7 @@ export default function Step1MainInfo(props) {
             addressCity={props.addressCity}
             addressStreet={props.addressStreet}
             workMode={props.workMode}
-            contractType ={props.contractType}
+            contractType={props.contractType}
             recruitmentMode={props.recruitmentMode}
             workModel={props.workModel}
             aboutCompany={props.aboutCompany}

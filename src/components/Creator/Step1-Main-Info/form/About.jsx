@@ -2,7 +2,6 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 
 export default function AboutCompany(props) {
@@ -21,21 +20,17 @@ export default function AboutCompany(props) {
         variant='subtitle2'
         component='div'
         style={{ marginTop: "20px" }}>
-        Jeśli chcesz, możesz dodać logotyp firmy
+        Jeśli chcesz, możesz dodać logotyp
       </Typography>
-      {/* <Button  className='button-outlined'
-        variant='outlined' component='label' >
+      <Button
+        variant='outlined'
+        className='button-outlined'
+        component='label'
+        onClick={props.onFileUpload}
+        startIcon={<AddIcon />}>
+        <input type='file' hidden onChange={(e) => props.onSetLogo(e)}/>
         Dodaj logo
-        <input type='file' hidden />
-      </Button> */}
-      <IconButton
-        className='styled-icon-button'
-        aria-label='upload logo'
-        component='label'>
-        <input type='file' hidden />
-        <AddIcon />
-      </IconButton>
-      Dodaj logo
+      </Button>
     </>
   );
 }
