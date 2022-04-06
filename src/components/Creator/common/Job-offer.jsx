@@ -8,6 +8,27 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./Job-Offer.css";
 
 export default function JobOffer(props) {
+
+  // activeStep={props.activeStep}
+  // searchedPosition={props.searchedPosition}
+  // salaryTo={props.salaryTo}
+  // salaryFrom={props.salaryFrom}
+  // salaryTime={props.salaryTime}
+  // salaryType={props.salaryType}
+  // salaryContract={props.salaryContract}
+  // addressCountry={props.addressCountry}
+  // addressCity={props.addressCity}
+  // addressStreet={props.addressStreet}
+  // workMode={props.workMode}
+  // contractType={props.contractType}
+  // recruitmentMode={props.recruitmentMode}
+  // workModel={props.workModel}
+  // aboutCompany={props.aboutCompany}
+  // responsibilities={props.responsibilities}
+  // updateState={props.updateState}
+  // copiedQualificationEffects={props.copiedQualificationEffects}
+  // requirements={props.requirements}
+
   return (
     <Paper
       sx={{

@@ -4,6 +4,20 @@ import InputBase from "@material-ui/core/InputBase";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Typography from "@mui/material/Typography";
+import { useDispatch, useSelector } from "react-redux";
+import { setAddressCity,
+  setAddressCountry,
+  setAddressStreet,
+  setContractType,
+  setRecruitmentMode,
+  setSalaryContract,
+  setSalaryFrom,
+  setSalaryTime,
+  setSalaryTo,
+  setSalaryType,
+  setWorkMode,
+  setWorkModel,
+} from "../../../../store/actions/stepOneActions";
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -41,6 +55,45 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AdditionalInformation(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+    //SALARY
+    const onSetSalaryType = (salaryType) => {
+      dispatch(setSalaryType(salaryType));
+    };
+    const onSetSalaryFrom = (salaryFrom) => {
+      dispatch(setSalaryFrom(salaryFrom));
+    };
+    const onSetSalaryTo = (salaryTo) => {
+      dispatch(setSalaryTo(salaryTo));
+    };
+    const onSetSalaryTime = (salaryTime) => {
+      dispatch(setSalaryTime(salaryTime));
+    };
+    const onSetSalaryContract = (salaryContract) => {
+      dispatch(setSalaryContract(salaryContract));
+    };
+    const onSetAddressCountry = (addressCountry) => {
+      dispatch(setAddressCountry(addressCountry));
+    };
+    const onSetAddressCity = (addressCity) => {
+      dispatch(setAddressCity(addressCity));
+    };
+    const onSetAddressStreet = (addressStreet) => {
+      dispatch(setAddressStreet(addressStreet));
+    };
+    const onSetRecruitmentMode = (recruitmentMode) => {
+      dispatch(setRecruitmentMode(recruitmentMode));
+    };
+    const onSetWorkMode = (workMode) => {
+      dispatch(setWorkMode(workMode));
+    };
+    const onSetContractType = (contractType) => {
+      dispatch(setContractType(contractType));
+    };
+    const onSetWorkModel = (workModel) => {
+      dispatch(setWorkModel(workModel));
+    };
 
   return (
     <>
@@ -56,7 +109,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               placeholder='4000'
               id='rate-from-input'
-              onChange={(e) => props.onSetSalaryFrom(e.target.value)}
+              onChange={(e) => onSetSalaryFrom(e.target.value)}
             />
           </FormControl>
 
@@ -67,7 +120,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               placeholder='8000'
               id='rate-to-input'
-              onChange={(e) => props.onSetSalaryTo(e.target.value)}
+              onChange={(e) => onSetSalaryTo(e.target.value)}
             />
           </FormControl>
 
@@ -78,7 +131,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               placeholder='miesiąc'
               id='rate-to-time'
-              onChange={(e) => props.onSetSalaryTime(e.target.value)}
+              onChange={(e) => onSetSalaryTime(e.target.value)}
             />
           </FormControl>
 
@@ -87,7 +140,7 @@ export default function AdditionalInformation(props) {
               wartość
             </InputLabel>
             <BootstrapInput
-              onChange={(e) => props.onSetSalaryType(e.target.value)}
+              onChange={(e) => onSetSalaryType(e.target.value)}
               placeholder='brutto'
               id='rate-type-input'
             />
@@ -102,7 +155,7 @@ export default function AdditionalInformation(props) {
               stacjonarny, zdalny,...
             </InputLabel>
             <BootstrapInput
-              onChange={(e) => props.onSetWorkModel(e.target.value)}
+              onChange={(e) => onSetWorkModel(e.target.value)}
               placeholder='hybrydowy'
               id='work-model-input'
             />
@@ -117,7 +170,7 @@ export default function AdditionalInformation(props) {
               uop, b2b, ...
             </InputLabel>
             <BootstrapInput
-              onChange={(e) => props.onSetSalaryContract(e.target.value)}
+              onChange={(e) => onSetSalaryContract(e.target.value)}
               placeholder='umowa o pracę'
               id='contract-type-input'
             />
@@ -132,7 +185,7 @@ export default function AdditionalInformation(props) {
               1 etat, 1/2 etatu, ...
             </InputLabel>
             <BootstrapInput
-              onChange={(e) => props.onSetWorkMode(e.target.value)}
+              onChange={(e) => onSetWorkMode(e.target.value)}
               placeholder='1 etat'
               id='work-mode-input'
             />
@@ -147,7 +200,7 @@ export default function AdditionalInformation(props) {
               zdalny, stacjonarny, ...
             </InputLabel>
             <BootstrapInput
-              onChange={(e) => props.onSetRecruitmentMode(e.target.value)}
+              onChange={(e) => onSetRecruitmentMode(e.target.value)}
               placeholder='zdalny'
               id='recruitment-mode-input'
             />
@@ -163,7 +216,7 @@ export default function AdditionalInformation(props) {
                 ulica, numer
               </InputLabel>
               <BootstrapInput
-                onChange={(e) => props.onSetAddressStreet(e.target.value)}
+                onChange={(e) => onSetAddressStreet(e.target.value)}
                 placeholder='ulica, numer'
                 id='address-street-input'
               />
@@ -173,7 +226,7 @@ export default function AdditionalInformation(props) {
                 miasto
               </InputLabel>
               <BootstrapInput
-                onChange={(e) => props.onSetAddressCity(e.target.value)}
+                onChange={(e) => onSetAddressCity(e.target.value)}
                 placeholder='miasto'
                 id='address-city-input'
               />
@@ -183,7 +236,7 @@ export default function AdditionalInformation(props) {
                 kraj
               </InputLabel>
               <BootstrapInput
-                onChange={(e) => props.onSetAddressCountry(e.target.value)}
+                onChange={(e) => onSetAddressCountry(e.target.value)}
                 placeholder='kraj'
                 id='address-country-input'
               />

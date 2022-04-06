@@ -9,27 +9,27 @@ import "./Creator.css";
 export default function Creator() {
   //Step1
   const [updateState, setUpdateState] = useState(0);
-  const [searchedPosition, setSearchedPosition] = useState("");
-  const [showResults, setShowResults] = useState(false);
+  // const [searchedPosition, setSearchedPosition] = useState("");
+  // const [showResults, setShowResults] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
-  const [salaryType, setSalaryType] = useState("");
-  const [salaryFrom, setSalaryFrom] = useState("");
-  const [salaryTo, setSalaryTo] = useState("");
-  const [salaryTime, setSalaryTime] = useState("");
-  const [salaryContract, setSalaryContract] = useState("");
-  const [addressCountry, setAddressCountry] = useState("");
-  const [addressCity, setAddressCity] = useState("");
-  const [addressStreet, setAddressStreet] = useState("");
-  const [recruitmentMode, setRecruitmentMode] = useState("");
-  const [workMode, setWorkMode] = useState("");
-  const [contractType, setContractType] = useState("");
-  const [workModel, setWorkModel] = useState("");
-  const [aboutCompany, setAboutCompany] = useState("");
-  const [logo, setLogo] = useState("");
+  // const [salaryType, setSalaryType] = useState("");
+  // const [salaryFrom, setSalaryFrom] = useState("");
+  // const [salaryTo, setSalaryTo] = useState("");
+  // const [salaryTime, setSalaryTime] = useState("");
+  // const [salaryContract, setSalaryContract] = useState("");
+  // const [addressCountry, setAddressCountry] = useState("");
+  // const [addressCity, setAddressCity] = useState("");
+  // const [addressStreet, setAddressStreet] = useState("");
+  // const [recruitmentMode, setRecruitmentMode] = useState("");
+  // const [workMode, setWorkMode] = useState("");
+  // const [contractType, setContractType] = useState("");
+  // const [workModel, setWorkModel] = useState("");
+  // const [aboutCompany, setAboutCompany] = useState("");
+  // const [logo, setLogo] = useState("");
+  
   //Step2
   const [responsibilities, setResponsibilities] = useState([]);
-  const [showResponsibilitiesButton, setShowResponsibilitiesButton] =
-    useState(true);
+  const [showResponsibilitiesButton, setShowResponsibilitiesButton] =useState(true);
   const [showQualificationForm, setShowQualificationForm] = useState(false);
   const [qualificationName, setQualificationName] = useState("");
   const [qualificationCharacteristic, setQualificationCharacteristic] =
@@ -53,66 +53,7 @@ export default function Creator() {
   //VERTICAL STEPPER
   const [activeVerticalStep, setActiveVerticalStep] = useState(0);
 
-  // JOB POSITION
-  const onSetSearchedPosition = (searchedPhrase) => {
-    setSearchedPosition(searchedPhrase);
-  };
-  const onShowResults = () => {
-    setShowResults(true);
-  };
 
-  //SALARY
-  const onSetSalaryType = (salaryType) => {
-    setSalaryType(salaryType);
-  };
-  const onSetSalaryFrom = (salaryFrom) => {
-    setSalaryFrom(salaryFrom);
-  };
-  const onSetSalaryTo = (salaryTo) => {
-    setSalaryTo(salaryTo);
-  };
-  const onSetSalaryTime = (salaryTime) => {
-    setSalaryTime(salaryTime);
-  };
-  const onSetSalaryContract = (salaryContract) => {
-    setSalaryContract(salaryContract);
-  };
-  const onSetAddressCountry = (addressCountry) => {
-    setAddressCountry(addressCountry);
-  };
-  const onSetAddressCity = (addressCity) => {
-    setAddressCity(addressCity);
-  };
-  const onSetAddressStreet = (addressStreet) => {
-    setAddressStreet(addressStreet);
-  };
-  const onSetRecruitmentMode = (recruitmentMode) => {
-    setRecruitmentMode(recruitmentMode);
-  };
-  const onSetWorkMode = (workMode) => {
-    setWorkMode(workMode);
-  };
-  const onSetContractType = (contractType) => {
-    setContractType(contractType);
-  };
-  const onSetWorkModel = (workModel) => {
-    setWorkModel(workModel);
-  };
-
-  //ABOUT COMPANY
-  const onSetAboutCompany = (aboutCompany) => {
-    setAboutCompany(aboutCompany);
-  };
-  const onSetLogo = (e) => {
-    setLogo(e.target.files[0]);
-    console.log(logo);
-  };
-  const onFileUpload = () => {
-    // const formData = new FormData();
-    // formData.append("myFile", logo, logo.name);
-    console.log(logo);
-    // axios.post("api/uploadfile", formData);
-  };
 
   //RESPONSIBILITIES
   const onSetResponsibilities = () => {
@@ -246,38 +187,38 @@ export default function Creator() {
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
-          onSetSearchedPosition={onSetSearchedPosition}
-          onShowResults={onShowResults}
-          showResults={showResults}
-          searchedPosition={searchedPosition}
-          onSetSalaryType={onSetSalaryType}
-          salaryType={salaryType}
-          onSetSalaryFrom={onSetSalaryFrom}
-          salaryFrom={salaryFrom}
-          onSetSalaryTo={onSetSalaryTo}
-          salaryTo={salaryTo}
-          onSetSalaryTime={onSetSalaryTime}
-          salaryTime={salaryTime}
-          onSetSalaryContract={onSetSalaryContract}
-          salaryContract={salaryContract}
-          onSetAddressCountry={onSetAddressCountry}
-          addressCountry={addressCountry}
-          onSetAddressCity={onSetAddressCity}
-          addressCity={addressCity}
-          onSetAddressStreet={onSetAddressStreet}
-          addressStreet={addressStreet}
-          onSetRecruitmentMode={onSetRecruitmentMode}
-          recruitmentMode={recruitmentMode}
-          onSetWorkMode={onSetWorkMode}
-          workMode={workMode}
-          onSetContractType={onSetContractType}
-          contractType={contractType}
-          onSetWorkModel={onSetWorkModel}
-          workModel={workModel}
-          onSetAboutCompany={onSetAboutCompany}
-          aboutCompany={aboutCompany}
-          onSetLogo={onSetLogo}
-          onFileUpload={onFileUpload}
+          // onSetSearchedPosition={onSetSearchedPosition}
+          // onShowResults={onShowResults}
+          // showResults={showResults}
+          // searchedPosition={searchedPosition}
+          // onSetSalaryType={onSetSalaryType}
+          // salaryType={salaryType}
+          // onSetSalaryFrom={onSetSalaryFrom}
+          // salaryFrom={salaryFrom}
+          // onSetSalaryTo={onSetSalaryTo}
+          // salaryTo={salaryTo}
+          // onSetSalaryTime={onSetSalaryTime}
+          // salaryTime={salaryTime}
+          // onSetSalaryContract={onSetSalaryContract}
+          // salaryContract={salaryContract}
+          // onSetAddressCountry={onSetAddressCountry}
+          // addressCountry={addressCountry}
+          // onSetAddressCity={onSetAddressCity}
+          // addressCity={addressCity}
+          // onSetAddressStreet={onSetAddressStreet}
+          // addressStreet={addressStreet}
+          // onSetRecruitmentMode={onSetRecruitmentMode}
+          // recruitmentMode={recruitmentMode}
+          // onSetWorkMode={onSetWorkMode}
+          // workMode={workMode}
+          // onSetContractType={onSetContractType}
+          // contractType={contractType}
+          // onSetWorkModel={onSetWorkModel}
+          // workModel={workModel}
+          // onSetAboutCompany={onSetAboutCompany}
+          // aboutCompany={aboutCompany}
+          // onSetLogo={onSetLogo}
+          // onFileUpload={onFileUpload}
           
           updateState={updateState}
           responsibilities={responsibilities}
@@ -288,7 +229,7 @@ export default function Creator() {
           activeVerticalStep={activeVerticalStep}
         />
       ) : null}
-      {activeStep === 1 ? (
+      {/* {activeStep === 1 ? (
         <Step2OfferContent
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
@@ -412,7 +353,7 @@ export default function Creator() {
           onSetRODO={onSetRODO}
           RODO={RODO}
         />
-      ) : null}
+      ) : null} */}
     </>
   );
 }

@@ -4,18 +4,33 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@mui/material/Typography";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSearchedPosition,
+  setShowResults,
+} from "../../../../store/actions/stepOneActions";
 
 export default function SearchBar(props) {
-  const [searchedPosition, setSearchedPosition] = useState("");
+
+  const dispatch = useDispatch();
+  const searchedPosition = useSelector((state) => state.searchedPosition);
 
   const handleInputChange = (e) => {
-    setSearchedPosition(e.target.value);
+    dispatch(setSearchedPosition(e.target.value));
+  };
+  
+  // JOB POSITION
+  const onSetSearchedPosition = (searchedPhrase) => {
+    dispatch(setSearchedPosition(searchedPhrase));
+  };
+  const onShowResults = () => {
+    dispatch(setShowResults(true));
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    props.onSetSearchedPosition(searchedPosition);
-    props.onShowResults(true);
+    onSetSearchedPosition(searchedPosition);
+    onShowResults(true);
   };
 
   return (
