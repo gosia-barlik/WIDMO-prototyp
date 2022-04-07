@@ -39,8 +39,6 @@ const initialState = {
 };
 
 export const stepOneReducer = (state = initialState, action) => {
-  console.log(action.type);
-  console.log(action.payload);
   switch (action.type) {
     case SEARCHEDPOSITION: {
       return {
@@ -145,6 +143,6 @@ export const stepOneReducer = (state = initialState, action) => {
       };
     }
     default:
-      return { state };
+      return state;
   }
 };

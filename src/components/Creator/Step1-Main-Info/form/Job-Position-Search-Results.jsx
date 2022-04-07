@@ -5,9 +5,11 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
+import { useSelector } from "react-redux";
 
 export default function SearchResults(props) {
+  const { searchedPosition } = useSelector((state) => state.stepOneReducer);
+
   return (
     <Paper
       className='job-position-search-results-wrapper'
@@ -23,7 +25,7 @@ export default function SearchResults(props) {
           padding: "8px 12px 5px 12px",
           marginLeft: "20px",
         }}> */}
-        <Typography variant={"subtitle2"} style={{ display: "inline-block" }}> &nbsp; {props.searchedPosition} </Typography>
+        <Typography variant={"subtitle2"} style={{ display: "inline-block" }}> &nbsp; {searchedPosition} </Typography>
       {/* </Paper> */}
       <Typography style={{ display: "inline" }}>
       &nbsp; znaleźliśmy poniższe kwalifikacje i standardy kompetencji zawodowych. Na ich podstawie formułowane będą podpowiedzi na dalszych etapach tworzenia ogłoszenia:

@@ -9,23 +9,7 @@ import "./Creator.css";
 export default function Creator() {
   //Step1
   const [updateState, setUpdateState] = useState(0);
-  // const [searchedPosition, setSearchedPosition] = useState("");
-  // const [showResults, setShowResults] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
-  // const [salaryType, setSalaryType] = useState("");
-  // const [salaryFrom, setSalaryFrom] = useState("");
-  // const [salaryTo, setSalaryTo] = useState("");
-  // const [salaryTime, setSalaryTime] = useState("");
-  // const [salaryContract, setSalaryContract] = useState("");
-  // const [addressCountry, setAddressCountry] = useState("");
-  // const [addressCity, setAddressCity] = useState("");
-  // const [addressStreet, setAddressStreet] = useState("");
-  // const [recruitmentMode, setRecruitmentMode] = useState("");
-  // const [workMode, setWorkMode] = useState("");
-  // const [contractType, setContractType] = useState("");
-  // const [workModel, setWorkModel] = useState("");
-  // const [aboutCompany, setAboutCompany] = useState("");
-  // const [logo, setLogo] = useState("");
   
   //Step2
   const [responsibilities, setResponsibilities] = useState([]);
@@ -187,37 +171,6 @@ export default function Creator() {
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
-          // onSetSearchedPosition={onSetSearchedPosition}
-          // onShowResults={onShowResults}
-          // showResults={showResults}
-          // searchedPosition={searchedPosition}
-          // onSetSalaryType={onSetSalaryType}
-          // salaryType={salaryType}
-          // onSetSalaryFrom={onSetSalaryFrom}
-          // salaryFrom={salaryFrom}
-          // onSetSalaryTo={onSetSalaryTo}
-          // salaryTo={salaryTo}
-          // onSetSalaryTime={onSetSalaryTime}
-          // salaryTime={salaryTime}
-          // onSetSalaryContract={onSetSalaryContract}
-          // salaryContract={salaryContract}
-          // onSetAddressCountry={onSetAddressCountry}
-          // addressCountry={addressCountry}
-          // onSetAddressCity={onSetAddressCity}
-          // addressCity={addressCity}
-          // onSetAddressStreet={onSetAddressStreet}
-          // addressStreet={addressStreet}
-          // onSetRecruitmentMode={onSetRecruitmentMode}
-          // recruitmentMode={recruitmentMode}
-          // onSetWorkMode={onSetWorkMode}
-          // workMode={workMode}
-          // onSetContractType={onSetContractType}
-          // contractType={contractType}
-          // onSetWorkModel={onSetWorkModel}
-          // workModel={workModel}
-          // onSetAboutCompany={onSetAboutCompany}
-          // aboutCompany={aboutCompany}
-          // onSetLogo={onSetLogo}
           // onFileUpload={onFileUpload}
           
           updateState={updateState}

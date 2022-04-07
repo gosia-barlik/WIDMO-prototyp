@@ -6,24 +6,12 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./Job-Offer.css";
+import { useSelector } from "react-redux";
 
 export default function JobOffer(props) {
+  const { activeStep, searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract,
+    addressCountry, addressCity, addressStreet, workMode, contractType, recruitmentMode, workModel, aboutCompany } = useSelector((state) => state.stepOneReducer);
 
-  // activeStep={props.activeStep}
-  // searchedPosition={props.searchedPosition}
-  // salaryTo={props.salaryTo}
-  // salaryFrom={props.salaryFrom}
-  // salaryTime={props.salaryTime}
-  // salaryType={props.salaryType}
-  // salaryContract={props.salaryContract}
-  // addressCountry={props.addressCountry}
-  // addressCity={props.addressCity}
-  // addressStreet={props.addressStreet}
-  // workMode={props.workMode}
-  // contractType={props.contractType}
-  // recruitmentMode={props.recruitmentMode}
-  // workModel={props.workModel}
-  // aboutCompany={props.aboutCompany}
   // responsibilities={props.responsibilities}
   // updateState={props.updateState}
   // copiedQualificationEffects={props.copiedQualificationEffects}
@@ -37,7 +25,7 @@ export default function JobOffer(props) {
         flexDirection: "column",
         alignItems: "left",
       }}>
-      {props.activeStep === 0 ? (
+      {activeStep === 0 && (
         <>
           <Typography
             variant='subtitle2'
@@ -50,90 +38,90 @@ export default function JobOffer(props) {
             Stanowisko
           </Typography>
           <Typography variant='body2' gutterBottom component='div'>
-            {props.searchedPosition}
+            {searchedPosition}
           </Typography>
 
-          {props.aboutCompany ? (
+          {aboutCompany && 
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 O firmie
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.aboutCompany}
+                {aboutCompany}
               </Typography>
             </>
-          ) : null}
+          }
 
-          {props.salaryType ||
-          props.salaryFrom ||
-          props.salaryTo ||
-          props.salaryTime ? (
+          {(salaryType ||
+          salaryFrom ||
+          salaryTo ||
+          salaryTime) && 
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Wynagrodzenie
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {"od " + props.salaryFrom} {"do " + props.salaryTo}{" "}
-                {"/" + props.salaryTime} {props.salaryType}{" "}
-                {props.salaryContract}
+                {"od " + salaryFrom} {"do " + salaryTo}{" "}
+                {"/" + salaryTime} {salaryType}{" "}
+                {salaryContract}
               </Typography>
             </>
-          ) : null}
+          }
 
-          {props.workModel ? (
+          {workModel && 
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Tryb pracy
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.workModel}
+                {workModel}
               </Typography>
             </>
-          ) : null}
+          }
 
-          {props.contractType ? (
+          {contractType &&
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Rodzaj umowy
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.contractType}
+                {contractType}
               </Typography>
             </>
-          ) : null}
+          }
 
-          {props.workMode ? (
+          {workMode &&
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Wymiar zatrudnienia
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.workMode}
+                {workMode}
               </Typography>
             </>
-          ) : null}
+          }
 
-          {props.recruitmentMode ? (
+          {recruitmentMode &&
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Tryb rekrutacji
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.recruitmentMode}
+                {recruitmentMode}
               </Typography>
             </>
-          ) : null}
-          {props.addressStreet || props.addressCity || props.addressCountry ? (
+          }
+          {(addressStreet || addressCity || addressCountry) &&
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Miejsce pracy
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.addressStreet + " "} {props.addressCity + " "}
-                {props.addressCountry}
+                {addressStreet + " "} {addressCity + " "}
+                {addressCountry}
               </Typography>
             </>
-          ) : null}
+          }
 
           {props.updateState > 0 ? (
             <>
@@ -202,7 +190,7 @@ export default function JobOffer(props) {
             </>
           ) : null}
         </>
-      ) : null}
+      )}
 
       {props.activeStep === 1 ? (
         <>

@@ -10,10 +10,10 @@ import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Step1MainInfo(props) {
-  const showResults = useSelector((state) => state.showResults);
+  const { showResults } = useSelector((state) => state.stepOneReducer);
 
   return (
     <Grid container spacing={4} className='step-1-container'>
@@ -27,21 +27,21 @@ export default function Step1MainInfo(props) {
           { props.activeVerticalStep === 0 && <SearchBar /> }
           
           { props.activeVerticalStep === 0 && showResults &&
-            <SearchResults searchedPosition={props.searchedPosition} />
+            <SearchResults />
           }
           
           { props.activeVerticalStep === 2 && <AdditionalInformation /> }
           
           { props.activeVerticalStep === 1 && <AboutCompany /> }
           
-          {props.showResults && props.activeVerticalStep !== 2 && 
+          {showResults && props.activeVerticalStep !== 2 && 
             <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleVerticalStepperNext}
             /> 
           }
 
-          { props.showResults && props.activeVerticalStep === 2 &&
+          { showResults && props.activeVerticalStep === 2 &&
             <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleMainStepperNext}

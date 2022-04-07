@@ -58,42 +58,18 @@ export default function AdditionalInformation(props) {
   const dispatch = useDispatch();
 
     //SALARY
-    const onSetSalaryType = (salaryType) => {
-      dispatch(setSalaryType(salaryType));
-    };
-    const onSetSalaryFrom = (salaryFrom) => {
-      dispatch(setSalaryFrom(salaryFrom));
-    };
-    const onSetSalaryTo = (salaryTo) => {
-      dispatch(setSalaryTo(salaryTo));
-    };
-    const onSetSalaryTime = (salaryTime) => {
-      dispatch(setSalaryTime(salaryTime));
-    };
-    const onSetSalaryContract = (salaryContract) => {
-      dispatch(setSalaryContract(salaryContract));
-    };
-    const onSetAddressCountry = (addressCountry) => {
-      dispatch(setAddressCountry(addressCountry));
-    };
-    const onSetAddressCity = (addressCity) => {
-      dispatch(setAddressCity(addressCity));
-    };
-    const onSetAddressStreet = (addressStreet) => {
-      dispatch(setAddressStreet(addressStreet));
-    };
-    const onSetRecruitmentMode = (recruitmentMode) => {
-      dispatch(setRecruitmentMode(recruitmentMode));
-    };
-    const onSetWorkMode = (workMode) => {
-      dispatch(setWorkMode(workMode));
-    };
-    const onSetContractType = (contractType) => {
-      dispatch(setContractType(contractType));
-    };
-    const onSetWorkModel = (workModel) => {
-      dispatch(setWorkModel(workModel));
-    };
+    const onSetSalaryType = (salaryType) => dispatch(setSalaryType(salaryType));
+    const onSetSalaryFrom = (salaryFrom) => dispatch(setSalaryFrom(salaryFrom));
+    const onSetSalaryTo = (salaryTo) => dispatch(setSalaryTo(salaryTo));
+    const onSetSalaryTime = (salaryTime) => dispatch(setSalaryTime(salaryTime));
+    const onSetSalaryContract = (salaryContract) => dispatch(setSalaryContract(salaryContract));
+    const onSetAddressCountry = (addressCountry) => dispatch(setAddressCountry(addressCountry));
+    const onSetAddressCity = (addressCity) => dispatch(setAddressCity(addressCity));
+    const onSetAddressStreet = (addressStreet) => dispatch(setAddressStreet(addressStreet));
+    const onSetRecruitmentMode = (recruitmentMode) => dispatch(setRecruitmentMode(recruitmentMode));
+    const onSetWorkMode = (workMode) => dispatch(setWorkMode(workMode));
+    const onSetContractType = (contractType) => dispatch(setContractType(contractType));
+    const onSetWorkModel = (workModel) => dispatch(setWorkModel(workModel));
 
   return (
     <>
@@ -107,6 +83,7 @@ export default function AdditionalInformation(props) {
               od
             </InputLabel>
             <BootstrapInput
+              type='number'
               placeholder='4000'
               id='rate-from-input'
               onChange={(e) => onSetSalaryFrom(e.target.value)}
@@ -118,6 +95,7 @@ export default function AdditionalInformation(props) {
               do
             </InputLabel>
             <BootstrapInput
+              type='number'
               placeholder='8000'
               id='rate-to-input'
               onChange={(e) => onSetSalaryTo(e.target.value)}

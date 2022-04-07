@@ -13,24 +13,16 @@ import {
 export default function SearchBar(props) {
 
   const dispatch = useDispatch();
-  const searchedPosition = useSelector((state) => state.searchedPosition);
+  const {searchedPosition} = useSelector((state) => state.stepOneReducer);
 
   const handleInputChange = (e) => {
     dispatch(setSearchedPosition(e.target.value));
   };
   
-  // JOB POSITION
-  const onSetSearchedPosition = (searchedPhrase) => {
-    dispatch(setSearchedPosition(searchedPhrase));
-  };
-  const onShowResults = () => {
-    dispatch(setShowResults(true));
-  };
-
   const handleSearch = (e) => {
     e.preventDefault();
-    onSetSearchedPosition(searchedPosition);
-    onShowResults(true);
+    dispatch(setSearchedPosition(searchedPosition));
+    dispatch(setShowResults(true));
   };
 
   return (
