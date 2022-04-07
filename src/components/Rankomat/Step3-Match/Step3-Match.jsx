@@ -145,7 +145,7 @@ export default function Step3Match(props) {
             <Typography variant='subtitle2' gutterBottom component='div'>
               Lista życiorysów
             </Typography>
-            <Paper className='form-container'>
+            <Paper className='form-container-box'>
               <CvList resumes={props.resumes} handleOnClick={handleOnClick} />
             </Paper>
             <MainActionButtons
@@ -160,7 +160,7 @@ export default function Step3Match(props) {
             <Typography variant='subtitle2' gutterBottom component='div'>
               Widok szczegółowy
             </Typography>
-            <Paper className='form-container'>
+            <Paper className='form-container-box'>
               <CvPreview text={annotatedText}></CvPreview>
             </Paper>
             <MainActionButtons
@@ -192,7 +192,7 @@ export default function Step3Match(props) {
             <Typography variant='subtitle2' gutterBottom component='div'>
               Statystyki
             </Typography>
-            <Paper className='job-offer-container'>
+            <Paper className='job-offer-container-box'>
               <CvDetails response={sortedResponse} />
             </Paper>
           </Grid>

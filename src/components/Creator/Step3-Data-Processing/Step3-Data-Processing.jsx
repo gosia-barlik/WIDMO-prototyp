@@ -14,7 +14,7 @@ export default function Step3DataProcessing(props) {
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
-        <Paper className='form-container'>
+        <Paper className='form-container-box'>
           <>
             <DataProcessing onSetRODO={props.onSetRODO} />
             <MainActionButtons
@@ -29,7 +29,7 @@ export default function Step3DataProcessing(props) {
         <Typography variant='subtitle2' gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
-        <Paper className='job-offer-container'>
+        <Paper className='job-offer-container-box'>
           <JobOffer
             activeStep={props.activeStep}
             searchedPosition={props.searchedPosition}

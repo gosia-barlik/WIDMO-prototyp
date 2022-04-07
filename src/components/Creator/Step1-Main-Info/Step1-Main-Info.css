@@ -1,24 +1,28 @@
-.form-container {
+.step-1-container {width:100%}
+.form-container-box {
   background-color: rgba(238, 238, 238, 1) !important ;
-  padding: 20px;
+  padding: 18px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.form-container .job-position-search-results-wrapper {
+.form-container-box .job-position-search-results-wrapper {
   background-color: rgba(238, 238, 238, 1) !important ;
 }
 
-.form-container .css-173wfxe span {
+.form-container-box .css-173wfxe span {
   padding-bottom: 5px;
   font-size: 10px;
 }
-
 .job-offer-container {
-  margin-right: 150px;
-  padding: 20px;
+  box-sizing: border-box;
+}
+.job-offer-container-box {
+  /* margin-right: 150px; */
+  padding: 18px;
+  box-sizing: border-box;
 }
 
-.form-container textarea,
-.form-container textarea:focus {
+.form-container-box textarea,
+.form-container-box textarea:focus {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5rem;;
   width: 96%;
@@ -31,19 +35,19 @@
   letter-spacing: 0.05em
 }
 
-.form-container button {
+.form-container-box button {
   text-decoration:none;
   font-family: Arial;
   border-radius: 4px;
   padding: 4px 16px 3px 16px;
 }
 
-.form-container .button-contained{
+.form-container-box .button-contained{
     background-color:  #6200EE !important;
     color:white;
 }
 
-.step-1-container .form-container input {
+.step-1-container .form-container-box input {
   font-size: 14px !important;
   outline: none;
   border: none;
@@ -51,7 +55,27 @@
 }
 
 
-.form-container #searchPosition {
+.form-container-box #searchPosition {
   padding: 10px 4px 10px 4px;
   box-shadow: none;
+}
+
+@media only screen and (max-width: 1024px) {
+  /* .form-container {
+    width:100vw !important;
+  } */
+  .form-container-box {
+    width:85vw;
+  }
+  .job-offer-container {
+    width:92vw !important; 
+  }
+
+  .job-offer-container-box {
+    width:92vw;
+  }
+  .step-1-container {
+flex-direction: column !important;
+  }
+
 }

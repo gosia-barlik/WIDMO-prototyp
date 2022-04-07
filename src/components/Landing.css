@@ -300,7 +300,7 @@ a:link,a:visited,a:hover,a:active { text-decoration: none }
   overflow-x: unset;
   overflow-y: unset;
   white-space: pre;
-  width: 809px;
+  max-width: 80%;
   height: 177px;
   left: 15%;
   top: 170px;
@@ -334,4 +334,24 @@ a:link,a:visited,a:hover,a:active { text-decoration: none }
   font-family: Montserrat, Arial;
   letter-spacing: 0;
   text-decoration: none;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  
+  .landing .card-container {
+ margin-top:20px;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+  
+  /* .landing .section-cards {
+ flex-direction: column;
+  } */
+  .landing .card-container {
+ margin-left:0;
+  }
+
 }

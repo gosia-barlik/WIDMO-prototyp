@@ -1,5 +1,17 @@
+.job-offer-container-box {
+
+}
+
 .styled-accordion {
     top:-10px;
     width: calc(100% + 18px) !important;
     left:-9px
 }
+
+@media only screen and (max-width: 900px) {
+  
+    .job-offer-container-box {
+width:100%
+    }
+  
+  }

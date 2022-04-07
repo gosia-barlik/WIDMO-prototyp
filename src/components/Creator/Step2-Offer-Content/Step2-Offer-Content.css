@@ -1,3 +1,10 @@
+
+.step-2-container  {
+
+  padding: 18px !important;
+ 
+}
+
 .step-2-container .styled-button {
   color: #784af4 !important;
   padding: 25px !important;
@@ -48,4 +55,13 @@
 
 .step-2-container .css-1k181zl li[aria-selected="true"] svg {
   color: #784af4;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .step-2-container {
+
+    flex-direction: column !important;
+      }
+
 }

@@ -32,7 +32,15 @@ class Landing extends React.Component {
             <br />
           </span>
         </div>
-        <Stack spacing={10} direction='row' className='section-cards'>
+        <Stack spacing={10} direction='row' className='section-cards' sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: 128,
+          height: 128,
+        },
+      }}>
           <Card
             sx={{ minWidth: 275 }}
             className='card-container kreator-card-container'>

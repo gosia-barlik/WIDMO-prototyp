@@ -55,7 +55,7 @@ export default function AdditionalInformation(props) {
             </InputLabel>
             <BootstrapInput
               placeholder='4000'
-              id='rate-from-input'
+              name='rate-from-input'
               onChange={(e) => props.onSetSalaryFrom(e.target.value)}
             />
           </FormControl>
@@ -66,7 +66,7 @@ export default function AdditionalInformation(props) {
             </InputLabel>
             <BootstrapInput
               placeholder='8000'
-              id='rate-to-input'
+              name='rate-to-input'
               onChange={(e) => props.onSetSalaryTo(e.target.value)}
             />
           </FormControl>
@@ -77,7 +77,7 @@ export default function AdditionalInformation(props) {
             </InputLabel>
             <BootstrapInput
               placeholder='miesiąc'
-              id='rate-to-time'
+              name='rate-to-time'
               onChange={(e) => props.onSetSalaryTime(e.target.value)}
             />
           </FormControl>
@@ -89,7 +89,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               onChange={(e) => props.onSetSalaryType(e.target.value)}
               placeholder='brutto'
-              id='rate-type-input'
+              name='rate-type-input'
             />
           </FormControl>
         </div>
@@ -104,7 +104,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               onChange={(e) => props.onSetWorkModel(e.target.value)}
               placeholder='hybrydowy'
-              id='work-model-input'
+              name='work-model-input'
             />
           </FormControl>
         </div>
@@ -119,7 +119,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               onChange={(e) => props.onSetSalaryContract(e.target.value)}
               placeholder='umowa o pracę'
-              id='contract-type-input'
+              name='contract-type-input'
             />
           </FormControl>
         </div>
@@ -134,7 +134,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               onChange={(e) => props.onSetWorkMode(e.target.value)}
               placeholder='1 etat'
-              id='work-mode-input'
+              name='work-mode-input'
             />
           </FormControl>
         </div>
@@ -149,7 +149,7 @@ export default function AdditionalInformation(props) {
             <BootstrapInput
               onChange={(e) => props.onSetRecruitmentMode(e.target.value)}
               placeholder='zdalny'
-              id='recruitment-mode-input'
+              name='recruitment-mode-input'
             />
           </FormControl>
         </div>
@@ -165,7 +165,7 @@ export default function AdditionalInformation(props) {
               <BootstrapInput
                 onChange={(e) => props.onSetAddressStreet(e.target.value)}
                 placeholder='ulica, numer'
-                id='address-street-input'
+                name='address-street-input'
               />
             </FormControl>
             <FormControl className={classes.margin}>
@@ -175,7 +175,7 @@ export default function AdditionalInformation(props) {
               <BootstrapInput
                 onChange={(e) => props.onSetAddressCity(e.target.value)}
                 placeholder='miasto'
-                id='address-city-input'
+                name='address-city-input'
               />
             </FormControl>
             <FormControl className={classes.margin}>
@@ -185,7 +185,7 @@ export default function AdditionalInformation(props) {
               <BootstrapInput
                 onChange={(e) => props.onSetAddressCountry(e.target.value)}
                 placeholder='kraj'
-                id='address-country-input'
+                name='address-country-input'
               />
             </FormControl>
           </div>

@@ -28,6 +28,7 @@ export default function SearchBar(props) {
         sx={{ p: "2px 4px", display: "flex", alignItems: "center" }}>
         <InputBase
           id='searchPosition'
+          name='searchPosition'
           sx={{ ml: 1, flex: 1 }}
           placeholder='szukam osoby na stanowisko...'
           inputProps={{ "aria-label": "search google maps" }}

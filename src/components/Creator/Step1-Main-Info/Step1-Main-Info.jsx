@@ -23,13 +23,20 @@ export default function Step1MainInfo(props) {
   // };
 
   return (
-    <Grid container spacing={4} className='step-1-container'>
+    <Grid container className='step-1-container' sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: 280,
+        },
+      }}>
       <StepperVertical activeStep={props.activeVerticalStep} />
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+      <Grid item xs={4} style={{ margin:"20px", marginTop: "50px", textAlign: "left" }} className="form-container">
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
-        <Paper className='form-container'>
+        <Paper className='form-container-box'>
           {props.activeVerticalStep === 0 ? (
             <SearchBar
               onSetSearchedPosition={props.onSetSearchedPosition}
@@ -76,11 +83,11 @@ export default function Step1MainInfo(props) {
           ) : null}
         </Paper>
       </Grid>
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+      <Grid item xs={4} style={{margin:"20px", marginTop: "50px", textAlign: "left" }} className='job-offer-container'>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
-        <Paper className='job-offer-container'>
+        <Paper className='job-offer-container-box'>
           <JobOffer
             activeStep={props.activeStep}
             searchedPosition={props.searchedPosition}

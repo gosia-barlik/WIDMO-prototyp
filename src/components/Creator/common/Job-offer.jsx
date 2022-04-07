@@ -15,7 +15,8 @@ export default function JobOffer(props) {
         display: "flex",
         flexDirection: "column",
         alignItems: "left",
-      }}>
+      }}
+      >
       {props.activeStep === 0 ? (
         <>
           <Typography

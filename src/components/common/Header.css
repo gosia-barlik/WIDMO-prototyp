@@ -2,23 +2,19 @@
   position: absolute;
   box-sizing: content-box;
   opacity: 1;
-  background-color: rgba(250, 250, 250, 1);
+  background-color: rgba(250, 250, 250, 1)!important;
   box-shadow: none;
-  width: 100vw;
   display: flex;
   flex-direction: row;
   height: 80px;
   left: 0px;
   top: 0px;
   z-index: 100 !important;
-  font-family: Montserrat, Arial;
-  -webkit-filter: drop-shadow(
-    0px 3px 10px rgba(17, 21, 36, 0.09019607843137255)
-  );
-  filter: drop-shadow(0px 3px 10px rgba(17, 21, 36, 0.09019607843137255));
+  font-family: Montserrat !important;
+ 
 }
 
-.navbar .aira {
+/* .navbar .aira {
   position: absolute;
   box-sizing: content-box;
   -ms-transform: rotate(0deg);
@@ -79,4 +75,4 @@
   height: 18px;
   left: 75%;
   top: 21px;
-}
+} */
