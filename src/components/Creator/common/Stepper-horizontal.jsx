@@ -88,7 +88,7 @@ const steps = [{name:'Główne informacje', navlink:'/creator/maininfo'}, {name:
 
 export default function StepperHorizontal(props) {
   return (
-    <Stack sx={{ width: '80%' }} spacing={4} className="stepper-horizontal-container">
+    <Stack className="stepper-horizontal-container">
       <Stepper alternativeLabel activeStep={props.activeStep} connector={<QontoConnector />}>
         {steps.map((label) => (
           <Step key={label.name}>

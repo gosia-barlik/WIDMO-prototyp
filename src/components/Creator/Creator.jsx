@@ -33,6 +33,7 @@ export default function Creator() {
   const [certificateStage, setCertificateStage] = useState([]);
   const [benefits, setBenefits] = useState([]);
   const [showBenefitsButton, setShowBenefitsButton] = useState(true);
+  
   const [RODO, setRODO] = useState("");
   //VERTICAL STEPPER
   const [activeVerticalStep, setActiveVerticalStep] = useState(0);
@@ -240,8 +241,8 @@ export default function Creator() {
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
         />
-      ) : null}
-      {activeStep === 2 ? (
+      ) : null} */}
+      {/* {activeStep === 2 ? (
         <Step3DataProcessing
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}

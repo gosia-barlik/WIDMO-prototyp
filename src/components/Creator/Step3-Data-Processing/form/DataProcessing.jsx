@@ -12,10 +12,11 @@ props.onSetRODO(document.querySelector("#RODO").value)
   return (
     <>
       <Typography variant='subtitle2' gutterBottom component='div'>
-        O firmie
+        Przetwarzanie danych osobowych
       </Typography>
       <TextareaAutosize
       id="RODO"
+      name="RODO"
       style={{lineHeight:'20px'}}
       aria-label="minimum height"
       minRows={3}

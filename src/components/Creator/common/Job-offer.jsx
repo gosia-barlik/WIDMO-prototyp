@@ -26,6 +26,7 @@ export default function JobOffer(props) {
         alignItems: "left",
       }}>
       {activeStep === 0 && (
+
         <>
           <Typography
             variant='subtitle2'

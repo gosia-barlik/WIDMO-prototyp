@@ -1,6 +1,12 @@
 .stepper-horizontal-container {
-    margin-top: 200px;
-    margin-left: 10%;
+    margin-top: 80px;
+    justify-content: center !important;
+    align-items: center;
+   
+}
+
+.css-10mg1vw-MuiStepper-root {
+    width:80%
 }
 
 .stepper-horizontal-container .horizontal-stepper-navlink {

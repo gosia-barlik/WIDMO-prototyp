@@ -4,11 +4,32 @@ import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setResponsibilities,
+  setShowResponsibilitiesButton,
+} from "../../../../store/actions/stepTwoActions";
 
 const ColorButton = styled(Button)(() => ({
   textTransform: "none",
   width: "100%",
 }));
+
+// const dispatch = useDispatch();
+
+// const onSetResponsibilities = (e) => {
+
+//   e.preventDefault();
+//     dispatch(setResponsibilities([
+//       "diagnozowanie usterek mechanicznych",
+//       "wykonywanie napraw",
+//       "bieżące usuwanie awarii i usterek",
+//     ]));
+//     dispatch(setShowResponsibilitiesButton(false))
+
+  
+//   ;
+// };
 
 export default function AddResponsibilitiesButtons(props) {
   return (

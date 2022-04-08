@@ -16,13 +16,13 @@ export default function Step1MainInfo(props) {
   const { showResults } = useSelector((state) => state.stepOneReducer);
 
   return (
-    <Grid container spacing={4} className='step-1-container'>
+    <Grid container className='step-1-container'>
       <StepperVertical activeStep={props.activeVerticalStep} />
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+      <Grid item xs={4} style={{ margin:"20px", marginTop: "50px", textAlign: "left" }} className="form-container">
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
-        <Paper className='form-container'>
+        <Paper className='form-container-box'>
           
           { props.activeVerticalStep === 0 && <SearchBar /> }
           
@@ -30,11 +30,12 @@ export default function Step1MainInfo(props) {
             <SearchResults />
           }
           
-          { props.activeVerticalStep === 2 && <AdditionalInformation /> }
-          
           { props.activeVerticalStep === 1 && <AboutCompany /> }
           
+          { props.activeVerticalStep === 2 && <AdditionalInformation /> }
+          
           {showResults && props.activeVerticalStep !== 2 && 
+
             <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleVerticalStepperNext}
@@ -50,11 +51,11 @@ export default function Step1MainInfo(props) {
 
         </Paper>
       </Grid>
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
+      <Grid item xs={4} style={{margin:"20px", marginTop: "50px", textAlign: "left" }} className='job-offer-container'>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
-        <Paper className='job-offer-container'>
+        <Paper className='job-offer-container-box'>
           <JobOffer />
         </Paper>
       </Grid>

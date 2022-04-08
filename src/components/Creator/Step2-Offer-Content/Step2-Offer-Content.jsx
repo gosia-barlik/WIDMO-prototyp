@@ -44,7 +44,7 @@ export default function Step2OfferContent(props) {
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
-        <Paper className='form-container'>
+        <Paper className='form-container-box'>
           {props.activeVerticalStep === 0 && props.showQualificationForm === false ? (
             <>
               <AddResponsibilitiesButtons
@@ -124,7 +124,7 @@ export default function Step2OfferContent(props) {
         <Typography variant='subtitle2' gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
-        <Paper className='job-offer-container'>
+        <Paper className='job-offer-container-box'>
           <JobOffer
             activeStep={props.activeStep}
             searchedPosition={props.searchedPosition}

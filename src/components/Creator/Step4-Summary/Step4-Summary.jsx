@@ -12,7 +12,7 @@ export default function Step4Summary(props) {
   return (
     <Grid container spacing={4} className='step-4-container'>
       <Typography variant='subtitle2' gutterBottom component='div'></Typography>
-      <Paper className='form-container'>
+      <Paper className='form-container-box'>
         <>
           <RichTextEditor
             searchedPosition={props.searchedPosition}

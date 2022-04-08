@@ -2,9 +2,8 @@
 
 .stepper-vertical-container {
   margin-top: 50px;
-  margin-left: 5%;
-  padding-left: 10%;
-  max-width: 250px !important;
+  width: 5% !important;
+ padding-left:10% !important;
 }
 
 .stepper-vertical-container
@@ -72,4 +71,11 @@
 
 .stepper-vertical-container .css-1sn4lm3-MuiTypography-root {
   margin-left: -120px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .stepper-vertical-container {
+  display:none
+  }
 }

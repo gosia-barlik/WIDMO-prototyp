@@ -1,12 +1,5 @@
 /* VERTICAL */
 
-.stepper-vertical-container {
-    margin-top: 80px;
-    margin-left: 5%;
-    padding-left: 10%;
-    max-width: 250px !important;
-  }
-  
   .stepper-vertical-container
     .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
     color: #784af4 !important;
