@@ -16,7 +16,7 @@ import {
   CERTIFICATENAME,
   CERTIFICATESTAGE,
   BENEFITS,
-  SHOWBENEFITSBUTTON
+  SHOWBENEFITSBUTTON,
 } from "../consts";
 
 const initialState = {
@@ -27,7 +27,7 @@ const initialState = {
   qualificationCharacteristic: "",
   qualificationEffects: [],
   copiedQualificationEffects: [],
-  copiedSelectedText:[],
+  copiedSelectedText: [],
   requirements: [],
   showRequirementsButton: true,
   showEducationForm: false,
@@ -36,8 +36,8 @@ const initialState = {
   studiesStage: [],
   certificateName: [],
   certificateStage: [],
-  benefits:[],
-  showBenefitsButton: true
+  benefits: [],
+  showBenefitsButton: true,
 };
 
 export const stepTwoReducer = (state = initialState, action) => {

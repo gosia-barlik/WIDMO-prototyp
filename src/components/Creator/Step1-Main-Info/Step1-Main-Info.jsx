@@ -31,7 +31,7 @@ export default function Step1MainInfo(props) {
           }
           
           { props.activeVerticalStep === 1 && <AboutCompany /> }
-          
+
           { props.activeVerticalStep === 2 && <AdditionalInformation /> }
           
           {showResults && props.activeVerticalStep !== 2 && 
@@ -56,7 +56,8 @@ export default function Step1MainInfo(props) {
           Twoje ogłoszenie
         </Typography>
         <Paper className='job-offer-container-box'>
-          <JobOffer />
+          <JobOffer 
+          activeStep={props.activeStep}/>
         </Paper>
       </Grid>
     </Grid>

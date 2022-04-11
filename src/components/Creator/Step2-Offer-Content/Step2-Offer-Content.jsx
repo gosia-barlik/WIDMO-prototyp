@@ -11,27 +11,34 @@ import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import QualificationInformation from "./form/Qualification-Information.jsx";
 import EducationExperience from "./form/Education-Experience-Form.jsx/Education-Experience.jsx";
 import "./Step2-Offer-Content.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowQualificationForm } from "../../../store/actions/stepTwoActions";
 
 export default function Step2OfferContent(props) {
+  const dispatch = useDispatch();
+  const { showQualificationForm } = useSelector(
+    (state) => state.stepTwoReducer
+  );
+
   const [activeStep, setActiveStep] = useState(0);
 
   const resetShowQualificationForm = () => {
-    props.setShowQualificationForm(false);
+    dispatch(setShowQualificationForm(false));
   };
 
-  const resetShowEducationForm = () => {
-    props.setShowEducationForm(false);
-  };
+  // const resetShowEducationForm = () => {
+  //   props.setShowEducationForm(false);
+  // };
 
   const handleNextAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     resetShowQualificationForm();
-    resetShowEducationForm();
+    // resetShowEducationForm();
   };
   const handleBackAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
     resetShowQualificationForm();
-    resetShowEducationForm();
+    // resetShowEducationForm();
   };
   const handleReset = () => {
     resetShowQualificationForm();
@@ -45,36 +52,26 @@ export default function Step2OfferContent(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-          {props.activeVerticalStep === 0 && props.showQualificationForm === false ? (
+          {props.activeVerticalStep === 0 && showQualificationForm === false && (
             <>
-              <AddResponsibilitiesButtons
-                onSetResponsibilities={props.onSetResponsibilities}
-                onSetQualificationInfo={props.onSetQualificationInfo}
-                showResponsibilitiesButton={props.showResponsibilitiesButton}
-              />
+              <AddResponsibilitiesButtons />
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
                 handleNext={props.handleVerticalStepperNext}
               />
             </>
-          ) : null}
-          {props.activeVerticalStep === 0 && props.showQualificationForm === true ? (
+          )}
+          {props.activeVerticalStep === 0 && showQualificationForm === true && (
             <>
-              <QualificationInformation
-                qualificationName={props.qualificationName}
-                qualificationCharacteristic={props.qualificationCharacteristic}
-                qualificationEffects={props.qualificationEffects}
-                copyQualificationEffect={props.copyQualificationEffect}
-                getSelectedText={props.getSelectedText}
-              />
+              <QualificationInformation />
               <MainActionButtons
                 handleBack={handleReset}
                 handleNext={handleNextAndReset}
               />
             </>
-          ) : null}
+          )}
 
-          {props.activeVerticalStep === 1 && props.showEducationForm === false ? (
+          {/* {props.activeVerticalStep === 1 && props.showEducationForm === false ? (
             <>
               <AddRequirementsButtons
                 onSetRequirements={props.onSetRequirements}
@@ -86,9 +83,9 @@ export default function Step2OfferContent(props) {
                 handleNext={props.handleVerticalStepperNext}
               />
             </>
-          ) : null}
+          ) : null} */}
 
-          {props.showEducationForm ? (
+          {/* {props.showEducationForm ? (
             <>
               <EducationExperience
                 onSetEducationLevel={props.onSetEducationLevel}
@@ -102,9 +99,9 @@ export default function Step2OfferContent(props) {
                 handleNext={handleNextAndReset}
               />
             </>
-          ) : null}
+          ) : null} */}
 
-          {props.activeVerticalStep === 2 ? (
+          {/* {props.activeVerticalStep === 2 ? (
             <>
               <AddBenefitsButtons
               onSetBenefits={props.onSetBenefits}
@@ -115,9 +112,7 @@ export default function Step2OfferContent(props) {
                 handleNext={props.handleMainStepperNextAndReset}
               />
             </>
-          ) : null}
-
-
+          ) : null} */}
         </Paper>
       </Grid>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
@@ -127,24 +122,9 @@ export default function Step2OfferContent(props) {
         <Paper className='job-offer-container-box'>
           <JobOffer
             activeStep={props.activeStep}
-            searchedPosition={props.searchedPosition}
-            salaryTo={props.salaryTo}
-            salaryFrom={props.salaryFrom}
-            salaryTime={props.salaryTime}
-            salaryType={props.salaryType}
-            salaryContract={props.salaryContract}
-            aboutCompany={props.aboutCompany}
-            workModel={props.workModel}
-            contractType ={props.contractType}
-            workMode={props.workMode}
-            recruitmentMode={props.recruitmentMode}
-            addressStreet={props.addressStreet}
-            addressCity={props.addressCity}
-            addressCountry={props.addressCountry}
-
-            responsibilities={props.responsibilities}
-            copiedQualificationEffects={props.copiedQualificationEffects}
-            copiedSelectedText={props.copiedSelectedText}
+            // responsibilities={props.responsibilities}
+            // copiedQualificationEffects={props.copiedQualificationEffects}
+            // copiedSelectedText={props.copiedSelectedText}
             requirements={props.requirements}
             updateState={props.updateState}
             educationLevel={props.educationLevel}

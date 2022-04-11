@@ -12,17 +12,17 @@ export default function Creator() {
   const [activeStep, setActiveStep] = useState(0);
   
   //Step2
-  const [responsibilities, setResponsibilities] = useState([]);
-  const [showResponsibilitiesButton, setShowResponsibilitiesButton] =useState(true);
-  const [showQualificationForm, setShowQualificationForm] = useState(false);
-  const [qualificationName, setQualificationName] = useState("");
-  const [qualificationCharacteristic, setQualificationCharacteristic] =
-    useState("");
-  const [qualificationEffects, setQualificationEffects] = useState([]);
-  const [copiedQualificationEffects, setcopiedQualificationEffects] = useState(
-    []
-  );
-  const [copiedSelectedText, setCopiedSelectedText] = useState([]);
+  // const [responsibilities, setResponsibilities] = useState([]);
+  // const [showResponsibilitiesButton, setShowResponsibilitiesButton] =useState(true);
+  // const [showQualificationForm, setShowQualificationForm] = useState(false);
+  // const [qualificationName, setQualificationName] = useState("");
+  // const [qualificationCharacteristic, setQualificationCharacteristic] =
+  //   useState("");
+  // const [qualificationEffects, setQualificationEffects] = useState([]);
+  // const [copiedQualificationEffects, setcopiedQualificationEffects] = useState(
+  //   []
+  // );
+  // const [copiedSelectedText, setCopiedSelectedText] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [showRequirementsButton, setShowRequirementsButton] = useState(true);
   const [showEducationForm, setShowEducationForm] = useState(false);
@@ -40,60 +40,60 @@ export default function Creator() {
 
 
 
-  //RESPONSIBILITIES
-  const onSetResponsibilities = () => {
-    setResponsibilities([
-      "diagnozowanie usterek mechanicznych",
-      "wykonywanie napraw",
-      "bieżące usuwanie awarii i usterek",
-    ]);
-    setShowResponsibilitiesButton(false);
-  };
+  // //RESPONSIBILITIES
+  // const onSetResponsibilities = () => {
+  //   setResponsibilities([
+  //     "diagnozowanie usterek mechanicznych",
+  //     "wykonywanie napraw",
+  //     "bieżące usuwanie awarii i usterek",
+  //   ]);
+  //   setShowResponsibilitiesButton(false);
+  // };
 
-  //QUALIFICATION INFORMATION
-  const onSetQualificationInfo = () => {
-    setShowQualificationForm(true);
-    setQualificationName("Elektromechanik pojazdów samochodowych");
-    setQualificationCharacteristic(
-      "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych"
-    );
-    setQualificationEffects([
-      {
-        name: "Podstawy motoryzacji",
-        effects: [
-          "Rozróżnia zjawiska związane z elektrycznością",
-          "Charakteryzuje zjawiska związane z elektromagnetyzmem",
-          "Przeprowadza pomiary warsztatowe",
-        ],
-      },
-      {
-        name: "Przeprowadzanie obsługi i konserwacji mechatronicznych systemów pojazdów samochodowych",
-        effects: [
-          "Rozróżnia zjawiska związane z elektrycznością",
-          "Charakteryzuje zjawiska związane z elektromagnetyzmem",
-          "Przeprowadza pomiary warsztatowe",
-        ],
-      },
-    ]);
-  };
-  const resetShowQualificationForm = () => {
-    setShowQualificationForm(false);
-  };
+  // //QUALIFICATION INFORMATION
+  // const onSetQualificationInfo = () => {
+  //   setShowQualificationForm(true);
+  //   setQualificationName("Elektromechanik pojazdów samochodowych");
+  //   setQualificationCharacteristic(
+  //     "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych"
+  //   );
+  //   setQualificationEffects([
+  //     {
+  //       name: "Podstawy motoryzacji",
+  //       effects: [
+  //         "Rozróżnia zjawiska związane z elektrycznością",
+  //         "Charakteryzuje zjawiska związane z elektromagnetyzmem",
+  //         "Przeprowadza pomiary warsztatowe",
+  //       ],
+  //     },
+  //     {
+  //       name: "Przeprowadzanie obsługi i konserwacji mechatronicznych systemów pojazdów samochodowych",
+  //       effects: [
+  //         "Rozróżnia zjawiska związane z elektrycznością",
+  //         "Charakteryzuje zjawiska związane z elektromagnetyzmem",
+  //         "Przeprowadza pomiary warsztatowe",
+  //       ],
+  //     },
+  //   ]);
+  // };
+  // const resetShowQualificationForm = () => {
+  //   setShowQualificationForm(false);
+  // };
 
-  const copyQualificationEffect = (e) => {
-    setcopiedQualificationEffects((oldArray) => [...oldArray, e]);
-  };
+  // const copyQualificationEffect = (e) => {
+  //   setcopiedQualificationEffects((oldArray) => [...oldArray, e]);
+  // };
 
-  const getSelectedText = () => {
-    if (window.getSelection) {
-      setCopiedSelectedText((oldArray) => [
-        ...oldArray,
-        window.getSelection().toString(),
-      ]);
-    } else if (document.selection) {
-      console.log(document.selection.createRange().text);
-    }
-  };
+  // const getSelectedText = () => {
+  //   if (window.getSelection) {
+  //     setCopiedSelectedText((oldArray) => [
+  //       ...oldArray,
+  //       window.getSelection().toString(),
+  //     ]);
+  //   } else if (document.selection) {
+  //     console.log(document.selection.createRange().text);
+  //   }
+  // };
 
   //REQUIREMENTS
   const onSetRequirements = () => {
@@ -139,6 +139,7 @@ export default function Creator() {
   // MAIN STEPPER
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    console.log(activeStep);
     setActiveVerticalStep(0);
   };
   const handleMainStepperBack = () => {
@@ -147,13 +148,13 @@ export default function Creator() {
   };
   const handleMainStepperBackAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    resetShowQualificationForm();
+    // resetShowQualificationForm();
     setUpdateState((prevState) => prevState + 1);
     setActiveVerticalStep(2);
   };
   const handleMainStepperNextAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setShowEducationForm(false);
+    // setShowEducationForm(false);
   };
 
   // VERTICAL STEPPER
@@ -175,73 +176,73 @@ export default function Creator() {
           // onFileUpload={onFileUpload}
           
           updateState={updateState}
-          responsibilities={responsibilities}
-          copiedQualificationEffects={copiedQualificationEffects}
+          // responsibilities={responsibilities}
+          // copiedQualificationEffects={copiedQualificationEffects}
           requirements={requirements}
           handleVerticalStepperNext={handleVerticalStepperNext}
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
         />
       ) : null}
-      {/* {activeStep === 1 ? (
+      {activeStep === 1 ? (
         <Step2OfferContent
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
           handleMainStepperBackAndReset={handleMainStepperBackAndReset}
-          searchedPosition={searchedPosition}
-          salaryType={salaryType}
-          salaryFrom={salaryFrom}
-          salaryTo={salaryTo}
-          salaryTime={salaryTime}
-          salaryContract={salaryContract}
-          aboutCompany={aboutCompany}
-          workModel={workModel}
-          contractType={contractType}
-          workMode={workMode}
-          recruitmentMode={recruitmentMode}
-          addressStreet={addressStreet}
-          addressCity={addressCity}
-          addressCountry={addressCountry}
-          onSetResponsibilities={onSetResponsibilities}
-          responsibilities={responsibilities}
-          showResponsibilitiesButton={showResponsibilitiesButton}
-          onSetQualificationInfo={onSetQualificationInfo}
-          setShowQualificationForm={setShowQualificationForm}
-          showQualificationForm={showQualificationForm}
-          qualificationName={qualificationName}
-          qualificationCharacteristic={qualificationCharacteristic}
-          qualificationEffects={qualificationEffects}
-          copyQualificationEffect={copyQualificationEffect}
-          copiedQualificationEffects={copiedQualificationEffects}
-          getSelectedText={getSelectedText}
-          copiedSelectedText={copiedSelectedText}
-          onSetEducationInfo={onSetEducationInfo}
-          showEducationForm={showEducationForm}
-          setShowEducationForm={setShowEducationForm}
-          onSetRequirements={onSetRequirements}
-          requirements={requirements}
-          showRequirementsButton={showRequirementsButton}
+          // searchedPosition={searchedPosition}
+          // salaryType={salaryType}
+          // salaryFrom={salaryFrom}
+          // salaryTo={salaryTo}
+          // salaryTime={salaryTime}
+          // salaryContract={salaryContract}
+          // aboutCompany={aboutCompany}
+          // workModel={workModel}
+          // contractType={contractType}
+          // workMode={workMode}
+          // recruitmentMode={recruitmentMode}
+          // addressStreet={addressStreet}
+          // addressCity={addressCity}
+          // addressCountry={addressCountry}
+          // onSetResponsibilities={onSetResponsibilities}
+          // responsibilities={responsibilities}
+          // showResponsibilitiesButton={showResponsibilitiesButton}
+          // onSetQualificationInfo={onSetQualificationInfo}
+          // setShowQualificationForm={setShowQualificationForm}
+          // showQualificationForm={showQualificationForm}
+          // qualificationName={qualificationName}
+          // qualificationCharacteristic={qualificationCharacteristic}
+          // qualificationEffects={qualificationEffects}
+          // copyQualificationEffect={copyQualificationEffect}
+          // copiedQualificationEffects={copiedQualificationEffects}
+          // getSelectedText={getSelectedText}
+          // copiedSelectedText={copiedSelectedText}
+          // onSetEducationInfo={onSetEducationInfo}
+          // showEducationForm={showEducationForm}
+          // setShowEducationForm={setShowEducationForm}
+          // onSetRequirements={onSetRequirements}
+          // requirements={requirements}
+          // showRequirementsButton={showRequirementsButton}
           updateState={updateState}
-          educationLevel={educationLevel}
-          onSetEducationLevel={onSetEducationLevel}
-          studiesName={studiesName}
-          onSetStudiesName={onSetStudiesName}
-          studiesStage={studiesStage}
-          onSetStudiesStage={onSetStudiesStage}
-          certificateName={certificateName}
-          onSetCertificateName={onSetCertificateName}
-          certificateStage={certificateStage}
-          onSetCertificateStage={onSetCertificateStage}
-          handleMainStepperNextAndReset={handleMainStepperNextAndReset}
-          onSetBenefits={onSetBenefits}
-          benefits={benefits}
-          showBenefitsButton={showBenefitsButton}
-          handleVerticalStepperNext={handleVerticalStepperNext}
-          handleVerticalStepperBack={handleVerticalStepperBack}
+          // educationLevel={educationLevel}
+          // onSetEducationLevel={onSetEducationLevel}
+          // studiesName={studiesName}
+          // onSetStudiesName={onSetStudiesName}
+          // studiesStage={studiesStage}
+          // onSetStudiesStage={onSetStudiesStage}
+          // certificateName={certificateName}
+          // onSetCertificateName={onSetCertificateName}
+          // certificateStage={certificateStage}
+          // onSetCertificateStage={onSetCertificateStage}
+          // handleMainStepperNextAndReset={handleMainStepperNextAndReset}
+          // onSetBenefits={onSetBenefits}
+          // benefits={benefits}
+          // showBenefitsButton={showBenefitsButton}
+          // handleVerticalStepperNext={handleVerticalStepperNext}
+          // handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
         />
-      ) : null} */}
+      ) : null}
       {/* {activeStep === 2 ? (
         <Step3DataProcessing
           activeStep={activeStep}

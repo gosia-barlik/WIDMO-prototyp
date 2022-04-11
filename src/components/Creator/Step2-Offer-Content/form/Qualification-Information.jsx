@@ -8,13 +8,35 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@material-ui/icons/Add";
 import Stack from "@mui/material/Stack";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCopiedQualificationEffects,
+  setCopiedSelectedText
+} from "../../../../store/actions/stepTwoActions";
 
 export default function QualificationInformation(props) {
+  const { qualificationName, qualificationCharacteristic, qualificationEffects, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
+  const dispatch = useDispatch();
+
+ const copyQualificationEffect = (e) => {
+    dispatch(setCopiedQualificationEffects((oldArray) => [...oldArray, e]));
+  };
+
+  const getSelectedText = () => {
+    if (window.getSelection) {
+      dispatch(setCopiedSelectedText((oldArray) => [
+        ...oldArray,
+        window.getSelection().toString(),
+      ]));
+    } else if (document.selection) {
+      console.log(document.selection.createRange().text);
+    }
+  };
 
   return (
     <>
       <Typography variant='subtitle2' gutterBottom component='div'>
-        Kwalifikacja: {props.qualificationName}
+        Kwalifikacja: {qualificationName}
       </Typography>
       <Typography
         variant='body2'
@@ -31,8 +53,8 @@ export default function QualificationInformation(props) {
           flexDirection: "column",
           alignItems: "left",
         }}
-        onMouseUp = {props.getSelectedText}>
-        {props.qualificationCharacteristic}
+        onMouseUp = {getSelectedText}>
+        {qualificationCharacteristic}
       </Paper>
 
       <Typography
@@ -50,7 +72,7 @@ export default function QualificationInformation(props) {
           flexDirection: "column",
           alignItems: "left",
         }}>
-        {props.qualificationEffects.map((effect) => (
+        {qualificationEffects.map((effect) => (
           <Accordion key={effect.name}>
             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
               <Typography variant='subtitle2' gutterBottom component='div'>
@@ -63,7 +85,7 @@ export default function QualificationInformation(props) {
                   <Typography variant='body2' gutterBottom component='div' style={{paddingTop:'4px'}}>
                     {e}
                   </Typography>
-                  <IconButton component='span' style={{ margin:'2px 0 8px 12px', width: '26px', color:'#784af4', boxShadow:'1px 2px 3px rgb(0 0 0 / 20%)' }} onClick={() => {props.copyQualificationEffect(e)}}>
+                  <IconButton component='span' style={{ margin:'2px 0 8px 12px', width: '26px', color:'#784af4', boxShadow:'1px 2px 3px rgb(0 0 0 / 20%)' }} onClick={() => {copyQualificationEffect(e)}}>
                     <AddIcon />
                   </IconButton>
                 </Stack>
