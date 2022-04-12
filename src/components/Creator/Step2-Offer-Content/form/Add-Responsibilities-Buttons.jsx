@@ -24,44 +24,45 @@ export default function AddResponsibilitiesButtons(props) {
   const { showResponsibilitiesButton } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
+  const responsibilitesFixture = [
+    "diagnozowanie usterek mechanicznych",
+    "wykonywanie napraw",
+    "bieżące usuwanie awarii i usterek",
+  ];
+  const qualificationNameFixture = "Elektromechanik pojazdów samochodowych";
+  const qualitficationCharacteristicFixture = "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych";
+  const qualificationEffectsFixture = [
+    {
+      name: "Podstawy motoryzacji",
+      effects: [
+        "Rozróżnia zjawiska związane z motoryzacją",
+        "Charakteryzuje zjawiska związane z motoryzacją",
+        "Przeprowadza pomiary warsztatowe motoryzacji",
+      ],
+    },
+    {
+      name: "Przeprowadzanie obsługi i konserwacji mechatronicznych systemów pojazdów samochodowych",
+      effects: [
+        "Rozróżnia zjawiska związane z elektrycznością",
+        "Charakteryzuje zjawiska związane z elektromagnetyzmem",
+        "Przeprowadza pomiary warsztatowe",
+      ],
+    },
+  ];
+
   const onSetResponsibilities = (e) => {
-  
     e.preventDefault();
-      dispatch(setResponsibilities([
-        "diagnozowanie usterek mechanicznych",
-        "wykonywanie napraw",
-        "bieżące usuwanie awarii i usterek",
-      ]));
-      dispatch(setShowResponsibilitiesButton(false))
-    ;
+    dispatch(setResponsibilities(responsibilitesFixture));
+    dispatch(setShowResponsibilitiesButton(false));
   };
 
   const onSetQualificationInfo = (e) => {
 
     e.preventDefault();
     dispatch(setShowQualificationForm(true));
-    dispatch(setQualificationName("Elektromechanik pojazdów samochodowych"));
-    dispatch(setQualificationCharacteristic(
-      "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych"
-    ));
-    dispatch(setQualificationEffects([
-      {
-        name: "Podstawy motoryzacji",
-        effects: [
-          "Rozróżnia zjawiska związane z elektrycznością",
-          "Charakteryzuje zjawiska związane z elektromagnetyzmem",
-          "Przeprowadza pomiary warsztatowe",
-        ],
-      },
-      {
-        name: "Przeprowadzanie obsługi i konserwacji mechatronicznych systemów pojazdów samochodowych",
-        effects: [
-          "Rozróżnia zjawiska związane z elektrycznością",
-          "Charakteryzuje zjawiska związane z elektromagnetyzmem",
-          "Przeprowadza pomiary warsztatowe",
-        ],
-      },
-    ]));
+    dispatch(setQualificationName(qualificationNameFixture));
+    dispatch(setQualificationCharacteristic(qualitficationCharacteristicFixture));
+    dispatch(setQualificationEffects(qualificationEffectsFixture));
   };
   const resetShowQualificationForm = (e) => {
     dispatch(setShowQualificationForm(false));
@@ -87,16 +88,16 @@ export default function AddResponsibilitiesButtons(props) {
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-        {showResponsibilitiesButton?
+      {showResponsibilitiesButton ?
         <ColorButton className='styled-button' variant='contained'>
-        <IconButton
-          className='styled-icon-button'
-          component='span'
-          onClick={onSetResponsibilities}>
-          <AddIcon />
-        </IconButton>
-        Dodaj najczęściej poszukiwane umiejętności na rynku pracy
-      </ColorButton> : null }
+          <IconButton
+            className='styled-icon-button'
+            component='span'
+            onClick={onSetResponsibilities}>
+            <AddIcon />
+          </IconButton>
+          Dodaj najczęściej poszukiwane umiejętności na rynku pracy
+        </ColorButton> : null}
       <ColorButton className='styled-button' variant='contained'>
         <IconButton
           className='styled-icon-button'

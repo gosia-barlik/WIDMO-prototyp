@@ -9,9 +9,11 @@ import "./Job-Offer.css";
 import { useSelector } from "react-redux";
 
 export default function JobOffer(props) {
-  const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract,
-    addressCountry, addressCity, addressStreet, workMode, contractType, recruitmentMode, workModel, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements } = useSelector((state) => state.stepTwoReducer);
+  const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, 
+    addressCountry, addressCity, addressStreet, workMode, contractType, 
+    recruitmentMode, workModel, aboutCompany } = useSelector((state) => state.stepOneReducer);
+  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, 
+    educationLevel, studiesName, studiesStage, certificateName, certificateStage, benefits } = useSelector((state) => state.stepTwoReducer);
 
   return (
     <Paper
@@ -355,9 +357,9 @@ export default function JobOffer(props) {
               ))}
             </>
           )}
-          {/* {props.educationLevel.length > 0 ||
-          props.studiesName.length > 0 ||
-          props.studiesStage.length > 0 ? (
+          {(educationLevel.length > 0 ||
+          studiesName.length > 0 ||
+          studiesStage.length > 0) && 
             <>
               <Typography
                 variant='body2'
@@ -367,32 +369,32 @@ export default function JobOffer(props) {
                 Wykształcenie
               </Typography>
               <Typography variant='body2'>
-                {props.educationLevel.map((level) => (
+                {educationLevel.map((level) => (
                   <span key={level}>{level}&nbsp;</span>
                 ))}
-                {props.studiesName ? <span>na kierunku </span> : null}
+                {studiesName && <span>na kierunku </span>}
 
-                {props.studiesName.map((name) => (
+                {studiesName.map((name) => (
                   <span key={name}>{name}&nbsp;</span>
                 ))}
-                {props.studiesStage.map((stage) => (
+                {studiesStage.map((stage) => (
                   <span key={stage}>{stage}&nbsp;</span>
                 ))}
                 <br></br>
-                {props.certificateName ? (
+                {certificateName && (
                   <span> Mile widziana certyfikacja </span>
-                ) : null}
-                {props.certificateName.map((name) => (
+                )}
+                {certificateName.map((name) => (
                   <span key={name}>{name}&nbsp;</span>
                 ))}
-                {props.certificateStage.map((stage) => (
+                {certificateStage.map((stage) => (
                   <span key={stage}>{stage}&nbsp;</span>
                 ))}
               </Typography>
             </>
-          ) : null} */}
+          }
 
-          {/* {props.benefits.length > 0 ? (
+          {benefits.length > 0 &&
             <>
               <Typography
                 variant='subtitle2'
@@ -401,13 +403,13 @@ export default function JobOffer(props) {
                 style={{ marginTop: "6px" }}>
                 Benefity
               </Typography>
-              {props.benefits.map((benefit) => (
+              {benefits.map((benefit) => (
                 <Typography key={benefit} variant='body2' component='div'>
                   {benefit}
                 </Typography>
               ))}
             </>
-          ) : null} */}
+          }
         </>
       )}
 

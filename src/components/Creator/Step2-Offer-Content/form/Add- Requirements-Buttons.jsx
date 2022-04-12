@@ -2,12 +2,12 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setRequirements,
-  setShowRequirementsButton,
   setShowEducationForm
 } from "../../../../store/actions/stepTwoActions";
 
@@ -17,45 +17,47 @@ const ColorButton = styled(Button)(() => ({
 }));
 
 export default function AddRequirementsButtons(props) {
-  const { showRequirementsButton, requirements } = useSelector((state) => state.stepTwoReducer);
+  const { showRequirementsButton, requirements, showEducationForm } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
-//REQUIREMENTS
-const onSetRequirements = (e) => {
+  const requirementFixture = [
+    "wiedza z zakresu mechaniki/elektromechaniki",
+    "wykształcenie zawodowe lub średnie techniczne",
+    "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
+  ];
 
-  e.preventDefault();
-  dispatch(setRequirements([
-        "wiedza z zakresu mechaniki/elektromechaniki",
-        "wykształcenie zawodowe lub średnie techniczne",
-        "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
-      ]));
-      console.log(requirements)
-      // dispatch(setShowRequirementsButton(false));
-}
-
+  const onSetRequirements = () => {
+    let newRequirements;
+    if(requirements.length == 0)
+      newRequirements = requirementFixture
+    else
+      newRequirements = [];
+    dispatch(setRequirements(newRequirements));
+  }
+  const onSetShowEducationForm = () => dispatch(setShowEducationForm(!showEducationForm));
 
   return (
     <Stack
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-        {showRequirementsButton ? <ColorButton className='styled-button' variant='contained'>
+      {showRequirementsButton && <ColorButton className='styled-button' variant='contained'>
         <IconButton className='styled-icon-button'
           component='span'
           onClick={onSetRequirements}>
-          <AddIcon />
+          { requirements.length==0 ? <AddIcon /> : <RemoveIcon /> }
         </IconButton>
         Dodaj najczęstsze wymagania na to stanowisko
-      </ColorButton> : null }
-      
-      {/* <ColorButton className='styled-button' variant='contained'>
+      </ColorButton> }
+
+      <ColorButton className='styled-button' variant='contained'>
         <IconButton className='styled-icon-button'
           component='span'
-          onClick={props.onSetEducationInfo}>
+          onClick={onSetShowEducationForm}>
           <AddIcon />
         </IconButton>
         Dodaj informacje o wykształceniu i doświadczeniu
-      </ColorButton> */}
+      </ColorButton>
     </Stack>
   );
 }

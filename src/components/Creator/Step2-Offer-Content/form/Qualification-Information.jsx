@@ -7,6 +7,7 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,7 +22,15 @@ export default function QualificationInformation(props) {
  const copyQualificationEffect = (e) => {
    const newCopiedQualificationEffects = (e) => [...copiedQualificationEffects, e]
     dispatch(setCopiedQualificationEffects(newCopiedQualificationEffects(e)));
-    console.log(e);
+  };
+
+  const removeQualificationEffect = (effect) => {
+    const filteredCopiedQualificationEffects = copiedQualificationEffects.filter(obj=>obj!=effect);
+    dispatch(setCopiedQualificationEffects(filteredCopiedQualificationEffects));
+   };
+
+  const checkIfQualificationIsChosen = (qualificationString) => {
+    return copiedQualificationEffects.indexOf(qualificationString) >= 0;
   };
 
   const getSelectedText = () => {
@@ -31,8 +40,6 @@ export default function QualificationInformation(props) {
         window.getSelection().toString(),
       ];
       dispatch(setCopiedSelectedText(newCopiedSelectedText()));
-    } else if (document.selection) {
-      console.log(document.selection.createRange().text);
     }
   };
 
@@ -88,8 +95,8 @@ export default function QualificationInformation(props) {
                   <Typography variant='body2' gutterBottom component='div' style={{paddingTop:'4px'}}>
                     {e}
                   </Typography>
-                  <IconButton component='span' style={{ margin:'2px 0 8px 12px', width: '26px', color:'#784af4', boxShadow:'1px 2px 3px rgb(0 0 0 / 20%)' }} onClick={() => {copyQualificationEffect(e)}}>
-                    <AddIcon />
+                  <IconButton component='span' style={{ margin:'2px 0 8px 12px', width: '26px', color:'#784af4', boxShadow:'1px 2px 3px rgb(0 0 0 / 20%)' }}>
+                    {checkIfQualificationIsChosen(e) ? <RemoveIcon onClick={() => {removeQualificationEffect(e)}} /> : <AddIcon onClick={() => {copyQualificationEffect(e)}} />} 
                   </IconButton>
                 </Stack>
               ))}
