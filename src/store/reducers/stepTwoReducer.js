@@ -28,9 +28,11 @@ const initialState = {
   qualificationEffects: [],
   copiedQualificationEffects: [],
   copiedSelectedText: [],
+
   requirements: [],
   showRequirementsButton: true,
   showEducationForm: false,
+  
   educationLevel: [],
   studiesName: [],
   studiesStage: [],
@@ -39,6 +41,8 @@ const initialState = {
   benefits: [],
   showBenefitsButton: true,
 };
+
+
 
 export const stepTwoReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -81,7 +85,7 @@ export const stepTwoReducer = (state = initialState, action) => {
     case COPIEDQUALIFICATIONEFFECTS: {
       return {
         ...state,
-        copieQualificationEffects: action.payload,
+        copiedQualificationEffects: action.payload,
       };
     }
     case COPIEDSELECTEDTEXT: {
@@ -90,6 +94,7 @@ export const stepTwoReducer = (state = initialState, action) => {
         copiedSelectedText: action.payload,
       };
     }
+    
     case REQUIREMENTS: {
       return {
         ...state,

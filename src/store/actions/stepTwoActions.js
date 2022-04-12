@@ -21,7 +21,7 @@ import {
 
 //RESPONSIBILITIES
 export const setResponsibilities = (responsibilities) => {
-    console.log(responsibilities)
+  console.log(responsibilities);
   return { type: RESPONSIBILITIES, payload: responsibilities };
 };
 export const setShowResponsibilitiesButton = () => {
@@ -36,7 +36,10 @@ export const setQualificationName = (qualificationName) => {
   return { type: QUALIFICATIONNAME, payload: qualificationName };
 };
 export const setQualificationCharacteristic = (qualificationCharacteristic) => {
-  return { type: QUALIFICATIONCHARACTERISTIC, payload: qualificationCharacteristic };
+  return {
+    type: QUALIFICATIONCHARACTERISTIC,
+    payload: qualificationCharacteristic,
+  };
 };
 export const setQualificationEffects = (qualificationEffects) => {
   return { type: QUALIFICATIONEFFECTS, payload: qualificationEffects };
@@ -47,10 +50,43 @@ export const setCopiedQualificationEffects = (copiedQualificationEffects) => {
     payload: copiedQualificationEffects,
   };
 };
-export const setCopiedSelectedText = (oldArray) => {
-  return { type: COPIEDSELECTEDTEXT, payload: [...oldArray]
-   };
+export const setCopiedSelectedText = (copiedSelectedText) => {
+  return { type: COPIEDSELECTEDTEXT, payload: copiedSelectedText };
 };
 
+//REQUIREMENTS
+export const setRequirements = (requirements) => {
+  return { type: REQUIREMENTS, payload: requirements };
+};
+export const setShowRequirementsButton = (isButtonShown) => {
+  return { type: SHOWREQUIREMENTSBUTTON, payload: isButtonShown };
+};
+
+
+//EDUCATION
+export const setShowEducationForm = (isFormShown) => {
+  return { type: SHOWEDUCATIONFORM, payload: isFormShown };
+};
+export const setEducationLevel = (educationLevel) => {
+  return { type: EDUCATIONLEVEL, payload: educationLevel };
+};
+export const setStudiesName = (studiesName) => {
+  return { type: STUDIESNAME, payload: studiesName };
+};
+export const setStudiesStage = (studiesStage) => {
+  return { type: STUDIESSTAGE, payload: studiesStage };
+};
+export const setCertificateName = (certificateName) => {
+  return { type: CERTIFICATENAME, payload: certificateName };
+};
+export const setCertificateStage = (certificateStage) => {
+  return { type: CERTIFICATESTAGE, payload: certificateStage };
+};
+export const setBenefits = (benefits) => {
+  return { type: BENEFITS, payload: benefits };
+};
+export const setShowBenefitsButton = (isButtonShown) => {
+  return { type: SHOWBENEFITSBUTTON, payload: isButtonShown };
+};
 
 

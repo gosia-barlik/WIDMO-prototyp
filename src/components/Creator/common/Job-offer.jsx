@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 export default function JobOffer(props) {
   const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract,
     addressCountry, addressCity, addressStreet, workMode, contractType, recruitmentMode, workModel, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilities, copiedQualificationEffects, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
+  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements } = useSelector((state) => state.stepTwoReducer);
 
   return (
     <Paper
@@ -164,7 +164,7 @@ export default function JobOffer(props) {
                     </>
                   )}
 
-                  {/* {props.requirements.length > 0 ? (
+                  {requirements && (
                     <>
                       <Typography
                         variant='subtitle2'
@@ -172,7 +172,7 @@ export default function JobOffer(props) {
                         component='div'>
                         Wymagania
                       </Typography>
-                      {props.requirements.map((requirement) => (
+                      {requirements.map((requirement) => (
                         <Typography
                           key={requirement}
                           variant='body2'
@@ -181,7 +181,7 @@ export default function JobOffer(props) {
                         </Typography>
                       ))}
                     </>
-                  ) : null} */}
+                  )}
                 </AccordionDetails>
               </Accordion>
             </>
@@ -339,7 +339,7 @@ export default function JobOffer(props) {
             </>
           )}
 
-          {/* {props.requirements.length > 0 ? (
+          {requirements.length > 0 && (
             <>
               <Typography
                 variant='subtitle2'
@@ -348,13 +348,13 @@ export default function JobOffer(props) {
                 style={{ marginTop: "6px" }}>
                 Wymagania
               </Typography>
-              {props.requirements.map((requirement) => (
+              {requirements.map((requirement) => (
                 <Typography key={requirement} variant='body2' component='div'>
                   {requirement}
                 </Typography>
               ))}
             </>
-          ) : null} */}
+          )}
           {/* {props.educationLevel.length > 0 ||
           props.studiesName.length > 0 ||
           props.studiesStage.length > 0 ? (

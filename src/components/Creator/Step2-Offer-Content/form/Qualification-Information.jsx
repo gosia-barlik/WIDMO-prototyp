@@ -15,19 +15,22 @@ import {
 } from "../../../../store/actions/stepTwoActions";
 
 export default function QualificationInformation(props) {
-  const { qualificationName, qualificationCharacteristic, qualificationEffects, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
+  const { qualificationName, qualificationCharacteristic, qualificationEffects, copiedQualificationEffects, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
  const copyQualificationEffect = (e) => {
-    dispatch(setCopiedQualificationEffects((oldArray) => [...oldArray, e]));
+   const newCopiedQualificationEffects = (e) => [...copiedQualificationEffects, e]
+    dispatch(setCopiedQualificationEffects(newCopiedQualificationEffects(e)));
+    console.log(e);
   };
 
   const getSelectedText = () => {
     if (window.getSelection) {
-      dispatch(setCopiedSelectedText((oldArray) => [
-        ...oldArray,
+      const newCopiedSelectedText = () => [
+        ...copiedSelectedText,
         window.getSelection().toString(),
-      ]));
+      ];
+      dispatch(setCopiedSelectedText(newCopiedSelectedText()));
     } else if (document.selection) {
       console.log(document.selection.createRange().text);
     }

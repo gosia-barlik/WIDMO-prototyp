@@ -23,9 +23,9 @@ export default function Creator() {
   //   []
   // );
   // const [copiedSelectedText, setCopiedSelectedText] = useState([]);
-  const [requirements, setRequirements] = useState([]);
-  const [showRequirementsButton, setShowRequirementsButton] = useState(true);
-  const [showEducationForm, setShowEducationForm] = useState(false);
+  // const [requirements, setRequirements] = useState([]);
+  // const [showRequirementsButton, setShowRequirementsButton] = useState(true);
+  // const [showEducationForm, setShowEducationForm] = useState(false);
   const [educationLevel, setEducationLevel] = useState([]);
   const [studiesName, setStudiesName] = useState([]);
   const [studiesStage, setStudiesStage] = useState([]);
@@ -96,34 +96,34 @@ export default function Creator() {
   // };
 
   //REQUIREMENTS
-  const onSetRequirements = () => {
-    setRequirements([
-      "wiedza z zakresu mechaniki/elektromechaniki",
-      "wykształcenie zawodowe lub średnie techniczne",
-      "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
-    ]);
-    setShowRequirementsButton(false);
-  };
+  // const onSetRequirements = () => {
+  //   setRequirements([
+  //     "wiedza z zakresu mechaniki/elektromechaniki",
+  //     "wykształcenie zawodowe lub średnie techniczne",
+  //     "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
+  //   ]);
+  //   setShowRequirementsButton(false);
+  // };
 
   //EDUCATION AND EXPERIENCE
-  const onSetEducationInfo = () => {
-    setShowEducationForm(!showEducationForm);
-  };
-  const onSetEducationLevel = (educationLevel) => {
-    setEducationLevel(educationLevel);
-  };
-  const onSetStudiesName = (studiesName) => {
-    setStudiesName(studiesName);
-  };
-  const onSetStudiesStage = (studiesStage) => {
-    setStudiesStage(studiesStage);
-  };
-  const onSetCertificateName = (certificateName) => {
-    setCertificateName(certificateName);
-  };
-  const onSetCertificateStage = (certificateStage) => {
-    setCertificateStage(certificateStage);
-  };
+  // const onSetEducationInfo = () => {
+  //   setShowEducationForm(!showEducationForm);
+  // };
+  // const onSetEducationLevel = (educationLevel) => {
+  //   setEducationLevel(educationLevel);
+  // };
+  // const onSetStudiesName = (studiesName) => {
+  //   setStudiesName(studiesName);
+  // };
+  // const onSetStudiesStage = (studiesStage) => {
+  //   setStudiesStage(studiesStage);
+  // };
+  // const onSetCertificateName = (certificateName) => {
+  //   setCertificateName(certificateName);
+  // };
+  // const onSetCertificateStage = (certificateStage) => {
+  //   setCertificateStage(certificateStage);
+  // };
 
   //BENEFITS
   const onSetBenefits = () => {
@@ -168,7 +168,7 @@ export default function Creator() {
   return (
     <>
       <StepperHorizontal activeStep={activeStep} />
-      {activeStep === 0 ? (
+      {activeStep === 0 && (
         <Step1MainInfo
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
@@ -178,18 +178,20 @@ export default function Creator() {
           updateState={updateState}
           // responsibilities={responsibilities}
           // copiedQualificationEffects={copiedQualificationEffects}
-          requirements={requirements}
+          // requirements={requirements}
           handleVerticalStepperNext={handleVerticalStepperNext}
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
         />
-      ) : null}
-      {activeStep === 1 ? (
+      ) }
+      {activeStep === 1 && (
         <Step2OfferContent
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
           handleMainStepperBackAndReset={handleMainStepperBackAndReset}
+          handleVerticalStepperNext={handleVerticalStepperNext}
+          handleVerticalStepperBack={handleVerticalStepperBack}
           // searchedPosition={searchedPosition}
           // salaryType={salaryType}
           // salaryFrom={salaryFrom}
@@ -242,7 +244,7 @@ export default function Creator() {
           // handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
         />
-      ) : null}
+      ) }
       {/* {activeStep === 2 ? (
         <Step3DataProcessing
           activeStep={activeStep}

@@ -16,7 +16,7 @@ import { setShowQualificationForm } from "../../../store/actions/stepTwoActions"
 
 export default function Step2OfferContent(props) {
   const dispatch = useDispatch();
-  const { showQualificationForm } = useSelector(
+  const { showQualificationForm, showEducationForm } = useSelector(
     (state) => state.stepTwoReducer
   );
 
@@ -65,25 +65,25 @@ export default function Step2OfferContent(props) {
             <>
               <QualificationInformation />
               <MainActionButtons
-                handleBack={handleReset}
-                handleNext={handleNextAndReset}
+                 handleBack={props.handleVerticalStepperBack}
+                 handleNext={props.handleVerticalStepperNext}
               />
             </>
           )}
 
-          {/* {props.activeVerticalStep === 1 && props.showEducationForm === false ? (
+          {props.activeVerticalStep === 1 && showEducationForm === false && (
             <>
               <AddRequirementsButtons
-                onSetRequirements={props.onSetRequirements}
-                onSetEducationInfo={props.onSetEducationInfo}
-                showRequirementsButton={props.showRequirementsButton}
+                // onSetRequirements={props.onSetRequirements}
+                // onSetEducationInfo={props.onSetEducationInfo}
+                // showRequirementsButton={props.showRequirementsButton}
               />
               <MainActionButtons
                 handleBack={props.handleVerticalStepperBack}
                 handleNext={props.handleVerticalStepperNext}
               />
             </>
-          ) : null} */}
+          )}
 
           {/* {props.showEducationForm ? (
             <>
@@ -125,7 +125,7 @@ export default function Step2OfferContent(props) {
             // responsibilities={props.responsibilities}
             // copiedQualificationEffects={props.copiedQualificationEffects}
             // copiedSelectedText={props.copiedSelectedText}
-            requirements={props.requirements}
+            // requirements={props.requirements}
             updateState={props.updateState}
             educationLevel={props.educationLevel}
             studiesName={props.studiesName}
