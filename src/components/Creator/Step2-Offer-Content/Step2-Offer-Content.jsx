@@ -16,19 +16,12 @@ import { setShowEducationForm, setShowQualificationForm } from "../../../store/a
 
 export default function Step2OfferContent(props) {
   const dispatch = useDispatch();
-  const { showQualificationForm, showEducationForm } = useSelector(
-    (state) => state.stepTwoReducer
-  );
-
+  const { showQualificationForm, showEducationForm } = useSelector((state) => state.stepTwoReducer);
   const [activeStep, setActiveStep] = useState(0);
 
-  const resetShowQualificationForm = () => {
-    dispatch(setShowQualificationForm(false));
-  };
+  const resetShowQualificationForm = () => dispatch(setShowQualificationForm(false));
 
-  const resetShowEducationForm = () => {
-    dispatch(setShowEducationForm(false));
-  };
+  const resetShowEducationForm = () => dispatch(setShowEducationForm(false));
 
   const handleNextAndReset = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -40,9 +33,8 @@ export default function Step2OfferContent(props) {
     resetShowQualificationForm();
     resetShowEducationForm();
   };
-  const handleReset = () => {
-    resetShowQualificationForm();
-  };
+  
+  const handleReset = () => resetShowQualificationForm();
 
   return (
     <Grid container spacing={4} className='step-2-container'>

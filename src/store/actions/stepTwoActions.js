@@ -17,11 +17,11 @@ import {
   CERTIFICATESTAGE,
   BENEFITS,
   SHOWBENEFITSBUTTON,
+  RODO
 } from "../consts";
 
 //RESPONSIBILITIES
 export const setResponsibilities = (responsibilities) => {
-  console.log(responsibilities);
   return { type: RESPONSIBILITIES, payload: responsibilities };
 };
 export const setShowResponsibilitiesButton = () => {
@@ -88,5 +88,11 @@ export const setBenefits = (benefits) => {
 export const setShowBenefitsButton = (isButtonShown) => {
   return { type: SHOWBENEFITSBUTTON, payload: isButtonShown };
 };
+
+//RODO
+export const setRODO = (rodoText) => {
+  return { type: RODO, payload: rodoText };
+};
+
 
 

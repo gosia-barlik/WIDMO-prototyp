@@ -8,28 +8,32 @@ import {
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
+import { useSelector } from "react-redux";
 
 export default function RichTextEditor(props) {
+  const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, aboutCompany } = useSelector((state) => state.stepOneReducer);
+  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, educationLevel, studiesName, studiesStage, rodo } = useSelector((state) => state.stepTwoReducer);
+
   const contentToEdit = `<div className="job-offer-summary" contentEditable="true"> 
-<h6> Stanowisko: <span> ${props.searchedPosition} </span> 
+<h6> Stanowisko: <span> ${searchedPosition} </span> 
 </h6> 
-<h6> Wynagrodzenie: <span>${props.salaryFrom} - ${
-    props.salaryTo
-  } ${props.salaryType} / ${props.salaryTime} ${
-    props.salaryContract
+<h6> Wynagrodzenie: <span>${salaryFrom} - ${
+    salaryTo
+  } ${salaryType} / ${salaryTime} ${
+    salaryContract
   } </span>
 </h6>
 <h6> Zakres obowiązków: <span> 
   <ul>
-    ${props.responsibilities.map(
+    ${responsibilities.map(
       (responsibility) =>
         `<li key=${responsibility}>${responsibility}</li>`
     )}
- ${props.copiedQualificationEffects.map(
+ ${copiedQualificationEffects.map(
    (effect) =>
      `<li key=${effect}>${effect}</li>`
  )}
- ${props.copiedSelectedText.map(
+ ${copiedSelectedText.map(
    (text) =>
      `<li key=${text}>${text}</li>`
  )}
@@ -37,32 +41,27 @@ export default function RichTextEditor(props) {
 </h6>
 <h6> Wymagania: <span>
   <ul>
-     <li>wykształcenie ${props.educationLevel} ${props.studiesName} ${props.studiesStage}
+     <li>wykształcenie ${educationLevel} ${studiesName} ${studiesStage}
     </li>
-    ${props.requirements.map((requirement) =>
+    ${requirements.map((requirement) =>
     `<li key=${requirement}>${requirement}</li>`)}</ul></span>
 </h6>
-<h6> O firmie: <span> ${props.aboutCompany} </span>
+<h6> O firmie: <span> ${aboutCompany} </span>
 </h6>
 <h6> Przetwarzanie 
- danych: <p className="summary-p"> ${props.RODO} </p>
+ danych: <p className="summary-p"> ${rodo} </p>
 </h6>
 </div>`;
+
   const contentBlock = htmlToDraft(contentToEdit);
-  const contentState = ContentState.createFromBlockArray(
-    contentBlock.contentBlocks
-  );
+  const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
 
   // const [editorState, setEditorState] = useState(EditorState.createEmpty())
-  const [editorState, setEditorState] = useState(
-    EditorState.createWithContent(contentState)
-  );
+  const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
-    const editorCurrentValue = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    console.log(editorCurrentValue);
-    console.log(props.responsibilities)
+    draftToHtml(convertToRaw(editorState.getCurrentContent()));
   };
 
   return (

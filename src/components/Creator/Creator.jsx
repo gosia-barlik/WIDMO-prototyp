@@ -11,135 +11,12 @@ export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   
-  //Step2
-  // const [responsibilities, setResponsibilities] = useState([]);
-  // const [showResponsibilitiesButton, setShowResponsibilitiesButton] =useState(true);
-  // const [showQualificationForm, setShowQualificationForm] = useState(false);
-  // const [qualificationName, setQualificationName] = useState("");
-  // const [qualificationCharacteristic, setQualificationCharacteristic] =
-  //   useState("");
-  // const [qualificationEffects, setQualificationEffects] = useState([]);
-  // const [copiedQualificationEffects, setcopiedQualificationEffects] = useState(
-  //   []
-  // );
-  // const [copiedSelectedText, setCopiedSelectedText] = useState([]);
-  // const [requirements, setRequirements] = useState([]);
-  // const [showRequirementsButton, setShowRequirementsButton] = useState(true);
-  // const [showEducationForm, setShowEducationForm] = useState(false);
-  const [educationLevel, setEducationLevel] = useState([]);
-  const [studiesName, setStudiesName] = useState([]);
-  const [studiesStage, setStudiesStage] = useState([]);
-  const [certificateName, setCertificateName] = useState([]);
-  const [certificateStage, setCertificateStage] = useState([]);
-  const [benefits, setBenefits] = useState([]);
-  const [showBenefitsButton, setShowBenefitsButton] = useState(true);
-  
-  const [RODO, setRODO] = useState("");
   //VERTICAL STEPPER
   const [activeVerticalStep, setActiveVerticalStep] = useState(0);
-
-
-
-  // //RESPONSIBILITIES
-  // const onSetResponsibilities = () => {
-  //   setResponsibilities([
-  //     "diagnozowanie usterek mechanicznych",
-  //     "wykonywanie napraw",
-  //     "bieżące usuwanie awarii i usterek",
-  //   ]);
-  //   setShowResponsibilitiesButton(false);
-  // };
-
-  // //QUALIFICATION INFORMATION
-  // const onSetQualificationInfo = () => {
-  //   setShowQualificationForm(true);
-  //   setQualificationName("Elektromechanik pojazdów samochodowych");
-  //   setQualificationCharacteristic(
-  //     "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych"
-  //   );
-  //   setQualificationEffects([
-  //     {
-  //       name: "Podstawy motoryzacji",
-  //       effects: [
-  //         "Rozróżnia zjawiska związane z elektrycznością",
-  //         "Charakteryzuje zjawiska związane z elektromagnetyzmem",
-  //         "Przeprowadza pomiary warsztatowe",
-  //       ],
-  //     },
-  //     {
-  //       name: "Przeprowadzanie obsługi i konserwacji mechatronicznych systemów pojazdów samochodowych",
-  //       effects: [
-  //         "Rozróżnia zjawiska związane z elektrycznością",
-  //         "Charakteryzuje zjawiska związane z elektromagnetyzmem",
-  //         "Przeprowadza pomiary warsztatowe",
-  //       ],
-  //     },
-  //   ]);
-  // };
-  // const resetShowQualificationForm = () => {
-  //   setShowQualificationForm(false);
-  // };
-
-  // const copyQualificationEffect = (e) => {
-  //   setcopiedQualificationEffects((oldArray) => [...oldArray, e]);
-  // };
-
-  // const getSelectedText = () => {
-  //   if (window.getSelection) {
-  //     setCopiedSelectedText((oldArray) => [
-  //       ...oldArray,
-  //       window.getSelection().toString(),
-  //     ]);
-  //   } else if (document.selection) {
-  //     console.log(document.selection.createRange().text);
-  //   }
-  // };
-
-  //REQUIREMENTS
-  // const onSetRequirements = () => {
-  //   setRequirements([
-  //     "wiedza z zakresu mechaniki/elektromechaniki",
-  //     "wykształcenie zawodowe lub średnie techniczne",
-  //     "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
-  //   ]);
-  //   setShowRequirementsButton(false);
-  // };
-
-  //EDUCATION AND EXPERIENCE
-  // const onSetEducationInfo = () => {
-  //   setShowEducationForm(!showEducationForm);
-  // };
-  // const onSetEducationLevel = (educationLevel) => {
-  //   setEducationLevel(educationLevel);
-  // };
-  // const onSetStudiesName = (studiesName) => {
-  //   setStudiesName(studiesName);
-  // };
-  // const onSetStudiesStage = (studiesStage) => {
-  //   setStudiesStage(studiesStage);
-  // };
-  // const onSetCertificateName = (certificateName) => {
-  //   setCertificateName(certificateName);
-  // };
-  // const onSetCertificateStage = (certificateStage) => {
-  //   setCertificateStage(certificateStage);
-  // };
-
-  //BENEFITS
-  const onSetBenefits = () => {
-    setBenefits(["bla", "bla"]);
-    setShowBenefitsButton(false);
-  };
-
-  //DATA PROCESSING
-  const onSetRODO = (value) => {
-    setRODO(value);
-  };
 
   // MAIN STEPPER
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    console.log(activeStep);
     setActiveVerticalStep(0);
   };
   const handleMainStepperBack = () => {
@@ -174,11 +51,7 @@ export default function Creator() {
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
           // onFileUpload={onFileUpload}
-          
           updateState={updateState}
-          // responsibilities={responsibilities}
-          // copiedQualificationEffects={copiedQualificationEffects}
-          // requirements={requirements}
           handleVerticalStepperNext={handleVerticalStepperNext}
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
@@ -197,72 +70,21 @@ export default function Creator() {
           activeVerticalStep={activeVerticalStep}
         />
       ) }
-      {/* {activeStep === 2 ? (
+      {activeStep === 2 &&
         <Step3DataProcessing
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
-          searchedPosition={searchedPosition}
-          salaryTo={salaryTo}
-          salaryFrom={salaryFrom}
-          salaryTime={salaryTime}
-          salaryType={salaryType}
-          salaryContract={salaryContract}
-          aboutCompany={aboutCompany}
-          workModel={workModel}
-          contractType={contractType}
-          workMode={workMode}
-          recruitmentMode={recruitmentMode}
-          addressStreet={addressStreet}
-          addressCity={addressCity}
-          addressCountry={addressCountry}
-          responsibilities={responsibilities}
-          copiedQualificationEffects={copiedQualificationEffects}
-          copiedSelectedText={copiedSelectedText}
-          requirements={requirements}
-          updateState={updateState}
-          educationLevel={educationLevel}
-          studiesName={studiesName}
-          certificateName={certificateName}
-          studiesStage={studiesStage}
-          certificateStage={certificateStage}
-          benefits={benefits}
-          onSetRODO={onSetRODO}
-          RODO={RODO}
         />
-      ) : null}
+      }
 
-      {activeStep === 3 ? (
-        <Step4Summary
-          activeStep={activeStep}
-          handleMainStepperBack={handleMainStepperBack}
-          handleMainStepperNext={handleMainStepperNext}
-          searchedPosition={searchedPosition}
-          salaryTo={salaryTo}
-          salaryFrom={salaryFrom}
-          salaryTime={salaryTime}
-          salaryType={salaryType}
-          salaryContract={salaryContract}
-          aboutCompany={aboutCompany}
-          workModel={workModel}
-          contractType={contractType}
-          workMode={workMode}
-          recruitmentMode={recruitmentMode}
-          addressStreet={addressStreet}
-          addressCity={addressCity}
-          addressCountry={addressCountry}
-          responsibilities={responsibilities}
-          copiedQualificationEffects={copiedQualificationEffects}
-          copiedSelectedText={copiedSelectedText}
-          requirements={requirements}
-          updateState={updateState}
-          educationLevel={educationLevel}
-          studiesName={studiesName}
-          studiesStage={studiesStage}
-          onSetRODO={onSetRODO}
-          RODO={RODO}
-        />
-      ) : null} */}
+       {activeStep === 3 &&
+         <Step4Summary
+           activeStep={activeStep}
+           handleMainStepperBack={handleMainStepperBack}
+           handleMainStepperNext={handleMainStepperNext}
+         />
+        }
     </>
   );
 }
