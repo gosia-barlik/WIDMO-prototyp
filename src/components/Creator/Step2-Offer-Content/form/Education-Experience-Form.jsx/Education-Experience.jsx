@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import CustomizedInput from "./Customized-Input";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCertificateName, 
   setCertificateStage, 
   setEducationLevel, 
@@ -10,21 +10,22 @@ import { setCertificateName,
 
 export default function EducationExperience(props) {
   const dispatch = useDispatch();
+  const { educationLevel, studiesName, studiesStage, certificateName, certificateStage } = useSelector((state) => state.stepTwoReducer);
 
   const educationLabel = "Poziom wykształcenia";
-  const educationLevel = ["podstawowe", "średnie", "zawodowe", "wyższe"];
+  const educationLevelFixture = ["podstawowe", "średnie", "zawodowe", "wyższe"];
 
   const studiesLabel = "Nazwa kierunku";
-  const studiesName = ["Technik pojazdów samochodowych", "Technik mechanik"];
+  const studiesNameFixture = ["Technik pojazdów samochodowych", "Technik mechanik"];
 
   const stageLabel = "Etap";
-  const stage = ["ukończone", "w trakcie", "rozpoczęte"];
+  const stageFixture = ["ukończone", "w trakcie", "rozpoczęte"];
 
   const certificateLabel = "Cetyfikat";
-  const certificateName = ["Mechanik Pojazdów Samochodowych", "Technik mechanik"];
+  const certificateNameFixture = ["Mechanik Pojazdów Samochodowych", "Technik mechanik"];
 
   const stageCertificateLabel = "Etap";
-  const stageCertificate = ["ukończone", "w trakcie", "rozpoczęte"]
+  const stageCertificateFixture = ["ukończone", "w trakcie", "rozpoczęte"]
 
   const onSetEducationLevel = (e) => { dispatch(setEducationLevel(e))};
   const onSetStudiesName = (e) => dispatch(setStudiesName(e));
@@ -40,17 +41,20 @@ export default function EducationExperience(props) {
 
       <CustomizedInput
         label={educationLabel}
-        options={educationLevel}
+        options={educationLevelFixture}
+        value={educationLevel}
         onSetEducationLevel={onSetEducationLevel}
       />
       <CustomizedInput
         label={studiesLabel}
-        options={studiesName}
+        options={studiesNameFixture}
+        value={studiesName}
         onSetStudiesName={onSetStudiesName}
       />
       <CustomizedInput
         label={stageLabel}
-        options={stage}
+        options={stageFixture}
+        value={studiesStage}
         onSetStudiesStage={onSetStudiesStage}
       />
 
@@ -60,12 +64,14 @@ export default function EducationExperience(props) {
 
       <CustomizedInput
         label={certificateLabel}
-        options={certificateName}
+        options={certificateNameFixture}
+        value={certificateName}
         onSetCertificateName={onSetCertificateName}
       />
       <CustomizedInput
         label={stageCertificateLabel}
-        options={stageCertificate}
+        options={stageCertificateFixture}
+        value={certificateStage}
         onSetCertificateStage={onSetCertificateStage}
       />
     </>

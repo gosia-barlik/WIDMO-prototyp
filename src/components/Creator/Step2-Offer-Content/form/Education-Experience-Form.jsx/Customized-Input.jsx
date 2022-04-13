@@ -174,7 +174,7 @@ export default function CustomizedInput(props) {
     setAnchorEl,
   } = useAutocomplete({
     id: 'customized-hook-demo',
-    defaultValue: [props.options[1]],
+    defaultValue: props.value,
     multiple: true,
     options: props.options,
     getOptionLabel: (option) => option,
@@ -218,7 +218,7 @@ export default function CustomizedInput(props) {
           <input {...getInputProps()}/>
         </InputWrapper>
       </div>
-      {groupedOptions.length > 0 ? (
+      {groupedOptions.length > 0 && 
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
@@ -227,7 +227,7 @@ export default function CustomizedInput(props) {
             </li>
           ))}
         </Listbox>
-      ) : null}
+      }
     </Root>
   );
 }

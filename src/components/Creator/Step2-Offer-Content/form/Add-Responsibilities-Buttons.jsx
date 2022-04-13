@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +22,7 @@ const ColorButton = styled(Button)(() => ({
 }));
 
 export default function AddResponsibilitiesButtons(props) {
-  const { showResponsibilitiesButton } = useSelector((state) => state.stepTwoReducer);
+  const { showResponsibilitiesButton, responsibilities } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
   const responsibilitesFixture = [
@@ -51,8 +52,14 @@ export default function AddResponsibilitiesButtons(props) {
   ];
 
   const onSetResponsibilities = (e) => {
-    e.preventDefault();
-    dispatch(setResponsibilities(responsibilitesFixture));
+    let newResponsibilites;
+    
+    if(responsibilities.length > 0)
+      newResponsibilites = []
+    else
+      newResponsibilites = responsibilitesFixture;
+
+    dispatch(setResponsibilities(newResponsibilites));
     dispatch(setShowResponsibilitiesButton(false));
   };
 
@@ -68,36 +75,20 @@ export default function AddResponsibilitiesButtons(props) {
     dispatch(setShowQualificationForm(false));
   };
 
-  // const copyQualificationEffect = (e) => {
-  //   setcopiedQualificationEffects((oldArray) => [...oldArray, e]);
-  // };
-
-  // const getSelectedText = () => {
-  //   if (window.getSelection) {
-  //     setCopiedSelectedText((oldArray) => [
-  //       ...oldArray,
-  //       window.getSelection().toString(),
-  //     ]);
-  //   } else if (document.selection) {
-  //     console.log(document.selection.createRange().text);
-  //   }
-  // };
-
   return (
     <Stack
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-      {showResponsibilitiesButton ?
         <ColorButton className='styled-button' variant='contained'>
           <IconButton
             className='styled-icon-button'
             component='span'
             onClick={onSetResponsibilities}>
-            <AddIcon />
+            {responsibilities.length == 0 ? <AddIcon /> : <RemoveIcon/>}
           </IconButton>
           Dodaj najczęściej poszukiwane umiejętności na rynku pracy
-        </ColorButton> : null}
+        </ColorButton>
       <ColorButton className='styled-button' variant='contained'>
         <IconButton
           className='styled-icon-button'

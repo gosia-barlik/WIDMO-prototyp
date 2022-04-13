@@ -18,7 +18,7 @@ import {
   BENEFITS,
   SHOWBENEFITSBUTTON,
   RODO
-} from "../consts";
+} from "../../consts";
 
 const initialState = {
   responsibilities: [],

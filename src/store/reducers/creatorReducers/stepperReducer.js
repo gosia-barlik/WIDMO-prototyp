@@ -3,7 +3,7 @@ import {
   HORIZONTAL_STEP_BACK,
   VERTICAL_STEP_FORWARD,
   VERTICAL_STEP_BACK,
-} from "../consts";
+} from "../../consts";
 
 const initialState = {
   horizontalStepper: 0,

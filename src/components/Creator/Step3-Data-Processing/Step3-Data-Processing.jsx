@@ -9,7 +9,7 @@ import "./Step3-Data-Processing.css";
 import { useSelector } from "react-redux";
 
 export default function Step3DataProcessing(props) {
-const { rodo } = useSelector((state) => state.stepTwoReducer);
+const { rodo } = useSelector((state) => state.stepThreeReducer);
 
   return (
     <Grid container spacing={4} className='step-3-container'>
