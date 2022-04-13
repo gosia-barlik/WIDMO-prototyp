@@ -1,6 +1,19 @@
 .rankomat {
-  left: 30%;
-  margin-left: 19% !important;
+justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.rankomat .CV-list-container,
+.rankomat .filters-container {
+  max-width: 40%;
+  margin-top: 50px;
+  text-align: left;
+}
+
+.rankomat .filters-container {
+  max-width: 24%;
+  margin-top: 50px;
+  text-align: left;
 }
 
 .MuiListItemText-root span {
@@ -17,21 +30,21 @@
   flex-direction: row;
   align-items: baseline;
   font-size: 0.875rem !important;
-  height:74px;
+  height: 74px;
 }
 
-.checkbox-container .MuiFormControlLabel-label{
+.checkbox-container .MuiFormControlLabel-label {
   font-size: 0.875rem !important;
 }
 
-.checkbox-container .MuiFormControl-root.css-e363es-MuiFormControl-root{
+.checkbox-container .MuiFormControl-root.css-e363es-MuiFormControl-root {
   /* width: 100px; */
-  top:-10px
+  top: -10px;
 }
 
-.checkbox-container .MuiFormControlLabel-root{
+.checkbox-container .MuiFormControlLabel-root {
   width: 220px;
-  padding:20px 20px 20px 60px
+  padding: 20px 20px 20px 60px;
 }
 
 #menu- ul {
@@ -87,7 +100,7 @@
 }
 
 .checkbox-container .MuiIconButton-root {
-  width:10px !important
+  width: 10px !important;
 }
 .checkbox-container .MuiOutlinedInput-input {
   font-size: 0.875rem !important;
@@ -201,7 +214,7 @@
 .cv-details-label-Professional {
   background-color: #ffffff !important;
   padding: 4px 5px 4px 5px;
-  max-width:100px;
+  max-width: 100px;
   border-radius: 5px;
   max-height: 36px;
 }
@@ -213,4 +226,37 @@
   color: rgb(0, 0, 0);
 } */
 
+@media only screen and (max-width: 1880px) {
+  .checkbox-container {
+    margin: 0px;
+  }
+  .checkbox-container .MuiFormControlLabel-root {
+    width: 160px;
 
+  }
+  .rankomat .CV-list-container,
+  .rankomat .filters-container {
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+
+}
+
+@media only screen and (max-width: 1024px) {
+  .rankomat {
+    flex-direction: column !important;
+  }
+  .rankomat .CV-list-container .form-container-box{
+    max-width: 95%;
+  }
+  .rankomat .CV-list-container {
+    max-width: 90%;
+  }
+  .rankomat .filters-container {
+    max-width: 90%;
+    margin-top: 10px;
+
+  }
+}

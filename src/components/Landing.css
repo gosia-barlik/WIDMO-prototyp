@@ -1,6 +1,6 @@
 
 body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: rgb(250, 248, 248);
 }
@@ -10,21 +10,16 @@ body {
   justify-content: center;
   flex-direction: column;
   box-sizing: content-box;
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  /* background-color: rgba(238, 238, 238, 1); */
-  padding: 20%;
 }
 
 .landing .section-cards {
+  margin-top:40px;
+  width:100%;
   display: flex;
   align-items: center;
   justify-content:center;
-  position: absolute;
-  top: 400px;
+  flex-direction: row;
+
 }
 
 .landing .card-container {
@@ -35,19 +30,12 @@ body {
   width: 326px;
   height: 388px;
   background-color: white;
-  display: block;
-  position: relative;
 }
 
 .landing .card-container .card1 {
   display: block;
   position: absolute;
   box-sizing: content-box;
-  -ms-transform-origin: center;
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  overflow-x: unset;
-  overflow-y: unset;
   width: 326px;
   height: 388px;
   align-self: center !important;
@@ -71,8 +59,6 @@ body {
   font-family: Montserrat, Arial;
   text-decoration: none;
   box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
   white-space: pre;
   width: 256px;
   height: 150px;
@@ -126,8 +112,6 @@ body {
   font-style: normal;
   font-family: Montserrat, Arial;
   text-decoration: none;
-  overflow-x: unset;
-  overflow-y: unset;
   white-space: pre;
   width: 264px;
   height: 60px;
@@ -219,8 +203,6 @@ a:link,a:visited,a:hover,a:active { text-decoration: none }
   -ms-transform-origin: center;
   -webkit-transform-origin: center;
   transform-origin: center;
-  overflow-x: unset;
-  overflow-y: unset;
   background-color: transparent;
   width: 36.82px;
   height: 33.99px;
@@ -235,8 +217,6 @@ a:link,a:visited,a:hover,a:active { text-decoration: none }
   -ms-transform-origin: center;
   -webkit-transform-origin: center;
   transform-origin: center;
-  overflow-x: unset;
-  overflow-y: unset;
   background-color: transparent;
   width: 36.82px;
   height: 33.99px;
@@ -276,16 +256,12 @@ a:link,a:visited,a:hover,a:active { text-decoration: none }
 }
 
 .landing .text-landing {
-  position: absolute;
   box-sizing: content-box;
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
   -ms-transform-origin: center;
   -webkit-transform-origin: center;
   transform-origin: center;
-  opacity: 1;
-  cursor: default;
+  width:100%;
+  margin-top: 80px;
   text-align: left;
   line-height: 30px;
   letter-spacing: 0px;
@@ -293,17 +269,10 @@ a:link,a:visited,a:hover,a:active { text-decoration: none }
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
   font-size: 16px;
   font-weight: 400;
-  font-style: normal;
   font-family: Montserrat, Arial;
-  text-decoration: none;
-  box-shadow: none;
-  overflow-x: unset;
-  overflow-y: unset;
-  white-space: pre;
   max-width: 80%;
   height: 177px;
   left: 15%;
-  top: 170px;
 }
 
 .landing .text-landing .text-landing-0 {

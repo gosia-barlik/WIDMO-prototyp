@@ -22,7 +22,7 @@ export default function Step1JobOffer(props) {
       <Grid
         item
         xs={4}
-        style={{ marginTop: "50px", textAlign: "left", marginLeft: "15%" }}>
+        className='rankomat-step-1-container-box'>
         <Typography variant='body2' gutterBottom component='div'>
           Wprowadź ogłoszenie o pracę, do którego chciałbyś dopasować życiorysy
           kandydatów
@@ -61,7 +61,7 @@ export default function Step1JobOffer(props) {
           handleNext={props.handleStepperNext}
         />
       </Grid>
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}></Grid>
+     
     </Grid>
   );
 }
