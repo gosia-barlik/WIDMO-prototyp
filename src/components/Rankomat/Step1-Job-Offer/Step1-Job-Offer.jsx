@@ -6,12 +6,17 @@ import Typography from "@mui/material/Typography";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import MainActionButtons from "../common/MainActionButtons";
 import "./Step1-Job-Offer.css";
+import { setJobOffer } from "../../../store/actions/rankomatActions/rankomatStepOneActions";
+import { useDispatch } from "react-redux";
 
 const Input = styled("input")({
   display: "none",
 });
 
 export default function Step1JobOffer(props) {
+  const dispatch = useDispatch();
+  const onSetJobOffer = (newJobOffer) => dispatch(setJobOffer(newJobOffer));
+
   return (
     <Grid container spacing={4} className='rankomat-step-1-container'>
       <Grid
@@ -45,7 +50,7 @@ export default function Step1JobOffer(props) {
           2. Wpisz albo wklej tekst w pole tekstowe znajdujące się poniżej
         </Typography>
         <TextareaAutosize
-          onChange={(e) => props.onSetJobOffer(e.target.value)}
+          onChange={(e) => onSetJobOffer(e.target.value)}
           aria-label='minimum height'
           minRows={3}
           placeholder='Tu wklej tekst ogłoszenia o pracę ...'

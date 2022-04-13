@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import Button from "@mui/material/Button";
 import "react-multi-carousel/lib/styles.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setResumes } from "../../../store/actions/rankomatActions/rankomatStepTwoActions";
 
 const thumbsContainer = {
   display: "flex",
@@ -56,6 +58,10 @@ const img = {
 // };
 
 export default function Step2Dropzone(props) {
+  const dispatch = useDispatch();
+  const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
+  const onSetResumes = (newResumes) => dispatch(setResumes(newResumes));
+  
   // const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     noClick: true,
@@ -64,7 +70,7 @@ export default function Step2Dropzone(props) {
     onDrop: (acceptedFiles) => {
       let i = 0;
       acceptedFiles.forEach((file)=>(file.id= i++));
-      props.onSetResumes(
+      onSetResumes(
         acceptedFiles.map((file) =>
           Object.assign(file, {
             preview: URL.createObjectURL(file),
@@ -74,7 +80,7 @@ export default function Step2Dropzone(props) {
     },
   });
 
-  const thumbs = props.resumes.map((resume) => (
+  const thumbs = resumes.map((resume) => (
     <div style={thumb} key={resume.name}>
       <div style={thumbInner}>
         <img src={resume.preview} style={img} alt={resume.name}/>
@@ -84,8 +90,8 @@ export default function Step2Dropzone(props) {
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks
-    props.resumes.forEach((resume) => URL.revokeObjectURL(resume.preview));
-  }, [props.resumes]);
+    resumes.forEach((resume) => URL.revokeObjectURL(resume.preview));
+  }, [resumes]);
 
   return (
     <section className='container'>

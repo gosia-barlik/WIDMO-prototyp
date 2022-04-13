@@ -17,7 +17,7 @@ import {
   CERTIFICATESTAGE,
   BENEFITS,
   SHOWBENEFITSBUTTON,
-} from "../consts";
+} from "../creatorConsts";
 
 //RESPONSIBILITIES
 export const setResponsibilities = (responsibilities) => {

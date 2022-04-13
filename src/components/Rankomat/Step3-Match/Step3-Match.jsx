@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import CvPreview from "./Step3-Cv-Preview/Step3-Cv-Preview";
 import CvDetails from "./Step3-Cv-Preview/Step3-Cv-Details";
 import "./Step3-Match.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setKeyword, setResumes } from "../../../store/actions/rankomatActions/rankomatStepTwoActions";
 
 export default function Step3Match(props) {
   const [text, setText] = useState("");
@@ -27,7 +29,12 @@ export default function Step3Match(props) {
     "Professional skill": true,
     "Soft skill": true,
   });
+
   // const [skills, setSkills] = useState([]);
+  const dispatch = useDispatch();
+
+  const { resumes } = useSelector((state) => state.stepTwoReducer);
+  const onSetKeyWord = (newKeyWord) => dispatch(setKeyword(newKeyWord));
 
   // ADD SPLICE TO STRING PROTOTYPE
   useEffect(() => {
@@ -146,7 +153,7 @@ export default function Step3Match(props) {
               Lista życiorysów
             </Typography>
             <Paper className='form-container-box'>
-              <CvList resumes={props.resumes} handleOnClick={handleOnClick} />
+              <CvList handleOnClick={handleOnClick} />
             </Paper>
             <MainActionButtons
               handleBack={props.handleStepperBack}
@@ -181,7 +188,7 @@ export default function Step3Match(props) {
                 // onSetExperienceLevel={props.onSetExperienceLevel}
                 // onSetPosition={props.onSetPosition}
                 // onSetCompanyName={props.onSetCompanyName}
-                onSetKeyWord={props.onSetKeyWord}
+                onSetKeyWord={onSetKeyWord}
               />
             </Paper>
           </Grid>

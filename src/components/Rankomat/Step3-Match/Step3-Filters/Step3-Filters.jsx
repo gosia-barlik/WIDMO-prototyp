@@ -114,8 +114,6 @@ export default function Step3Filters(props) {
       return o;
     });
     setCheckboxes(newCheckboxes);
-
-    console.log(checkboxes);
   };
 
   const handleCheckboxToggle = (checkbox) => () => {
@@ -126,7 +124,6 @@ export default function Step3Filters(props) {
     });
 
     setCheckboxes(newCheckboxes);
-    console.log(checkboxes);
   };
 
   const getDisabled = (val) => {
