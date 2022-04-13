@@ -1,6 +1,6 @@
 import {
   RODO
-} from "../../consts";
+} from "../../creatorConsts";
 
 const initialState = {
   rodo: ""

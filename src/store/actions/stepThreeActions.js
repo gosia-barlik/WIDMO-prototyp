@@ -1,4 +1,4 @@
-import { RODO } from "../consts";
+import { RODO } from "../creatorConsts";
 
 //RODO
 export const setRODO = (rodoText) => {
