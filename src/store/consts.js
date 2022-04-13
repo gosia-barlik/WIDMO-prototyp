@@ -43,3 +43,6 @@ export const CERTIFICATESTAGE = "CERTIFICATESTAGE";
 export const BENEFITS = "BENEFITS";
 export const SHOWBENEFITSBUTTON = "SHOWBENEFITSBUTTON";
 
+//STEP
+export const RODO = "RODO";
+

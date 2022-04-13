@@ -13,7 +13,7 @@ export default function JobOffer(props) {
     addressCountry, addressCity, addressStreet, workMode, contractType, 
     recruitmentMode, workModel, aboutCompany } = useSelector((state) => state.stepOneReducer);
   const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, 
-    educationLevel, studiesName, studiesStage, certificateName, certificateStage, benefits } = useSelector((state) => state.stepTwoReducer);
+    educationLevel, studiesName, studiesStage, certificateName, certificateStage, benefits, rodo } = useSelector((state) => state.stepTwoReducer);
 
   return (
     <Paper
@@ -430,12 +430,12 @@ export default function JobOffer(props) {
                 Stanowisko
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {props.searchedPosition}
+                {searchedPosition}
               </Typography>
-              {props.salaryType ||
-              props.salaryFrom ||
-              props.salaryTo ||
-              props.salaryTime ? (
+              {salaryType ||
+              salaryFrom ||
+              salaryTo ||
+              salaryTime ? (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -445,19 +445,19 @@ export default function JobOffer(props) {
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + props.salaryFrom} {"do " + props.salaryTo}{" "}
-                    {"/" + props.salaryTime} {props.salaryType}{" "}
-                    {props.salaryContract}
+                    {"od " + salaryFrom} {"do " + salaryTo}{" "}
+                    {"/" + salaryTime} {salaryType}{" "}
+                    {salaryContract}
                   </Typography>
                 </>
               ) : null}
-              {props.aboutCompany ? (
+              {aboutCompany ? (
                 <>
                   <Typography variant='subtitle2' gutterBottom component='div'>
                     O firmie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {props.aboutCompany}
+                    {aboutCompany}
                   </Typography>
                 </>
               ) : null}
@@ -475,12 +475,12 @@ export default function JobOffer(props) {
             </AccordionSummary>
 
             <AccordionDetails style={{ flexDirection: "column" }}>
-              {props.responsibilities ? (
+              {responsibilities ? (
                 <>
                   <Typography variant='subtitle2' gutterBottom component='div'>
                     Zakres obowiązków
                   </Typography>
-                  {props.responsibilities.map((responsibility) => (
+                  {responsibilities.map((responsibility) => (
                     <Typography
                       key={responsibility}
                       variant='body2'
@@ -491,9 +491,9 @@ export default function JobOffer(props) {
                 </>
               ) : null}
 
-              {props.copiedQualificationEffects ? (
+              {copiedQualificationEffects ? (
                 <>
-                  {props.copiedQualificationEffects.map((effect) => (
+                  {copiedQualificationEffects.map((effect) => (
                     <Typography key={effect} variant='body2' component='div'>
                       {effect}
                     </Typography>
@@ -501,9 +501,9 @@ export default function JobOffer(props) {
                 </>
               ) : null}
 
-              {props.copiedSelectedText ? (
+              {copiedSelectedText ? (
                 <>
-                  {props.copiedSelectedText.map((text) => (
+                  {copiedSelectedText.map((text) => (
                     <Typography key={text} variant='body2' component='div'>
                       {text}
                     </Typography>
@@ -511,7 +511,7 @@ export default function JobOffer(props) {
                 </>
               ) : null}
 
-              {props.requirements.length > 0 ? (
+              {requirements.length > 0 ? (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -520,7 +520,7 @@ export default function JobOffer(props) {
                     style={{ marginTop: "6px" }}>
                     Wymagania
                   </Typography>
-                  {props.requirements.map((requirement) => (
+                  {requirements.map((requirement) => (
                     <Typography
                       key={requirement}
                       variant='body2'
@@ -531,9 +531,9 @@ export default function JobOffer(props) {
                 </>
               ) : null}
 
-              {props.educationLevel.length > 0 ||
-              props.studiesName.length > 0 ||
-              props.studiesStage.length > 0 ? (
+              {educationLevel.length > 0 ||
+              studiesName.length > 0 ||
+              studiesStage.length > 0 ? (
                 <>
                   <Typography
                     variant='body2'
@@ -543,32 +543,32 @@ export default function JobOffer(props) {
                     Wykształcenie
                   </Typography>
                   <Typography variant='body2'>
-                    {props.educationLevel.map((level) => (
+                    {educationLevel.map((level) => (
                       <span key={level}>{level}&nbsp;</span>
                     ))}
-                    {props.studiesName ? <span>na kierunku </span> : null}
+                    {studiesName ? <span>na kierunku </span> : null}
 
-                    {props.studiesName.map((name) => (
+                    {studiesName.map((name) => (
                       <span key={name}>{name}&nbsp;</span>
                     ))}
-                    {props.studiesStage.map((stage) => (
+                    {studiesStage.map((stage) => (
                       <span key={stage}>{stage}&nbsp;</span>
                     ))}
                     <br></br>
-                    {props.certificateName ? (
+                    {certificateName ? (
                       <span> Mile widziana certyfikacja </span>
                     ) : null}
-                    {props.certificateName.map((name) => (
+                    {certificateName.map((name) => (
                       <span key={name}>{name}&nbsp;</span>
                     ))}
-                    {props.certificateStage.map((stage) => (
+                    {certificateStage.map((stage) => (
                       <span key={stage}>{stage}&nbsp;</span>
                     ))}
                   </Typography>
                 </>
               ) : null}
 
-              {props.benefits.length > 0 ? (
+              {benefits.length > 0 ? (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -577,7 +577,7 @@ export default function JobOffer(props) {
                     style={{ marginTop: "6px" }}>
                     Benefity
                   </Typography>
-                  {props.benefits.map((benefit) => (
+                  {benefits.map((benefit) => (
                     <Typography key={benefit} variant='body2' component='div'>
                       {benefit}
                     </Typography>
@@ -594,13 +594,13 @@ export default function JobOffer(props) {
             style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
             Przetwarzanie danych
           </Typography>
-          {props.RODO ? (
+          {rodo && 
             <>
               <Typography variant='caption' gutterBottom component='div'>
-                {props.RODO}
+                {rodo}
               </Typography>
             </>
-          ) : null}
+          }
         </>
       ) : null}
     </Paper>

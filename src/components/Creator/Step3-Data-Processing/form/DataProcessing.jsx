@@ -3,12 +3,14 @@ import Typography from "@mui/material/Typography";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import { useDispatch } from "react-redux";
+import { setRODO } from "../../../../store/actions/stepThreeActions";
 
 export default function DataProcessing(props) {
+  const dispatch = useDispatch();
 
-const addRODO = () => {
-props.onSetRODO(document.querySelector("#RODO").value)
-}
+  const addRODO = () => dispatch(setRODO(document.querySelector("#RODO").value));
+
   return (
     <>
       <Typography variant='subtitle2' gutterBottom component='div'>

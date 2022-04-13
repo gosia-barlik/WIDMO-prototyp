@@ -14,23 +14,7 @@ export default function Step4Summary(props) {
       <Typography variant='subtitle2' gutterBottom component='div'></Typography>
       <Paper className='form-container-box'>
         <>
-          <RichTextEditor
-            searchedPosition={props.searchedPosition}
-            salaryTo={props.salaryTo}
-            salaryFrom={props.salaryFrom}
-            salaryTime={props.salaryTime}
-            salaryType={props.salaryType}
-            salaryContract={props.salaryContract}
-            aboutCompany={props.aboutCompany}
-            responsibilities={props.responsibilities}
-            copiedQualificationEffects={props.copiedQualificationEffects}
-            copiedSelectedText={props.copiedSelectedText}
-            requirements={props.requirements}
-            educationLevel={props.educationLevel}
-            studiesName={props.studiesName}
-            studiesStage={props.studiesStage}
-            RODO={props.RODO}
-          />
+          <RichTextEditor/>
           <Stack
             spacing={2}
             direction='row'
@@ -39,9 +23,7 @@ export default function Step4Summary(props) {
               Pobierz(Word)
             </Button>
           </Stack>
-          <MainActionButtons
-                handleBack= {props.handleMainStepperBack}
-              />
+          <MainActionButtons handleBack={props.handleMainStepperBack} handleNext={props.handleMainStepperNext} />
         </>
       </Paper>
     </Grid>

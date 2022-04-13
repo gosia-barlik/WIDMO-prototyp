@@ -6,8 +6,11 @@ import JobOffer from "../common/Job-offer.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import DataProcessing from "./form/DataProcessing.jsx";
 import "./Step3-Data-Processing.css";
+import { useSelector } from "react-redux";
 
 export default function Step3DataProcessing(props) {
+const { rodo } = useSelector((state) => state.stepThreeReducer);
+
   return (
     <Grid container spacing={4} className='step-3-container'>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
@@ -16,7 +19,7 @@ export default function Step3DataProcessing(props) {
         </Typography>
         <Paper className='form-container-box'>
           <>
-            <DataProcessing onSetRODO={props.onSetRODO} />
+            <DataProcessing />
             <MainActionButtons
               handleBack={props.handleMainStepperBack}
               handleNext={props.handleMainStepperNext}
@@ -32,25 +35,7 @@ export default function Step3DataProcessing(props) {
         <Paper className='job-offer-container-box'>
           <JobOffer
             activeStep={props.activeStep}
-            searchedPosition={props.searchedPosition}
-            salaryTo={props.salaryTo}
-            salaryFrom={props.salaryFrom}
-            salaryTime={props.salaryTime}
-            salaryType={props.salaryType}
-            salaryContract={props.salaryContract}
-            aboutCompany={props.aboutCompany}
-            responsibilities={props.responsibilities}
-            copiedQualificationEffects={props.copiedQualificationEffects}
-            copiedSelectedText={props.copiedSelectedText}
-            requirements={props.requirements}
-            updateState={props.updateState}
-            educationLevel={props.educationLevel}
-            studiesName={props.studiesName}
-            studiesStage={props.studiesStage}
-            certificateName={props.certificateName}
-            certificateStage={props.certificateStage}
-            benefits={props.benefits}
-            RODO={props.RODO}
+            RODO={rodo}
           />
         </Paper>
       </Grid>

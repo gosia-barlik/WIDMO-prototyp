@@ -17,7 +17,8 @@ const ColorButton = styled(Button)(() => ({
 }));
 
 export default function AddRequirementsButtons(props) {
-  const { showRequirementsButton, requirements, showEducationForm } = useSelector((state) => state.stepTwoReducer);
+  const { showRequirementsButton, requirements, showEducationForm, 
+    educationLevel, studiesName, studiesStage, certificateName, certificateStage } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
   const requirementFixture = [
@@ -35,6 +36,7 @@ export default function AddRequirementsButtons(props) {
     dispatch(setRequirements(newRequirements));
   }
   const onSetShowEducationForm = () => dispatch(setShowEducationForm(!showEducationForm));
+  const hasAnyEducationInfo = () => (educationLevel.length>0 || studiesName.length>0 || studiesStage.length>0 || certificateName.length>0 || certificateStage.length>0);
 
   return (
     <Stack
@@ -54,7 +56,7 @@ export default function AddRequirementsButtons(props) {
         <IconButton className='styled-icon-button'
           component='span'
           onClick={onSetShowEducationForm}>
-          <AddIcon />
+          {hasAnyEducationInfo() ? <RemoveIcon /> : <AddIcon />}
         </IconButton>
         Dodaj informacje o wykształceniu i doświadczeniu
       </ColorButton>

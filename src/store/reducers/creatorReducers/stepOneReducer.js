@@ -16,7 +16,7 @@ import {
   RECRUITMENTMODE,
   ABOUTCOMPANY,
   LOGO
-} from "../consts";
+} from "../../consts";
 
 const initialState = {
   searchedPosition: "",
