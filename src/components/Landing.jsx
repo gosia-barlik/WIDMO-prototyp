@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
+import Grid from "@mui/material/Grid";
 import { NavLink } from "react-router-dom";
 
 class Landing extends React.Component {
@@ -14,7 +15,7 @@ class Landing extends React.Component {
 
   render() {
     return (
-      <div className='landing'>
+      <Grid className='landing'container spacing={4}>
         <div className='text-landing'>
           <span className='text-landing-0'>AIRA</span>
           <span className='text-landing-4'>
@@ -32,13 +33,13 @@ class Landing extends React.Component {
             <br />
           </span>
         </div>
-        <Stack spacing={10} direction='row' className='section-cards' sx={{
+        <Stack spacing={4} direction='row' className='section-cards' sx={{
         display: 'flex',
         flexWrap: 'wrap',
         '& > :not(style)': {
           m: 1,
           width: 128,
-          height: 128,
+          height: 228,
         },
       }}>
           <Card
@@ -189,7 +190,7 @@ class Landing extends React.Component {
             </CardActions>
           </Card>
         </Stack>
-      </div>
+      </Grid>
     );
   }
 }

@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <div className={classes.root}>
       <AppBar position='static' className='navbar' elevation={1}>
-        <Toolbar>
+        <Toolbar className='appbar-toolbar'>
           <IconButton
             className={classes.menuButton}
             color='black'
@@ -57,8 +57,8 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
 
-          <NavLink to='/'>
-            <Typography variant='h6' className={classes.title}>
+          <NavLink to='/' component="div" style={{ width:"100%" }}>
+            <Typography variant='h6' className={classes.title} >
               AIRA
             </Typography>
           </NavLink>

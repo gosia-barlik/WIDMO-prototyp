@@ -141,7 +141,7 @@ export default function Step3Match(props) {
     <>
       <Grid container spacing={4} className='rankomat' style={{width: "auto"}}>
         {response.length === 0 && (
-          <Grid item xs={5} style={{ marginTop: "50px", textAlign: "left" }}>
+          <Grid item xs={5}  className='CV-list-container'>
             <Typography variant='subtitle2' gutterBottom component='div'>
               Lista życiorysów
             </Typography>
@@ -171,7 +171,7 @@ export default function Step3Match(props) {
         )}
 
         {response.length === 0 && (
-          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }} className='filters-container'>
+          <Grid item xs={4} className='filters-container'>
             <Typography variant='subtitle2' gutterBottom component='div'>
               Filtry
             </Typography>
