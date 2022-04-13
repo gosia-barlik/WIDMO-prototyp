@@ -1,6 +1,6 @@
 .rankomat-step-1-container{
     margin-top: 200px;
-    margin-left: 10%;
+    justify-content: center;
 }
 
 .rankomat-step-1-container textarea, .rankomat-step-1-container textarea:focus {
@@ -16,9 +16,14 @@
 }
 
 .rankomat-step-1-container-box{
+    justify-content: left !important;
     margin-top: 50px !important;
     text-align: left !important;
-    margin-left: 15% !important;
+    
+  
+}
+.rankomat-step-1-container-box div{ 
+    line-height: 2.4rem;
 }
 
 @media only screen and (max-width: 900px) {

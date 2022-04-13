@@ -18,7 +18,7 @@ export default function Step1JobOffer(props) {
         item
         xs={4}
         className='rankomat-step-1-container-box'>
-        <Typography variant='body2' gutterBottom component='div'>
+        <Typography variant='body2' gutterBottom component='div' style={{lineHeight:"1.5rem"}}>
           Wprowadź ogłoszenie o pracę, do którego chciałbyś dopasować życiorysy
           kandydatów
         </Typography>

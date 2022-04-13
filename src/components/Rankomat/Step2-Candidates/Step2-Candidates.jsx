@@ -11,7 +11,7 @@ export default function Step2Candidates(props) {
       <Grid
         item
         xs={4}
-        style={{ marginTop: "50px", textAlign: "left", marginLeft: "15%" }}>
+        style={{ marginTop: "50px", textAlign: "left"}}>
         <Typography variant='body2' gutterBottom component='div'>
           Wprowadź życiorysy kandydatów, które chciałbyś dopasować do ogłoszenia
           o pracę
