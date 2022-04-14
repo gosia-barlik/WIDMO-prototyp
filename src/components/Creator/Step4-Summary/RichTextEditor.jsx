@@ -12,7 +12,8 @@ import { useSelector } from "react-redux";
 
 export default function RichTextEditor(props) {
   const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, educationLevel, studiesName, studiesStage, rodo } = useSelector((state) => state.stepTwoReducer);
+  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, educationLevel, studiesName, studiesStage, benefits } = useSelector((state) => state.stepTwoReducer);
+  const { rodo, applicationWay, applicationExpectation, applicationDate, contactInformation} = useSelector((state) => state.stepThreeReducer);
 
   const contentToEdit = `<div className="job-offer-summary" contentEditable="true"> 
 <h6> Stanowisko: <span> ${searchedPosition} </span> 
@@ -46,12 +47,22 @@ export default function RichTextEditor(props) {
     ${requirements.map((requirement) =>
     `<li key=${requirement}>${requirement}</li>`)}</ul></span>
 </h6>
+<h6> Benefity: <span>
+  <ul>
+    ${benefits.map((benefit) =>
+    `<li key=${benefit}>${benefit}</li>`)}</ul></span>
+</h6>
 <h6> O firmie: <span> ${aboutCompany} </span>
 </h6>
 <h6> Przetwarzanie 
  danych: <p className="summary-p"> ${rodo} </p>
 </h6>
+<p>Sposób przesyłania zgłoszeń: <span>${applicationWay} </span></p>
+<p>Oczekiwania dotyczące formy zgłoszeń: <span>${applicationExpectation} </span></p>
+<p>Termin przesyłania zgłoszeń: <span>${applicationDate} </span></p>
+<p>Dane kontaktowe: <span>${contactInformation} </span></p>
 </div>`;
+
 
   const contentBlock = htmlToDraft(contentToEdit);
   const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);

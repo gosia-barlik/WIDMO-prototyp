@@ -4,7 +4,8 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import JobOffer from "../common/Job-offer.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
-import DataProcessing from "./form/DataProcessing.jsx";
+import DataProcessing from "./form/Data-Processing.jsx";
+import OrganizationalData from "./form/Organizational-Data.jsx";
 import "./Step3-Data-Processing.css";
 import { useSelector } from "react-redux";
 
@@ -20,6 +21,7 @@ const { rodo } = useSelector((state) => state.stepThreeReducer);
         <Paper className='form-container-box'>
           <>
             <DataProcessing />
+            <OrganizationalData/>
             <MainActionButtons
               handleBack={props.handleMainStepperBack}
               handleNext={props.handleMainStepperNext}

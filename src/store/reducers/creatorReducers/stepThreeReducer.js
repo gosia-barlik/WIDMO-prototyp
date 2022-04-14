@@ -1,9 +1,17 @@
 import {
-  RODO
+  RODO,
+  APPLICATIONWAY,
+  APPLICATIONEXPECTATION,
+  APPLICATIONDATE,
+  CONTACTINFORMATION,
 } from "../../creatorConsts";
 
 const initialState = {
-  rodo: ""
+  rodo: "",
+  applicationWay: "",
+  applicationExpectation: "",
+  applicationDate: "",
+  contactInformation: ""
 };
 
 export const stepThreeReducer = (state = initialState, action) => {
@@ -11,7 +19,31 @@ export const stepThreeReducer = (state = initialState, action) => {
     case RODO: {
       return {
         ...state,
-        rodo: action.payload
+        rodo: action.payload,
+      };
+    }
+    case APPLICATIONWAY: {
+      return {
+        ...state,
+        applicationWay: action.payload,
+      };
+    }
+    case APPLICATIONEXPECTATION: {
+      return {
+        ...state,
+        applicationExpectation: action.payload,
+      };
+    }
+    case APPLICATIONDATE: {
+      return {
+        ...state,
+        applicationDate: action.payload,
+      };
+    }
+    case CONTACTINFORMATION: {
+      return {
+        ...state,
+        contactInformation: action.payload,
       };
     }
     default:

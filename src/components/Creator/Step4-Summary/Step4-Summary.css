@@ -923,3 +923,6 @@
   padding-left: "10%";
   font-weight: "400";
 }
+.public-DraftStyleDefault-block p {
+  display: inline-block
+}

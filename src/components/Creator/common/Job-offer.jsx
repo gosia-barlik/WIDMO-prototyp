@@ -9,11 +9,41 @@ import "./Job-Offer.css";
 import { useSelector } from "react-redux";
 
 export default function JobOffer(props) {
-  const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, 
-    addressCountry, addressCity, addressStreet, workMode, contractType, 
-    recruitmentMode, workModel, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, 
-    educationLevel, studiesName, studiesStage, certificateName, certificateStage, benefits, rodo } = useSelector((state) => state.stepTwoReducer);
+  const {
+    searchedPosition,
+    salaryTo,
+    salaryFrom,
+    salaryTime,
+    salaryType,
+    salaryContract,
+    addressCountry,
+    addressCity,
+    addressStreet,
+    workMode,
+    contractType,
+    recruitmentMode,
+    workModel,
+    aboutCompany,
+  } = useSelector((state) => state.stepOneReducer);
+  const {
+    responsibilities,
+    copiedQualificationEffects,
+    copiedSelectedText,
+    requirements,
+    educationLevel,
+    studiesName,
+    studiesStage,
+    certificateName,
+    certificateStage,
+    benefits,
+  } = useSelector((state) => state.stepTwoReducer);
+  const {
+    rodo,
+    applicationWay,
+    applicationExpectation,
+    applicationDate,
+    contactInformation,
+  } = useSelector((state) => state.stepThreeReducer);
 
   return (
     <Paper
@@ -24,7 +54,6 @@ export default function JobOffer(props) {
         alignItems: "left",
       }}>
       {props.activeStep === 0 && (
-
         <>
           <Typography
             variant='subtitle2'
@@ -40,7 +69,7 @@ export default function JobOffer(props) {
             {searchedPosition}
           </Typography>
 
-          {aboutCompany && 
+          {aboutCompany && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 O firmie
@@ -49,25 +78,21 @@ export default function JobOffer(props) {
                 {aboutCompany}
               </Typography>
             </>
-          }
+          )}
 
-          {(salaryType ||
-          salaryFrom ||
-          salaryTo ||
-          salaryTime) && 
+          {(salaryType || salaryFrom || salaryTo || salaryTime) && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Wynagrodzenie
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {"od " + salaryFrom} {"do " + salaryTo}{" "}
-                {"/" + salaryTime} {salaryType}{" "}
-                {salaryContract}
+                {"od " + salaryFrom} {"do " + salaryTo} {"/" + salaryTime}{" "}
+                {salaryType} {salaryContract}
               </Typography>
             </>
-          }
+          )}
 
-          {workModel && 
+          {workModel && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Tryb pracy
@@ -76,9 +101,9 @@ export default function JobOffer(props) {
                 {workModel}
               </Typography>
             </>
-          }
+          )}
 
-          {contractType &&
+          {contractType && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Rodzaj umowy
@@ -87,9 +112,9 @@ export default function JobOffer(props) {
                 {contractType}
               </Typography>
             </>
-          }
+          )}
 
-          {workMode &&
+          {workMode && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Wymiar zatrudnienia
@@ -98,9 +123,9 @@ export default function JobOffer(props) {
                 {workMode}
               </Typography>
             </>
-          }
+          )}
 
-          {recruitmentMode &&
+          {recruitmentMode && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Tryb rekrutacji
@@ -109,8 +134,8 @@ export default function JobOffer(props) {
                 {recruitmentMode}
               </Typography>
             </>
-          }
-          {(addressStreet || addressCity || addressCountry) &&
+          )}
+          {(addressStreet || addressCity || addressCountry) && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Miejsce pracy
@@ -120,7 +145,7 @@ export default function JobOffer(props) {
                 {addressCountry}
               </Typography>
             </>
-          }
+          )}
 
           {props.updateState > 0 && (
             <>
@@ -220,10 +245,7 @@ export default function JobOffer(props) {
                   </Typography>
                 </>
               )}
-              {(salaryType ||
-              salaryFrom ||
-              salaryTo ||
-              salaryTime) && (
+              {(salaryType || salaryFrom || salaryTo || salaryTime) && (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -233,9 +255,8 @@ export default function JobOffer(props) {
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + salaryFrom} {"do " + salaryTo}{" "}
-                    {"/" + salaryTime} {salaryType}{" "}
-                    {salaryContract}
+                    {"od " + salaryFrom} {"do " + salaryTo} {"/" + salaryTime}{" "}
+                    {salaryType} {salaryContract}
                   </Typography>
                 </>
               )}
@@ -283,9 +304,7 @@ export default function JobOffer(props) {
                 </>
               )}
 
-              {(addressStreet ||
-              addressCity ||
-              addressCountry) && (
+              {(addressStreet || addressCity || addressCountry) && (
                 <>
                   <Typography variant='subtitle2' gutterBottom component='div'>
                     Miejsce pracy
@@ -296,7 +315,6 @@ export default function JobOffer(props) {
                   </Typography>
                 </>
               )}
-              
             </AccordionDetails>
           </Accordion>
           <Typography
@@ -358,8 +376,8 @@ export default function JobOffer(props) {
             </>
           )}
           {(educationLevel.length > 0 ||
-          studiesName.length > 0 ||
-          studiesStage.length > 0) && 
+            studiesName.length > 0 ||
+            studiesStage.length > 0) && (
             <>
               <Typography
                 variant='body2'
@@ -381,9 +399,7 @@ export default function JobOffer(props) {
                   <span key={stage}>{stage}&nbsp;</span>
                 ))}
                 <br></br>
-                {certificateName && (
-                  <span> Mile widziana certyfikacja </span>
-                )}
+                {certificateName && <span> Mile widziana certyfikacja </span>}
                 {certificateName.map((name) => (
                   <span key={name}>{name}&nbsp;</span>
                 ))}
@@ -392,9 +408,9 @@ export default function JobOffer(props) {
                 ))}
               </Typography>
             </>
-          }
+          )}
 
-          {benefits.length > 0 &&
+          {benefits.length > 0 && (
             <>
               <Typography
                 variant='subtitle2'
@@ -409,11 +425,11 @@ export default function JobOffer(props) {
                 </Typography>
               ))}
             </>
-          }
+          )}
         </>
       )}
 
-      {props.activeStep === 2 ? (
+      {props.activeStep === 2 && (
         <>
           <Accordion className='styled-accordion'>
             <AccordionSummary
@@ -432,10 +448,7 @@ export default function JobOffer(props) {
               <Typography variant='body2' gutterBottom component='div'>
                 {searchedPosition}
               </Typography>
-              {salaryType ||
-              salaryFrom ||
-              salaryTo ||
-              salaryTime ? (
+              {(salaryType || salaryFrom || salaryTo || salaryTime) && (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -445,13 +458,12 @@ export default function JobOffer(props) {
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + salaryFrom} {"do " + salaryTo}{" "}
-                    {"/" + salaryTime} {salaryType}{" "}
-                    {salaryContract}
+                    {"od " + salaryFrom} {"do " + salaryTo} {"/" + salaryTime}{" "}
+                    {salaryType} {salaryContract}
                   </Typography>
                 </>
-              ) : null}
-              {aboutCompany ? (
+              )}
+              {aboutCompany && (
                 <>
                   <Typography variant='subtitle2' gutterBottom component='div'>
                     O firmie
@@ -460,7 +472,7 @@ export default function JobOffer(props) {
                     {aboutCompany}
                   </Typography>
                 </>
-              ) : null}
+              )}
             </AccordionDetails>
           </Accordion>
 
@@ -475,7 +487,7 @@ export default function JobOffer(props) {
             </AccordionSummary>
 
             <AccordionDetails style={{ flexDirection: "column" }}>
-              {responsibilities ? (
+              {responsibilities && (
                 <>
                   <Typography variant='subtitle2' gutterBottom component='div'>
                     Zakres obowiązków
@@ -489,9 +501,9 @@ export default function JobOffer(props) {
                     </Typography>
                   ))}
                 </>
-              ) : null}
+              )}
 
-              {copiedQualificationEffects ? (
+              {copiedQualificationEffects && (
                 <>
                   {copiedQualificationEffects.map((effect) => (
                     <Typography key={effect} variant='body2' component='div'>
@@ -499,9 +511,9 @@ export default function JobOffer(props) {
                     </Typography>
                   ))}
                 </>
-              ) : null}
+              )}
 
-              {copiedSelectedText ? (
+              {copiedSelectedText && (
                 <>
                   {copiedSelectedText.map((text) => (
                     <Typography key={text} variant='body2' component='div'>
@@ -509,9 +521,9 @@ export default function JobOffer(props) {
                     </Typography>
                   ))}
                 </>
-              ) : null}
+              )}
 
-              {requirements.length > 0 ? (
+              {requirements.length > 0 && (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -529,11 +541,11 @@ export default function JobOffer(props) {
                     </Typography>
                   ))}
                 </>
-              ) : null}
+              )}
 
-              {educationLevel.length > 0 ||
-              studiesName.length > 0 ||
-              studiesStage.length > 0 ? (
+              {(educationLevel.length > 0 ||
+                studiesName.length > 0 ||
+                studiesStage.length > 0) && (
                 <>
                   <Typography
                     variant='body2'
@@ -546,7 +558,7 @@ export default function JobOffer(props) {
                     {educationLevel.map((level) => (
                       <span key={level}>{level}&nbsp;</span>
                     ))}
-                    {studiesName ? <span>na kierunku </span> : null}
+                    {studiesName && <span>na kierunku </span>}
 
                     {studiesName.map((name) => (
                       <span key={name}>{name}&nbsp;</span>
@@ -555,9 +567,9 @@ export default function JobOffer(props) {
                       <span key={stage}>{stage}&nbsp;</span>
                     ))}
                     <br></br>
-                    {certificateName ? (
+                    {certificateName && (
                       <span> Mile widziana certyfikacja </span>
-                    ) : null}
+                    )}
                     {certificateName.map((name) => (
                       <span key={name}>{name}&nbsp;</span>
                     ))}
@@ -566,9 +578,9 @@ export default function JobOffer(props) {
                     ))}
                   </Typography>
                 </>
-              ) : null}
+              )}
 
-              {benefits.length > 0 ? (
+              {benefits.length > 0 && (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -583,7 +595,7 @@ export default function JobOffer(props) {
                     </Typography>
                   ))}
                 </>
-              ) : null}
+              )}
             </AccordionDetails>
           </Accordion>
 
@@ -592,17 +604,72 @@ export default function JobOffer(props) {
             gutterBottom
             component='div'
             style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
-            Przetwarzanie danych
-          </Typography>
-          {rodo && 
+            Informacje uzupełniające
+            </Typography>
+            {rodo && (
+              <>
+                <Typography
+                  variant='subtitle2'
+                  gutterBottom
+                  component='div'
+                  style={{ marginTop: "6px" }}>
+                  Przetwarzanie danych
+                </Typography>
+                <Typography key={rodo} variant='caption' component='div'>
+                  {rodo}
+                </Typography>
+              </>
+            )}
+         
+
+          {(applicationWay ||
+            applicationExpectation ||
+            applicationDate ||
+            contactInformation) && (
             <>
-              <Typography variant='caption' gutterBottom component='div'>
-                {rodo}
+              <Typography
+                variant='subtitle2'
+                gutterBottom
+                component='div'
+                style={{ marginTop: "6px" }}>
+                Dane organizacyjne dotyczące rekrutacji
               </Typography>
+              {applicationWay && (
+                <>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    Sposób przesyłania zgłoszeń
+                  </Typography>
+                  <Typography variant='caption' gutterBottom component='div'>
+                    {applicationWay}
+                  </Typography>
+                </>
+              )}
+
+              {applicationExpectation && (
+                <>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    Oczekiwania dotyczące formy zgłoszeń
+                  </Typography>
+                  <Typography variant='caption' gutterBottom component='div'>
+                    {applicationExpectation}
+                  </Typography>
+                </>
+              )}
+
+              {applicationDate && (
+                <>
+                  <Typography variant='body2' gutterBottom component='div'>
+                    Termin przesyłania zgłoszeń
+                  </Typography>
+                  <Typography variant='caption' gutterBottom component='div'>
+                    {applicationDate}
+                  </Typography>
+                </>
+              )}
             </>
-          }
+          )}
         </>
-      ) : null}
+      )}
     </Paper>
   );
 }

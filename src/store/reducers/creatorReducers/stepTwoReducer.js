@@ -42,7 +42,6 @@ const initialState = {
   benefits: [],
   showBenefitsButton: true,
 
-  rodo: ""
 };
 
 
@@ -152,12 +151,7 @@ export const stepTwoReducer = (state = initialState, action) => {
         benefits: action.payload,
       };
     }
-    case RODO: {
-      return {
-        ...state,
-        rodo: action.payload,
-      };
-    }
+
     default:
       return state;
   }
