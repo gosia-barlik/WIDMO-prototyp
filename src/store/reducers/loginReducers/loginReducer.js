@@ -1,11 +1,15 @@
 import {
-    ISLOGINOPEN
+    ISLOGINOPEN,
+    EMAIL,
+    PASSWORD,
+    ISLOGGEDIN
   } from "../../loginConsts";
 
   const initialState = {
     isLoginOpen: "",
     email: "",
-    password: ""
+    password: "",
+    isLoggedIn: false,
   };
   
   export const loginReducer = (state = initialState, action) => {
@@ -14,6 +18,24 @@ import {
         return {
           ...state,
           isLoginOpen: action.payload,
+        };
+      }
+      case EMAIL: {
+        return {
+          ...state,
+          email: action.payload,
+        };
+      }
+      case PASSWORD: {
+        return {
+          ...state,
+          password: action.payload,
+        };
+      }
+      case ISLOGGEDIN: {
+        return {
+          ...state,
+          isLoggedIn: action.payload,
         };
       }
       default:
