@@ -19,6 +19,7 @@ import {
   setIsLoginOpen,
   setIsLoggedIn
 } from "../../store/actions/loginActions";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const navigate = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
   const {isLoggedIn} = useSelector((state) => state.loginReducer);
@@ -54,6 +56,7 @@ export default function Header() {
   }
   const logOut = () => {
     dispatch(setIsLoggedIn(false))
+    navigate("/", { replace: true });
   }
 
   return (

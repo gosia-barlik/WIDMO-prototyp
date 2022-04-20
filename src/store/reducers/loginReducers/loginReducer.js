@@ -2,13 +2,15 @@ import {
     ISLOGINOPEN,
     EMAIL,
     PASSWORD,
-    ISLOGGEDIN
+    ISLOGGEDIN,
+    ACCESSTOKEN
   } from "../../loginConsts";
 
   const initialState = {
     isLoginOpen: "",
     email: "",
     password: "",
+    accessToken: "",
     isLoggedIn: false,
   };
   
@@ -36,6 +38,12 @@ import {
         return {
           ...state,
           isLoggedIn: action.payload,
+        };
+      }
+      case ACCESSTOKEN: {
+        return {
+          ...state,
+          accessToken: action.payload,
         };
       }
       default:

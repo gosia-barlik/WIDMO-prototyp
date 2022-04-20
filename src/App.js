@@ -7,6 +7,7 @@ import Rankomat from "./components/Rankomat/Rankomat"
 import Header from "./components/common/Header.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/common/Login";
+import RequireAuth from "./components/common/RequireAuth";
 
 function App() {
   return (
@@ -15,11 +16,14 @@ function App() {
         <div className='App'>
           <Header />
           <>
-          <LoginForm/>
+            <LoginForm />
             <Routes>
-              <Route exact path='/' element={<Landing />}></Route>
+              {/* <Route element={<RequireAuth/>}>
+                <Route exact path='/creator' element={<Creator />}></Route>
+              </Route> */}
               <Route exact path='/creator' element={<Creator />}></Route>
               <Route exact path='/rankomat' element={<Rankomat />}></Route>
+              <Route exact path='/' element={<Landing />}></Route>
             </Routes>
           </>
         </div>

@@ -12,30 +12,40 @@ import {
   setIsLoginOpen,
   setEmail,
   setPassword,
-  setIsLoggedIn
+  setIsLoggedIn,
+  setAccessToken
 } from "../../store/actions/loginActions";
 
 export default function FormDialog() {
-    const {isLoginOpen, email, password, isLoggedIn} = useSelector((state) => state.loginReducer);
-    const dispatch = useDispatch();
+  const { isLoginOpen, email, password, isLoggedIn } = useSelector((state) => state.loginReducer);
+  const dispatch = useDispatch();
 
   const closeLoginForm = () => {
     dispatch(setIsLoginOpen(false))
   }
-    const onSetEmailAddress = (e) => {
+
+  const onSetEmailAddress = (e) => {
     dispatch(setEmail(e.target.value));
-    
   };
+  
   const onSetPassword = (e) => {
     dispatch(setPassword(e.target.value));
   };
 
   const submitLoginForm = () => {
-    console.log(email)
-    console.log(password)
+    // fetch("http://localhost:3000/logIn", {
+    //   method: "POST",
+    //   headers: {'Content-Type': 'application/json'}, 
+    //   body: JSON.stringify({ login: email, password }})
+    // }).then(res => {
+    // const accessToken = response.token
+    // dispatch(setAccessToken(accessToken))
+    // dispatch(setIsLoginOpen(false))
+    // dispatch(setIsLoggedIn(true))
+    // });
+    dispatch(setAccessToken("12390h-j320f9hf0sdu-f0ds9f0-fsd0fsdfsdf98sdf-sd0f"))//do testow
     dispatch(setIsLoginOpen(false))
     dispatch(setIsLoggedIn(true))
-    console.log(isLoggedIn)
   }
 
   return (
@@ -44,7 +54,7 @@ export default function FormDialog() {
         <DialogTitle id="form-dialog-title">Zaloguj się</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          Użyj adresu e-mail oraz hasła
+            Użyj adresu e-mail oraz hasła
           </DialogContentText>
           <TextField
             autoFocus
@@ -65,12 +75,12 @@ export default function FormDialog() {
             onChange={onSetPassword}
           />
           <Typography
-          variant='body2'
-          component='div'
-          style={{ marginTop: "12px" }}>
-          Kontynuacja oznacza wyrażenie zgody na warunki użytkowania serwisu.
-          Zapoznaj się z naszą polityka prywatności.
-        </Typography>
+            variant='body2'
+            component='div'
+            style={{ marginTop: "12px" }}>
+            Kontynuacja oznacza wyrażenie zgody na warunki użytkowania serwisu.
+            Zapoznaj się z naszą polityka prywatności.
+          </Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={closeLoginForm} color="primary">

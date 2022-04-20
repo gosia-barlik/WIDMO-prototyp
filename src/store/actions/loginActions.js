@@ -2,7 +2,8 @@ import {
     ISLOGINOPEN,
     EMAIL,
     PASSWORD,
-    ISLOGGEDIN
+    ISLOGGEDIN,
+    ACCESSTOKEN
   } from "../loginConsts";
 
   export const setIsLoginOpen = (isLoginOpen) => {
@@ -16,4 +17,7 @@ import {
   };
   export const setIsLoggedIn = (isLoggedIn) => {
     return { type: ISLOGGEDIN, payload: isLoggedIn };
+  };
+  export const setAccessToken = (accessToken) => {
+    return { type: ACCESSTOKEN, payload: accessToken };
   };
