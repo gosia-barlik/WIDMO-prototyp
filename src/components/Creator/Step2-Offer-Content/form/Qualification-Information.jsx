@@ -45,7 +45,7 @@ export default function QualificationInformation(props) {
 
   return (
     <>
-      <Typography variant='subtitle2' gutterBottom component='div'>
+      <Typography variant='subtitle2' gutterBottom component='div'style={{marginTop: "40px"}}>
         Kwalifikacja: {qualificationName}
       </Typography>
       <Typography

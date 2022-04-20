@@ -44,16 +44,19 @@ export default function Step2OfferContent(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-          {props.activeVerticalStep === 0 && showQualificationForm === false && (
+          {props.activeVerticalStep === 0 && (
             <>
               <AddResponsibilitiesButtons />
+              {showQualificationForm === true && (
+                <QualificationInformation />
+              )}
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
                 handleNext={props.handleVerticalStepperNext}
               />
             </>
           )}
-          {props.activeVerticalStep === 0 && showQualificationForm === true && (
+          {/* {props.activeVerticalStep === 0 && showQualificationForm === true && (
             <>
               <QualificationInformation />
               <MainActionButtons
@@ -61,11 +64,13 @@ export default function Step2OfferContent(props) {
                  handleNext={props.handleVerticalStepperNext}
               />
             </>
-          )}
+          )} */}
 
-          {props.activeVerticalStep === 1 && showEducationForm === false && (
+          {props.activeVerticalStep === 1 && (
             <>
               <AddRequirementsButtons/>
+              {showEducationForm && (
+              <EducationExperience />)}
               <MainActionButtons
                 handleBack={props.handleVerticalStepperBack}
                 handleNext={props.handleVerticalStepperNext}
@@ -73,7 +78,7 @@ export default function Step2OfferContent(props) {
             </>
           )}
 
-          {showEducationForm &&
+          {/* {showEducationForm &&
             <>
               <EducationExperience />
               <MainActionButtons
@@ -81,7 +86,7 @@ export default function Step2OfferContent(props) {
                 handleNext={handleNextAndReset}
               />
             </>
-          }
+          } */}
 
           {props.activeVerticalStep === 2 && 
             <>
@@ -102,12 +107,7 @@ export default function Step2OfferContent(props) {
           <JobOffer
             activeStep={props.activeStep}
             updateState={props.updateState}
-            educationLevel={props.educationLevel}
-            studiesName={props.studiesName}
-            studiesStage={props.studiesStage}
-            certificateName={props.certificateName}
-            certificateStage={props.certificateStage}
-            benefits={props.benefits}
+  
           />
         </Paper>
       </Grid>

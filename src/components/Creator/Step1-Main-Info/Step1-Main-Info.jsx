@@ -10,6 +10,7 @@ import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
+import AlertAbout from "./alerts/Alert-About.jsx"
 import { useSelector } from "react-redux";
 
 export default function Step1MainInfo(props) {
@@ -59,6 +60,7 @@ export default function Step1MainInfo(props) {
           <JobOffer 
           activeStep={props.activeStep}/>
         </Paper>
+        { props.activeVerticalStep === 1 && <AlertAbout/> }
       </Grid>
     </Grid>
   );

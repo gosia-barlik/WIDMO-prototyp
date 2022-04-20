@@ -6,6 +6,7 @@ import Creator from "./components/Creator/Creator";
 import Rankomat from "./components/Rankomat/Rankomat"
 import Header from "./components/common/Header.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LoginForm from "./components/common/Login";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <div className='App'>
           <Header />
           <>
+          <LoginForm/>
             <Routes>
               <Route exact path='/' element={<Landing />}></Route>
               <Route exact path='/creator' element={<Creator />}></Route>

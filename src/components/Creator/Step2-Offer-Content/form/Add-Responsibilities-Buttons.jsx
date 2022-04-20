@@ -22,7 +22,7 @@ const ColorButton = styled(Button)(() => ({
 }));
 
 export default function AddResponsibilitiesButtons(props) {
-  const { showResponsibilitiesButton, responsibilities } = useSelector((state) => state.stepTwoReducer);
+  const { showResponsibilitiesButton, responsibilities, copiedQualificationEffects, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
   const responsibilitesFixture = [
@@ -94,7 +94,7 @@ export default function AddResponsibilitiesButtons(props) {
           className='styled-icon-button'
           component='span'
           onClick={onSetQualificationInfo}>
-          <AddIcon />
+            {(copiedSelectedText.length == 0 && copiedQualificationEffects.length  == 0)  ? <AddIcon /> : <RemoveIcon/>}
         </IconButton>
         Dodaj informacje z opisów kwalifikacji i zestawów efektów uczenia się
       </ColorButton>

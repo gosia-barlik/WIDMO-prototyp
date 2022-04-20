@@ -5,8 +5,14 @@ import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Chip from "@material-ui/core/Chip";
 import "./Job-Offer.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCopiedQualificationEffects,
+  setCopiedSelectedText,
+  setResponsibilities
+} from "../../../store/actions/stepTwoActions";
 
 export default function JobOffer(props) {
   const {
@@ -44,7 +50,27 @@ export default function JobOffer(props) {
     applicationDate,
     contactInformation,
   } = useSelector((state) => state.stepThreeReducer);
+  const dispatch = useDispatch();
 
+  const removeQualificationEffect = (effect) => {
+    const filteredCopiedQualificationEffects =
+      copiedQualificationEffects.filter((obj) => obj != effect);
+    dispatch(setCopiedQualificationEffects(filteredCopiedQualificationEffects));
+  };
+
+  const removeSelectedText = (text) => {
+    const filteredSelectedText =
+    copiedSelectedText.filter((obj) => obj != text);
+    dispatch(setCopiedSelectedText(filteredSelectedText));
+  };
+  const removeResponsibility = (responsibility) => {
+    console.log(responsibility)
+    const filteredResponsibilities =
+    responsibilities.filter((obj) => obj != responsibility);
+    dispatch(setResponsibilities(filteredResponsibilities));
+  }
+
+ 
   return (
     <Paper
       sx={{
@@ -330,31 +356,60 @@ export default function JobOffer(props) {
                 Zakres obowiązków
               </Typography>
               {responsibilities.map((responsibility) => (
-                <Typography
+                // <Typography
+                //   key={responsibility}
+                //   variant='body2'
+                //   gutterBottom
+                //   component='div'>
+                //   {responsibility}
+                // </Typography>
+                        <Chip
+                        className='styled-chip'
                   key={responsibility}
-                  variant='body2'
-                  gutterBottom
-                  component='div'>
-                  {responsibility}
-                </Typography>
+                  onDelete={() => {
+                    removeResponsibility(responsibility);
+                  }}
+                  variant='outlined'
+                  label={responsibility}
+                >
+                </Chip>
               ))}
             </>
           )}
           {copiedQualificationEffects && (
             <>
-              {copiedQualificationEffects.map((effect) => (
+              {/* {copiedQualificationEffects.map((effect) => (
                 <Typography key={effect} variant='body2' component='div'>
                   {effect}
                 </Typography>
+              ))} */}
+
+              {copiedQualificationEffects.map((effect) => (
+                <Chip
+                  className='styled-chip'
+                  key={effect}
+                  onDelete={() => {
+                    removeQualificationEffect(effect);
+                  }}
+                  variant='outlined'
+                  label={effect}></Chip>
               ))}
             </>
           )}
           {copiedSelectedText && (
             <>
-              {copiedSelectedText.map((text) => (
+              {/* {copiedSelectedText.map((text) => (
                 <Typography key={text} variant='body2' component='div'>
                   {text}
                 </Typography>
+              ))} */}
+
+              {copiedSelectedText.map((text) => (
+                <Chip className='styled-chip' key={text} onDelete={() => {
+                  removeSelectedText(text);
+                }} variant='outlined'
+                label={text}>
+                </Chip>
               ))}
             </>
           )}
@@ -605,22 +660,21 @@ export default function JobOffer(props) {
             component='div'
             style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
             Informacje uzupełniające
-            </Typography>
-            {rodo && (
-              <>
-                <Typography
-                  variant='subtitle2'
-                  gutterBottom
-                  component='div'
-                  style={{ marginTop: "6px" }}>
-                  Przetwarzanie danych
-                </Typography>
-                <Typography key={rodo} variant='caption' component='div'>
-                  {rodo}
-                </Typography>
-              </>
-            )}
-         
+          </Typography>
+          {rodo && (
+            <>
+              <Typography
+                variant='subtitle2'
+                gutterBottom
+                component='div'
+                style={{ marginTop: "6px" }}>
+                Przetwarzanie danych
+              </Typography>
+              <Typography key={rodo} variant='caption' component='div'>
+                {rodo}
+              </Typography>
+            </>
+          )}
 
           {(applicationWay ||
             applicationExpectation ||

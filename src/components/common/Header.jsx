@@ -13,6 +13,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setIsLoginOpen
+} from "../../store/actions/loginActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,10 +33,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+  const {isLoginOpen} = useSelector((state) => state.loginReducer);
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -45,6 +51,9 @@ export default function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const openLoginForm = () => {
+    dispatch(setIsLoginOpen(true))
+  }
 
   return (
     <div className={classes.root}>
@@ -52,7 +61,6 @@ export default function Header() {
         <Toolbar className='appbar-toolbar'>
           <IconButton
             className={classes.menuButton}
-            color='black'
             aria-label='menu'>
             <MenuIcon />
           </IconButton>
@@ -69,7 +77,7 @@ export default function Header() {
                 aria-controls='menu-appbar'
                 aria-haspopup='true'
                 onClick={handleMenu}
-                color='black'>
+                >
                 <AccountCircle />
               </IconButton>
               <Menu
@@ -86,7 +94,7 @@ export default function Header() {
                 }}
                 open={open}
                 onClose={handleClose}>
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={openLoginForm}>Log in</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
             </div>

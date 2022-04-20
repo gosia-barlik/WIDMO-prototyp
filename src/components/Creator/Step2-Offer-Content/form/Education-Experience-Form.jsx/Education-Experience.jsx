@@ -35,7 +35,7 @@ export default function EducationExperience(props) {
   
   return (
     <>
-      <Typography variant='subtitle2' gutterBottom component='div'>
+      <Typography variant='subtitle2' gutterBottom component='div' style= {{marginTop: "40px"}}>
         Edukacja formalna
       </Typography>
 
