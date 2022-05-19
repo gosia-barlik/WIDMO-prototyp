@@ -20,7 +20,7 @@ export default function AddBenefitsButtons(props) {
   const dispatch = useDispatch();
   const { showBenefitsButton, benefits } = useSelector((state) => state.stepTwoReducer);
 
-  const benefitsFixtures = ["benefit1", "benefit2"];
+  const benefitsFixtures = ["benefit1", "benefit2", "benefit3"];
 
   const onSetBenefits = () => {
     let newBenefits;

@@ -15,7 +15,8 @@ import {
   WORKMODEL,
   RECRUITMENTMODE,
   ABOUTCOMPANY,
-  LOGO
+  LOGO,
+  LOGOPREVIEW
 } from "../creatorConsts";
 
 //position
@@ -74,5 +75,7 @@ export const setAboutCompany = (aboutCompany) => {
 export const setLogo = (companyLogo) => {
   return { type: LOGO, payload: companyLogo };
 };
-
+export const setLogoPreview = (logoPreview) => {
+  return { type: LOGOPREVIEW, payload: logoPreview };
+};
 

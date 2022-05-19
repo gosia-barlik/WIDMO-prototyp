@@ -12,14 +12,20 @@ import QualificationInformation from "./form/Qualification-Information.jsx";
 import EducationExperience from "./form/Education-Experience-Form.jsx/Education-Experience.jsx";
 import "./Step2-Offer-Content.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowEducationForm, setShowQualificationForm } from "../../../store/actions/stepTwoActions";
+import {
+  setShowEducationForm,
+  setShowQualificationForm,
+} from "../../../store/actions/stepTwoActions";
 
 export default function Step2OfferContent(props) {
   const dispatch = useDispatch();
-  const { showQualificationForm, showEducationForm } = useSelector((state) => state.stepTwoReducer);
+  const { showQualificationForm, showEducationForm } = useSelector(
+    (state) => state.stepTwoReducer
+  );
   const [activeStep, setActiveStep] = useState(0);
 
-  const resetShowQualificationForm = () => dispatch(setShowQualificationForm(false));
+  const resetShowQualificationForm = () =>
+    dispatch(setShowQualificationForm(false));
 
   const resetShowEducationForm = () => dispatch(setShowEducationForm(false));
 
@@ -33,7 +39,7 @@ export default function Step2OfferContent(props) {
     resetShowQualificationForm();
     resetShowEducationForm();
   };
-  
+
   const handleReset = () => resetShowQualificationForm();
 
   return (
@@ -47,30 +53,18 @@ export default function Step2OfferContent(props) {
           {props.activeVerticalStep === 0 && (
             <>
               <AddResponsibilitiesButtons />
-              {showQualificationForm === true && (
-                <QualificationInformation />
-              )}
+              {showQualificationForm === true && <QualificationInformation />}
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
                 handleNext={props.handleVerticalStepperNext}
               />
             </>
           )}
-          {/* {props.activeVerticalStep === 0 && showQualificationForm === true && (
-            <>
-              <QualificationInformation />
-              <MainActionButtons
-                 handleBack={props.handleVerticalStepperBack}
-                 handleNext={props.handleVerticalStepperNext}
-              />
-            </>
-          )} */}
 
           {props.activeVerticalStep === 1 && (
             <>
-              <AddRequirementsButtons/>
-              {showEducationForm && (
-              <EducationExperience />)}
+              <AddRequirementsButtons />
+              {showEducationForm && <EducationExperience />}
               <MainActionButtons
                 handleBack={props.handleVerticalStepperBack}
                 handleNext={props.handleVerticalStepperNext}
@@ -78,17 +72,7 @@ export default function Step2OfferContent(props) {
             </>
           )}
 
-          {/* {showEducationForm &&
-            <>
-              <EducationExperience />
-              <MainActionButtons
-                handleBack={handleBackAndReset}
-                handleNext={handleNextAndReset}
-              />
-            </>
-          } */}
-
-          {props.activeVerticalStep === 2 && 
+          {props.activeVerticalStep === 2 && (
             <>
               <AddBenefitsButtons />
               <MainActionButtons
@@ -96,7 +80,7 @@ export default function Step2OfferContent(props) {
                 handleNext={props.handleMainStepperNextAndReset}
               />
             </>
-          }
+          )}
         </Paper>
       </Grid>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
@@ -107,7 +91,6 @@ export default function Step2OfferContent(props) {
           <JobOffer
             activeStep={props.activeStep}
             updateState={props.updateState}
-  
           />
         </Paper>
       </Grid>

@@ -7,9 +7,11 @@ import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import {
   setAboutCompany,
   setLogo,
+  setLogoPreview,
 } from "../../../../store/actions/stepOneActions";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +28,20 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutCompany(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { logo, logoPreview } = useSelector((state) => state.stepOneReducer);
+
+  useEffect(() => {
+    if (!logo) {
+      dispatch(setLogoPreview(undefined));
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(logo);
+    dispatch(setLogoPreview(objectUrl));
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [logo]);
 
   //ABOUT COMPANY
   const onSetAboutCompany = (aboutCompany) => {
@@ -33,8 +49,12 @@ export default function AboutCompany(props) {
   };
 
   const onSetLogo = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      dispatch(setLogo(undefined));
+      return;
+    }
     dispatch(setLogo(e.target.files[0]));
-    // console.log(logo);
+    // document.getElementById("photo-icon").classList.add("hidden")
   };
 
   const onFileUpload = () => {
@@ -61,34 +81,34 @@ export default function AboutCompany(props) {
         style={{ marginTop: "20px" }}>
         Jeśli chcesz, możesz dodać logotyp
       </Typography>
-      {/* <Button
-        variant='outlined'
-        className='button-outlined'
-        component='label'
-        onClick={onFileUpload}
-        startIcon={<AddIcon />}>
-        <input type='file' hidden onChange={(e) => onSetLogo(e)}/>
-        Dodaj logo
-      </Button> */}
-      <div className= 'add-logo'>
-        <input
-          accept='image/*'
-          className={classes.input}
-          id='icon-button-file'
-          type='file'
-          onChange={(e) => onSetLogo(e)}
-        />
-        <label htmlFor='icon-button-file'>
-          <IconButton
-            className='styled-icon-button'
-            aria-label='upload picture'
-            component='span'
-            onClick={onFileUpload}>
-            <AddIcon />
-          </IconButton>
-          Dodaj logo
-        </label>
+      <div className='add-logo'>
+        <div className={"input-file-wrapper"}>
+          <label>
+              <IconButton color="primary" aria-label="upload picture" component="span" id='photo-icon' onClick={(e) => onSetLogo(e)}>
+          <PhotoCamera />
+        </IconButton>
+            {logoPreview && (
+              <img
+                className='logo-preview'
+                src={logoPreview}
+                id={"logo-photo"}
+                onClick={(e) => onSetLogo(e)}
+              />
+            )}
+          </label>
+          
+          <input
+            type='file'
+            name='photo'
+            className='logo-file-input'
+            style={{ color: "transparent" }}
+            onChange={(e) => onSetLogo(e)}
+            id={"add-photo"}
+          />
+        </div>
       </div>
+
+      
     </>
   );
 }

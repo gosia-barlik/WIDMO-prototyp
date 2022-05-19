@@ -158,8 +158,6 @@ const Listbox = styled('ul')(
 `,
 );
 
-
-
 export default function CustomizedInput(props) {
   const {
     getRootProps,

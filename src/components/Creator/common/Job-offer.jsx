@@ -6,12 +6,21 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Chip from "@material-ui/core/Chip";
+import Stack from "@mui/material/Stack";
 import "./Job-Offer.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  setAboutCompany,
+  setLogo,
+  setLogoPreview,
+} from "../../../store/actions/stepOneActions";
 import {
   setCopiedQualificationEffects,
   setCopiedSelectedText,
-  setResponsibilities
+  setRequirements,
+  setResponsibilities,
+  setBenefits,
 } from "../../../store/actions/stepTwoActions";
 
 export default function JobOffer(props) {
@@ -30,6 +39,8 @@ export default function JobOffer(props) {
     recruitmentMode,
     workModel,
     aboutCompany,
+    logo,
+    logoPreview,
   } = useSelector((state) => state.stepOneReducer);
   const {
     responsibilities,
@@ -42,6 +53,7 @@ export default function JobOffer(props) {
     certificateName,
     certificateStage,
     benefits,
+    showEducationForm,
   } = useSelector((state) => state.stepTwoReducer);
   const {
     rodo,
@@ -52,6 +64,19 @@ export default function JobOffer(props) {
   } = useSelector((state) => state.stepThreeReducer);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (!logo) {
+      dispatch(setLogoPreview(undefined));
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(logo);
+    dispatch(setLogoPreview(objectUrl));
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [logo]);
+
   const removeQualificationEffect = (effect) => {
     const filteredCopiedQualificationEffects =
       copiedQualificationEffects.filter((obj) => obj != effect);
@@ -59,18 +84,30 @@ export default function JobOffer(props) {
   };
 
   const removeSelectedText = (text) => {
-    const filteredSelectedText =
-    copiedSelectedText.filter((obj) => obj != text);
+    const filteredSelectedText = copiedSelectedText.filter(
+      (obj) => obj != text
+    );
     dispatch(setCopiedSelectedText(filteredSelectedText));
   };
   const removeResponsibility = (responsibility) => {
-    console.log(responsibility)
-    const filteredResponsibilities =
-    responsibilities.filter((obj) => obj != responsibility);
+    const filteredResponsibilities = responsibilities.filter(
+      (obj) => obj != responsibility
+    );
     dispatch(setResponsibilities(filteredResponsibilities));
-  }
+  };
 
- 
+  const removeRequirement = (requirement) => {
+    const filteredRequirements = requirements.filter(
+      (obj) => obj != requirement
+    );
+    dispatch(setRequirements(filteredRequirements));
+  };
+
+  const removeBenefit = (benefit) => {
+    const filteredBenefits = benefits.filter((obj) => obj != benefit);
+    dispatch(setBenefits(filteredBenefits));
+  };
+
   return (
     <Paper
       sx={{
@@ -104,6 +141,9 @@ export default function JobOffer(props) {
                 {aboutCompany}
               </Typography>
             </>
+          )}
+          {logoPreview && (
+            <img className='logo-preview' src={logoPreview} id={"logo-photo"} />
           )}
 
           {(salaryType || salaryFrom || salaryTo || salaryTime) && (
@@ -271,6 +311,13 @@ export default function JobOffer(props) {
                   </Typography>
                 </>
               )}
+              {logoPreview && (
+                <img
+                  className='logo-preview'
+                  src={logoPreview}
+                  id={"logo-photo"}
+                />
+              )}
               {(salaryType || salaryFrom || salaryTo || salaryTime) && (
                 <>
                   <Typography
@@ -363,16 +410,14 @@ export default function JobOffer(props) {
                 //   component='div'>
                 //   {responsibility}
                 // </Typography>
-                        <Chip
-                        className='styled-chip'
+                <Chip
+                  className='styled-chip'
                   key={responsibility}
                   onDelete={() => {
                     removeResponsibility(responsibility);
                   }}
                   variant='outlined'
-                  label={responsibility}
-                >
-                </Chip>
+                  label={responsibility}></Chip>
               ))}
             </>
           )}
@@ -405,11 +450,14 @@ export default function JobOffer(props) {
               ))} */}
 
               {copiedSelectedText.map((text) => (
-                <Chip className='styled-chip' key={text} onDelete={() => {
-                  removeSelectedText(text);
-                }} variant='outlined'
-                label={text}>
-                </Chip>
+                <Chip
+                  className='styled-chip'
+                  key={text}
+                  onDelete={() => {
+                    removeSelectedText(text);
+                  }}
+                  variant='outlined'
+                  label={text}></Chip>
               ))}
             </>
           )}
@@ -424,44 +472,119 @@ export default function JobOffer(props) {
                 Wymagania
               </Typography>
               {requirements.map((requirement) => (
-                <Typography key={requirement} variant='body2' component='div'>
-                  {requirement}
-                </Typography>
+                <Chip
+                  className='styled-chip'
+                  key={requirement}
+                  onDelete={() => {
+                    removeRequirement(requirement);
+                  }}
+                  variant='outlined'
+                  label={requirement}></Chip>
               ))}
             </>
           )}
-          {(educationLevel.length > 0 ||
-            studiesName.length > 0 ||
-            studiesStage.length > 0) && (
+          {showEducationForm == true && (
             <>
               <Typography
                 variant='body2'
                 gutterBottom
                 component='div'
-                style={{ marginTop: "4px" }}>
+                style={{ marginTop: "8px" }}>
                 Wykształcenie
               </Typography>
-              <Typography variant='body2'>
-                {educationLevel.map((level) => (
-                  <span key={level}>{level}&nbsp;</span>
-                ))}
-                {studiesName && <span>na kierunku </span>}
+              <>
+                {educationLevel.length > 0 && (
+                  <Stack direction='row' spacing={1}>
+                    {educationLevel.map((level) => (
+                      <Chip
+                        className='styled-chip'
+                        key={level}
+                        variant='outlined'
+                        label={level}
+                        style={{ margin: "2px" }}>
+                        {level}&nbsp;
+                      </Chip>
+                    ))}
+                  </Stack>
+                )}
+                {studiesName.length > 0 && (
+                  <>
+                    {studiesName && (
+                      <Typography
+                        variant='body2'
+                        gutterBottom
+                        component='div'
+                        style={{ marginTop: "4px" }}>
+                        na kierunku
+                      </Typography>
+                    )}
+                    <Stack direction='row' spacing={1}>
+                      {studiesName.map((name) => (
+                        <Chip
+                          className='styled-chip'
+                          key={name}
+                          variant='outlined'
+                          label={name}
+                          style={{ margin: "2px" }}>
+                          {name}&nbsp;
+                        </Chip>
+                      ))}
+                    </Stack>
+                  </>
+                )}
 
-                {studiesName.map((name) => (
-                  <span key={name}>{name}&nbsp;</span>
-                ))}
-                {studiesStage.map((stage) => (
-                  <span key={stage}>{stage}&nbsp;</span>
-                ))}
+                {studiesStage.length > 0 && (
+                  <Stack direction='row' spacing={1}>
+                    {studiesStage.map((stage) => (
+                      <Chip
+                        className='styled-chip'
+                        key={stage}
+                        variant='outlined'
+                        label={stage}
+                        style={{ margin: "2px" }}>
+                        {stage}&nbsp;
+                      </Chip>
+                    ))}
+                  </Stack>
+                )}
+
                 <br></br>
-                {certificateName && <span> Mile widziana certyfikacja </span>}
-                {certificateName.map((name) => (
-                  <span key={name}>{name}&nbsp;</span>
-                ))}
-                {certificateStage.map((stage) => (
-                  <span key={stage}>{stage}&nbsp;</span>
-                ))}
-              </Typography>
+                {certificateName.length > 0 && (
+                  <>
+                    <Typography
+                      variant='body2'
+                      gutterBottom
+                      component='div'
+                      style={{ marginTop: "4px" }}>
+                      Mile widziana certyfikacja
+                    </Typography>
+                    <Stack direction='row' spacing={1}>
+                      {certificateName.map((name) => (
+                        <Chip
+                          className='styled-chip'
+                          key={name}
+                          variant='outlined'
+                          label={name}
+                          style={{ margin: "2px" }}>
+                          {name}&nbsp;
+                        </Chip>
+                      ))}
+                    </Stack>
+                  </>
+                )}
+                <Stack direction='row' spacing={1}>
+                  {certificateStage.map((stage) => (
+                    <Chip
+                      className='styled-chip'
+                      key={stage}
+                      variant='outlined'
+                      label={stage}
+                      style={{ margin: "2px" }}>
+                      {stage}&nbsp;
+                    </Chip>
+                  ))}
+                </Stack>
+              </>
             </>
           )}
 
@@ -474,11 +597,21 @@ export default function JobOffer(props) {
                 style={{ marginTop: "6px" }}>
                 Benefity
               </Typography>
-              {benefits.map((benefit) => (
-                <Typography key={benefit} variant='body2' component='div'>
-                  {benefit}
-                </Typography>
-              ))}
+              <Stack direction='row' spacing={1}>
+                {benefits.map((benefit) => (
+                  <Chip
+                    className='styled-chip'
+                    key={benefit}
+                    onDelete={() => {
+                      removeBenefit(benefit);
+                    }}
+                    variant='outlined'
+                    label={benefit}
+                    style={{ margin: "2px" }}>
+                    {benefit}
+                  </Chip>
+                ))}
+              </Stack>
             </>
           )}
         </>
@@ -527,6 +660,13 @@ export default function JobOffer(props) {
                     {aboutCompany}
                   </Typography>
                 </>
+              )}
+              {logoPreview && (
+                <img
+                  className='logo-preview'
+                  src={logoPreview}
+                  id={"logo-photo"}
+                />
               )}
             </AccordionDetails>
           </Accordion>

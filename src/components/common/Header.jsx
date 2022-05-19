@@ -31,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color: "black",
-    fontFamily: "Montserrat",
+    fontFamily: 'Rubik Microbe', 
+    fontFamily: 'Montserrat',
+    fontSize: '24px'
   },
 }));
 

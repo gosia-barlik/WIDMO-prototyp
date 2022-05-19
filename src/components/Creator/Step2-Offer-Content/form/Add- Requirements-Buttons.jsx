@@ -56,7 +56,8 @@ export default function AddRequirementsButtons(props) {
         <IconButton className='styled-icon-button'
           component='span'
           onClick={onSetShowEducationForm}>
-          {hasAnyEducationInfo() ? <RemoveIcon /> : <AddIcon />}
+            {showEducationForm == true? <RemoveIcon /> : <AddIcon />}
+          {/* {hasAnyEducationInfo() ? <RemoveIcon /> : <AddIcon />} */}
         </IconButton>
         Dodaj informacje o wykształceniu i doświadczeniu
       </ColorButton>

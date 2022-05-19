@@ -19,7 +19,7 @@ class Landing extends React.Component {
         <div className='text-landing'>
           <span className='text-landing-0'>AIRA</span>
           <span className='text-landing-4'>
-            to bezpłatne narzędzie, które pomoże Ci:
+            &nbsp; to bezpłatne narzędzie, które pomoże Ci:
             <br />
           </span>
           <span className='text-landing-46'>

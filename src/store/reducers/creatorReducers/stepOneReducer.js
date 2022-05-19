@@ -15,7 +15,8 @@ import {
   WORKMODEL,
   RECRUITMENTMODE,
   ABOUTCOMPANY,
-  LOGO
+  LOGO,
+  LOGOPREVIEW
 } from "../../creatorConsts";
 
 const initialState = {
@@ -35,7 +36,8 @@ const initialState = {
   workModel: "",
   recruitmentMode: "",
   aboutCompany: "",
-  logo: ""
+  logo: "",
+  logoPreview: "",
 };
 
 export const stepOneReducer = (state = initialState, action) => {
@@ -140,6 +142,12 @@ export const stepOneReducer = (state = initialState, action) => {
       return {
         ...state,
         logo: action.payload,
+      };
+    }
+    case LOGOPREVIEW: {
+      return {
+        ...state,
+        logoPreview: action.payload,
       };
     }
     default:
