@@ -68,13 +68,12 @@
 /* LOGO */
 
 .add-logo {
-  
-    width: 100px;
-    height: 100px;
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-
+  margin-top: 12px;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 /* .add-logo .styled-icon-button {
   color: #784af4 !important;
@@ -102,7 +101,7 @@
 .input-file-wrapper #add-photo {
   width: 100px;
   height: 100px;
-} 
+}
 
 .logo-preview {
   max-width: 80px;
@@ -128,8 +127,10 @@
   width: 35px;
   height: 35px;
   position: absolute;
-  z-index: -100; 
-
+  z-index: 100;
+  left: 18px;
+  top: 18px;
+  color: #6200ee;
 }
 #photo-icon.hidden {
   display: none;

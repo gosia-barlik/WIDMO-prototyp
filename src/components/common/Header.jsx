@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -17,7 +17,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setIsLoginOpen,
-  setIsLoggedIn
+  setIsLoggedIn,
 } from "../../store/actions/loginActions";
 import { useNavigate } from "react-router-dom";
 
@@ -31,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     color: "black",
-    fontFamily: 'Rubik Microbe', 
-    fontFamily: 'Montserrat',
-    fontSize: '24px'
+    fontFamily: "Rubik Microbe",
+    fontFamily: "Montserrat",
+    fontSize: "24px",
   },
 }));
 
@@ -41,12 +41,12 @@ export default function Header() {
   const navigate = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const {isLoggedIn} = useSelector((state) => state.loginReducer);
-  
+  const { isLoggedIn } = useSelector((state) => state.loginReducer);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  
- const handleMenu = (event) => {
+
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -54,40 +54,43 @@ export default function Header() {
     setAnchorEl(null);
   };
   const openLoginForm = () => {
-    dispatch(setIsLoginOpen(true))
-  }
+    dispatch(setIsLoginOpen(true));
+  };
   const logOut = () => {
-    dispatch(setIsLoggedIn(false))
+    dispatch(setIsLoggedIn(false));
     navigate("/", { replace: true });
-  }
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position='static' className='navbar' elevation={1}>
         <Toolbar className='appbar-toolbar'>
-          <IconButton
-            className={classes.menuButton}
-            aria-label='menu'>
+          <IconButton className={classes.menuButton} aria-label='menu'>
             <MenuIcon />
           </IconButton>
 
-          <NavLink to='/' component="div" style={{ width:"100%" }}>
-            <Typography variant='h6' className={classes.title} >
+          <NavLink to='/' component='div' style={{ width: "100%" }}>
+            <Typography variant='h6' className={classes.title}>
               AIRA
             </Typography>
           </NavLink>
           {isLoggedIn == false && (
-          <Button onClick={openLoginForm} color="primary" style={{width:"150px"}}>
-            Zaloguj się
-          </Button>)}
+           
+              <Button
+                onClick={openLoginForm}
+                color='primary'
+                style={{ width: "150px" }}>
+                Zaloguj się
+              </Button>
+            
+          )}
           {isLoggedIn && (
             <div>
               <IconButton
                 aria-label='account of current user'
                 aria-controls='menu-appbar'
                 aria-haspopup='true'
-                onClick={handleMenu}
-                >
+                onClick={handleMenu}>
                 <AccountCircle />
               </IconButton>
               <Menu
@@ -110,7 +113,6 @@ export default function Header() {
               </Menu>
             </div>
           )}
-
         </Toolbar>
       </AppBar>
     </div>

@@ -21,6 +21,15 @@
 
 }
 
+.MuiButtonBase-root {
+  font-family: Montserrat !important;
+  font-size: 14px;
+}
+
+.MuiButton-label {
+  text-transform: none;
+}
+
 /* .navbar .aira {
   position: absolute;
   box-sizing: content-box;

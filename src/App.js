@@ -21,6 +21,7 @@ function App() {
               {/* <Route element={<RequireAuth/>}>
                 <Route exact path='/creator' element={<Creator />}></Route>
               </Route> */}
+              {/* <Route exact path='/login' element ={<LoginForm/>}> </Route> - TODO -login form on routing */} 
               <Route exact path='/creator' element={<Creator />}></Route>
               <Route exact path='/rankomat' element={<Rankomat />}></Route>
               <Route exact path='/' element={<Landing />}></Route>
