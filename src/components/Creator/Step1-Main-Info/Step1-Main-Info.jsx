@@ -12,11 +12,21 @@ import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
 import AlertAbout from "./alerts/Alert-About.jsx"
 import { useSelector } from "react-redux";
+import { createTheme, ThemeProvider  } from "@material-ui/core";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#784af4",
+    },
+  },
+});
 
 export default function Step1MainInfo(props) {
   const { showResults } = useSelector((state) => state.stepOneReducer);
 
   return (
+    <ThemeProvider theme={theme}>
     <Grid container className='step-1-container'>
       <StepperVertical activeStep={props.activeVerticalStep} />
       <Grid item xs={4} style={{ margin:"20px", marginTop: "50px", textAlign: "left" }} className="form-container">
@@ -63,5 +73,6 @@ export default function Step1MainInfo(props) {
         { props.activeVerticalStep === 1 && <AlertAbout/> }
       </Grid>
     </Grid>
+    </ThemeProvider>
   );
 }

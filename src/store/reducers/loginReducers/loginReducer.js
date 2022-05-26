@@ -3,7 +3,11 @@ import {
     EMAIL,
     PASSWORD,
     ISLOGGEDIN,
-    ACCESSTOKEN
+    ACCESSTOKEN,
+    //Sign Up
+    ISSIGNUPOPEN,
+    USERNAME,
+    ISSIGNEDUP
   } from "../../loginConsts";
 
   const initialState = {
@@ -12,6 +16,10 @@ import {
     password: "",
     accessToken: "",
     isLoggedIn: false,
+    //Sign Up
+    isSignUpOpen: false,
+    userName: "",
+    isSignedUp:"",
   };
   
   export const loginReducer = (state = initialState, action) => {
@@ -44,6 +52,25 @@ import {
         return {
           ...state,
           accessToken: action.payload,
+        };
+      }
+      //SIGN UP
+      case ISSIGNUPOPEN: {
+        return {
+          ...state,
+          isSignUpOpen: action.payload,
+        };
+      }
+      case USERNAME: {
+        return {
+          ...state,
+          userName: action.payload,
+        };
+      }
+      case ISSIGNEDUP: {
+        return {
+          ...state,
+          isSignedUp: action.payload,
         };
       }
       default:

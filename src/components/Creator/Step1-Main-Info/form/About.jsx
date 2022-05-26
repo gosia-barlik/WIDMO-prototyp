@@ -1,10 +1,8 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
-import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
-import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -69,11 +67,16 @@ export default function AboutCompany(props) {
       <Typography variant='subtitle2' gutterBottom component='div'>
         O firmie
       </Typography>
-      <TextareaAutosize
+      <TextField
+        variant='outlined'
+        id='textarea'
+        color='secondary'
+        fullWidth
+        multiline
+        placeholder='firma działa w branży stomatologicznej od..'
         onChange={(e) => onSetAboutCompany(e.target.value)}
         aria-label='minimum height'
         minRows={3}
-        placeholder='Podaj kilka podstawowych informacji na temat firmy, gdzie się znajduje, w jakim obszarze działa ...'
       />
       <Typography
         variant='subtitle2'

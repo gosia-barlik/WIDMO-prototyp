@@ -1,5 +1,6 @@
 import React from "react";
 import { alpha, withStyles, makeStyles } from "@material-ui/core/styles";
+import TextField from "@mui/material/TextField";
 import InputBase from "@material-ui/core/InputBase";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -61,12 +62,12 @@ export default function OrganizationalData(props) {
 
   return (
     <>
-      <form className={classes.root} noValidate style={{marginTop:"40px"}}>
+      <form className={classes.root} noValidate style={{ marginTop: "40px" }}>
         <Typography variant='subtitle2' component='div'>
           Dane organizacyjne dotyczące rekrutacji
         </Typography>
         <div style={{ width: "100%" }}>
-          <FormControl className={classes.margin} style={{ width: "40%" }}>
+          {/* <FormControl className={classes.margin} style={{ width: "40%" }}>
             <InputLabel shrink htmlFor='application-way'>
               Sposób przesyłania zgłoszeń
             </InputLabel>
@@ -76,9 +77,26 @@ export default function OrganizationalData(props) {
               name='application-way'
               onChange={(e) => onSetApplicationWay(e.target.value)}
             />
-          </FormControl>
+          </FormControl> */}
+          <TextField
+            variant='outlined'
+            size='small'
+            id='outlined-basic'
+            color='secondary'
+            label='Sposób przesyłania zgłoszeń'
+            type='text'
+            placeholder='email'
+            name='application-way'
+            style={{
+              width: "40%",
+              fontSize: "14px",
+              marginTop: "18px",
+              marginRight: "4px",
+            }}
+            onChange={(e) => onSetApplicationWay(e.target.value)}
+          />
 
-          <FormControl className={classes.margin} style={{ width: "40%" }}>
+          {/* <FormControl className={classes.margin} style={{ width: "40%" }}>
             <InputLabel shrink htmlFor='application-expectation'>
               Oczekiwania dotyczące formy zgłoszeń
             </InputLabel>
@@ -88,9 +106,27 @@ export default function OrganizationalData(props) {
               name='application-expectation'
               onChange={(e) => onSetApplicationExpectation(e.target.value)}
             />
-          </FormControl>
+          </FormControl> */}
 
-          <FormControl className={classes.margin} style={{ width: "40%" }}>
+          <TextField
+            variant='outlined'
+            size='small'
+            id='outlined-basic'
+            color='secondary'
+            label='Oczekiwania dotyczące formy zgłoszeń'
+            type='text'
+            placeholder='CV w formie pdf'
+            name='application-expectation'
+            style={{
+              width: "40%",
+              fontSize: "14px",
+              marginTop: "18px",
+              marginRight: "4px",
+            }}
+            onChange={(e) => onSetApplicationExpectation(e.target.value)}
+          />
+
+          {/* <FormControl className={classes.margin} style={{ width: "40%" }}>
             <InputLabel shrink htmlFor='application-date'>
               Termin przesyłania zgłoszeń
             </InputLabel>
@@ -100,9 +136,26 @@ export default function OrganizationalData(props) {
               name='application-date'
               onChange={(e) => onSetApplicationDate(e.target.value)}
             />
-          </FormControl>
+          </FormControl> */}
+          <TextField
+            variant='outlined'
+            size='small'
+            id='outlined-basic'
+            color='secondary'
+            label='Termin przesyłania zgłoszeń'
+            type='date'
+            placeholder=''
+            name='application-date'
+            style={{
+              width: "40%",
+              fontSize: "14px",
+              marginTop: "18px",
+              marginRight: "4px",
+            }}
+            onChange={(e) => onSetApplicationDate(e.target.value)}
+          />
 
-          <FormControl className={classes.margin} style={{ width: "22%" }}>
+          {/* <FormControl className={classes.margin} style={{ width: "22%" }}>
             <InputLabel shrink htmlFor='contact-information'>
               Dane kontaktowe
             </InputLabel>
@@ -112,7 +165,24 @@ export default function OrganizationalData(props) {
               name='contact-information'
               onChange={(e) => onSetContactInformation(e.target.value)}
             />
-          </FormControl>
+          </FormControl> */}
+          <TextField
+            variant='outlined'
+            size='small'
+            id='outlined-basic'
+            color='secondary'
+            label='Dane kontaktowe'
+            type='text'
+            placeholder='jan.kowalski@nazwafirmy.com'
+            name='contact-information'
+            style={{
+              width: "40%",
+              fontSize: "14px",
+              marginTop: "18px",
+              marginRight: "4px",
+            }}
+            onChange={(e) => onSetContactInformation(e.target.value)}
+          />
         </div>
       </form>
     </>

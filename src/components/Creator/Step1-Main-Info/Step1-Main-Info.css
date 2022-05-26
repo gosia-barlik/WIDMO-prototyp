@@ -13,7 +13,18 @@
   background-color: rgb(255, 255, 255) !important ;
 }
 
-.form-container-box .css-173wfxe span {
+/*Error message*/
+.css-k4qjio-MuiFormHelperText-root {
+  margin-left: 0px !important ;
+}
+/*placeholder font-size*/
+.css-hjtp1-MuiInputBase-root-MuiOutlinedInput-root,
+.css-1i1x89v-MuiInputBase-root-MuiOutlinedInput-root {
+  font-size: 0.875rem !important ;
+}
+
+
+/* .form-container-box .css-173wfxe span {
   padding-bottom: 5px;
   font-size: 10px;
 }
@@ -21,51 +32,9 @@
   box-sizing: border-box;
 }
 .job-offer-container-box {
-  /* margin-right: 150px; */
   padding: 18px;
   box-sizing: border-box;
-}
-
-.form-container-box textarea,
-.form-container-box textarea:focus {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.5rem;
-  width: 96%;
-  padding: 12px;
-  border: none !important;
-  border-radius: 4px;
-  outline: none;
-  resize: none;
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-  font-size: 14px;
-}
-
-.form-container-box button {
-  text-decoration: none;
-  font-family: Arial;
-  border-radius: 4px;
-  padding: 4px 16px 3px 16px;
-}
-
-.form-container-box .button-contained {
-  background-color: #6200ee !important;
-  color: white;
-}
-
-.step-1-container .form-container-box input {
-  font-size: 14px !important;
-  outline: none;
-  border: none;
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
-    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
-}
-
-.form-container-box #searchPosition {
-  padding: 10px 4px 10px 4px;
-  box-shadow: none;
-}
-/* LOGO */
+} */
 
 .add-logo {
   margin-top: 12px;
@@ -75,11 +44,6 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 }
-/* .add-logo .styled-icon-button {
-  color: #784af4 !important;
-  box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
-  margin-right: 12px !important;
-} */
 .input-file-wrapper {
   position: absolute;
 }
@@ -102,7 +66,6 @@
   width: 100px;
   height: 100px;
 }
-
 .logo-preview {
   max-width: 80px;
   max-height: 80px;
@@ -135,20 +98,16 @@
 #photo-icon.hidden {
   display: none;
 }
-
 /* ALERT */
-.MuiAlert-standardInfo {
-  color: #000000 !important;
-  background-color: #ede4f9 !important;
+.MuiAlert-standardInfo-27 {
+  color: #241e2d !important;
+  background-color: #c3fff9 !important;
 }
-.MuiAlert-standardInfo .MuiAlert-icon {
-  color: #6200ee !important;
+.MuiAlert-standardInfo-27 .MuiAlert-icon-38 {
+  color: #241e2d !important;
 }
 
 @media only screen and (max-width: 1024px) {
-  /* .form-container {
-    width:100vw !important;
-  } */
   .form-container-box {
     width: 85vw;
   }

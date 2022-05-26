@@ -13,6 +13,11 @@
   width: fit-content;
   max-width: 550px !important;
 }
+.css-ejgmvm-MuiTypography-root,
+.wrap-text {
+  overflow-wrap: break-word !important;
+}
+
 @media only screen and (max-width: 900px) {
   .job-offer-container-box {
     width: 100%;

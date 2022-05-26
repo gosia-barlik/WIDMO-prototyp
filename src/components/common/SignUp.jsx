@@ -7,32 +7,50 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@mui/material/Typography";
-import "./Login.css"
 import { useDispatch, useSelector } from "react-redux";
-import { Formik, Form, useField, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as yup from "yup";
 import {
-  setIsLoginOpen,
+  setIsSignUpOpen,
+  setUserName,
   setEmail,
   setPassword,
-  setIsLoggedIn,
-  setAccessToken,
-  setIsSignUpOpen,
+  setIsSignedUp,
+  setIsLoginOpen,
 } from "../../store/actions/loginActions";
+
+import { useFormControl } from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
 
 const validationSchema = yup.object({
   email: yup
     .string("Wprowadź adres e-mail")
-    .email("Wprowadzona wartość nie wygląda na prawidłowy adres e-mail")
+    .email("Wprowadź prawidłowy adres e-mail")
     .required("Email jest wymagany"),
   password: yup
     .string("Wprowadź hasło")
     .min(8, "Hasło powinno składać się z minimum 8 znaków ")
     .required("Hasło jest wymagane"),
+  name: yup
+    .string("Imię jest wymagane")
+    .required("Imię jest wymagane"),
 });
 
-export default function LoginForm() {
-  const { isLoginOpen, email, password, isLoggedIn, isSignUpOpen } = useSelector(
+function HelperText() {
+  const { focused } = useFormControl() || {};
+
+  const helperText = React.useMemo(() => {
+    if (focused) {
+      return 'Min. 8 znaków';
+    }
+    return '8 znaków';
+  }, [focused]);
+
+  return <FormHelperText>{helperText}</FormHelperText>;
+}
+
+export default function SignUpForm() {
+  const { isSignUpOpen, email, password, isSignedUp } = useSelector(
     (state) => state.loginReducer
   );
   const dispatch = useDispatch();
@@ -41,16 +59,17 @@ export default function LoginForm() {
     initialValues: {
       email: "",
       password: "",
+      name: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      submitLoginForm();
+      submitSignUpForm();
     },
   });
 
-  const closeLoginForm = () => {
-    dispatch(setIsLoginOpen(false));
+  const closeSignUpForm = () => {
+    dispatch(setIsSignUpOpen(false));
   };
 
   const onSetEmailAddress = (e) => {
@@ -63,7 +82,12 @@ export default function LoginForm() {
     formik.handleChange(e);
   };
 
-  const submitLoginForm = () => {
+  const onSetUserName = (e) => {
+    dispatch(setUserName(e.target.value));
+    formik.handleChange(e);
+  };
+
+  const submitSignUpForm = () => {
     // fetch("http://localhost:3000/logIn", {
     //   method: "POST",
     //   headers: {'Content-Type': 'application/json'},
@@ -74,30 +98,40 @@ export default function LoginForm() {
     // dispatch(setIsLoginOpen(false))
     // dispatch(setIsLoggedIn(true))
     // });
-    dispatch(
-      setAccessToken("12390h-j320f9hf0sdu-f0ds9f0-fsd0fsdfsdf98sdf-sd0f")
-    ); //do testow
-    dispatch(setIsLoginOpen(false));
-    dispatch(setIsLoggedIn(true));
+    dispatch(setIsSignUpOpen(false));
+    dispatch(setIsSignedUp(true));
   };
 
-  const GoToSignUp = () => {
-    closeLoginForm();
-    dispatch(setIsSignUpOpen(true));
-   
-  }
+  const GoToLogIn = () => {
+    closeSignUpForm();
+    dispatch(setIsLoginOpen(true));
+  };
 
   return (
     <div>
       <Dialog
-        open={isLoginOpen}
-        onClose={closeLoginForm}
+        open={isSignUpOpen}
+        onClose={closeSignUpForm}
         aria-labelledby='form-dialog-title'>
-        <DialogTitle id='form-dialog-title'>Zaloguj się</DialogTitle>
+        <DialogTitle id='form-dialog-title'>Zarejestruj się</DialogTitle>
         <DialogContent>
-          <DialogContentText>Masz już konto? Użyj adresu e-mail oraz hasła, aby się zalogować</DialogContentText>
+          <DialogContentText></DialogContentText>
 
           <form onSubmit={formik.handleSubmit}>
+            <TextField
+              fullWidth
+              variant="outlined"
+              size="small"
+              
+              id='name'
+              name='name'
+              label='Imię'
+              value={formik.values.name}
+              onChange={onSetUserName}
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              helperText={formik.touched.name && formik.errors.name}
+              style={{ marginTop: "18px" }}
+            />
             <TextField
               fullWidth
               variant="outlined"
@@ -125,10 +159,11 @@ export default function LoginForm() {
               helperText={formik.touched.password && formik.errors.password}
               style={{ marginTop: "18px" }}
             />
+            <HelperText />
             <Typography
               variant='body2'
               component='div'
-              style={{ marginTop: "24px" }}>
+              style={{ marginTop: "12px" }}>
               Kontynuacja oznacza wyrażenie zgody na warunki użytkowania
               serwisu. Zapoznaj się z naszą polityka prywatności.
             </Typography>
@@ -138,16 +173,16 @@ export default function LoginForm() {
               fullWidth
               type='submit'
               style={{ marginTop: "24px", textTransform: "none" }}>
-              Zaloguj się
+              Zarejestruj się
             </Button>
           </form>
           <Typography
             variant='body2'
             component='div'
             style={{ marginTop: "12px" }}>
-            Nie masz konta?{" "}
-            <Button variant='text' onClick={GoToSignUp}>
-              Zarejestruj
+            Masz już konto?
+            <Button variant='text' onClick={GoToLogIn}>
+              Wróć do logowania
             </Button>
           </Typography>
         </DialogContent>
