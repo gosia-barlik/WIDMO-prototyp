@@ -122,7 +122,7 @@ export default function JobOffer(props) {
             variant='subtitle2'
             gutterBottom
             component='div'
-            style={{ color: "#784af4", fontWeight: "800" }}>
+            style={{ color: "#784af4", fontWeight: "700" }}>
             Główne informacje
           </Typography>
           <Typography variant='subtitle2' gutterBottom component='div'>
@@ -394,7 +394,7 @@ export default function JobOffer(props) {
             variant='subtitle2'
             gutterBottom
             component='div'
-            style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
+            style={{ color: "#784af4", marginTop: "10px", fontWeight: "700" }}>
             Treść ogłoszenia
           </Typography>
           {responsibilities && (
@@ -798,7 +798,7 @@ export default function JobOffer(props) {
             variant='subtitle2'
             gutterBottom
             component='div'
-            style={{ color: "#784af4", marginTop: "10px", fontWeight: "800" }}>
+            style={{ color: "#784af4", marginTop: "10px", fontWeight: "700" }}>
             Informacje uzupełniające
           </Typography>
           {rodo && (

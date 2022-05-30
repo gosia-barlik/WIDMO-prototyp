@@ -9,7 +9,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
-import * as yup from "yup";
 import {
   setIsSignUpOpen,
   setUserName,
@@ -21,20 +20,7 @@ import {
 
 import { useFormControl } from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-
-const validationSchema = yup.object({
-  email: yup
-    .string("Wprowadź adres e-mail")
-    .email("Wprowadź prawidłowy adres e-mail")
-    .required("Email jest wymagany"),
-  password: yup
-    .string("Wprowadź hasło")
-    .min(8, "Hasło powinno składać się z minimum 8 znaków ")
-    .required("Hasło jest wymagane"),
-  name: yup
-    .string("Imię jest wymagane")
-    .required("Imię jest wymagane"),
-});
+import signupSchema from "./validations/signupSchema";
 
 function HelperText() {
   const { focused } = useFormControl() || {};
@@ -61,7 +47,7 @@ export default function SignUpForm() {
       password: "",
       name: "",
     },
-    validationSchema: validationSchema,
+    validationSchema: signupSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
       submitSignUpForm();

@@ -5,6 +5,7 @@ import Step2OfferContent from "./Step2-Offer-Content/Step2-Offer-Content.jsx";
 import Step3DataProcessing from "./Step3-Data-Processing/Step3-Data-Processing.jsx";
 import Step4Summary from "./Step4-Summary/Step4-Summary.jsx";
 import "./Creator.css";
+import { createTheme, ThemeProvider } from "@material-ui/core";
 
 export default function Creator() {
   //Step1
@@ -44,7 +45,9 @@ export default function Creator() {
 
   return (
     <>
+    
       <StepperHorizontal activeStep={activeStep} />
+      
       {activeStep === 0 && (
         <Step1MainInfo
           activeStep={activeStep}
@@ -85,6 +88,7 @@ export default function Creator() {
            handleMainStepperNext={handleMainStepperNext}
          />
         }
+       
     </>
   );
 }

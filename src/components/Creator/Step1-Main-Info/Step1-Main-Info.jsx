@@ -10,69 +10,60 @@ import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
-import AlertAbout from "./alerts/Alert-About.jsx"
+import AlertAbout from "./alerts/Alert-About.jsx";
 import { useSelector } from "react-redux";
-import { createTheme, ThemeProvider  } from "@material-ui/core";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#784af4",
-    },
-  },
-});
 
 export default function Step1MainInfo(props) {
   const { showResults } = useSelector((state) => state.stepOneReducer);
 
   return (
-    <ThemeProvider theme={theme}>
     <Grid container className='step-1-container'>
       <StepperVertical activeStep={props.activeVerticalStep} />
-      <Grid item xs={4} style={{ margin:"20px", marginTop: "50px", textAlign: "left" }} className="form-container">
+      <Grid
+        item
+        xs={4}
+        style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
+        className='form-container'>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-          
-          { props.activeVerticalStep === 0 && <SearchBar /> }
-          
-          { props.activeVerticalStep === 0 && showResults &&
-            <SearchResults />
-          }
-          
-          { props.activeVerticalStep === 1 && <AboutCompany /> }
+          {props.activeVerticalStep === 0 && <SearchBar />}
 
-          { props.activeVerticalStep === 2 && <AdditionalInformation /> }
-          
-          {showResults && props.activeVerticalStep !== 2 && 
+          {props.activeVerticalStep === 0 && showResults && <SearchResults />}
 
+          {props.activeVerticalStep === 1 && <AboutCompany />}
+
+          {props.activeVerticalStep === 2 && <AdditionalInformation />}
+
+          {showResults && props.activeVerticalStep !== 2 && (
             <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleVerticalStepperNext}
-            /> 
-          }
+            />
+          )}
 
-          { showResults && props.activeVerticalStep === 2 &&
+          {showResults && props.activeVerticalStep === 2 && (
             <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleMainStepperNext}
             />
-          }
-
+          )}
         </Paper>
       </Grid>
-      <Grid item xs={4} style={{margin:"20px", marginTop: "50px", textAlign: "left" }} className='job-offer-container'>
+      <Grid
+        item
+        xs={4}
+        style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
+        className='job-offer-container'>
         <Typography variant='subtitle2' gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
-        <Paper className='job-offer-container-box'>
-          <JobOffer 
-          activeStep={props.activeStep}/>
+        <Paper className='job-offer-container-box' elevation={0} >
+          <JobOffer activeStep={props.activeStep} />
         </Paper>
-        { props.activeVerticalStep === 1 && <AlertAbout/> }
+        {props.activeVerticalStep === 1 && <AlertAbout />}
       </Grid>
     </Grid>
-    </ThemeProvider>
   );
 }

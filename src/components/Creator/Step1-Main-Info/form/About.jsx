@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
+import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import { makeStyles } from "@material-ui/core/styles";
@@ -70,7 +70,6 @@ export default function AboutCompany(props) {
       <TextField
         variant='outlined'
         id='textarea'
-        color='secondary'
         fullWidth
         multiline
         placeholder='firma działa w branży stomatologicznej od..'

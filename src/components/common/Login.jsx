@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import "./Login.css"
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, useField, useFormik } from "formik";
-import * as yup from "yup";
+
 import {
   setIsLoginOpen,
   setEmail,
@@ -19,17 +19,7 @@ import {
   setAccessToken,
   setIsSignUpOpen,
 } from "../../store/actions/loginActions";
-
-const validationSchema = yup.object({
-  email: yup
-    .string("Wprowadź adres e-mail")
-    .email("Wprowadzona wartość nie wygląda na prawidłowy adres e-mail")
-    .required("Email jest wymagany"),
-  password: yup
-    .string("Wprowadź hasło")
-    .min(8, "Hasło powinno składać się z minimum 8 znaków ")
-    .required("Hasło jest wymagane"),
-});
+import loginSchema from "./validations/loginSchema";
 
 export default function LoginForm() {
   const { isLoginOpen, email, password, isLoggedIn, isSignUpOpen } = useSelector(
@@ -42,7 +32,7 @@ export default function LoginForm() {
       email: "",
       password: "",
     },
-    validationSchema: validationSchema,
+    validationSchema: loginSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
       submitLoginForm();

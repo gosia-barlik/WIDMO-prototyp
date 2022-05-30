@@ -21,6 +21,7 @@ import {
 } from "../../store/actions/loginActions";
 import { useNavigate } from "react-router-dom";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -68,7 +69,6 @@ export default function Header() {
           <IconButton className={classes.menuButton} aria-label='menu'>
             <MenuIcon />
           </IconButton>
-
           <NavLink to='/' component='div' style={{ width: "100%" }}>
             <Typography variant='h6' className={classes.title}>
               AIRA
