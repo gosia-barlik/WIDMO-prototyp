@@ -18,21 +18,36 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setIsLoginOpen,
   setIsLoggedIn,
-} from "../../store/actions/loginActions";
+  setIsDrawerOpen,
+} from "../../store/actions/userActions";
 import { useNavigate } from "react-router-dom";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  navbar: {
+    marginLeft: "3%",
+    marginRight: "4%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
+  },
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+  menuPopover: {
+    marginTop:48,
+    top: 48,
+    fontSize: 14,
+  },
+  menuItem: {
+    fontSize: 14,
   },
   title: {
     flexGrow: 1,
     color: "black",
-    fontFamily: "Rubik Microbe",
     fontFamily: "Montserrat",
     fontSize: "24px",
   },
@@ -42,7 +57,9 @@ export default function Header() {
   const navigate = useNavigate();
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.loginReducer);
+  const { isLoggedIn, isDrawerOpen } = useSelector(
+    (state) => state.userReducer
+  );
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -61,56 +78,80 @@ export default function Header() {
     dispatch(setIsLoggedIn(false));
     navigate("/", { replace: true });
   };
+  const toggleUserDrawer = () => {
+    dispatch(setIsDrawerOpen(!isDrawerOpen));
+  };
 
   return (
     <div className={classes.root}>
       <AppBar position='static' className='navbar' elevation={1}>
         <Toolbar className='appbar-toolbar'>
-          <IconButton className={classes.menuButton} aria-label='menu'>
-            <MenuIcon />
-          </IconButton>
-          <NavLink to='/' component='div' style={{ width: "100%" }}>
-            <Typography variant='h6' className={classes.title}>
-              AIRA
-            </Typography>
-          </NavLink>
+          {isLoggedIn && (
+            <div className={classes.navbar}
+          >
+              <IconButton
+                className={classes.menuButton}
+                aria-label='menu'
+                onClick={toggleUserDrawer}>
+                <MenuIcon />
+              </IconButton>
+              <NavLink to='/' component='div' style={{ width: "100%" }}>
+                <Typography variant='h6' className={classes.title}>
+                  AIRA
+                </Typography>
+              </NavLink>
+              <div>
+                <IconButton
+                  aria-label='account of current user'
+                  aria-controls='menu-appbar'
+                  aria-haspopup='true'
+                  onClick={handleMenu}>
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                className={classes.menuPopover}
+                  id='menu-appbar'
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={open}
+                  onClose={handleClose}>
+                  <MenuItem className={classes.menuItem} onClick={handleClose}>Profil</MenuItem>
+                  <MenuItem className={classes.menuItem} onClick={handleClose}>Ustawienia</MenuItem>
+                  <MenuItem className={classes.menuItem} onClick={logOut}>Wyloguj</MenuItem>
+                </Menu>
+              </div>
+            </div>
+          )}
+
           {isLoggedIn == false && (
-           
+            <div
+              style={{
+                marginLeft: "4%",
+                marginRight: "4%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-around",
+                width: "100%",
+              }}>
+              <NavLink to='/' component='div' style={{ width: "100%" }}>
+                <Typography variant='h6' className={classes.title}>
+                  AIRA
+                </Typography>
+              </NavLink>
               <Button
                 onClick={openLoginForm}
                 color='primary'
                 style={{ width: "150px" }}>
                 Zaloguj się
               </Button>
-            
-          )}
-          {isLoggedIn && (
-            <div>
-              <IconButton
-                aria-label='account of current user'
-                aria-controls='menu-appbar'
-                aria-haspopup='true'
-                onClick={handleMenu}>
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id='menu-appbar'
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={open}
-                onClose={handleClose}>
-                <MenuItem onClick={handleClose}>Profil</MenuItem>
-                <MenuItem onClick={handleClose}>Ustawienia</MenuItem>
-                <MenuItem onClick={logOut}>Wyloguj</MenuItem>
-              </Menu>
             </div>
           )}
         </Toolbar>

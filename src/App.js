@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginForm from "./components/common/Login";
 import SignUpForm from "./components/common/SignUp";
 import RequireAuth from "./components/common/RequireAuth";
+import UserDrawer from "./components/common/UserDrawer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <>
             <LoginForm />
             <SignUpForm />
+            <UserDrawer />
             <Routes>
               {/* <Route element={<RequireAuth/>}>
                 <Route exact path='/creator' element={<Creator />}></Route>

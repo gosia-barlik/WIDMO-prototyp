@@ -7,8 +7,10 @@ import {
     //Sign Up
     ISSIGNUPOPEN,
     USERNAME,
-    ISSIGNEDUP
-  } from "../../loginConsts";
+    ISSIGNEDUP,
+    //User Drawer
+    ISDRAWEROPEN
+  } from "../../userConsts";
 
   const initialState = {
     isLoginOpen: "",
@@ -20,9 +22,11 @@ import {
     isSignUpOpen: false,
     userName: "",
     isSignedUp:"",
+    //User Drawer
+    isDrawerOpen: false
   };
   
-  export const loginReducer = (state = initialState, action) => {
+  export const userReducer = (state = initialState, action) => {
     switch (action.type) {
       case ISLOGINOPEN: {
         return {
@@ -71,6 +75,13 @@ import {
         return {
           ...state,
           isSignedUp: action.payload,
+        };
+      }
+      //USER DRAWER
+      case ISDRAWEROPEN: {
+        return {
+          ...state,
+          isDrawerOpen: action.payload,
         };
       }
       default:

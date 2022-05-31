@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import {
     setIsLoginOpen
-  } from "../../store/actions/loginActions";
+  } from "../../store/actions/userActions";
 
 const RequireAuth = () => {
-    const { isLoggedIn } = useSelector(state=>state.loginReducer);
+    const { isLoggedIn } = useSelector(state=>state.userReducer);
     const location = useLocation();
     const dispatch = useDispatch();
 

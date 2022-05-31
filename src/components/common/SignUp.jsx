@@ -16,7 +16,7 @@ import {
   setPassword,
   setIsSignedUp,
   setIsLoginOpen,
-} from "../../store/actions/loginActions";
+} from "../../store/actions/userActions";
 
 import { useFormControl } from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -37,7 +37,7 @@ function HelperText() {
 
 export default function SignUpForm() {
   const { isSignUpOpen, email, password, isSignedUp } = useSelector(
-    (state) => state.loginReducer
+    (state) => state.userReducer
   );
   const dispatch = useDispatch();
 

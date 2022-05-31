@@ -6,7 +6,7 @@ import { stepThreeReducer } from './creatorReducers/stepThreeReducer';
 import { rankomatStepTwoReducer } from './rankomatReducers/rankomatStepTwoReducer';
 import { rankomatStepOneReducer } from './rankomatReducers/rankomatStepOneReducer';
 import { rankomatStepThreeReducer } from './rankomatReducers/rankomatStepThreeReducer';
-import { loginReducer } from './loginReducers/loginReducer';
+import { userReducer } from './userReducers/userReducer';
 
  const rootReducer = combineReducers ({
   stepperReducer,
@@ -16,7 +16,7 @@ import { loginReducer } from './loginReducers/loginReducer';
   rankomatStepTwoReducer,
   rankomatStepOneReducer,
   rankomatStepThreeReducer,
-  loginReducer
+  userReducer
 })
 
 export default rootReducer;

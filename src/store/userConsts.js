@@ -8,3 +8,5 @@ export const ACCESSTOKEN = "ACCESSTOKEN";
 export const ISSIGNUPOPEN = "ISSIGNUPOPEN";
 export const USERNAME = "USERNAME";
 export const ISSIGNEDUP = "ISSIGNEDUP";
+//USER DRAWER
+export const ISDRAWEROPEN = "ISDRAWEROPEN";

@@ -18,12 +18,12 @@ import {
   setIsLoggedIn,
   setAccessToken,
   setIsSignUpOpen,
-} from "../../store/actions/loginActions";
+} from "../../store/actions/userActions";
 import loginSchema from "./validations/loginSchema";
 
 export default function LoginForm() {
   const { isLoginOpen, email, password, isLoggedIn, isSignUpOpen } = useSelector(
-    (state) => state.loginReducer
+    (state) => state.userReducer
   );
   const dispatch = useDispatch();
 

@@ -11,6 +11,9 @@ const theme = createTheme({
     primary: {
       main: "#784af4",
     },
+    typography: {
+      fontFamily: 'Quicksand'
+    }
   },
 });
 

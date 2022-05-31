@@ -7,7 +7,8 @@ import {
   ISSIGNUPOPEN,
   USERNAME,
   ISSIGNEDUP,
-} from "../loginConsts";
+  ISDRAWEROPEN
+} from "../userConsts";
 
 export const setIsLoginOpen = (isLoginOpen) => {
   return { type: ISLOGINOPEN, payload: isLoginOpen };
@@ -33,4 +34,8 @@ export const setUserName = (userName) => {
 };
 export const setIsSignedUp = (isSignedUp) => {
   return { type: ISSIGNEDUP, payload: isSignedUp };
+};
+//USER DRAWER
+export const setIsDrawerOpen = (isDrawerOpen) => {
+  return { type: ISDRAWEROPEN, payload: isDrawerOpen };
 };

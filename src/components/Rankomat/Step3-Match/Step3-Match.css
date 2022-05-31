@@ -16,10 +16,10 @@ justify-content: center;
   text-align: left;
 }
 
-.MuiListItemText-root span {
+.rankomat .MuiListItemText-root span {
   color: white;
 }
-.styled-checkbox svg {
+.rankomat .styled-checkbox svg {
   color: white;
 }
 
