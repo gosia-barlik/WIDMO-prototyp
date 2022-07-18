@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
+  setCompanyName,
   setAboutCompany,
   setLogo,
   setLogoPreview,
@@ -20,6 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     display: "none",
+  },
+  textField: {
+    fontSize: "14px",
+    marginTop: "8px",
+    marginRight: "8px",
   },
 }));
 
@@ -40,6 +46,11 @@ export default function AboutCompany(props) {
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [logo]);
+
+  //COMPANY NAME
+  const onSetCompanyName = (companyName) => {
+    dispatch(setCompanyName(companyName));
+  };
 
   //ABOUT COMPANY
   const onSetAboutCompany = (aboutCompany) => {
@@ -68,15 +79,27 @@ export default function AboutCompany(props) {
         O firmie
       </Typography>
       <TextField
+        className={classes.textField}
+        fullWidth
+        variant='outlined'
+        size='small'
+        id='outlined-basic'
+        label='nazwa firmy'
+        name='company-name-input'
+        onChange={(e) => onSetCompanyName(e.target.value)}
+      />
+      <TextField
+        className={classes.textField}
         variant='outlined'
         id='textarea'
+        label='kilka słów o firmie'
         fullWidth
         multiline
-        placeholder='firma działa w branży stomatologicznej od..'
         onChange={(e) => onSetAboutCompany(e.target.value)}
-        aria-label='minimum height'
+        aria-label='about company'
         minRows={3}
       />
+
       <Typography
         variant='subtitle2'
         component='div'
@@ -86,9 +109,14 @@ export default function AboutCompany(props) {
       <div className='add-logo'>
         <div className={"input-file-wrapper"}>
           <label>
-              <IconButton color="primary" aria-label="upload picture" component="span" id='photo-icon' onClick={(e) => onSetLogo(e)}>
-          <PhotoCamera />
-        </IconButton>
+            <IconButton
+              color='primary'
+              aria-label='upload picture'
+              component='span'
+              id='photo-icon'
+              onClick={(e) => onSetLogo(e)}>
+              <PhotoCamera />
+            </IconButton>
             {logoPreview && (
               <img
                 className='logo-preview'
@@ -98,7 +126,7 @@ export default function AboutCompany(props) {
               />
             )}
           </label>
-          
+
           <input
             type='file'
             name='photo'
@@ -109,8 +137,6 @@ export default function AboutCompany(props) {
           />
         </div>
       </div>
-
-      
     </>
   );
 }

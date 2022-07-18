@@ -12,8 +12,8 @@ const theme = createTheme({
       main: "#784af4",
     },
     typography: {
-      fontFamily: 'Quicksand'
-    }
+      fontFamily: "Quicksand",
+    },
   },
 });
 

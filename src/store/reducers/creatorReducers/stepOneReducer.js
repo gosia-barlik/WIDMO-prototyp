@@ -5,6 +5,7 @@ import {
   SALARYTYPE,
   SALARYFROM,
   SALARYTO,
+  SALARYCURRENCY,
   SALARYTIME,
   SALARYCONTRACT,
   ADDRESSCOUNTRY,
@@ -14,6 +15,7 @@ import {
   CONTRACTTYPE,
   WORKMODEL,
   RECRUITMENTMODE,
+  COMPANYNAME,
   ABOUTCOMPANY,
   LOGO,
   LOGOPREVIEW
@@ -26,6 +28,7 @@ const initialState = {
   salaryType: "",
   salaryFrom: "",
   salaryTo: "",
+  salaryCurrency: "",
   salaryTime: "",
   salaryContract: "",
   addressCountry: "",
@@ -35,6 +38,7 @@ const initialState = {
   contractType: "",
   workModel: "",
   recruitmentMode: "",
+  companyName: "",
   aboutCompany: "",
   logo: "",
   logoPreview: "",
@@ -76,6 +80,12 @@ export const stepOneReducer = (state = initialState, action) => {
       return {
         ...state,
         salaryTo: action.payload,
+      };
+    }
+    case SALARYCURRENCY: {
+      return {
+        ...state,
+        salaryCurrency: action.payload,
       };
     }
     case SALARYTIME: {
@@ -130,6 +140,12 @@ export const stepOneReducer = (state = initialState, action) => {
       return {
         ...state,
         recruitmentMode: action.payload,
+      };
+    }
+    case COMPANYNAME: {
+      return {
+        ...state,
+        companyName: action.payload,
       };
     }
     case ABOUTCOMPANY: {

@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -22,6 +23,13 @@ import { useFormControl } from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import signupSchema from "./validations/signupSchema";
 
+const useStyles = makeStyles({
+  backDrop: {
+    backdropFilter: "blur(3px)",
+    backgroundColor: "rgba(0,0,30,0.4)",
+  },
+});
+
 function HelperText() {
   const { focused } = useFormControl() || {};
 
@@ -40,6 +48,7 @@ export default function SignUpForm() {
     (state) => state.userReducer
   );
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const formik = useFormik({
     initialValues: {
@@ -98,7 +107,12 @@ export default function SignUpForm() {
       <Dialog
         open={isSignUpOpen}
         onClose={closeSignUpForm}
-        aria-labelledby='form-dialog-title'>
+        aria-labelledby='form-dialog-title'
+        BackdropProps={{
+          classes: {
+            root: classes.backDrop,
+          },
+        }}>
         <DialogTitle id='form-dialog-title'>Zarejestruj się</DialogTitle>
         <DialogContent>
           <DialogContentText></DialogContentText>

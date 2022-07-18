@@ -28,6 +28,7 @@ export default function JobOffer(props) {
     searchedPosition,
     salaryTo,
     salaryFrom,
+    salaryCurrency,
     salaryTime,
     salaryType,
     salaryContract,
@@ -38,6 +39,7 @@ export default function JobOffer(props) {
     contractType,
     recruitmentMode,
     workModel,
+    companyName,
     aboutCompany,
     logo,
     logoPreview,
@@ -131,6 +133,16 @@ export default function JobOffer(props) {
           <Typography variant='body2' gutterBottom component='div'>
             {searchedPosition}
           </Typography>
+          {companyName && (
+            <>
+              <Typography variant='subtitle2' gutterBottom component='div'>
+                Nazwa firmy
+              </Typography>
+              <Typography variant='body2' gutterBottom component='div'>
+                {companyName}
+              </Typography>
+            </>
+          )}
 
           {aboutCompany && (
             <>
@@ -146,13 +158,13 @@ export default function JobOffer(props) {
             <img className='logo-preview' src={logoPreview} id={"logo-photo"} />
           )}
 
-          {(salaryType || salaryFrom || salaryTo || salaryTime) && (
+          {(salaryType || salaryFrom || salaryTo || salaryCurrency || salaryTime) && (
             <>
               <Typography variant='subtitle2' gutterBottom component='div'>
                 Wynagrodzenie
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {"od " + salaryFrom} {"do " + salaryTo} {"/" + salaryTime}{" "}
+                {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency} {"/" + salaryTime}{" "}
                 {salaryType} {salaryContract}
               </Typography>
             </>
@@ -328,7 +340,7 @@ export default function JobOffer(props) {
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + salaryFrom} {"do " + salaryTo} {"/" + salaryTime}{" "}
+                    {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency} {"/" + salaryTime}{" "}
                     {salaryType} {salaryContract}
                   </Typography>
                 </>
@@ -636,7 +648,7 @@ export default function JobOffer(props) {
               <Typography variant='body2' gutterBottom component='div'>
                 {searchedPosition}
               </Typography>
-              {(salaryType || salaryFrom || salaryTo || salaryTime) && (
+              {(salaryType || salaryFrom || salaryTo || salaryCurrency || salaryTime) && (
                 <>
                   <Typography
                     variant='subtitle2'
@@ -646,7 +658,7 @@ export default function JobOffer(props) {
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + salaryFrom} {"do " + salaryTo} {"/" + salaryTime}{" "}
+                    {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency} {"/" + salaryTime}{" "}
                     {salaryType} {salaryContract}
                   </Typography>
                 </>

@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,7 +11,6 @@ import Typography from "@mui/material/Typography";
 import "./Login.css"
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, useField, useFormik } from "formik";
-
 import {
   setIsLoginOpen,
   setEmail,
@@ -21,11 +21,19 @@ import {
 } from "../../store/actions/userActions";
 import loginSchema from "./validations/loginSchema";
 
+const useStyles = makeStyles({
+  backDrop: {
+    backdropFilter: "blur(3px)",
+    backgroundColor: "rgba(0,0,30,0.4)",
+  },
+});
+
 export default function LoginForm() {
   const { isLoginOpen, email, password, isLoggedIn, isSignUpOpen } = useSelector(
     (state) => state.userReducer
   );
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const formik = useFormik({
     initialValues: {
@@ -34,7 +42,7 @@ export default function LoginForm() {
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
       submitLoginForm();
     },
   });
@@ -82,7 +90,12 @@ export default function LoginForm() {
       <Dialog
         open={isLoginOpen}
         onClose={closeLoginForm}
-        aria-labelledby='form-dialog-title'>
+        aria-labelledby='form-dialog-title'
+        BackdropProps={{
+          classes: {
+            root: classes.backDrop,
+          },
+        }}>
         <DialogTitle id='form-dialog-title'>Zaloguj się</DialogTitle>
         <DialogContent>
           <DialogContentText>Masz już konto? Użyj adresu e-mail oraz hasła, aby się zalogować</DialogContentText>

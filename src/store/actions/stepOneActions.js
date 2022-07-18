@@ -5,6 +5,7 @@ import {
   SALARYTYPE,
   SALARYFROM,
   SALARYTO,
+  SALARYCURRENCY,
   SALARYTIME,
   SALARYCONTRACT,
   ADDRESSCOUNTRY,
@@ -14,6 +15,7 @@ import {
   CONTRACTTYPE,
   WORKMODEL,
   RECRUITMENTMODE,
+  COMPANYNAME,
   ABOUTCOMPANY,
   LOGO,
   LOGOPREVIEW
@@ -39,6 +41,9 @@ export const setSalaryFrom = (salaryFrom) => {
 };
 export const setSalaryTo = (salaryTo) => {
   return { type: SALARYTO, payload: salaryTo };
+};
+export const setSalaryCurrency = (salaryCurrency) => {
+  return { type: SALARYCURRENCY, payload: salaryCurrency };
 };
 export const setSalaryTime = (salaryTime) => {
   return { type: SALARYTIME, payload: salaryTime };
@@ -69,6 +74,9 @@ export const setWorkModel = (workModel) => {
 };
 
 //company
+export const setCompanyName = (companyName) => {
+  return { type: COMPANYNAME, payload: companyName };
+};
 export const setAboutCompany = (aboutCompany) => {
   return { type: ABOUTCOMPANY, payload: aboutCompany };
 };

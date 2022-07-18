@@ -11,7 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import FolderOpenOutlinedIcon from "@material-ui/icons/FolderOpenOutlined";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded";
-import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded'
+import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setIsDrawerOpen } from "../../store/actions/userActions";
@@ -30,11 +30,15 @@ const useStyles = makeStyles({
     justifyContent: "end",
   },
   icon: {
-    height:26, 
-    width:26, 
-    top:18, 
-    right:8
-  }
+    height: 26,
+    width: 26,
+    top: 18,
+    right: 8,
+  },
+  backDrop: {
+    backdropFilter: "blur(3px)",
+    backgroundColor: "rgba(0,0,30,0.4)",
+  },
 });
 
 export default function UserDrawer() {
@@ -48,7 +52,11 @@ export default function UserDrawer() {
   const list = (
     <div className={classes.list} role='presentation'>
       <div className={classes.empty}>
-        <IconButton color='primary' component='span' className={classes.icon} onClick={toggleUserDrawer}>
+        <IconButton
+          color='primary'
+          component='span'
+          className={classes.icon}
+          onClick={toggleUserDrawer}>
           <ArrowBackIosRoundedIcon />
         </IconButton>
       </div>
@@ -57,15 +65,9 @@ export default function UserDrawer() {
         {["Strona główna", "Moje dokumenty", "Kosz"].map((text, index) => (
           <ListItem button key={text} onClick={toggleUserDrawer}>
             <ListItemIcon>
-              {index === 0 && (
-                <HomeRoundedIcon color='primary' />
-              )}
-              {index === 1 && (
-                <FolderOpenOutlinedIcon color='primary' />
-              )}
-              {index === 2 && (
-                <DeleteRoundedIcon color='primary' />
-              )} 
+              {index === 0 && <HomeRoundedIcon color='primary' />}
+              {index === 1 && <FolderOpenOutlinedIcon color='primary' />}
+              {index === 2 && <DeleteRoundedIcon color='primary' />}
             </ListItemIcon>
             <ListItemText primary={text} style={{ color: "black" }} />
           </ListItem>
@@ -74,5 +76,16 @@ export default function UserDrawer() {
     </div>
   );
 
-  return <Drawer onClose={toggleUserDrawer} open={isDrawerOpen}>{list}</Drawer>;
+  return (
+    <Drawer
+      onClose={toggleUserDrawer}
+      open={isDrawerOpen}
+      BackdropProps={{
+        classes: {
+          root: classes.backDrop,
+        },
+      }}>
+      {list}
+    </Drawer>
+  );
 }
