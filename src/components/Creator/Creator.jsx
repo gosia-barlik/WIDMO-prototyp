@@ -11,11 +11,15 @@ export default function Creator() {
   //Step1
   const [updateState, setUpdateState] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
-  
+  const [mainStepperLabels, setMainStepperLabels] = useState([{name:'Główne informacje', index:0}, {name:'Treść ogłoszenia',  index:1}, {name:'Informacje uzupełniające',  index:2 }, {name:'Podsumowanie',  index:3}])
+
   //VERTICAL STEPPER
   const [activeVerticalStep, setActiveVerticalStep] = useState(0);
 
   // MAIN STEPPER
+  const handleStep = (step) => {
+    setActiveStep(step);
+  };
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setActiveVerticalStep(0);
@@ -46,7 +50,7 @@ export default function Creator() {
   return (
     <>
     
-      <StepperHorizontal activeStep={activeStep} />
+      <StepperHorizontal activeStep={activeStep} handleStep={handleStep} mainStepperLabels={mainStepperLabels}/>
       
       {activeStep === 0 && (
         <Step1MainInfo

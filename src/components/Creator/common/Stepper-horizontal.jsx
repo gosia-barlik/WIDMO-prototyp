@@ -5,9 +5,10 @@ import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+import StepButton from '@mui/material/StepButton';
 import Check from '@material-ui/icons/Check';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import './Stepper-horizontal.css'
 
 
@@ -34,65 +35,72 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
-  display: 'flex',
-  height: 22,
-  alignItems: 'center',
-  ...(ownerState.active && {
-    color: '#784af4',
-  }),
-  '& .QontoStepIcon-completedIcon': {
-    color: '#784af4',
-    zIndex: 1,
-    fontSize: 18,
-  },
-  '& .QontoStepIcon-circle': {
-    width: 11,
-    height: 11,
-    borderRadius: '50%',
-    backgroundColor: 'currentColor',
-  },
-}));
+// const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
+//   color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
+//   display: 'flex',
+//   height: 22,
+//   alignItems: 'center',
+//   ...(ownerState.active && {
+//     color: '#784af4',
+//   }),
+//   '& .QontoStepIcon-completedIcon': {
+//     color: '#784af4',
+//     zIndex: 1,
+//     fontSize: 18,
+//   },
+//   '& .QontoStepIcon-circle': {
+//     width: 11,
+//     height: 11,
+//     borderRadius: '50%',
+//     backgroundColor: 'currentColor',
+//   },
+// }));
 
-function QontoStepIcon(props) {
-  const { active, completed, className } = props;
+// function QontoStepIcon(props) {
+//   const { active, completed, className } = props;
 
-  return (
-    <QontoStepIconRoot ownerState={{ active }} className={className}>
-      {completed ? (
-        <Check className="QontoStepIcon-completedIcon" />
-      ) : (
-        <div className="QontoStepIcon-circle" />
-      )}
-    </QontoStepIconRoot>
-  );
-}
+//   return (
+//     <QontoStepIconRoot ownerState={{ active }} className={className}>
+//       {completed ? (
+//         <Check className="QontoStepIcon-completedIcon" />
+//       ) : (
+//         <div className="QontoStepIcon-circle" />
+//       )}
+//     </QontoStepIconRoot>
+//   );
+// }
 
-QontoStepIcon.propTypes = {
-  /**
-   * Whether this step is active.
-   * @default false
-   */
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  /**
-   * Mark the step as completed. Is passed to child components.
-   * @default false
-   */
-  completed: PropTypes.bool,
-};
+// QontoStepIcon.propTypes = {
+//   /**
+//    * Whether this step is active.
+//    * @default false
+//    */
+//   active: PropTypes.bool,
+//   className: PropTypes.string,
+//   /**
+//    * Mark the step as completed. Is passed to child components.
+//    * @default false
+//    */
+//   completed: PropTypes.bool,
+// };
 
+const steps = [{name:'Główne informacje', index:0}, {name:'Treść ogłoszenia',  index:1}, {name:'Informacje uzupełniające',  index:2 }, {name:'Podsumowanie',  index:3}];
 
-const steps = [{name:'Główne informacje', navlink:'/creator/maininfo'}, {name:'Treść ogłoszenia',  navlink:'/creator'}, {name:'Informacje uzupełniające',  navlink:'/creator'}, {name:'Podsumowanie',  navlink:'/creator'}];
 
 export default function StepperHorizontal(props) {
+
   return (
     <Stack className="stepper-horizontal-container">
-      <Stepper alternativeLabel activeStep={props.activeStep} connector={<QontoConnector />}>
-        {steps.map((label) => (
+      <Stepper nonLinear activeStep={props.activeStep} 
+      // connector={<QontoConnector />}
+      >
+        {props.mainStepperLabels.map((label) => (
           <Step key={label.name}>
-            <NavLink to={label.navlink} className='horizontal-stepper-navlink'><StepLabel StepIconComponent={QontoStepIcon}>{label.name}</StepLabel></NavLink>
+            
+              <StepButton onClick={() => props.handleStep(label.index)}
+              // StepIconComponent={QontoStepIcon}
+              >{label.name}</StepButton>
+             
           </Step>
         ))}
       </Stepper>

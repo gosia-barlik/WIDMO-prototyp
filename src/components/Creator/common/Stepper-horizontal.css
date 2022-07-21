@@ -5,10 +5,8 @@
    
 }
 
-.css-10mg1vw-MuiStepper-root {
-    width:80%
-}
-
-.stepper-horizontal-container .horizontal-stepper-navlink {
-    text-decoration: none
+.stepper-horizontal-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+    color: #784af4 !important;
+    width: 16px !important;
+    height: 16px !important;
 }
