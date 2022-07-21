@@ -8,13 +8,34 @@ import "./Creator.css";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 
 export default function Creator() {
-  //Step1
   const [updateState, setUpdateState] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
-  const [mainStepperLabels, setMainStepperLabels] = useState([{name:'Główne informacje', index:0}, {name:'Treść ogłoszenia',  index:1}, {name:'Informacje uzupełniające',  index:2 }, {name:'Podsumowanie',  index:3}])
+  const [mainStepperLabels, setMainStepperLabels] = useState([
+    { name: "Główne informacje", index: 0 },
+    { name: "Treść ogłoszenia", index: 1 },
+    { name: "Informacje uzupełniające", index: 2 },
+    { name: "Podsumowanie", index: 3 },
+  ]);
 
   //VERTICAL STEPPER
   const [activeVerticalStep, setActiveVerticalStep] = useState(0);
+  const [step1VerticalStepperLabels, setStep1VerticalStepperLabels] = useState([
+    {
+      name: "Stanowisko",
+      description: `Aby przejść dalej musisz wpisać nazwę stanowiska, na które rekrutujesz.`,
+      index: 0,
+    },
+    {
+      name: "O firmie",
+      description: `Pole opcjonalne.`,
+      index: 1,
+    },
+    {
+      name: "Dodatkowe informacje",
+      description: "Pole opcjonalne.",
+      index: 2,
+    },
+  ]);
 
   // MAIN STEPPER
   const handleStep = (step) => {
@@ -40,6 +61,10 @@ export default function Creator() {
   };
 
   // VERTICAL STEPPER
+  const handleStep1VerticalStepper = (step) => {
+    setActiveVerticalStep(step);
+  };
+  
   const handleVerticalStepperNext = () => {
     setActiveVerticalStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -49,9 +74,12 @@ export default function Creator() {
 
   return (
     <>
-    
-      <StepperHorizontal activeStep={activeStep} handleStep={handleStep} mainStepperLabels={mainStepperLabels}/>
-      
+      <StepperHorizontal
+        activeStep={activeStep}
+        handleStep={handleStep}
+        mainStepperLabels={mainStepperLabels}
+      />
+
       {activeStep === 0 && (
         <Step1MainInfo
           activeStep={activeStep}
@@ -62,8 +90,10 @@ export default function Creator() {
           handleVerticalStepperNext={handleVerticalStepperNext}
           handleVerticalStepperBack={handleVerticalStepperBack}
           activeVerticalStep={activeVerticalStep}
+          step1VerticalStepperLabels={step1VerticalStepperLabels}
+          handleStep1VerticalStepper={handleStep1VerticalStepper}
         />
-      ) }
+      )}
       {activeStep === 1 && (
         <Step2OfferContent
           activeStep={activeStep}
@@ -76,23 +106,22 @@ export default function Creator() {
           updateState={updateState}
           activeVerticalStep={activeVerticalStep}
         />
-      ) }
-      {activeStep === 2 &&
+      )}
+      {activeStep === 2 && (
         <Step3DataProcessing
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
         />
-      }
+      )}
 
-       {activeStep === 3 &&
-         <Step4Summary
-           activeStep={activeStep}
-           handleMainStepperBack={handleMainStepperBack}
-           handleMainStepperNext={handleMainStepperNext}
-         />
-        }
-       
+      {activeStep === 3 && (
+        <Step4Summary
+          activeStep={activeStep}
+          handleMainStepperBack={handleMainStepperBack}
+          handleMainStepperNext={handleMainStepperNext}
+        />
+      )}
     </>
   );
 }

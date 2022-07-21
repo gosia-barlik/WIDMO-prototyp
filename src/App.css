@@ -1,7 +1,14 @@
+@import "./components/common/variables.css";
+
 body {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(235, 235, 235);
+  background-color:var(--white);
+  
+} 
+
+.MuiInputBase-input {
+  font-size: 14px !important;
 }
 
 .App-logo {

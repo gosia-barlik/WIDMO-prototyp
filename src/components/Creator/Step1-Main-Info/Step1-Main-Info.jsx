@@ -15,16 +15,22 @@ import { useSelector } from "react-redux";
 
 export default function Step1MainInfo(props) {
   const { showResults } = useSelector((state) => state.stepOneReducer);
+  const disabled = true;
 
   return (
     <Grid container className='step-1-container'>
-      <StepperVertical activeStep={props.activeVerticalStep} />
+      <StepperVertical activeStep={props.activeVerticalStep} step1VerticalStepperLabels={props.step1VerticalStepperLabels}
+      handleStep1VerticalStepper={props.handleStep1VerticalStepper}/>
       <Grid
         item
         xs={4}
         style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
         className='form-container'>
-        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
+        <Typography
+          variant='body2'
+          style={{ color: "#00000099" }}
+          gutterBottom
+          component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
@@ -36,7 +42,14 @@ export default function Step1MainInfo(props) {
 
           {props.activeVerticalStep === 2 && <AdditionalInformation />}
 
-          {showResults && props.activeVerticalStep !== 2 && (
+          {showResults && props.activeVerticalStep === 0 && (
+            <MainActionButtons
+              disabled={disabled}
+              handleBack={props.handleVerticalStepperBack}
+              handleNext={props.handleVerticalStepperNext}
+            />
+          )}
+          {showResults && props.activeVerticalStep !== 2 && props.activeVerticalStep !== 0 &&(
             <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleVerticalStepperNext}
@@ -56,10 +69,14 @@ export default function Step1MainInfo(props) {
         xs={4}
         style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
         className='job-offer-container'>
-        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
+        <Typography
+          variant='body2'
+          style={{ color: "#00000099" }}
+          gutterBottom
+          component='div'>
           Twoje ogłoszenie
         </Typography>
-        <Paper className='job-offer-container-box' elevation={0} >
+        <Paper className='job-offer-container-box' elevation={0}>
           <JobOffer activeStep={props.activeStep} />
         </Paper>
         {props.activeVerticalStep === 1 && <AlertAbout />}

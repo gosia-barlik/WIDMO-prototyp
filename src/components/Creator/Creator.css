@@ -1,3 +1,5 @@
+@import "../common/variables.css";
+
 body {
   height: 100% !important;
   width: 100%;
@@ -7,15 +9,19 @@ body {
 
 .button-outlined {
   margin: 15px 5px 0 5px !important;
-  border: 1px solid #6200EE !important;
-  color: #6200EE !important;
+  border: 1px solid var(--active)!important;
+  color: var(--active) !important;
   font-family: Arial !important;
 }
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
-  background-color: #6200EE !important;
+  background-color: var(--active)!important;
   font-family: Arial !important;
 }
 
+.Mui-disabled.button-outlined {
+  color: var(--disabled)!important;
+  border: 1px solid var(--disabled)!important;
+}
 

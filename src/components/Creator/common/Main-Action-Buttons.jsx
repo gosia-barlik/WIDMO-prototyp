@@ -11,6 +11,7 @@ export default function MainActionButtons(props) {
       <Button
         className='button-outlined'
         variant='outlined'
+        disabled={props.disabled}
         onClick={props.handleBack}>
         Wróć
       </Button>

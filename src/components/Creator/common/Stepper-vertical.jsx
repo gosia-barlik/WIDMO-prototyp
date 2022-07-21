@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+import StepButton from '@mui/material/StepButton';
 import StepContent from '@mui/material/StepContent';
 import Typography from '@mui/material/Typography';
 import './Stepper-vertical.css'
@@ -27,16 +28,15 @@ export default function StepperVertical(props) {
 
   return (
     <Box sx={{ maxWidth: 400 }} className="stepper-vertical-container">
-      <Stepper activeStep={props.activeStep} orientation="vertical">
-        {steps.map((step, index) => (
-          <Step key={step.label}>
-            <StepLabel
-              icon={' '}
+      <Stepper activeStep={props.activeStep} nonLinear orientation="vertical">
+        {props.step1VerticalStepperLabels.map((label) => (
+          <Step key={label.name}>
+            <StepButton onClick={() => props.handleStep1VerticalStepper(label.index)}
             >
-              {step.label}
-            </StepLabel>
+              {label.name}
+            </StepButton>
             <StepContent>
-              <Typography>{step.description}</Typography>
+              <Typography>{label.description}</Typography>
             
             </StepContent>
           </Step>

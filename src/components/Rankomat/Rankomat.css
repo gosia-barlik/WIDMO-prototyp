@@ -1,3 +1,5 @@
+@import "../common/variables.css";
+
 button {
   border-radius: 4px !important;
   padding:5px 12px 3px!important;
@@ -5,18 +7,18 @@ button {
 }
 .button-outlined {
   margin: 15px 5px 0 5px !important;
-  border: 1px solid #6200EE !important;
-  color: #6200EE !important; 
+  border: 1px solid var(--active) !important;
+  color: var(--active) !important; 
 }
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
-  background-color: #6200EE !important;
+  background-color: var(--active) !important;
   color:white !important;
 }
   
   .upload-button{
     margin: 0px 5px 0 5px !important;
-    border: 1px solid #6200EE !important;
-    color: #6200EE !important;
+    border: 1px solid var(--active) !important;
+    color: var(--active)!important;
   }
