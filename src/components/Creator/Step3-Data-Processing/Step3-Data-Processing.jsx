@@ -15,7 +15,7 @@ const { rodo } = useSelector((state) => state.stepThreeReducer);
   return (
     <Grid container spacing={4} className='step-3-container'>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='subtitle2' gutterBottom component='div'>
+        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>

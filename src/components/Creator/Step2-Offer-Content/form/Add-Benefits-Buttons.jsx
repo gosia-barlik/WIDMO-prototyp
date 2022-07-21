@@ -1,4 +1,5 @@
 import React from "react";
+import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
@@ -8,7 +9,7 @@ import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setBenefits,
-  setShowBenefitsButton
+  setShowBenefitsButton,
 } from "../../../../store/actions/stepTwoActions";
 
 const ColorButton = styled(Button)(() => ({
@@ -18,16 +19,16 @@ const ColorButton = styled(Button)(() => ({
 
 export default function AddBenefitsButtons(props) {
   const dispatch = useDispatch();
-  const { showBenefitsButton, benefits } = useSelector((state) => state.stepTwoReducer);
+  const { showBenefitsButton, benefits } = useSelector(
+    (state) => state.stepTwoReducer
+  );
 
   const benefitsFixtures = ["benefit1", "benefit2", "benefit3"];
 
   const onSetBenefits = () => {
     let newBenefits;
-    if (benefits.length > 0)
-      newBenefits = [];
-    else
-      newBenefits = benefitsFixtures;
+    if (benefits.length > 0) newBenefits = [];
+    else newBenefits = benefitsFixtures;
 
     dispatch(setBenefits(newBenefits));
     dispatch(setShowBenefitsButton(false));
@@ -38,7 +39,10 @@ export default function AddBenefitsButtons(props) {
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-      {showBenefitsButton &&
+      <Typography variant='subtitle2' gutterBottom component='div'>
+        Benefity
+      </Typography>
+      {showBenefitsButton && (
         <ColorButton className='styled-button' variant='contained'>
           <IconButton
             className='styled-icon-button'
@@ -47,7 +51,8 @@ export default function AddBenefitsButtons(props) {
             {benefits.length == 0 ? <AddIcon /> : <RemoveIcon />}
           </IconButton>
           Dodaj benefity najczęściej występujące w ogłoszeniach o pracę
-        </ColorButton>}
+        </ColorButton>
+      )}
     </Stack>
   );
 }

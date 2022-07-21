@@ -46,7 +46,7 @@ export default function Step2OfferContent(props) {
     <Grid container spacing={4} className='step-2-container'>
       <StepperVertical activeStep={props.activeVerticalStep} />
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='subtitle2' gutterBottom component='div'>
+        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
@@ -84,7 +84,7 @@ export default function Step2OfferContent(props) {
         </Paper>
       </Grid>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='subtitle2' gutterBottom component='div'>
+        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
         <Paper className='job-offer-container-box'>

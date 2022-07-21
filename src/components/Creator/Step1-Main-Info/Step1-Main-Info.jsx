@@ -24,7 +24,7 @@ export default function Step1MainInfo(props) {
         xs={4}
         style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
         className='form-container'>
-        <Typography variant='subtitle2' gutterBottom component='div'>
+        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
@@ -56,7 +56,7 @@ export default function Step1MainInfo(props) {
         xs={4}
         style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
         className='job-offer-container'>
-        <Typography variant='subtitle2' gutterBottom component='div'>
+        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
           Twoje ogłoszenie
         </Typography>
         <Paper className='job-offer-container-box' elevation={0} >
