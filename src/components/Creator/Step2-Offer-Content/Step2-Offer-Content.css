@@ -1,10 +1,18 @@
+@import "../../common/variables.css";
 
-.step-2-container  {
-  padding-left: 18px !important;
+.step-2-container {
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.step-2-container .form-container {
+  margin: 20px;
+  margin-top: 50px;
+  text-align: left;
 }
 
 .step-2-container .styled-button {
-  color: #784af4 !important;
+  color: var(--active) !important;
   padding: 25px !important;
   display: flex !important;
   background-color: white;
@@ -22,7 +30,7 @@
   margin: 0 24px;
   height: 42px;
   width: 42px;
-  color: #784af4;
+  color: var(--active);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
 }
 
@@ -43,21 +51,20 @@
 }
 
 .step-2-container .css-7h1qul.focused {
-  border-color: #784af4;
+  border-color: var(--active);
   box-shadow: 0 0 0 2px rgba(57, 59, 61, 0.2);
 }
 
 .step-2-container .css-7h1qul:hover {
-  border-color: #784af4;
+  border-color:var(--active);
 }
 
 .step-2-container .css-1k181zl li[aria-selected="true"] svg {
-  color: #784af4;
+  color: var(--active);
 }
-
 
 @media only screen and (max-width: 1024px) {
   .step-2-container {
     flex-direction: column !important;
-      }
+  }
 }

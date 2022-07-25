@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     width: "100%",
   },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -45,12 +46,17 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     fontSize: 14,
   },
+  logo:{
+    width: "100%"
+  },
   title: {
     flexGrow: 1,
     color: "black",
     fontFamily: "Montserrat",
     fontSize: "24px",
   },
+
+
 }));
 
 export default function Header() {
@@ -95,7 +101,7 @@ export default function Header() {
                 onClick={toggleUserDrawer}>
                 <MenuIcon />
               </IconButton>
-              <NavLink to='/' component='div' style={{ width: "100%" }}>
+              <NavLink to='/' component='div' className={classes.logo}>
                 <Typography variant='h6' className={classes.title}>
                   AIRA
                 </Typography>
@@ -133,15 +139,8 @@ export default function Header() {
 
           {isLoggedIn == false && (
             <div
-              style={{
-                marginLeft: "4%",
-                marginRight: "4%",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-                width: "100%",
-              }}>
-              <NavLink to='/' component='div' style={{ width: "100%" }}>
+            className={classes.navbar}>
+              <NavLink to='/' component='div' className={classes.logo}>
                 <Typography variant='h6' className={classes.title}>
                   AIRA
                 </Typography>

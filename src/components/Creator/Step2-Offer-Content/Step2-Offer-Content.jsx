@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import StepperVertical from "./Stepper-vertical.jsx";
+import StepperVertical from "../common/Stepper-vertical";
 import JobOffer from "../common/Job-offer.jsx";
 import AddResponsibilitiesButtons from "./form/Add-Responsibilities-Buttons.jsx";
 import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
@@ -43,10 +43,22 @@ export default function Step2OfferContent(props) {
   const handleReset = () => resetShowQualificationForm();
 
   return (
-    <Grid container spacing={4} className='step-2-container'>
-      <StepperVertical activeStep={props.activeVerticalStep} />
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
+    <Grid container className='step-2-container'>
+      <StepperVertical
+        activeStep={props.activeVerticalStep}
+        verticalStepperLabels={props.verticalStepperLabels}
+        handleStep1VerticalStepper={props.handleStep1VerticalStepper}
+        nonLinear={true}
+      />
+      <Grid
+        item
+        xs={4}
+        className='form-container'>
+        <Typography
+          variant='body2'
+          style={{ color: "#00000099" }}
+          gutterBottom
+          component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
@@ -83,8 +95,12 @@ export default function Step2OfferContent(props) {
           )}
         </Paper>
       </Grid>
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
+      <Grid item xs={4} style={{ margin: "50px 20px 20px", textAlign: "left" }}>
+        <Typography
+          variant='body2'
+          style={{ color: "#00000099" }}
+          gutterBottom
+          component='div'>
           Twoje ogłoszenie
         </Typography>
         <Paper className='job-offer-container-box'>

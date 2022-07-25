@@ -12,28 +12,28 @@ import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector
 import './Stepper-horizontal.css'
 
 
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10,
-    left: 'calc(-50% + 16px)',
-    right: 'calc(50% + 16px)',
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
-    borderTopWidth: 3,
-    borderRadius: 1,
-  },
-}));
+// const QontoConnector = styled(StepConnector)(({ theme }) => ({
+//   [`&.${stepConnectorClasses.alternativeLabel}`]: {
+//     top: 10,
+//     left: 'calc(-50% + 16px)',
+//     right: 'calc(50% + 16px)',
+//   },
+//   [`&.${stepConnectorClasses.active}`]: {
+//     [`& .${stepConnectorClasses.line}`]: {
+//       borderColor: '#784af4',
+//     },
+//   },
+//   [`&.${stepConnectorClasses.completed}`]: {
+//     [`& .${stepConnectorClasses.line}`]: {
+//       borderColor: '#784af4',
+//     },
+//   },
+//   [`& .${stepConnectorClasses.line}`]: {
+//     borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
+//     borderTopWidth: 3,
+//     borderRadius: 1,
+//   },
+// }));
 
 // const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
 //   color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
@@ -84,20 +84,18 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 //   completed: PropTypes.bool,
 // };
 
-const steps = [{name:'Główne informacje', index:0}, {name:'Treść ogłoszenia',  index:1}, {name:'Informacje uzupełniające',  index:2 }, {name:'Podsumowanie',  index:3}];
-
 
 export default function StepperHorizontal(props) {
 
   return (
     <Stack className="stepper-horizontal-container">
-      <Stepper nonLinear activeStep={props.activeStep} 
+      <Stepper nonLinear={props.nonLinear} activeStep={props.activeStep} 
       // connector={<QontoConnector />}
       >
-        {props.mainStepperLabels.map((label) => (
+        {props.mainStepperLabels.map((label, index) => (
           <Step key={label.name}>
             
-              <StepButton onClick={() => props.handleStep(label.index)}
+              <StepButton onClick={() => props.handleStep(index)}
               // StepIconComponent={QontoStepIcon}
               >{label.name}</StepButton>
              

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -19,12 +20,28 @@ export default function Step1MainInfo(props) {
 
   return (
     <Grid container className='step-1-container'>
-      <StepperVertical activeStep={props.activeVerticalStep} step1VerticalStepperLabels={props.step1VerticalStepperLabels}
-      handleStep1VerticalStepper={props.handleStep1VerticalStepper}/>
+
+      {showResults == false && (
+        <StepperVertical
+          nonLinear = {false}
+          activeStep={props.activeVerticalStep}
+          verticalStepperLabels={props.verticalStepperLabels}
+          handleStep1VerticalStepper={props.handleStep1VerticalStepper}
+        />
+      )}
+
+      {showResults && (
+        <StepperVertical
+          nonLinear={true}
+          activeStep={props.activeVerticalStep}
+          verticalStepperLabels={props.verticalStepperLabels}
+          handleStep1VerticalStepper={props.handleStep1VerticalStepper}
+        />
+      )}
+
       <Grid
         item
         xs={4}
-        style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
         className='form-container'>
         <Typography
           variant='body2'
@@ -49,12 +66,14 @@ export default function Step1MainInfo(props) {
               handleNext={props.handleVerticalStepperNext}
             />
           )}
-          {showResults && props.activeVerticalStep !== 2 && props.activeVerticalStep !== 0 &&(
-            <MainActionButtons
-              handleBack={props.handleVerticalStepperBack}
-              handleNext={props.handleVerticalStepperNext}
-            />
-          )}
+          {showResults &&
+            props.activeVerticalStep !== 2 &&
+            props.activeVerticalStep !== 0 && (
+              <MainActionButtons
+                handleBack={props.handleVerticalStepperBack}
+                handleNext={props.handleVerticalStepperNext}
+              />
+            )}
 
           {showResults && props.activeVerticalStep === 2 && (
             <MainActionButtons

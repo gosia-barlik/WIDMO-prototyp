@@ -1,43 +1,27 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import StepButton from '@mui/material/StepButton';
-import StepContent from '@mui/material/StepContent';
-import Typography from '@mui/material/Typography';
-import './Stepper-vertical.css'
-
-const steps = [
-  {
-    label: 'Stanowisko',
-    description: `Aby przejść dalej musisz wpisać nazwę stanowiska, na które rekrutujesz.`,
-  },
-  {
-    label: 'O firmie',
-    description: `Pole opcjonalne.`,
-  },
-  {
-    label: 'Dodatkowe informacje',
-    description:
-      'Pole opcjonalne.',
-  },
-];
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import StepButton from "@mui/material/StepButton";
+import StepContent from "@mui/material/StepContent";
+import Typography from "@mui/material/Typography";
+import "./Stepper-vertical.css";
 
 export default function StepperVertical(props) {
-
   return (
-    <Box sx={{ maxWidth: 400 }} className="stepper-vertical-container">
-      <Stepper activeStep={props.activeStep} nonLinear orientation="vertical">
-        {props.step1VerticalStepperLabels.map((label) => (
+    <Box sx={{ maxWidth: 400 }} className='stepper-vertical-container'>
+      <Stepper
+        activeStep={props.activeStep}
+        nonLinear={props.nonLinear}
+        orientation='vertical'>
+        {props.verticalStepperLabels.map((label, index) => (
           <Step key={label.name}>
-            <StepButton onClick={() => props.handleStep1VerticalStepper(label.index)}
-            >
+            <StepButton onClick={() => props.handleStep1VerticalStepper(index)}>
               {label.name}
             </StepButton>
             <StepContent>
               <Typography>{label.description}</Typography>
-            
             </StepContent>
           </Step>
         ))}

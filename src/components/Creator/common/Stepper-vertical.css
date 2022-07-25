@@ -1,29 +1,24 @@
-/* VERTICAL */
+@import "../../common/variables.css";
+
 
 .stepper-vertical-container {
   margin-top: 50px;
   width: 5% !important;
- padding-left:10% !important;
+  padding-left: 10% !important;
 }
 
-.stepper-vertical-container
-  .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
-  color: #784af4 !important;
+.stepper-vertical-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
   width: 12px;
   height: 12px;
-  margin-left: 9px;
 }
-.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
-  width: 8px !important;
-  height: 8px !important;
-  margin-left: 9px;
+.stepper-vertical-container
+  .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: var(--active) !important;
+  width: 18px !important;
 }
+.stepper-vertical-container
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
-  color: #784af4 !important;
-}
-
-.css-9tmuzo-MuiStepper-root {
-  max-width: 80px;
+  color: var(--disabled) !important;
 }
 
 .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
@@ -35,23 +30,31 @@
   font-size: smaller !important;
 }
 
+.stepper-vertical-container .css-qivjh0-MuiStepLabel-label,
 .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active,
 .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
   margin-left: -100px;
 }
 
-.stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
+.stepper-vertical-container
+  .css-8wcvy5-MuiStep-root:nth-child(3)
+  .css-qivjh0-MuiStepLabel-label.Mui-active {
   margin-left: -80px;
 }
 
-.stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{
-    margin-left: 24px;
-  }
+.stepper-vertical-container
+  .MuiStepper-root
+  .Mui-completed:nth-child(3)
+  .css-16ubnlw-MuiStepLabel-labelContainer {
+  margin-left: 24px;
+}
 
-.stepper-vertical-container .MuiStepper-root .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label {
-    margin-left: -170px;
-  }
-
+.stepper-vertical-container
+  .MuiStepper-root
+  .css-8wcvy5-MuiStep-root:nth-child(5)
+  .css-qivjh0-MuiStepLabel-label {
+  margin-left: -170px;
+}
 
 .stepper-vertical-container .css-ahj2mt-MuiTypography-root {
   text-align: right;
@@ -62,20 +65,74 @@
 .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-disabled {
   margin-left: -80px;
 }
-.stepper-vertical-container
+
+/* .stepper-vertical-container
   .MuiStepper-vertical
   .css-8wcvy5-MuiStep-root:nth-child(5)
   .css-qivjh0-MuiStepLabel-label.Mui-disabled {
   margin-left: -120px;
-}
+} */
 
-.stepper-vertical-container .css-1sn4lm3-MuiTypography-root {
+/* .stepper-vertical-container .css-1sn4lm3-MuiTypography-root {
   margin-left: -120px;
+} */
+
+
+.step-2-container .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
+  width: 180px;
+  margin-left: 30px;
 }
 
+.step-2-container .css-ahj2mt-MuiTypography-root {
+  font-size: smaller !important;
+}
+
+/* .step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active, */
+.step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
+  margin-left: -150px;
+}
+
+.step-2-container .stepper-vertical-container .MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-completed {
+  margin-left: -80px;
+}
+.step-2-container  .stepper-vertical-container .MuiStep-vertical:nth-child(3) .css-qivjh0-MuiStepLabel-label {
+  margin-left: -100px;
+}
+
+.step-2-container  .stepper-vertical-container .css-qivjh0-MuiStepLabel-label,
+.step-2-container .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active{
+  margin-left: -155px;
+}
+
+.step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active,
+.step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .MuiStepLabel-label .css-qivjh0-MuiStepLabel-label {
+  margin-left: -100px;
+}
+
+.step-2-container .stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{
+    margin-left: -25px;
+  }
+
+  .step-2-container .stepper-vertical-container .MuiStepper-root .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label {
+    margin-left: -80px;
+  }
+
+
+  .step-2-container  .stepper-vertical-container .css-ahj2mt-MuiTypography-root {
+  text-align: right;
+  margin-left: -200px;
+  margin-right: 240px;
+}
+
+.step-2-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-disabled {
+  margin-left: -104px;
+}
+.step-2-container .stepper-vertical-container .MuiStepper-root .css-8wcvy5-MuiStep-root:nth-child(5) .css-qivjh0-MuiStepLabel-label {
+  margin-left: -80px;
+}
 
 @media only screen and (max-width: 1024px) {
   .stepper-vertical-container {
-  display:none
+    display: none;
   }
 }

@@ -8,7 +8,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@mui/material/Typography";
-import "./Login.css"
+import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, useField, useFormik } from "formik";
 import {
@@ -29,9 +29,8 @@ const useStyles = makeStyles({
 });
 
 export default function LoginForm() {
-  const { isLoginOpen, email, password, isLoggedIn, isSignUpOpen } = useSelector(
-    (state) => state.userReducer
-  );
+  const { isLoginOpen, email, password, isLoggedIn, isSignUpOpen } =
+    useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -82,8 +81,7 @@ export default function LoginForm() {
   const GoToSignUp = () => {
     closeLoginForm();
     dispatch(setIsSignUpOpen(true));
-   
-  }
+  };
 
   return (
     <div>
@@ -98,13 +96,15 @@ export default function LoginForm() {
         }}>
         <DialogTitle id='form-dialog-title'>Zaloguj się</DialogTitle>
         <DialogContent>
-          <DialogContentText>Masz już konto? Użyj adresu e-mail oraz hasła, aby się zalogować</DialogContentText>
+          <DialogContentText>
+            Masz już konto? Użyj adresu e-mail oraz hasła, aby się zalogować
+          </DialogContentText>
 
           <form onSubmit={formik.handleSubmit}>
             <TextField
               fullWidth
-              variant="outlined"
-              size="small"
+              variant='outlined'
+              size='small'
               id='email'
               name='email'
               label='Email'
@@ -116,8 +116,8 @@ export default function LoginForm() {
             />
             <TextField
               fullWidth
-              variant="outlined"
-              size="small"
+              variant='outlined'
+              size='small'
               id='password'
               name='password'
               label='Hasło'
@@ -126,6 +126,7 @@ export default function LoginForm() {
               onChange={onSetPassword}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
+              className={classes.textfield}
               style={{ marginTop: "18px" }}
             />
             <Typography

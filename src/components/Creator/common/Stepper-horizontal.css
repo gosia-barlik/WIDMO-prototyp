@@ -1,12 +1,16 @@
+@import "../../common/variables.css";
+
 .stepper-horizontal-container {
     margin-top: 80px;
     justify-content: center !important;
     align-items: center;
-   
 }
-
-.stepper-horizontal-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
-    color: #784af4 !important;
+.stepper-horizontal-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
     width: 16px !important;
-    height: 16px !important;
+    height: 16px !important; 
+}
+.stepper-horizontal-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+    color: var(--active) !important;
+    width: 18px !important;
+    height: 18px !important;
 }
