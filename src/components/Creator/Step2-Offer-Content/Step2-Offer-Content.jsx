@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import StepperVertical from "../common/Stepper-vertical";
-import JobOffer from "../common/Job-offer.jsx";
+import JobOffer from "../common/job-offer/Job-offer";
 import AddResponsibilitiesButtons from "./form/Add-Responsibilities-Buttons.jsx";
 import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
 import AddBenefitsButtons from "./form/Add-Benefits-Buttons.jsx";

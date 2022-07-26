@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import JobOffer from "../common/Job-offer.jsx";
+import JobOffer from "../common/job-offer/Job-offer";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import DataProcessing from "./form/Data-Processing.jsx";
 import OrganizationalData from "./form/Organizational-Data.jsx";

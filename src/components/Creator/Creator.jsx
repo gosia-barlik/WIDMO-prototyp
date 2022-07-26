@@ -17,7 +17,7 @@ export default function Creator() {
   const [activeVerticalStep, setActiveVerticalStep] = useState(0);
 
   const mainStepperLabels = [
-    { name: "Główne informacje" },
+    { name: "Informacje podstawowe" },
     { name: "Treść ogłoszenia" },
     { name: "Informacje uzupełniające" },
     { name: "Podsumowanie" },
@@ -32,7 +32,7 @@ export default function Creator() {
       description: `Pole opcjonalne.`,
     },
     {
-      name: "Dodatkowe informacje",
+      name: "Warunki zatrudnienia",
       description: "Pole opcjonalne.",
     },
   ];

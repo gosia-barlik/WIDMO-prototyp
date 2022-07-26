@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import StepperVertical from "../common/Stepper-vertical.jsx";
 import SearchBar from "./form/Job-Position-Search-Bar";
 import SearchResults from "./form/Job-Position-Search-Results";
-import JobOffer from "../common/Job-offer.jsx";
+import JobOffer from "../common/job-offer/Job-offer";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";

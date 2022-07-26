@@ -68,8 +68,9 @@ export default function AddRequirementsButtons(props) {
             onClick={onSetRequirements}>
             {requirements.length == 0 ? <AddIcon /> : <RemoveIcon />}
           </IconButton>
-          {requirements.length == 0 ? "Dodaj najczęstsze wymagania na to stanowisko" : "Usuń najczęstsze wymagania na to stanowisko"}
-          
+          {requirements.length == 0
+            ? "Dodaj najczęstsze wymagania na to stanowisko"
+            : "Usuń najczęstsze wymagania na to stanowisko"}
         </Card>
       )}
 
@@ -81,8 +82,9 @@ export default function AddRequirementsButtons(props) {
           {showEducationForm == true ? <RemoveIcon /> : <AddIcon />}
           {/* {hasAnyEducationInfo() ? <RemoveIcon /> : <AddIcon />} */}
         </IconButton>
-        {requirements.length == 0 ? "Dodaj informacje o wykształceniu i doświadczeniu" : "Ukryj informacje o wykształceniu i doświadczeniu"}
-        
+        {showEducationForm == true
+          ? "Ukryj informacje o wykształceniu i doświadczeniu"
+          : "Dodaj informacje o wykształceniu i doświadczeniu"}
       </Card>
     </Stack>
   );
