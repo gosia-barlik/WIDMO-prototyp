@@ -17,6 +17,7 @@ import {
   CERTIFICATESTAGE,
   BENEFITS,
   SHOWBENEFITSBUTTON,
+  CUSTOMIZEDBENEFITS
 } from "../creatorConsts";
 
 //RESPONSIBILITIES
@@ -86,6 +87,9 @@ export const setBenefits = (benefits) => {
 };
 export const setShowBenefitsButton = (isButtonShown) => {
   return { type: SHOWBENEFITSBUTTON, payload: isButtonShown };
+};
+export const setCustomizedBenefits = (customizedBenefits) => {
+  return { type: CUSTOMIZEDBENEFITS, payload: customizedBenefits };
 };
 
 

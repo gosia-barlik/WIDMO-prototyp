@@ -21,6 +21,7 @@ import {
   setRequirements,
   setResponsibilities,
   setBenefits,
+  setCustomizedBenefits,
 } from "../../../store/actions/stepTwoActions";
 
 export default function JobOffer(props) {
@@ -56,6 +57,7 @@ export default function JobOffer(props) {
     certificateStage,
     benefits,
     showEducationForm,
+    customizedBenefits,
   } = useSelector((state) => state.stepTwoReducer);
   const {
     rodo,
@@ -110,6 +112,13 @@ export default function JobOffer(props) {
     dispatch(setBenefits(filteredBenefits));
   };
 
+  const removeCustomizedBenefit = (customizedBenefit) => {
+    const filteredBenefits = customizedBenefits.filter(
+      (obj) => obj != customizedBenefit
+    );
+    dispatch(setCustomizedBenefits(filteredBenefits));
+  };
+
   return (
     <Paper
       sx={{
@@ -157,14 +166,18 @@ export default function JobOffer(props) {
             <img className='logo-preview' src={logoPreview} id={"logo-photo"} />
           )}
 
-          {(salaryType || salaryFrom || salaryTo || salaryCurrency || salaryTime) && (
+          {(salaryType ||
+            salaryFrom ||
+            salaryTo ||
+            salaryCurrency ||
+            salaryTime) && (
             <>
               <Typography variant='subtitle2' component='div'>
                 Wynagrodzenie
               </Typography>
               <Typography variant='body2' gutterBottom component='div'>
-                {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency} {"/" + salaryTime}{" "}
-                {salaryType} {salaryContract}
+                {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency}{" "}
+                {"/" + salaryTime} {salaryType} {salaryContract}
               </Typography>
             </>
           )}
@@ -349,8 +362,9 @@ export default function JobOffer(props) {
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency} {"/" + salaryTime}{" "}
-                    {salaryType} {salaryContract}
+                    {"od " + salaryFrom} {"do " + salaryTo}{" "}
+                    {" " + salaryCurrency} {"/" + salaryTime} {salaryType}{" "}
+                    {salaryContract}
                   </Typography>
                 </>
               )}
@@ -437,7 +451,8 @@ export default function JobOffer(props) {
                     removeResponsibility(responsibility);
                   }}
                   variant='outlined'
-                  label={responsibility}></Chip>
+                  label={responsibility}
+                />
               ))}
             </>
           )}
@@ -457,7 +472,8 @@ export default function JobOffer(props) {
                     removeQualificationEffect(effect);
                   }}
                   variant='outlined'
-                  label={effect}></Chip>
+                  label={effect}
+                />
               ))}
             </>
           )}
@@ -477,7 +493,8 @@ export default function JobOffer(props) {
                     removeSelectedText(text);
                   }}
                   variant='outlined'
-                  label={text}></Chip>
+                  label={text}
+                />
               ))}
             </>
           )}
@@ -498,7 +515,8 @@ export default function JobOffer(props) {
                     removeRequirement(requirement);
                   }}
                   variant='outlined'
-                  label={requirement}></Chip>
+                  label={requirement}
+                />
               ))}
             </>
           )}
@@ -520,9 +538,8 @@ export default function JobOffer(props) {
                         key={level}
                         variant='outlined'
                         label={level}
-                        style={{ margin: "2px" }}>
-                        {level}&nbsp;
-                      </Chip>
+                        style={{ margin: "2px" }}
+                      />
                     ))}
                   </Stack>
                 )}
@@ -544,9 +561,8 @@ export default function JobOffer(props) {
                           key={name}
                           variant='outlined'
                           label={name}
-                          style={{ margin: "2px" }}>
-                          {name}&nbsp;
-                        </Chip>
+                          style={{ margin: "2px" }}
+                        />
                       ))}
                     </Stack>
                   </>
@@ -560,9 +576,8 @@ export default function JobOffer(props) {
                         key={stage}
                         variant='outlined'
                         label={stage}
-                        style={{ margin: "2px" }}>
-                        {stage}&nbsp;
-                      </Chip>
+                        style={{ margin: "2px" }}
+                      />
                     ))}
                   </Stack>
                 )}
@@ -584,9 +599,8 @@ export default function JobOffer(props) {
                           key={name}
                           variant='outlined'
                           label={name}
-                          style={{ margin: "2px" }}>
-                          {name}&nbsp;
-                        </Chip>
+                          style={{ margin: "2px" }}
+                        />
                       ))}
                     </Stack>
                   </>
@@ -598,16 +612,15 @@ export default function JobOffer(props) {
                       key={stage}
                       variant='outlined'
                       label={stage}
-                      style={{ margin: "2px" }}>
-                      {stage}&nbsp;
-                    </Chip>
+                      style={{ margin: "2px" }}
+                    />
                   ))}
                 </Stack>
               </>
             </>
           )}
 
-          {benefits.length > 0 && (
+          {(benefits.length > 0 || customizedBenefits.length> 0)&& (
             <>
               <Typography
                 variant='subtitle2'
@@ -615,7 +628,7 @@ export default function JobOffer(props) {
                 style={{ marginTop: "6px" }}>
                 Benefity
               </Typography>
-              <Stack direction='row' spacing={1}>
+              <Stack direction='row' spacing={1} style={{display:"inline-block"}}>
                 {benefits.map((benefit) => (
                   <Chip
                     className='styled-chip'
@@ -625,9 +638,20 @@ export default function JobOffer(props) {
                     }}
                     variant='outlined'
                     label={benefit}
-                    style={{ margin: "2px" }}>
-                    {benefit}
-                  </Chip>
+                    style={{ margin: "2px" }}
+                  />
+                ))}
+                {customizedBenefits.map((benefit) => (
+                  <Chip
+                    className='styled-chip'
+                    key={benefit.name}
+                    onDelete={() => {
+                      removeCustomizedBenefit(benefit);
+                    }}
+                    variant='outlined'
+                    label={benefit.name}
+                    style={{ margin: "2px" }}
+                  />
                 ))}
               </Stack>
             </>
@@ -664,7 +688,7 @@ export default function JobOffer(props) {
                   </Typography>
                 </>
               )}
-               {aboutCompany && (
+              {aboutCompany && (
                 <>
                   <Typography variant='subtitle2' component='div'>
                     O firmie
@@ -681,17 +705,19 @@ export default function JobOffer(props) {
                   id={"logo-photo"}
                 />
               )}
-              {(salaryType || salaryFrom || salaryTo || salaryCurrency || salaryTime) && (
+              {(salaryType ||
+                salaryFrom ||
+                salaryTo ||
+                salaryCurrency ||
+                salaryTime) && (
                 <>
-                  <Typography
-                    variant='subtitle2'
-                    component='div'
-                    style={{}}>
+                  <Typography variant='subtitle2' component='div' style={{}}>
                     Wynagrodzenie
                   </Typography>
                   <Typography variant='body2' gutterBottom component='div'>
-                    {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency} {"/" + salaryTime}{" "}
-                    {salaryType} {salaryContract}
+                    {"od " + salaryFrom} {"do " + salaryTo}{" "}
+                    {" " + salaryCurrency} {"/" + salaryTime} {salaryType}{" "}
+                    {salaryContract}
                   </Typography>
                 </>
               )}
@@ -829,6 +855,14 @@ export default function JobOffer(props) {
                   {benefits.map((benefit) => (
                     <Typography key={benefit} variant='body2' component='div'>
                       {benefit}
+                    </Typography>
+                  ))}
+                  {customizedBenefits.map((benefit) => (
+                    <Typography
+                      key={benefit.name}
+                      variant='body2'
+                      component='div'>
+                      {benefit.name}
                     </Typography>
                   ))}
                 </>

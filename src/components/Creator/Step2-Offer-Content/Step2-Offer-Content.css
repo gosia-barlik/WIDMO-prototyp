@@ -11,27 +11,26 @@
   text-align: left;
 }
 
-.step-2-container .styled-button {
+.step-2-container .styled-card {
   color: var(--active) !important;
-  padding: 25px !important;
+  padding: 24px 18px 18px 18px !important;
   display: flex !important;
   background-color: white;
-  display: block;
   text-align: left !important;
   display: flex;
   justify-content: left;
 }
 
-.step-2-container .styled-button:hover {
-  background-color: #f2f2f2;
-}
-
-.step-2-container .styled-button .styled-icon-button {
-  margin: 0 24px;
+.step-2-container .styled-card .styled-icon-button {
+  margin: -10px 12px 0 0;
   height: 42px;
   width: 42px;
   color: var(--active);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
+}
+
+.step-2-container .form-inline {
+ margin-bottom: 20px 
 }
 
 .step-2-container .css-1pysi21-MuiFormLabel-root-MuiInputLabel-root {

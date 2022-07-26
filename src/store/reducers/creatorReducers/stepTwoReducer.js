@@ -17,7 +17,8 @@ import {
   CERTIFICATESTAGE,
   BENEFITS,
   SHOWBENEFITSBUTTON,
-  RODO
+  RODO,
+  CUSTOMIZEDBENEFITS
 } from "../../creatorConsts";
 
 const initialState = {
@@ -41,6 +42,7 @@ const initialState = {
   certificateStage: [],
   benefits: [],
   showBenefitsButton: true,
+  customizedBenefits: [],
 
 };
 
@@ -150,6 +152,12 @@ export const stepTwoReducer = (state = initialState, action) => {
         ...state,
         benefits: action.payload,
       };
+    }
+    case CUSTOMIZEDBENEFITS: {
+      return {
+        ...state,
+        customizedBenefits: action.payload,
+      }
     }
 
     default:

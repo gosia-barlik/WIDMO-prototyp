@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
@@ -16,17 +17,9 @@ import {
   setQualificationEffects,
 } from "../../../../store/actions/stepTwoActions";
 
-const ColorButton = styled(Button)(() => ({
-  textTransform: "none",
-  width: "100%",
-}));
-
 export default function AddResponsibilitiesButtons(props) {
   const {
-    showResponsibilitiesButton,
     responsibilities,
-    copiedQualificationEffects,
-    copiedSelectedText,
     showQualificationForm,
   } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
@@ -89,25 +82,27 @@ export default function AddResponsibilitiesButtons(props) {
       <Typography variant='subtitle2' gutterBottom component='div'>
         Zakres obowiązków
       </Typography>
-      <ColorButton className='styled-button' variant='contained'>
+      <Card className='styled-card'>
         <IconButton
           className='styled-icon-button'
           component='span'
           onClick={onSetResponsibilities}>
           {responsibilities.length == 0 ? <AddIcon /> : <RemoveIcon />}
         </IconButton>
-        Dodaj najczęściej poszukiwane umiejętności na rynku pracy
-      </ColorButton>
-      <ColorButton className='styled-button' variant='contained'>
+        {responsibilities.length == 0 ? "Dodaj najczęściej poszukiwane umiejętności na rynku pracy" : "Usuń najczęściej poszukiwane umiejętności na rynku pracy"}
+        
+      </Card>
+      <Card className='styled-card'>
         <IconButton
           className='styled-icon-button'
           component='span'
           onClick={onSetQualificationInfo}>
           {showQualificationForm == false ? <AddIcon /> : <RemoveIcon />}
+          
           {/* {(copiedSelectedText.length == 0 && copiedQualificationEffects.length  == 0)  ? <AddIcon /> : <RemoveIcon/>} */}
         </IconButton>
-        Dodaj informacje z opisów kwalifikacji i zestawów efektów uczenia się
-      </ColorButton>
+        {showQualificationForm == false ? "Dodaj informacje z Rejestru Kwalifikacji" : "Ukryj informacje z Rejestru Kwalifikacji"}
+      </Card>
     </Stack>
   );
 }

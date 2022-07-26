@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
@@ -60,18 +61,19 @@ export default function AddRequirementsButtons(props) {
         Wymagania
       </Typography>
       {showRequirementsButton && (
-        <ColorButton className='styled-button' variant='contained'>
+        <Card className='styled-card'>
           <IconButton
             className='styled-icon-button'
             component='span'
             onClick={onSetRequirements}>
             {requirements.length == 0 ? <AddIcon /> : <RemoveIcon />}
           </IconButton>
-          Dodaj najczęstsze wymagania na to stanowisko
-        </ColorButton>
+          {requirements.length == 0 ? "Dodaj najczęstsze wymagania na to stanowisko" : "Usuń najczęstsze wymagania na to stanowisko"}
+          
+        </Card>
       )}
 
-      <ColorButton className='styled-button' variant='contained'>
+      <Card className='styled-card'>
         <IconButton
           className='styled-icon-button'
           component='span'
@@ -79,8 +81,9 @@ export default function AddRequirementsButtons(props) {
           {showEducationForm == true ? <RemoveIcon /> : <AddIcon />}
           {/* {hasAnyEducationInfo() ? <RemoveIcon /> : <AddIcon />} */}
         </IconButton>
-        Dodaj informacje o wykształceniu i doświadczeniu
-      </ColorButton>
+        {requirements.length == 0 ? "Dodaj informacje o wykształceniu i doświadczeniu" : "Ukryj informacje o wykształceniu i doświadczeniu"}
+        
+      </Card>
     </Stack>
   );
 }
