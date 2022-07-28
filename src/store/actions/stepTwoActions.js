@@ -1,5 +1,6 @@
 import {
   RESPONSIBILITIES,
+  CUSTOMIZEDRESPONSIBILITIES,
   SHOWRESPONSIBILITIESBUTTON,
   SHOWQUALIFICATIONFORM,
   QUALIFICATIONNAME,
@@ -8,6 +9,7 @@ import {
   COPIEDQUALIFICATIONEFFECTS,
   COPIEDSELECTEDTEXT,
   REQUIREMENTS,
+  CUSTOMIZEDREQUIREMENTS,
   SHOWREQUIREMENTSBUTTON,
   SHOWEDUCATIONFORM,
   EDUCATIONLEVEL,
@@ -23,6 +25,9 @@ import {
 //RESPONSIBILITIES
 export const setResponsibilities = (responsibilities) => {
   return { type: RESPONSIBILITIES, payload: responsibilities };
+};
+export const setCustomizedResponsibilities = (customizedResponsibilities) => {
+  return { type: CUSTOMIZEDRESPONSIBILITIES, payload: customizedResponsibilities };
 };
 export const setShowResponsibilitiesButton = () => {
   return { type: SHOWRESPONSIBILITIESBUTTON, payload: false };
@@ -57,6 +62,9 @@ export const setCopiedSelectedText = (copiedSelectedText) => {
 //REQUIREMENTS
 export const setRequirements = (requirements) => {
   return { type: REQUIREMENTS, payload: requirements };
+};
+export const setCustomizedRequirements = (customizedRequirements) => {
+  return { type: CUSTOMIZEDREQUIREMENTS, payload: customizedRequirements };
 };
 export const setShowRequirementsButton = (isButtonShown) => {
   return { type: SHOWREQUIREMENTSBUTTON, payload: isButtonShown };

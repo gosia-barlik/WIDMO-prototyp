@@ -11,11 +11,34 @@
   width: 12px;
   height: 12px;
 }
+
+/* NONLINEAR */
+.stepper-vertical-container .stepper-nonlinear .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
+  color:rgb(255, 255, 255);
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
+  }
+
+.stepper-vertical-container .stepper-nonlinear .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root .MuiStepIcon-text,
+.stepper-vertical-container .stepper-nonlinear .MuiStepLabel-label  {
+  fill: black;
+  color: rgb(23, 23, 23)
+}
+
+
+/* ACTIVE STEP */
 .stepper-vertical-container
   .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
   color: var(--active) !important;
-  width: 18px !important;
+  width: 18px;
+  height: 18px;
 }
+.stepper-vertical-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active .MuiStepIcon-text {
+  fill: rgb(255, 255, 255);
+}
+
 .stepper-vertical-container
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
   color: var(--disabled) !important;
@@ -30,10 +53,17 @@
   font-size: smaller !important;
 }
 
-.stepper-vertical-container .css-qivjh0-MuiStepLabel-label,
-.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active,
-.stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
-  margin-left: -100px;
+.stepper-vertical-container .css-qivjh0-MuiStepLabel-label {
+  margin-left: -84px;
+}
+
+.step-1-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-active,
+.step-1-container .stepper-vertical-container .css-qivjh0-MuiStepLabel-label.Mui-completed {
+  margin-left: -108px;
+}
+
+.step-1-container .stepper-vertical-container .MuiStep-root:nth-child(1) .MuiStepLabel-label.css-qivjh0-MuiStepLabel-label {
+  margin-left: -110px;
 }
 
 .stepper-vertical-container
@@ -53,7 +83,7 @@
   .MuiStepper-root
   .css-8wcvy5-MuiStep-root:nth-child(5)
   .css-qivjh0-MuiStepLabel-label {
-  margin-left: -170px;
+  margin-left: -168px;
 }
 
 .stepper-vertical-container .css-ahj2mt-MuiTypography-root {
@@ -106,7 +136,7 @@
 
 .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .css-qivjh0-MuiStepLabel-label.Mui-active,
 .step-2-container .stepper-vertical-container .css-8wcvy5-MuiStep-root:nth-child(3) .MuiStepLabel-label .css-qivjh0-MuiStepLabel-label {
-  margin-left: -100px;
+  margin-left: -102px;
 }
 
 .step-2-container .stepper-vertical-container .MuiStepper-root .Mui-completed:nth-child(3) .css-16ubnlw-MuiStepLabel-labelContainer{

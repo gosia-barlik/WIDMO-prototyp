@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -23,6 +22,7 @@ export default function Step1MainInfo(props) {
 
       {showResults == false && (
         <StepperVertical
+        
           nonLinear = {false}
           activeStep={props.activeVerticalStep}
           verticalStepperLabels={props.verticalStepperLabels}
@@ -32,6 +32,7 @@ export default function Step1MainInfo(props) {
 
       {showResults && (
         <StepperVertical
+       
           nonLinear={true}
           activeStep={props.activeVerticalStep}
           verticalStepperLabels={props.verticalStepperLabels}
@@ -86,7 +87,6 @@ export default function Step1MainInfo(props) {
       <Grid
         item
         xs={4}
-        style={{ margin: "20px", marginTop: "50px", textAlign: "left" }}
         className='job-offer-container'>
         <Typography
           variant='body2'

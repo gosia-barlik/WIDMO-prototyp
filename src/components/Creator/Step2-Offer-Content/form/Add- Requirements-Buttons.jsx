@@ -1,27 +1,33 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import TextField from "@material-ui/core/TextField";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
+import EducationExperience from "./Education-Experience-Form.jsx/Education-Experience";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setRequirements,
+  setCustomizedRequirements,
   setShowEducationForm,
 } from "../../../../store/actions/stepTwoActions";
 
-const ColorButton = styled(Button)(() => ({
-  textTransform: "none",
-  width: "100%",
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    fontSize: "14px",
+    width: "25vw",
+  },
 }));
 
 export default function AddRequirementsButtons(props) {
+  const classes = useStyles();
   const {
     showRequirementsButton,
     requirements,
+    customizedRequirements,
     showEducationForm,
     educationLevel,
     studiesName,
@@ -51,6 +57,36 @@ export default function AddRequirementsButtons(props) {
     studiesStage.length > 0 ||
     certificateName.length > 0 ||
     certificateStage.length > 0;
+
+
+// DYNAMIC SECTION
+let handleChange = (i, e) => {
+  let newRequirements = [...customizedRequirements];
+  newRequirements[i][e.target.name] = e.target.value;
+  dispatch(setCustomizedRequirements(newRequirements));
+  console.log(customizedRequirements);
+};
+
+let addFormFields = () => {
+  dispatch(
+    setCustomizedRequirements([
+      ...customizedRequirements,
+      { name: "" },
+    ])
+  );
+};
+
+let removeFormFields = (i) => {
+  let newRequirements = [...customizedRequirements];
+  newRequirements.splice(i, 1);
+  dispatch(setCustomizedRequirements(newRequirements));
+};
+
+let handleSubmit = (event) => {
+  event.preventDefault();
+  alert(JSON.stringify(customizedRequirements));
+};
+
 
   return (
     <Stack
@@ -85,6 +121,49 @@ export default function AddRequirementsButtons(props) {
         {showEducationForm == true
           ? "Ukryj informacje o wykształceniu i doświadczeniu"
           : "Dodaj informacje o wykształceniu i doświadczeniu"}
+      </Card>
+      {showEducationForm && <EducationExperience />}
+
+      {/* DYNAMIC SECTION*/}
+      <Card
+        className='styled-card'
+        style={{ display: "flex", flexDirection: "column" }}>
+        {customizedRequirements.map((element, index) => (
+          <div className='form-inline' key={index}>
+            <TextField
+              className={classes.textField}
+              variant='outlined'
+              size='small'
+              label='Obowiązek'
+              placeholder='Wpisz swój obowiązek'
+              fullWidth
+              type='text'
+              name='name'
+              value={element.name || ""}
+              onChange={(e) => handleChange(index, e)}
+            />
+            {index ? (
+              <IconButton
+                component='span'
+                className='styled-icon-button'
+                style={{ marginTop: "-4px" }}
+                onClick={() => removeFormFields(index)}>
+                <RemoveIcon />
+              </IconButton>
+            ) : null}
+          </div>
+        ))}
+        <div className='button-section'>
+          <IconButton
+            className='styled-icon-button'
+            component='span'
+            onClick={() => addFormFields()}>
+            <AddIcon />
+          </IconButton>
+          {customizedRequirements.length == 0
+            ? "Dodaj swój element"
+            : "Dodaj kolejny element"}
+        </div>
       </Card>
     </Stack>
   );

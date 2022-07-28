@@ -14,8 +14,8 @@ const { rodo } = useSelector((state) => state.stepThreeReducer);
 
   return (
     <Grid container spacing={4} className='step-3-container'>
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='body2' style={{color:"#00000099"}} gutterBottom component='div'>
+      <Grid item xs={5} style={{ marginTop: "50px", textAlign: "left" }}>
+        <Typography variant='body2' style={{ color: "#00000099" }} gutterBottom component='div'>
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
@@ -30,8 +30,8 @@ const { rodo } = useSelector((state) => state.stepThreeReducer);
         </Paper>
       </Grid>
 
-      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography variant='subtitle2' gutterBottom component='div'>
+      <Grid item xs={5} style={{ marginTop: "50px", textAlign: "left" }}>
+        <Typography variant='body2' gutterBottom component='div' style={{ color: "#00000099" }}>
           Twoje ogłoszenie
         </Typography>
         <Paper className='job-offer-container-box'>

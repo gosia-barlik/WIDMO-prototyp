@@ -1,10 +1,11 @@
 .step-4-container {
+  width:100% !important;
   margin-top: 70px !important;
-  margin-left: 20% !important;
+  padding-left: 20% !important;
 }
 
 .step-4-container .form-container-box {
-  width: 55%;
+  width:74%
 }
 
 .step-4-container .job-offer-summary {

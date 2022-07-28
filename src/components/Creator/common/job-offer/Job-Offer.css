@@ -1,4 +1,10 @@
 .job-offer-container-box {
+  box-shadow: none !important;
+}
+.step-1-container .job-offer-container {
+  margin: 20px 20px 4px 20px;
+  margin-top: 50px;
+  text-align: left;
 }
 
 .styled-accordion {

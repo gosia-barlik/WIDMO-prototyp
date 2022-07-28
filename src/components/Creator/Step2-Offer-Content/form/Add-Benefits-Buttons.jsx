@@ -40,7 +40,6 @@ export default function AddBenefitsButtons(props) {
   };
 
   // DYNAMIC SECTION
-
   let handleChange = (i, e) => {
     let newBenefits = [...customizedBenefits];
     newBenefits[i][e.target.name] = e.target.value;
@@ -85,7 +84,7 @@ export default function AddBenefitsButtons(props) {
         </Card>
       )}
 
-      {/* SEKCJA DYNAMICZNA */}
+      {/* DYNAMIC SECTION*/}
       <Card
         className='styled-card'
         style={{ display: "flex", flexDirection: "column" }}>

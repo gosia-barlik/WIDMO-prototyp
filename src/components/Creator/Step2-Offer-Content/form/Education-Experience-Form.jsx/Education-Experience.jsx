@@ -1,4 +1,6 @@
 import React from "react";
+import Grow from '@mui/material/Grow';
+import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import CustomizedInput from "./Customized-Input";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +12,8 @@ import { setCertificateName,
 
 export default function EducationExperience(props) {
   const dispatch = useDispatch();
-  const { educationLevel, studiesName, studiesStage, certificateName, certificateStage } = useSelector((state) => state.stepTwoReducer);
+  
+  const { educationLevel, studiesName, studiesStage, certificateName, certificateStage, showEducationForm} = useSelector((state) => state.stepTwoReducer);
 
   const educationLabel = "Poziom wykształcenia";
   const educationLevelFixture = ["podstawowe", "średnie", "zawodowe", "wyższe"];
@@ -34,8 +37,9 @@ export default function EducationExperience(props) {
   const onSetCertificateStage = (e) => dispatch(setCertificateStage(e));
   
   return (
-    <>
-      <Typography variant='subtitle2' gutterBottom component='div' style= {{marginTop: "40px"}}>
+    <Grow in={showEducationForm}>
+      <Card style= {{padding:"12px"}}>
+      <Typography variant='subtitle2' gutterBottom component='div'>
         Edukacja formalna
       </Typography>
 
@@ -74,6 +78,7 @@ export default function EducationExperience(props) {
         value={certificateStage}
         onSetCertificateStage={onSetCertificateStage}
       />
-    </>
+      </Card>
+    </Grow>
   );
 }

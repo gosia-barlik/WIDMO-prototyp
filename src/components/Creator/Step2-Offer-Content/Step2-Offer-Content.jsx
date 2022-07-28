@@ -8,39 +8,38 @@ import AddResponsibilitiesButtons from "./form/Add-Responsibilities-Buttons.jsx"
 import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
 import AddBenefitsButtons from "./form/Add-Benefits-Buttons.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
-import QualificationInformation from "./form/Qualification-Information.jsx";
 import EducationExperience from "./form/Education-Experience-Form.jsx/Education-Experience.jsx";
 import "./Step2-Offer-Content.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setShowEducationForm,
-  setShowQualificationForm,
-} from "../../../store/actions/stepTwoActions";
+// import {
+//   setShowEducationForm,
+//   setShowQualificationForm,
+// } from "../../../store/actions/stepTwoActions";
 
 export default function Step2OfferContent(props) {
-  const dispatch = useDispatch();
-  const { showQualificationForm, showEducationForm } = useSelector(
+  // const dispatch = useDispatch();
+  const { showEducationForm } = useSelector(
     (state) => state.stepTwoReducer
   );
-  const [activeStep, setActiveStep] = useState(0);
+  // const [activeStep, setActiveStep] = useState(0);
 
-  const resetShowQualificationForm = () =>
-    dispatch(setShowQualificationForm(false));
+  // const resetShowQualificationForm = () =>
+  //   dispatch(setShowQualificationForm(false));
 
-  const resetShowEducationForm = () => dispatch(setShowEducationForm(false));
+  // const resetShowEducationForm = () => dispatch(setShowEducationForm(false));
 
-  const handleNextAndReset = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    resetShowQualificationForm();
-    resetShowEducationForm();
-  };
-  const handleBackAndReset = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    resetShowQualificationForm();
-    resetShowEducationForm();
-  };
+  // const handleNextAndReset = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  //   resetShowQualificationForm();
+  //   resetShowEducationForm();
+  // };
+  // const handleBackAndReset = () => {
+  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  //   resetShowQualificationForm();
+  //   resetShowEducationForm();
+  // };
 
-  const handleReset = () => resetShowQualificationForm();
+  // const handleReset = () => resetShowQualificationForm();
 
   return (
     <Grid container className='step-2-container'>
@@ -65,7 +64,6 @@ export default function Step2OfferContent(props) {
           {props.activeVerticalStep === 0 && (
             <>
               <AddResponsibilitiesButtons />
-              {showQualificationForm === true && <QualificationInformation />}
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
                 handleNext={props.handleVerticalStepperNext}
@@ -76,7 +74,7 @@ export default function Step2OfferContent(props) {
           {props.activeVerticalStep === 1 && (
             <>
               <AddRequirementsButtons />
-              {showEducationForm && <EducationExperience />}
+              
               <MainActionButtons
                 handleBack={props.handleVerticalStepperBack}
                 handleNext={props.handleVerticalStepperNext}

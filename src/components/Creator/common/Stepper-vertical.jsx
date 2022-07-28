@@ -7,11 +7,16 @@ import StepButton from "@mui/material/StepButton";
 import StepContent from "@mui/material/StepContent";
 import Typography from "@mui/material/Typography";
 import "./Stepper-vertical.css";
+import { useSelector } from "react-redux";
+
 
 export default function StepperVertical(props) {
+  const { showResults } = useSelector((state) => state.stepOneReducer);
+
   return (
     <Box sx={{ maxWidth: 400 }} className='stepper-vertical-container'>
       <Stepper
+      className={"stepper-" + (showResults ? 'nonlinear' : 'linear')}
         activeStep={props.activeStep}
         nonLinear={props.nonLinear}
         orientation='vertical'>

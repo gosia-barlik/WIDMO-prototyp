@@ -1,5 +1,6 @@
 import {
   RESPONSIBILITIES,
+  CUSTOMIZEDRESPONSIBILITIES,
   SHOWRESPONSIBILITIESBUTTON,
   SHOWQUALIFICATIONFORM,
   QUALIFICATIONNAME,
@@ -8,6 +9,7 @@ import {
   COPIEDQUALIFICATIONEFFECTS,
   COPIEDSELECTEDTEXT,
   REQUIREMENTS,
+  CUSTOMIZEDREQUIREMENTS,
   SHOWREQUIREMENTSBUTTON,
   SHOWEDUCATIONFORM,
   EDUCATIONLEVEL,
@@ -23,6 +25,7 @@ import {
 
 const initialState = {
   responsibilities: [],
+  customizedResponsibilities: [],
   showResponsibilitiesButton: true,
   showQualificationForm: false,
   qualificationName: "",
@@ -32,6 +35,7 @@ const initialState = {
   copiedSelectedText: [],
 
   requirements: [],
+  customizedRequirements: [],
   showRequirementsButton: true,
   showEducationForm: false,
   
@@ -54,6 +58,12 @@ export const stepTwoReducer = (state = initialState, action) => {
       return {
         ...state,
         responsibilities: action.payload,
+      };
+    }
+    case CUSTOMIZEDRESPONSIBILITIES: {
+      return {
+        ...state,
+        customizedResponsibilities: action.payload,
       };
     }
     case SHOWRESPONSIBILITIESBUTTON: {
@@ -103,6 +113,12 @@ export const stepTwoReducer = (state = initialState, action) => {
       return {
         ...state,
         requirements: action.payload,
+      };
+    }
+    case CUSTOMIZEDREQUIREMENTS: {
+      return {
+        ...state,
+        customizedRequirements: action.payload,
       };
     }
     case SHOWREQUIREMENTSBUTTON: {

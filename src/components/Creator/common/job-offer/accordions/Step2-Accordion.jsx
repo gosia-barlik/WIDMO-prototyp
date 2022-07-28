@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 export default function Step2Accordion(props) {
   const {
     responsibilities,
+    customizedResponsibilities,
     copiedQualificationEffects,
     copiedSelectedText,
     requirements,
+    customizedRequirements,
     educationLevel,
     studiesName,
     studiesStage,
@@ -44,6 +46,11 @@ export default function Step2Accordion(props) {
                 {responsibility}
               </Typography>
             ))}
+            {customizedResponsibilities.map((responsibility) => (
+              <Typography key={responsibility.name} variant='body2' component='div'>
+                {responsibility.name}
+              </Typography>
+            ))}
           </>
         )}
 
@@ -67,7 +74,7 @@ export default function Step2Accordion(props) {
           </>
         )}
 
-        {requirements.length > 0 && (
+        {(requirements || customizedRequirements) && (
           <>
             <Typography
               variant='subtitle2'
@@ -78,6 +85,11 @@ export default function Step2Accordion(props) {
             {requirements.map((requirement) => (
               <Typography key={requirement} variant='body2' component='div'>
                 {requirement}
+              </Typography>
+            ))}
+            {customizedRequirements.map((requirement) => (
+              <Typography key={requirement.name} variant='body2' component='div'>
+                {requirement.name}
               </Typography>
             ))}
           </>
@@ -118,7 +130,7 @@ export default function Step2Accordion(props) {
           </>
         )}
 
-        {(benefits.length > 0 || customizedBenefits.length > 0) && (
+        {(benefits || customizedBenefits) && (
           <>
             <Typography
               variant='subtitle2'

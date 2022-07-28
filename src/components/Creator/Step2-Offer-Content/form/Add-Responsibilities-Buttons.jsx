@@ -1,15 +1,17 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
+import TextField from "@material-ui/core/TextField";
+import QualificationInformation from "./Qualification-Information";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setResponsibilities,
+  setCustomizedResponsibilities,
   setShowResponsibilitiesButton,
   setShowQualificationForm,
   setQualificationName,
@@ -17,9 +19,18 @@ import {
   setQualificationEffects,
 } from "../../../../store/actions/stepTwoActions";
 
+const useStyles = makeStyles((theme) => ({
+  textField: {
+    fontSize: "14px",
+    width: "25vw",
+  },
+}));
+
 export default function AddResponsibilitiesButtons(props) {
+  const classes = useStyles();
   const {
     responsibilities,
+    customizedResponsibilities,
     showQualificationForm,
   } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
@@ -70,8 +81,36 @@ export default function AddResponsibilitiesButtons(props) {
     );
     dispatch(setQualificationEffects(qualificationEffectsFixture));
   };
-  const resetShowQualificationForm = (e) => {
-    dispatch(setShowQualificationForm(false));
+  // const resetShowQualificationForm = (e) => {
+  //   dispatch(setShowQualificationForm(false));
+  // };
+
+  // DYNAMIC SECTION
+  let handleChange = (i, e) => {
+    let newResponsibilities = [...customizedResponsibilities];
+    newResponsibilities[i][e.target.name] = e.target.value;
+    dispatch(setCustomizedResponsibilities(newResponsibilities));
+    console.log(customizedResponsibilities);
+  };
+
+  let addFormFields = () => {
+    dispatch(
+      setCustomizedResponsibilities([
+        ...customizedResponsibilities,
+        { name: "" },
+      ])
+    );
+  };
+
+  let removeFormFields = (i) => {
+    let newResponsibilities = [...customizedResponsibilities];
+    newResponsibilities.splice(i, 1);
+    dispatch(setCustomizedResponsibilities(newResponsibilities));
+  };
+
+  let handleSubmit = (event) => {
+    event.preventDefault();
+    alert(JSON.stringify(customizedResponsibilities));
   };
 
   return (
@@ -89,8 +128,9 @@ export default function AddResponsibilitiesButtons(props) {
           onClick={onSetResponsibilities}>
           {responsibilities.length == 0 ? <AddIcon /> : <RemoveIcon />}
         </IconButton>
-        {responsibilities.length == 0 ? "Dodaj najczęściej poszukiwane umiejętności na rynku pracy" : "Usuń najczęściej poszukiwane umiejętności na rynku pracy"}
-        
+        {responsibilities.length == 0
+          ? "Dodaj najczęściej poszukiwane umiejętności na rynku pracy"
+          : "Usuń najczęściej poszukiwane umiejętności na rynku pracy"}
       </Card>
       <Card className='styled-card'>
         <IconButton
@@ -98,10 +138,52 @@ export default function AddResponsibilitiesButtons(props) {
           component='span'
           onClick={onSetQualificationInfo}>
           {showQualificationForm == false ? <AddIcon /> : <RemoveIcon />}
-          
-          {/* {(copiedSelectedText.length == 0 && copiedQualificationEffects.length  == 0)  ? <AddIcon /> : <RemoveIcon/>} */}
         </IconButton>
-        {showQualificationForm == false ? "Dodaj informacje z Rejestru Kwalifikacji" : "Ukryj informacje z Rejestru Kwalifikacji"}
+        {showQualificationForm == false
+          ? "Dodaj informacje z Rejestru Kwalifikacji"
+          : "Ukryj informacje z Rejestru Kwalifikacji"}
+      </Card>
+      {showQualificationForm === true && <QualificationInformation />}
+      {/* DYNAMIC SECTION*/}
+      <Card
+        className='styled-card'
+        style={{ display: "flex", flexDirection: "column" }}>
+        {customizedResponsibilities.map((element, index) => (
+          <div className='form-inline' key={index}>
+            <TextField
+              className={classes.textField}
+              variant='outlined'
+              size='small'
+              label='Obowiązek'
+              placeholder='Wpisz swój obowiązek'
+              fullWidth
+              type='text'
+              name='name'
+              value={element.name || ""}
+              onChange={(e) => handleChange(index, e)}
+            />
+            {index ? (
+              <IconButton
+                component='span'
+                className='styled-icon-button'
+                style={{ marginTop: "-4px" }}
+                onClick={() => removeFormFields(index)}>
+                <RemoveIcon />
+              </IconButton>
+            ) : null}
+          </div>
+        ))}
+        <div className='button-section'>
+          <IconButton
+            className='styled-icon-button'
+            component='span'
+            onClick={() => addFormFields()}>
+            <AddIcon />
+          </IconButton>
+          {customizedResponsibilities.length == 0
+            ? "Dodaj swój element"
+            : "Dodaj kolejny element"}
+        </div>
       </Card>
     </Stack>
   );
