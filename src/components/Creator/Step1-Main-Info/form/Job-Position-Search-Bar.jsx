@@ -53,6 +53,7 @@ export default function SearchBar(props) {
 
       <form onSubmit={handleSearch}>
         <TextField
+          spellcheck='true'
           error={text.length >= jobPositionSchema.MAX_LENGTH}
           helperText={errorMessage}
           required

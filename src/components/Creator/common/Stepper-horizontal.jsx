@@ -6,7 +6,6 @@ import StepButton from "@mui/material/StepButton";
 import "./Stepper-horizontal.css";
 import { useSelector } from "react-redux";
 
-
 export default function StepperHorizontal(props) {
   const { showResults } = useSelector((state) => state.stepOneReducer);
   return (
@@ -15,13 +14,10 @@ export default function StepperHorizontal(props) {
         className={"stepper-" + (showResults ? "nonlinear" : "linear")}
         nonLinear={props.nonLinear}
         activeStep={props.activeStep}
-        alternativeLabel
-      >
+        alternativeLabel>
         {props.mainStepperLabels.map((label, index) => (
           <Step key={label.name}>
-            <StepButton
-              onClick={() => props.handleStep(index)}
-            >
+            <StepButton onClick={() => props.handleStep(index)}>
               {label.name}
             </StepButton>
           </Step>

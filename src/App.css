@@ -13,8 +13,30 @@ body {
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  width: 120px;
+}
+/* 
+SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--neutral);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -34,7 +56,7 @@ body {
   color: white;
 } */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
 }
 
@@ -45,4 +67,4 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
+} */

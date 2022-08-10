@@ -38,7 +38,7 @@ export default function QualificationInformation(props) {
 
   const removeQualificationEffect = (effect) => {
     const filteredCopiedQualificationEffects =
-      copiedQualificationEffects.filter((obj) => obj != effect);
+      copiedQualificationEffects.filter((obj) => obj !== effect);
     dispatch(setCopiedQualificationEffects(filteredCopiedQualificationEffects));
   };
 

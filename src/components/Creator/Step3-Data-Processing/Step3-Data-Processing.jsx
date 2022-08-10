@@ -32,7 +32,7 @@ const { rodo } = useSelector((state) => state.stepThreeReducer);
 
       <Grid item xs={5} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography variant='body2' gutterBottom component='div' style={{ color: "#00000099" }}>
-          Twoje ogłoszenie
+          Podgląd ogłoszenia
         </Typography>
         <Paper className='job-offer-container-box'>
           <JobOffer

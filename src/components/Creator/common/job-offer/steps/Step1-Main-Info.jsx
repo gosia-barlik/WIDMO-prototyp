@@ -114,14 +114,15 @@ export default function Step1MainInfo(props) {
           salaryFrom ||
           salaryTo ||
           salaryCurrency ||
-          salaryTime) && (
+          salaryTime
+          || salaryContract) && (
           <>
             <Typography variant='subtitle2' component='div'>
               Wynagrodzenie
             </Typography>
             <Typography variant='body2' gutterBottom component='div'>
-              {"od " + salaryFrom} {"do " + salaryTo} {" " + salaryCurrency}{" "}
-              {"/" + salaryTime} {salaryType} {salaryContract}
+              {salaryFrom} {salaryTo? (" - " + salaryTo):("")} {" " + salaryCurrency}{" "}
+              {salaryTime? ("/ " + salaryTime) : ("")} {salaryType} {salaryContract}
             </Typography>
           </>
         )}

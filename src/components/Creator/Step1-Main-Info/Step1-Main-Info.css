@@ -11,12 +11,12 @@
 }
 
 .form-container-box {
-  background-color: rgb(255, 255, 255) !important ;
+  background-color: var(--white) !important ;
   padding: 18px;
   font-family: Arial, Helvetica, sans-serif;
 }
 .form-container-box .job-position-search-results-wrapper {
-  background-color: rgb(255, 255, 255) !important ;
+  background-color: var(--white) !important ;
 }
 
 /*Error message*/
@@ -100,17 +100,17 @@
   z-index: 100;
   left: 18px;
   top: 18px;
-  color: var(--active);
+  color: var(--primary);
 }
 #photo-icon.hidden {
   display: none;
 }
 /* ALERT */
-.MuiAlert-standardInfo-27 {
+.step-1-container .MuiAlert-standardInfo {
   color: #241e2d !important;
-  background-color: #c3fff9 !important;
+  background-color: var(--secondaryLighter);
 }
-.MuiAlert-standardInfo-27 .MuiAlert-icon-38 {
+.MuiAlert-standardInfo .MuiAlert-icon {
   color: #241e2d !important;
 }
 

@@ -7,18 +7,18 @@ button {
 }
 .button-outlined {
   margin: 15px 5px 0 5px !important;
-  border: 1px solid var(--active) !important;
-  color: var(--active) !important; 
+  border: 1px solid var(--primary) !important;
+  color: var(--primary) !important; 
 }
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
-  background-color: var(--active) !important;
+  background-color: var(--primary) !important;
   color:white !important;
 }
   
   .upload-button{
     margin: 0px 5px 0 5px !important;
-    border: 1px solid var(--active) !important;
-    color: var(--active)!important;
+    border: 1px solid var(--primary) !important;
+    color: var(--primary)!important;
   }

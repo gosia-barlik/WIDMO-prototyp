@@ -13,6 +13,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import "./Header.css";
+import logo from '../../assets/logo.jpg';
+
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -90,7 +92,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position='static' className='navbar' elevation={1}>
+      <AppBar position='fixed' className='navbar' elevation={1}>
         <Toolbar className='appbar-toolbar'>
           {isLoggedIn && (
             <div className={classes.navbar}
@@ -101,10 +103,12 @@ export default function Header() {
                 onClick={toggleUserDrawer}>
                 <MenuIcon />
               </IconButton>
+              
               <NavLink to='/' component='div' className={classes.logo}>
-                <Typography variant='h6' className={classes.title}>
+              <img src={logo} className="App-logo" alt="logo" />
+                {/* <Typography variant='h6' className={classes.title}>
                   AIRA
-                </Typography>
+                </Typography> */}
               </NavLink>
               <div>
                 <IconButton
@@ -141,10 +145,12 @@ export default function Header() {
             <div
             className={classes.navbar}>
               <NavLink to='/' component='div' className={classes.logo}>
-                <Typography variant='h6' className={classes.title}>
+              <img src={logo} className="App-logo" alt="logo" />
+                {/* <Typography variant='h6' className={classes.title}>
                   AIRA
-                </Typography>
+                </Typography> */}
               </NavLink>
+              
               <Button
                 onClick={openLoginForm}
                 color='primary'

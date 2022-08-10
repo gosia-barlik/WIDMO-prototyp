@@ -20,7 +20,7 @@ export default function Step1MainInfo(props) {
   return (
     <Grid container className='step-1-container'>
 
-      {showResults == false && (
+      {showResults === false && (
         <StepperVertical
         
           nonLinear = {false}
@@ -93,7 +93,7 @@ export default function Step1MainInfo(props) {
           style={{ color: "#00000099" }}
           gutterBottom
           component='div'>
-          Twoje ogłoszenie
+          Podgląd ogłoszenia
         </Typography>
         <Paper className='job-offer-container-box' elevation={0}>
           <JobOffer activeStep={props.activeStep} />

@@ -1,7 +1,9 @@
+@import "./common/variables.css";
+
 body {
   height: 100%;
   width: 100%;
-  background-color: rgb(250, 248, 248);
+  background-color: var(--background);
 }
 
 .landing {
@@ -11,21 +13,45 @@ body {
   box-sizing: content-box;
 }
 
+.landing .landing-text  {
+  line-height: 22px;
+  font-size: 14px;
+  font-family: Montserrat, Arial;
+  position: absolute;
+}
+
+.landing .landing-text.primary{
+  color: var(--textMain);
+}
+.landing .landing-text.hero {
+  color: var(--white);
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 200px;
+  width: 30%;
+  text-align: center;
+}
+
 .landing .section-cards {
   margin-top: 40px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .landing .card-container {
   height: 388px;
+  min-width: 800px;
   background-color: white;
   padding: 12px;
-  margin: 0 0 0 32px;
+  margin: 32px 0 0 32px;
+  display: flex;
   
+}
+.card-image {
+
 }
 
 .landing .card-container .card1 {
@@ -36,9 +62,8 @@ body {
 
 .landing .card-container .card1 .rankomat-text1 {
   box-sizing: content-box;
-  background-color: rgba(255, 255, 255, 0);
   line-height: 22px;
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
   font-size: 14px;
   font-family: Montserrat, Arial;
@@ -184,17 +209,36 @@ a:active {
   letter-spacing: 0;
   text-decoration: none;
 }
+.landing .section-background {
+  width: 100%;
+  max-height: 600px;
+}
 
 @media only screen and (max-width: 1200px) {
   /* .landing .card-container {
     /* margin-top: 20px; */
-  
+    .landing .section-background { min-width: 130%; }
 }
 
 @media only screen and (max-width: 960px) {
   .landing .card-container {margin-top: 32px}
+  .landing .section-background { min-width: 150%; }
+  .landing .landing-text.hero {
+    margin-top: 140px;
+    margin-left: 10%;
+    width: 60%;
+    font-size:14px;
+  }
 }
 
 @media only screen and (max-width: 630px) {
 .landing .card-container:nth-child(1) {margin-top: 84px}
+.landing .section-background { min-width: 180%; }
+.landing .landing-text.hero {
+  width: 90%;
 }
+}
+
+@media only screen and (max-width: 400px) {
+  .landing .section-background { min-width: 280%; }
+  }

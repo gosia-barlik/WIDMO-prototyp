@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AdditionalInformation(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { currency } = useSelector((state) => state.stepOneReducer);
+  // const { currency } = useSelector((state) => state.stepOneReducer);
   
 
   const onSetSalaryType = (salaryType) => dispatch(setSalaryType(salaryType));
@@ -57,8 +56,8 @@ export default function AdditionalInformation(props) {
   const onSetRecruitmentMode = (recruitmentMode) =>
     dispatch(setRecruitmentMode(recruitmentMode));
   const onSetWorkMode = (workMode) => dispatch(setWorkMode(workMode));
-  const onSetContractType = (contractType) =>
-    dispatch(setContractType(contractType));
+  // const onSetContractType = (contractType) =>
+  //   dispatch(setContractType(contractType));
   const onSetWorkModel = (workModel) => dispatch(setWorkModel(workModel));
 
 

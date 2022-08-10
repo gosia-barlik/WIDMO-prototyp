@@ -76,9 +76,9 @@ export default function AddBenefitsButtons(props) {
             className='styled-icon-button'
             component='span'
             onClick={onSetBenefits}>
-            {benefits.length == 0 ? <AddIcon /> : <RemoveIcon />}
+            {benefits.length === 0 ? <AddIcon /> : <RemoveIcon />}
           </IconButton>
-          {benefits.length == 0
+          {benefits.length === 0
             ? "Dodaj benefity najczęściej występujące w ogłoszeniach o pracę"
             : "Usuń benefity najczęściej występujące w ogłoszeniach o pracę"}
         </Card>
@@ -120,7 +120,7 @@ export default function AddBenefitsButtons(props) {
             onClick={() => addFormFields()}>
             <AddIcon />
           </IconButton>
-          {customizedBenefits.length == 0
+          {customizedBenefits.length === 0
             ? "Dodaj swój element"
             : "Dodaj kolejny element"}
           {/* <button className='button submit' type='submit'>

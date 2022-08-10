@@ -1,7 +1,7 @@
 @import "../../common/variables.css";
 
 .stepper-horizontal-container {
-  margin-top: 80px;
+  margin-top: 140px;
 
   justify-content: center !important;
   align-items: center;
@@ -12,7 +12,7 @@
 }
 .stepper-horizontal-container
   .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
-  color: var(--active) !important;
+  color: var(--primary) !important;
   width: 18px !important;
   height: 18px !important;
 }

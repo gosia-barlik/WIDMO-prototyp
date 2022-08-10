@@ -21,7 +21,7 @@ export default function Step3Accordion(props) {
     <Accordion className='styled-accordion'>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant='subtitle2' component='div'>
-          Informacje Uzupełniające
+          Informacje uzupełniające
         </Typography>
       </AccordionSummary>
 

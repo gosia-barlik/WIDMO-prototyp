@@ -6,7 +6,7 @@
 }
 
 .step-3-container .styled-button {
-  color: var(--active)!important;
+  color: var(--primary)!important;
   padding: 25px !important;
   display: flex !important;
   background-color: white;
@@ -24,7 +24,7 @@
   margin: 0 24px;
   height: 42px;
   width: 42px;
-  color: var(--active);
+  color: var(--primary);
   box-shadow: 1px 2px 3px rgb(0 0 0 / 20%);
 }
 
@@ -45,16 +45,16 @@
 }
 
 .step-3-container .css-7h1qul.focused {
-  border-color: var(--active);
+  border-color: var(--primary);
   box-shadow: 0 0 0 2px rgba(57, 59, 61, 0.2);
 }
 
 .step-3-container .css-7h1qul:hover {
-  border-color: var(--active);
+  border-color: var(--primary);
 }
 
 .step-3-container .css-1k181zl li[aria-selected="true"] svg {
-  color: var(--active);
+  color: var(--primary);
 }
 
 @media only screen and (max-width: 1024px) {

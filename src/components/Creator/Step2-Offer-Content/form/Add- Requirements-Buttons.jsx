@@ -45,7 +45,7 @@ export default function AddRequirementsButtons(props) {
 
   const onSetRequirements = () => {
     let newRequirements;
-    if (requirements.length == 0) newRequirements = requirementFixture;
+    if (requirements.length === 0) newRequirements = requirementFixture;
     else newRequirements = [];
     dispatch(setRequirements(newRequirements));
   };
@@ -102,9 +102,9 @@ let handleSubmit = (event) => {
             className='styled-icon-button'
             component='span'
             onClick={onSetRequirements}>
-            {requirements.length == 0 ? <AddIcon /> : <RemoveIcon />}
+            {requirements.length === 0 ? <AddIcon /> : <RemoveIcon />}
           </IconButton>
-          {requirements.length == 0
+          {requirements.length === 0
             ? "Dodaj najczęstsze wymagania na to stanowisko"
             : "Usuń najczęstsze wymagania na to stanowisko"}
         </Card>
@@ -115,10 +115,10 @@ let handleSubmit = (event) => {
           className='styled-icon-button'
           component='span'
           onClick={onSetShowEducationForm}>
-          {showEducationForm == true ? <RemoveIcon /> : <AddIcon />}
+          {showEducationForm === true ? <RemoveIcon /> : <AddIcon />}
           {/* {hasAnyEducationInfo() ? <RemoveIcon /> : <AddIcon />} */}
         </IconButton>
-        {showEducationForm == true
+        {showEducationForm === true
           ? "Ukryj informacje o wykształceniu i doświadczeniu"
           : "Dodaj informacje o wykształceniu i doświadczeniu"}
       </Card>
@@ -160,7 +160,7 @@ let handleSubmit = (event) => {
             onClick={() => addFormFields()}>
             <AddIcon />
           </IconButton>
-          {customizedRequirements.length == 0
+          {customizedRequirements.length === 0
             ? "Dodaj swój element"
             : "Dodaj kolejny element"}
         </div>

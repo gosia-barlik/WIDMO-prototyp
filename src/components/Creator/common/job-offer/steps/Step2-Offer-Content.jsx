@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
+import Grow from "@material-ui/core/Grow";
 import Chip from "@material-ui/core/Chip";
 import Stack from "@mui/material/Stack";
 import Step1Accordion from "../accordions/Step1-Accordion";
@@ -18,9 +19,7 @@ import {
 } from "../../../../../store/actions/stepTwoActions";
 
 export default function Step2OfferContent(props) {
-  const {
-    searchedPosition,
-  } = useSelector((state) => state.stepOneReducer);
+  const { searchedPosition } = useSelector((state) => state.stepOneReducer);
   const {
     responsibilities,
     customizedResponsibilities,
@@ -111,36 +110,41 @@ export default function Step2OfferContent(props) {
           }}>
           Treść ogłoszenia
         </Typography>
-        {(responsibilities || customizedResponsibilities)&& (
+        {(responsibilities || customizedResponsibilities) && (
           <>
             <Typography variant='subtitle2' component='div'>
               Zakres obowiązków
             </Typography>
-            {responsibilities.map((responsibility) => (
-              <Chip
-                className='styled-chip'
-                key={responsibility}
-                onDelete={() => {
-                  removeResponsibility(responsibility);
-                }}
-                variant='outlined'
-                label={responsibility}
-              />
-            ))}
-            {customizedResponsibilities.map((responsibility) => (
+            {responsibilities.map((responsibility, index) => (
+              <Grow
+                in={true}
+                {...(responsibility ? { timeout: index * 1000 } : {})}>
                 <Chip
                   className='styled-chip'
-                  key={responsibility.name}
+                  key={responsibility}
                   onDelete={() => {
-                    removeCustomizedResponsibility(responsibility);
+                    removeResponsibility(responsibility);
                   }}
                   variant='outlined'
-                  label={responsibility.name}
+                  label={responsibility}
                 />
-              ))}
+              </Grow>
+            ))}
+
+            {customizedResponsibilities.map((responsibility) => (
+              <Chip
+                className='styled-chip'
+                key={responsibility.name}
+                onDelete={() => {
+                  removeCustomizedResponsibility(responsibility);
+                }}
+                variant='outlined'
+                label={responsibility.name}
+              />
+            ))}
           </>
         )}
-        
+
         {copiedQualificationEffects && (
           <>
             {copiedQualificationEffects.map((effect) => (
@@ -172,7 +176,7 @@ export default function Step2OfferContent(props) {
           </>
         )}
 
-        {(requirements || customizedRequirements) && (
+        {(requirements.length > 0 || customizedRequirements.length > 0) && (
           <>
             <Typography
               variant='subtitle2'
@@ -180,31 +184,35 @@ export default function Step2OfferContent(props) {
               style={{ marginTop: "6px" }}>
               Wymagania
             </Typography>
-            {requirements.map((requirement) => (
-              <Chip
-                className='styled-chip'
-                key={requirement}
-                onDelete={() => {
-                  removeRequirement(requirement);
-                }}
-                variant='outlined'
-                label={requirement}
-              />
-            ))}
-            {customizedRequirements.map((reuirement) => (
+            {requirements.map((requirement, index) => (
+              <Grow
+                in={true}
+                {...(requirement ? { timeout: index * 1000 } : {})}>
                 <Chip
                   className='styled-chip'
-                  key={reuirement.name}
+                  key={requirement}
                   onDelete={() => {
-                    removeCustomizedRequirement(reuirement);
+                    removeRequirement(requirement);
                   }}
                   variant='outlined'
-                  label={reuirement.name}
+                  label={requirement}
                 />
-              ))}
+              </Grow>
+            ))}
+            {customizedRequirements.map((reuirement) => (
+              <Chip
+                className='styled-chip'
+                key={reuirement.name}
+                onDelete={() => {
+                  removeCustomizedRequirement(reuirement);
+                }}
+                variant='outlined'
+                label={reuirement.name}
+              />
+            ))}
           </>
         )}
-            
+
         {showEducationForm == true && (
           <>
             <Typography
@@ -317,17 +325,19 @@ export default function Step2OfferContent(props) {
               direction='row'
               spacing={1}
               style={{ display: "inline-block" }}>
-              {benefits.map((benefit) => (
-                <Chip
-                  className='styled-chip'
-                  key={benefit}
-                  onDelete={() => {
-                    removeBenefit(benefit);
-                  }}
-                  variant='outlined'
-                  label={benefit}
-                  style={{ margin: "2px" }}
-                />
+              {benefits.map((benefit, index) => (
+                <Grow in={true} {...(benefit ? { timeout: index * 1000 } : {})}>
+                  <Chip
+                    className='styled-chip'
+                    key={benefit}
+                    onDelete={() => {
+                      removeBenefit(benefit);
+                    }}
+                    variant='outlined'
+                    label={benefit}
+                    style={{ margin: "2px" }}
+                  />
+                </Grow>
               ))}
               {customizedBenefits.map((benefit) => (
                 <Chip

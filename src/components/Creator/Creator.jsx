@@ -6,7 +6,6 @@ import Step3DataProcessing from "./Step3-Data-Processing/Step3-Data-Processing.j
 import Step4Summary from "./Step4-Summary/Step4-Summary.jsx";
 import { useSelector } from "react-redux";
 import "./Creator.css";
-import { createTheme, ThemeProvider } from "@material-ui/core";
 
 export default function Creator() {
   const { showResults } = useSelector((state) => state.stepOneReducer);
@@ -25,7 +24,7 @@ export default function Creator() {
   const step1VerticalStepperLabels = [
     {
       name: "Stanowisko",
-      description: `Aby przejść dalej musisz wpisać nazwę stanowiska, na które rekrutujesz.`,
+      description: `Dodaj nazwę stanowiska, aby rozpocząć.`,
     },
     {
       name: "O firmie",
@@ -54,6 +53,7 @@ export default function Creator() {
   // MAIN STEPPER
   const handleStep = (step) => {
     setActiveStep(step);
+    setActiveVerticalStep(0);
   };
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -88,7 +88,7 @@ export default function Creator() {
 
   return (
     <>
-      {showResults == false && (
+      {showResults === false && (
         <StepperHorizontal
           activeStep={activeStep}
           handleStep={handleStep}

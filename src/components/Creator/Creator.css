@@ -9,19 +9,19 @@ body {
 
 .button-outlined {
   margin: 15px 5px 0 5px !important;
-  border: 1px solid var(--active)!important;
-  color: var(--active) !important;
+  border: 1px solid var(--primary)!important;
+  color: var(--primary) !important;
   font-family: Arial !important;
 }
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
-  background-color: var(--active)!important;
+  background-color: var(--primary)!important;
   font-family: Arial !important;
 }
 
 .Mui-disabled.button-outlined {
-  color: var(--disabled)!important;
-  border: 1px solid var(--disabled)!important;
+  color: var(--neutral)!important;
+  border: 1px solid var(--neutral)!important;
 }
 

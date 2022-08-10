@@ -11,12 +11,16 @@ import htmlToDraft from "html-to-draftjs";
 import { useSelector } from "react-redux";
 
 export default function RichTextEditor(props) {
-  const { searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilities, copiedQualificationEffects, copiedSelectedText, requirements, educationLevel, studiesName, studiesStage, benefits } = useSelector((state) => state.stepTwoReducer);
+  const { companyName, searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, aboutCompany } = useSelector((state) => state.stepOneReducer);
+  const { responsibilities, customizedResponsibilities, copiedQualificationEffects, copiedSelectedText, requirements, customizedRequirements, educationLevel, studiesName, studiesStage, benefits, customizedBenefits } = useSelector((state) => state.stepTwoReducer);
   const { rodo, applicationWay, applicationExpectation, applicationDate, contactInformation} = useSelector((state) => state.stepThreeReducer);
 
   const contentToEdit = `<div className="job-offer-summary" contentEditable="true"> 
 <h6> Stanowisko: <span> ${searchedPosition} </span> 
+</h6> 
+<h6> Nazwa firmy: <span> ${companyName} </span> 
+</h6> 
+<h6> O firmie: <span> ${aboutCompany} </span> 
 </h6> 
 <h6> Wynagrodzenie: <span>${salaryFrom} - ${
     salaryTo
@@ -38,6 +42,10 @@ export default function RichTextEditor(props) {
    (text) =>
      `<li key=${text}>${text}</li>`
  )}
+ ${customizedResponsibilities.map(
+  (responsibility) =>
+    `<li key=${responsibility.name}>${responsibility.name}</li>`
+)}
  </ul> </span>
 </h6>
 <h6> Wymagania: <span>
@@ -45,12 +53,18 @@ export default function RichTextEditor(props) {
      <li>wykształcenie ${educationLevel} ${studiesName} ${studiesStage}
     </li>
     ${requirements.map((requirement) =>
-    `<li key=${requirement}>${requirement}</li>`)}</ul></span>
+    `<li key=${requirement}>${requirement}</li>`)}
+    ${customizedRequirements.map((requirement) =>
+      `<li key=${requirement.name}>${requirement.name}</li>`)}
+      </ul></span>
 </h6>
 <h6> Benefity: <span>
   <ul>
     ${benefits.map((benefit) =>
-    `<li key=${benefit}>${benefit}</li>`)}</ul></span>
+    `<li key=${benefit}>${benefit}</li>`)}
+    ${customizedBenefits.map((benefit) =>
+      `<li key=${benefit.name}>${benefit.name}</li>`)}
+    </ul></span>
 </h6>
 <h6> O firmie: <span> ${aboutCompany} </span>
 </h6>

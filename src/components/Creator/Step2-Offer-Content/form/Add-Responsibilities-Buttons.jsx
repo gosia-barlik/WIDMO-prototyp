@@ -126,9 +126,9 @@ export default function AddResponsibilitiesButtons(props) {
           className='styled-icon-button'
           component='span'
           onClick={onSetResponsibilities}>
-          {responsibilities.length == 0 ? <AddIcon /> : <RemoveIcon />}
+          {responsibilities.length === 0 ? <AddIcon /> : <RemoveIcon />}
         </IconButton>
-        {responsibilities.length == 0
+        {responsibilities.length === 0
           ? "Dodaj najczęściej poszukiwane umiejętności na rynku pracy"
           : "Usuń najczęściej poszukiwane umiejętności na rynku pracy"}
       </Card>
@@ -137,9 +137,9 @@ export default function AddResponsibilitiesButtons(props) {
           className='styled-icon-button'
           component='span'
           onClick={onSetQualificationInfo}>
-          {showQualificationForm == false ? <AddIcon /> : <RemoveIcon />}
+          {showQualificationForm === false ? <AddIcon /> : <RemoveIcon />}
         </IconButton>
-        {showQualificationForm == false
+        {showQualificationForm === false
           ? "Dodaj informacje z Rejestru Kwalifikacji"
           : "Ukryj informacje z Rejestru Kwalifikacji"}
       </Card>
@@ -180,7 +180,7 @@ export default function AddResponsibilitiesButtons(props) {
             onClick={() => addFormFields()}>
             <AddIcon />
           </IconButton>
-          {customizedResponsibilities.length == 0
+          {customizedResponsibilities.length === 0
             ? "Dodaj swój element"
             : "Dodaj kolejny element"}
         </div>

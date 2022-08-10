@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from "@material-ui/core";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#784af4",
+      main: "#651fff",
     },
     typography: {
       fontFamily: "Quicksand",

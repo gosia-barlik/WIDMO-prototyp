@@ -99,7 +99,7 @@ export default function Step2OfferContent(props) {
           style={{ color: "#00000099" }}
           gutterBottom
           component='div'>
-          Twoje ogłoszenie
+          Podgląd ogłoszenia
         </Typography>
         <Paper className='job-offer-container-box'>
           <JobOffer

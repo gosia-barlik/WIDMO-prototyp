@@ -31,7 +31,7 @@
 /* ACTIVE STEP */
 .stepper-vertical-container
   .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
-  color: var(--active) !important;
+  color: var(--primary) !important;
   width: 18px;
   height: 18px;
 }
@@ -41,7 +41,7 @@
 
 .stepper-vertical-container
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
-  color: var(--disabled) !important;
+  color: var(--neutral) !important;
 }
 
 .css-1rw7nzj-MuiCollapse-root-MuiStepContent-transition {
