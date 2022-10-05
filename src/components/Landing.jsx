@@ -84,9 +84,9 @@ class Landing extends React.Component {
                     Tworzenie ogłoszenia
                   </Typography>
                 </div>
-                <div className='icon-wrapper'>
+                {/* <div className='icon-wrapper'>
                   <AppsIcon />
-                </div>
+                </div> */}
 
                 <div className='rankomat-text1'>
                   <span className='rankomat-text1-0'>

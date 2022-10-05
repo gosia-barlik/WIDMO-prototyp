@@ -26,20 +26,20 @@ const initialState = {
   showResults: false,//todo przeniesc do state
   activeStep: 0,//todo przeniesc do state
   salaryType: "",
-  salaryFrom: "",
+  salaryFrom: "Wynagrodzenie",
   salaryTo: "",
   salaryCurrency: "",
   salaryTime: "",
   salaryContract: "",
   addressCountry: "",
-  addressCity: "",
+  addressCity: "Lokalizacja miejsca pracy",
   addressStreet: "",
-  workMode: "",
-  contractType: "",
-  workModel: "",
-  recruitmentMode: "",
-  companyName: "",
-  aboutCompany: "",
+  workMode: "Wymiar zatrudnienia",
+  contractType: "Rodzaj umowy",
+  workModel: "Tryb pracy",
+  recruitmentMode: "Tryb rekrutacji",
+  companyName: "Nazwa firmy",
+  aboutCompany: "Krótki opis firmy",
   logo: "",
   logoPreview: "",
 };
@@ -49,7 +49,8 @@ export const stepOneReducer = (state = initialState, action) => {
     case SEARCHEDPOSITION: {
       return {
         ...state,
-        searchedPosition: action.payload,
+        searchedPosition: action.payload.charAt(0).toUpperCase()
+        + action.payload.slice(1),
       };
     }
     case SHOWRESULTS: {

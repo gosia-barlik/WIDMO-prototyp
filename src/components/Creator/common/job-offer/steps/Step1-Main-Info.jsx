@@ -1,6 +1,13 @@
 import React from "react";
+
+import ApartmentOutlinedIcon from "@material-ui/icons/ApartmentOutlined";
+import DescriptionOutlinedIcon from "@material-ui/icons/DescriptionOutlined";
+import RoomOutlinedIcon from "@material-ui/icons/RoomOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
+import TimelapseOutlinedIcon from "@material-ui/icons/TimelapseOutlined";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import Grid from "@material-ui/core/Grid";
 import Step2Accordion from "../accordions/Step2-Accordion";
 import Step3Accordion from "../accordions/Step3-Accordion";
 import { useDispatch, useSelector } from "react-redux";
@@ -73,23 +80,15 @@ export default function Step1MainInfo(props) {
   return (
     <>
       <Stack style={{ marginBottom: "20px" }}>
-        <Typography
-          variant='subtitle2'
-          component='div'
-          style={{ color: "#784af4", fontWeight: "700" }}>
-          Informacje podstawowe
-        </Typography>
-        <Typography variant='subtitle2' component='div'>
-          Stanowisko
-        </Typography>
-        <Typography variant='body2' gutterBottom component='div'>
+      {searchedPosition? 
+        <Typography variant="h6" gutterBottom component='div'>
           {searchedPosition}
-        </Typography>
+        </Typography>:   <Typography variant="h6" gutterBottom component='div'>
+          Nazwa stanowiska
+        </Typography>}
+        
         {companyName && (
           <>
-            <Typography variant='subtitle2' component='div'>
-              Nazwa firmy
-            </Typography>
             <Typography variant='body2' gutterBottom component='div'>
               {companyName}
             </Typography>
@@ -98,9 +97,6 @@ export default function Step1MainInfo(props) {
 
         {aboutCompany && (
           <>
-            <Typography variant='subtitle2' component='div'>
-              O firmie
-            </Typography>
             <Typography variant='body2' gutterBottom component='div'>
               {aboutCompany}
             </Typography>
@@ -114,84 +110,75 @@ export default function Step1MainInfo(props) {
           salaryFrom ||
           salaryTo ||
           salaryCurrency ||
-          salaryTime
-          || salaryContract) && (
+          salaryTime ||
+          salaryContract) && (
           <>
-            <Typography variant='subtitle2' component='div'>
-              Wynagrodzenie
-            </Typography>
-            <Typography variant='body2' gutterBottom component='div'>
-              {salaryFrom} {salaryTo? (" - " + salaryTo):("")} {" " + salaryCurrency}{" "}
-              {salaryTime? ("/ " + salaryTime) : ("")} {salaryType} {salaryContract}
+            <Typography variant='subtitle2' gutterBottom component='div'>
+              {salaryFrom} {salaryTo ? " - " + salaryTo : ""}{" "}
+              {" " + salaryCurrency} {salaryTime ? "/ " + salaryTime : ""}{" "}
+              {salaryType} {salaryContract}
             </Typography>
           </>
         )}
+        <Grid container spacing={3}>
+          {workModel && (
+            <Grid item xs={6}>
+              <Typography variant='body2' gutterBottom component='div'>
+                <ApartmentOutlinedIcon style={{ fontSize: "medium" }} />
+                {workModel}
+              </Typography>
+            </Grid>
+          )}
 
-        {workModel && (
-          <>
-            <Typography variant='subtitle2' component='div'>
-              Tryb pracy
-            </Typography>
-            <Typography variant='body2' gutterBottom component='div'>
-              {workModel}
-            </Typography>
-          </>
-        )}
+          {salaryContract && (
+            <Grid item xs={6}>
+              <Typography variant='body2' gutterBottom component='div'>
+                <DescriptionOutlinedIcon style={{ fontSize: "medium" }} />
+                {salaryContract}
+              </Typography>
+            </Grid>
+          )}
 
-        {contractType && (
-          <>
-            <Typography variant='subtitle2' component='div'>
-              Rodzaj umowy
-            </Typography>
-            <Typography variant='body2' gutterBottom component='div'>
-              {contractType}
-            </Typography>
-          </>
-        )}
+          {workMode && (
+            <Grid item xs={6}>
+              <Typography variant='body2' gutterBottom component='div'>
+                <TimelapseOutlinedIcon style={{ fontSize: "medium" }} />
+                {workMode}
+              </Typography>
+            </Grid>
+          )}
 
-        {workMode && (
-          <>
-            <Typography variant='subtitle2' component='div'>
-              Wymiar zatrudnienia
-            </Typography>
-            <Typography variant='body2' gutterBottom component='div'>
-              {workMode}
-            </Typography>
-          </>
-        )}
-
-        {recruitmentMode && (
-          <>
-            <Typography variant='subtitle2' component='div'>
-              Tryb rekrutacji
-            </Typography>
-            <Typography variant='body2' gutterBottom component='div'>
-              {recruitmentMode}
-            </Typography>
-          </>
-        )}
-        {(addressStreet || addressCity || addressCountry) && (
-          <>
-            <Typography variant='subtitle2' component='div'>
-              Miejsce pracy
-            </Typography>
-            <Typography variant='body2' gutterBottom component='div'>
-              {addressStreet + " "} {addressCity + " "}
-              {addressCountry}
-            </Typography>
-          </>
-        )}
+          {recruitmentMode && (
+            <Grid item xs={6}>
+              <Typography variant='body2' gutterBottom component='div'>
+                <ChatBubbleOutlineOutlinedIcon style={{ fontSize: "medium" }} />
+                {recruitmentMode}
+              </Typography>
+            </Grid>
+          )}
+          {(addressStreet || addressCity || addressCountry) && (
+            <Grid item xs={6}>
+              <Typography variant='body2' gutterBottom component='div'>
+                <RoomOutlinedIcon style={{ fontSize: "medium" }} />
+                {addressStreet + " "} {addressCity + " "}
+                {addressCountry}
+              </Typography>
+            </Grid>
+          )}
+        </Grid>
       </Stack>
 
-      {(responsibilities.length>0 ||
-        customizedResponsibilities.length>0||
-        requirements.length>0 || customizedRequirements.length>0 ||
-        benefits.length>0 || customizedBenefits.length>0) && <Step2Accordion />}
+      {/* {(responsibilities.length > 0 ||
+        customizedResponsibilities.length > 0 ||
+        requirements.length > 0 ||
+        customizedRequirements.length > 0 ||
+        benefits.length > 0 ||
+        customizedBenefits.length > 0) && <Step2Accordion />}
       {(rodo ||
         applicationWay ||
         applicationExpectation ||
         applicationDate ||
-        contactInformation) && <Step3Accordion />}
+        contactInformation) && <Step3Accordion />} */}
     </>
   );
 }

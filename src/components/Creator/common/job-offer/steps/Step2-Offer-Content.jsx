@@ -99,22 +99,11 @@ export default function Step2OfferContent(props) {
   return (
     <>
       <Stack style={{ marginBottom: "20px" }}>
-        {searchedPosition && <Step1Accordion />}
-        <Typography
-          variant='subtitle2'
-          component='div'
-          style={{
-            color: "#784af4",
-            marginTop: "10px",
-            fontWeight: "700",
-          }}>
-          Treść ogłoszenia
+        <Typography variant='subtitle2' component='div'>
+          Zakres obowiązków
         </Typography>
         {(responsibilities || customizedResponsibilities) && (
           <>
-            <Typography variant='subtitle2' component='div'>
-              Zakres obowiązków
-            </Typography>
             {responsibilities.map((responsibility, index) => (
               <Grow
                 in={true}
@@ -175,15 +164,14 @@ export default function Step2OfferContent(props) {
             ))}
           </>
         )}
-
+        <Typography
+          variant='subtitle2'
+          component='div'
+          style={{ marginTop: "6px" }}>
+          Wymagania
+        </Typography>
         {(requirements.length > 0 || customizedRequirements.length > 0) && (
           <>
-            <Typography
-              variant='subtitle2'
-              component='div'
-              style={{ marginTop: "6px" }}>
-              Wymagania
-            </Typography>
             {requirements.map((requirement, index) => (
               <Grow
                 in={true}
@@ -312,15 +300,20 @@ export default function Step2OfferContent(props) {
             </>
           </>
         )}
-
+        <Typography
+          variant='subtitle2'
+          component='div'
+          style={{ marginTop: "6px" }}>
+          Co oferujemy
+        </Typography>
+        <Typography
+          variant='subtitle2'
+          component='div'
+          style={{ marginTop: "6px" }}>
+          Benefity
+        </Typography>
         {(benefits.length > 0 || customizedBenefits.length > 0) && (
           <>
-            <Typography
-              variant='subtitle2'
-              component='div'
-              style={{ marginTop: "6px" }}>
-              Benefity
-            </Typography>
             <Stack
               direction='row'
               spacing={1}
@@ -355,11 +348,6 @@ export default function Step2OfferContent(props) {
           </>
         )}
       </Stack>
-      {(rodo ||
-        applicationWay ||
-        applicationExpectation ||
-        applicationDate ||
-        contactInformation) && <Step3Accordion />}
     </>
   );
 }

@@ -7,11 +7,12 @@
   text-align: left;
 }
 
-.styled-accordion {
+/* .styled-accordion {
   top: -10px;
   width: calc(100% + 18px) !important;
   left: -9px;
-}
+} */
+
 .styled-chip {
   text-align: left;
   margin-top: 8px;

@@ -20,7 +20,7 @@ export default function Step1MainInfo(props) {
   return (
     <Grid container className='step-1-container'>
 
-      {showResults === false && (
+      {/* {showResults === false && (
         <StepperVertical
         
           nonLinear = {false}
@@ -38,7 +38,7 @@ export default function Step1MainInfo(props) {
           verticalStepperLabels={props.verticalStepperLabels}
           handleStep1VerticalStepper={props.handleStep1VerticalStepper}
         />
-      )}
+      )} */}
 
       <Grid
         item
@@ -54,11 +54,8 @@ export default function Step1MainInfo(props) {
         <Paper className='form-container-box'>
           {props.activeVerticalStep === 0 && <SearchBar />}
 
-          {props.activeVerticalStep === 0 && showResults && <SearchResults />}
+          {props.activeVerticalStep === 0 && showResults && <><SearchResults /> <AboutCompany /> <AdditionalInformation /></>}
 
-          {props.activeVerticalStep === 1 && <AboutCompany />}
-
-          {props.activeVerticalStep === 2 && <AdditionalInformation />}
 
           {showResults && props.activeVerticalStep === 0 && (
             <MainActionButtons

@@ -32,45 +32,30 @@ export default function Step3DataProcessing(props) {
   return (
     <>
       <Stack style={{ marginBottom: "20px" }}>
-        {searchedPosition && <Step1Accordion />}
-        {(responsibilities.length > 0 ||
-        requirements.length ||
-        benefits.length > 0) && <Step2Accordion />}
         <Typography
           variant='subtitle2'
           component='div'
-          style={{
-            color: "#784af4",
-            marginTop: "10px",
-            fontWeight: "700",
-          }}>
-          Informacje uzupełniające
+          style={{ marginTop: "6px" }}>
+          Przetwarzanie danych
         </Typography>
         {rodo && (
           <>
-            <Typography
-              variant='subtitle2'
-              component='div'
-              style={{ marginTop: "6px" }}>
-              Przetwarzanie danych
-            </Typography>
             <Typography key={rodo} variant='caption' component='div'>
               {rodo}
             </Typography>
           </>
         )}
-
+        <Typography
+          variant='subtitle2'
+          component='div'
+          style={{ marginTop: "6px" }}>
+          Dane organizacyjne dotyczące rekrutacji
+        </Typography>
         {(applicationWay ||
           applicationExpectation ||
           applicationDate ||
           contactInformation) && (
           <>
-            <Typography
-              variant='subtitle2'
-              component='div'
-              style={{ marginTop: "6px" }}>
-              Dane organizacyjne dotyczące rekrutacji
-            </Typography>
             {applicationWay && (
               <>
                 <Typography variant='body2' gutterBottom component='div'>

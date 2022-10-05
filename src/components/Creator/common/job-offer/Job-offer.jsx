@@ -9,16 +9,16 @@ export default function JobOffer(props) {
   return (
     <Paper
       sx={{
-        p: "16px 16px 0 16px",
+        p: "24px 24px 0 24px",
         display: "flex",
         flexDirection: "column",
         alignItems: "left",
       }}>
-      {props.activeStep === 0 && <Step1MainInfo />}
+      <Step1MainInfo />
 
-      {props.activeStep === 1 && <Step2OfferContent />}
+      <Step2OfferContent />
 
-      {props.activeStep === 2 && <Step3DataProcessing />}
+      <Step3DataProcessing />
     </Paper>
   );
 }

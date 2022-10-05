@@ -64,6 +64,9 @@ export default function AdditionalInformation(props) {
   return (
     <>
       <form className={classes.root} noValidate>
+      <Typography variant='subtitle2' gutterBottom component='div' style={{ width: "100%", marginTop:"24px", color:"red" }}>
+        Szczegóły
+      </Typography>
         <Typography variant='subtitle2' component='div'>
           Wynagrodzenie
         </Typography>

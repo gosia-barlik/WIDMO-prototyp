@@ -51,7 +51,7 @@ body {
   
 }
 .card-image {
-
+width:100%
 }
 
 .landing .card-container .card1 {
@@ -109,7 +109,7 @@ body {
   font-weight: 700;
   font-family: Montserrat, Arial;
   width: 264px;
-  height: 60px;
+ 
   left: 31px;
   top: 30px;
 }
@@ -142,7 +142,7 @@ body {
   border-radius: 4px;
   text-decoration: none !important;
   padding: 5px;
-  margin-top: 24px;
+ 
 }
 
 .icon-wrapper {
