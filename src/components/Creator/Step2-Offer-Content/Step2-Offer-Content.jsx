@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import StepperVertical from "../common/Stepper-vertical";
 import JobOffer from "../common/job-offer/Job-offer";
-import AddResponsibilitiesButtons from "./form/Add-Responsibilities-Buttons.jsx";
+import ResponsibilitiesSection from "./form/Responsibilities-Section.jsx";
 import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
 import AddBenefitsButtons from "./form/Add-Benefits-Buttons.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
@@ -43,12 +43,7 @@ export default function Step2OfferContent(props) {
 
   return (
     <Grid container className='step-2-container'>
-      <StepperVertical
-        activeStep={props.activeVerticalStep}
-        verticalStepperLabels={props.verticalStepperLabels}
-        handleStep1VerticalStepper={props.handleStep1VerticalStepper}
-        nonLinear={true}
-      />
+
       <Grid
         item
         xs={4}
@@ -61,28 +56,24 @@ export default function Step2OfferContent(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-          {props.activeVerticalStep === 0 && (
+         
             <>
-              <AddResponsibilitiesButtons />
+              <ResponsibilitiesSection />
               <MainActionButtons
                 handleBack={props.handleMainStepperBackAndReset}
                 handleNext={props.handleVerticalStepperNext}
               />
             </>
-          )}
+          
 
-          {props.activeVerticalStep === 1 && (
+          
             <>
               <AddRequirementsButtons />
               
-              <MainActionButtons
-                handleBack={props.handleVerticalStepperBack}
-                handleNext={props.handleVerticalStepperNext}
-              />
             </>
-          )}
+         
 
-          {props.activeVerticalStep === 2 && (
+         
             <>
               <AddBenefitsButtons />
               <MainActionButtons
@@ -90,7 +81,7 @@ export default function Step2OfferContent(props) {
                 handleNext={props.handleMainStepperNextAndReset}
               />
             </>
-          )}
+         
         </Paper>
       </Grid>
       <Grid item xs={4} style={{ margin: "50px 20px 20px", textAlign: "left" }}>
@@ -101,7 +92,7 @@ export default function Step2OfferContent(props) {
           component='div'>
           Podgląd ogłoszenia
         </Typography>
-        <Paper className='job-offer-container-box'>
+        <Paper className='job-offer-container'>
           <JobOffer
             activeStep={props.activeStep}
             updateState={props.updateState}

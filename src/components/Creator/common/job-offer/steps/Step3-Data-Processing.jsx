@@ -1,26 +1,9 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
-import Step1Accordion from "../accordions/Step1-Accordion";
-import Step2Accordion from "../accordions/Step2-Accordion";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Step3DataProcessing(props) {
-  const { searchedPosition } = useSelector((state) => state.stepOneReducer);
-  const {
-    responsibilities,
-    copiedQualificationEffects,
-    copiedSelectedText,
-    requirements,
-    educationLevel,
-    studiesName,
-    studiesStage,
-    certificateName,
-    certificateStage,
-    benefits,
-    showEducationForm,
-    customizedBenefits,
-  } = useSelector((state) => state.stepTwoReducer);
   const {
     rodo,
     applicationWay,

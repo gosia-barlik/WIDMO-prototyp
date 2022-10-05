@@ -8,8 +8,6 @@ import TimelapseOutlinedIcon from "@material-ui/icons/TimelapseOutlined";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Grid from "@material-ui/core/Grid";
-import Step2Accordion from "../accordions/Step2-Accordion";
-import Step3Accordion from "../accordions/Step3-Accordion";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
@@ -39,29 +37,29 @@ export default function Step1MainInfo(props) {
     logo,
     logoPreview,
   } = useSelector((state) => state.stepOneReducer);
-  const {
-    responsibilities,
-    customizedResponsibilities,
-    copiedQualificationEffects,
-    copiedSelectedText,
-    requirements,
-    customizedRequirements,
-    educationLevel,
-    studiesName,
-    studiesStage,
-    certificateName,
-    certificateStage,
-    benefits,
-    showEducationForm,
-    customizedBenefits,
-  } = useSelector((state) => state.stepTwoReducer);
-  const {
-    rodo,
-    applicationWay,
-    applicationExpectation,
-    applicationDate,
-    contactInformation,
-  } = useSelector((state) => state.stepThreeReducer);
+  // const {
+  //   responsibilities,
+  //   customizedResponsibilities,
+  //   copiedQualificationEffects,
+  //   copiedSelectedText,
+  //   requirements,
+  //   customizedRequirements,
+  //   educationLevel,
+  //   studiesName,
+  //   studiesStage,
+  //   certificateName,
+  //   certificateStage,
+  //   benefits,
+  //   showEducationForm,
+  //   customizedBenefits,
+  // } = useSelector((state) => state.stepTwoReducer);
+  // const {
+  //   rodo,
+  //   applicationWay,
+  //   applicationExpectation,
+  //   applicationDate,
+  //   contactInformation,
+  // } = useSelector((state) => state.stepThreeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -80,13 +78,16 @@ export default function Step1MainInfo(props) {
   return (
     <>
       <Stack style={{ marginBottom: "20px" }}>
-      {searchedPosition? 
-        <Typography variant="h6" gutterBottom component='div'>
-          {searchedPosition}
-        </Typography>:   <Typography variant="h6" gutterBottom component='div'>
-          Nazwa stanowiska
-        </Typography>}
-        
+        {searchedPosition ? (
+          <Typography variant='h6' gutterBottom component='div'>
+            {searchedPosition}
+          </Typography>
+        ) : (
+          <Typography variant='h6' gutterBottom component='div'>
+            Nazwa stanowiska
+          </Typography>
+        )}
+
         {companyName && (
           <>
             <Typography variant='body2' gutterBottom component='div'>

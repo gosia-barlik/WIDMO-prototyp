@@ -8,6 +8,7 @@ import {
   QUALIFICATIONEFFECTS,
   COPIEDQUALIFICATIONEFFECTS,
   COPIEDSELECTEDTEXT,
+  RESPONSIBILITIESTOHTML,
   REQUIREMENTS,
   CUSTOMIZEDREQUIREMENTS,
   SHOWREQUIREMENTSBUTTON,
@@ -32,6 +33,10 @@ export const setCustomizedResponsibilities = (customizedResponsibilities) => {
 export const setShowResponsibilitiesButton = () => {
   return { type: SHOWRESPONSIBILITIESBUTTON, payload: false };
 };
+export const setResponsibilitiesToHtml = (responsibilitiesToHtml) => {
+  return { type: RESPONSIBILITIESTOHTML, payload: responsibilitiesToHtml };
+};
+
 
 //QULIFICATIONS
 export const setShowQualificationForm = (isFormshown) => {

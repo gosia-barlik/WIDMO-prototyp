@@ -3,8 +3,6 @@ import Typography from "@mui/material/Typography";
 import Grow from "@material-ui/core/Grow";
 import Chip from "@material-ui/core/Chip";
 import Stack from "@mui/material/Stack";
-import Step1Accordion from "../accordions/Step1-Accordion";
-import Step3Accordion from "../accordions/Step3-Accordion";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -19,9 +17,9 @@ import {
 } from "../../../../../store/actions/stepTwoActions";
 
 export default function Step2OfferContent(props) {
-  const { searchedPosition } = useSelector((state) => state.stepOneReducer);
   const {
     responsibilities,
+    responsibilitiesToHtml,
     customizedResponsibilities,
     copiedQualificationEffects,
     copiedSelectedText,
@@ -36,13 +34,6 @@ export default function Step2OfferContent(props) {
     showEducationForm,
     customizedBenefits,
   } = useSelector((state) => state.stepTwoReducer);
-  const {
-    rodo,
-    applicationWay,
-    applicationExpectation,
-    applicationDate,
-    contactInformation,
-  } = useSelector((state) => state.stepThreeReducer);
   const dispatch = useDispatch();
 
   const removeQualificationEffect = (effect) => {
@@ -102,7 +93,8 @@ export default function Step2OfferContent(props) {
         <Typography variant='subtitle2' component='div'>
           Zakres obowiązków
         </Typography>
-        {(responsibilities || customizedResponsibilities) && (
+        {responsibilitiesToHtml && <Typography dangerouslySetInnerHTML={{__html: responsibilitiesToHtml}}></Typography>}
+        {/* {(responsibilities || customizedResponsibilities) && (
           <>
             {responsibilities.map((responsibility, index) => (
               <Grow
@@ -163,7 +155,7 @@ export default function Step2OfferContent(props) {
               />
             ))}
           </>
-        )}
+        )} */}
         <Typography
           variant='subtitle2'
           component='div'

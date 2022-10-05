@@ -8,13 +8,49 @@ import {
   setSearchedPosition,
   setShowResults,
 } from "../../../../store/actions/stepOneActions";
+import {
+  setResponsibilities,
+  setResponsibilitiesToHtml,
+  setShowResponsibilitiesButton
+} from "../../../../store/actions/stepTwoActions";
 import { jobPositionSchema } from "../../common/validations/stepOneSchema";
 
 export default function SearchBar(props) {
   const [text, setText] = useState("");
   const [errorMessage, setErrorMessage] = useState("Pole obowiązkowe");
+
   const dispatch = useDispatch();
+
   const { searchedPosition } = useSelector((state) => state.stepOneReducer);
+
+  const { responsibilities, responsibilitiesToHtml } = useSelector((state) => state.stepTwoReducer);
+
+  const responsibilitesFixture = [
+    "diagnozowanie usterek mechanicznych",
+    "wykonywanie napraw",
+    "bieżące usuwanie awarii i usterek",
+  ];
+
+
+  const onSetResponsibilities = (e) => {
+    let newResponsibilites;
+
+    if (responsibilities.length > 0) newResponsibilites = [];
+    else newResponsibilites = responsibilitesFixture;
+
+    const responsibilitiesToHtml = `
+    <ul>
+      ${newResponsibilites.map(
+        (responsibility) =>
+          `<li key=${responsibility}>${responsibility}</li>`
+      )}
+   </ul> `;
+
+    dispatch(setResponsibilities(newResponsibilites));
+    dispatch(setShowResponsibilitiesButton(false));
+    dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
+    console.log(responsibilitiesToHtml);
+  };
 
   useEffect(() => {
     // Set errorMessage only if text is equal or bigger than MAX_LENGTH
@@ -43,6 +79,7 @@ export default function SearchBar(props) {
       dispatch(setSearchedPosition(searchedPosition));
       dispatch(setShowResults(true));
     }
+    onSetResponsibilities();
   };
 
   return (

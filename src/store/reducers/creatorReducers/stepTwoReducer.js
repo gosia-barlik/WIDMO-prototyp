@@ -8,6 +8,7 @@ import {
   QUALIFICATIONEFFECTS,
   COPIEDQUALIFICATIONEFFECTS,
   COPIEDSELECTEDTEXT,
+  RESPONSIBILITIESTOHTML,
   REQUIREMENTS,
   CUSTOMIZEDREQUIREMENTS,
   SHOWREQUIREMENTSBUTTON,
@@ -33,6 +34,7 @@ const initialState = {
   qualificationEffects: [],
   copiedQualificationEffects: [],
   copiedSelectedText: [],
+  responsibilitiesToHtml: "",
 
   requirements: [],
   customizedRequirements: [],
@@ -106,6 +108,12 @@ export const stepTwoReducer = (state = initialState, action) => {
       return {
         ...state,
         copiedSelectedText: action.payload,
+      };
+    }
+    case RESPONSIBILITIESTOHTML: {
+      return {
+        ...state,
+        responsibilitiesToHtml: action.payload,
       };
     }
     

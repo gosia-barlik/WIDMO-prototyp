@@ -2,7 +2,6 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import StepperVertical from "../common/Stepper-vertical.jsx";
 import SearchBar from "./form/Job-Position-Search-Bar";
 import SearchResults from "./form/Job-Position-Search-Results";
 import JobOffer from "../common/job-offer/Job-offer";
@@ -20,26 +19,6 @@ export default function Step1MainInfo(props) {
   return (
     <Grid container className='step-1-container'>
 
-      {/* {showResults === false && (
-        <StepperVertical
-        
-          nonLinear = {false}
-          activeStep={props.activeVerticalStep}
-          verticalStepperLabels={props.verticalStepperLabels}
-          handleStep1VerticalStepper={props.handleStep1VerticalStepper}
-        />
-      )}
-
-      {showResults && (
-        <StepperVertical
-       
-          nonLinear={true}
-          activeStep={props.activeVerticalStep}
-          verticalStepperLabels={props.verticalStepperLabels}
-          handleStep1VerticalStepper={props.handleStep1VerticalStepper}
-        />
-      )} */}
-
       <Grid
         item
         xs={4}
@@ -52,33 +31,14 @@ export default function Step1MainInfo(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-          {props.activeVerticalStep === 0 && <SearchBar />}
+          <SearchBar />
 
-          {props.activeVerticalStep === 0 && showResults && <><SearchResults /> <AboutCompany /> <AdditionalInformation /></>}
-
-
-          {showResults && props.activeVerticalStep === 0 && (
-            <MainActionButtons
-              disabled={disabled}
-              handleBack={props.handleVerticalStepperBack}
-              handleNext={props.handleVerticalStepperNext}
-            />
-          )}
-          {showResults &&
-            props.activeVerticalStep !== 2 &&
-            props.activeVerticalStep !== 0 && (
-              <MainActionButtons
-                handleBack={props.handleVerticalStepperBack}
-                handleNext={props.handleVerticalStepperNext}
-              />
-            )}
-
-          {showResults && props.activeVerticalStep === 2 && (
-            <MainActionButtons
+          {showResults && <><SearchResults /> <AboutCompany /> <AdditionalInformation /> <MainActionButtons
               handleBack={props.handleVerticalStepperBack}
               handleNext={props.handleMainStepperNext}
-            />
-          )}
+            /></>}
+
+
         </Paper>
       </Grid>
       <Grid
@@ -95,7 +55,7 @@ export default function Step1MainInfo(props) {
         <Paper className='job-offer-container-box' elevation={0}>
           <JobOffer activeStep={props.activeStep} />
         </Paper>
-        {props.activeVerticalStep === 1 && <AlertAbout />}
+         <AlertAbout />
       </Grid>
     </Grid>
   );

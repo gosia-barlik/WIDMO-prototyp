@@ -2,7 +2,9 @@
 
 .step-2-container {
   width: 100%;
-  margin-top: 0 !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .step-2-container .form-container {
@@ -12,7 +14,7 @@
 }
 
 .step-2-container .styled-card {
-  color: var(--primary) !important;
+  /* color: var(--primary) !important; */
   padding: 24px 18px 18px 18px !important;
   display: flex !important;
   background-color: white;

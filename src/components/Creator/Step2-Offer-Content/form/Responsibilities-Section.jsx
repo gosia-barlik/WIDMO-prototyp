@@ -1,16 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@mui/material/Typography";
+import TextField from "@material-ui/core/TextField";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import IconButton from "@mui/material/IconButton";
-import TextField from "@material-ui/core/TextField";
 import QualificationInformation from "./Qualification-Information";
+import Wysiwyg from "./Wysiwyg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setResponsibilities,
+  setResponsibilitiesToHtml,
   setCustomizedResponsibilities,
   setShowResponsibilitiesButton,
   setShowQualificationForm,
@@ -26,20 +28,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AddResponsibilitiesButtons(props) {
+export default function ResponsibilitiesSection(props) {
+
   const classes = useStyles();
   const {
     responsibilities,
+    responsibilitiesToHtml,
     customizedResponsibilities,
+    copiedSelectedText,
     showQualificationForm,
   } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
-  const responsibilitesFixture = [
-    "diagnozowanie usterek mechanicznych",
-    "wykonywanie napraw",
-    "bieżące usuwanie awarii i usterek",
-  ];
   const qualificationNameFixture = "Elektromechanik pojazdów samochodowych";
   const qualitficationCharacteristicFixture =
     "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych";
@@ -62,15 +62,14 @@ export default function AddResponsibilitiesButtons(props) {
     },
   ];
 
-  const onSetResponsibilities = (e) => {
-    let newResponsibilites;
-
-    if (responsibilities.length > 0) newResponsibilites = [];
-    else newResponsibilites = responsibilitesFixture;
-
-    dispatch(setResponsibilities(newResponsibilites));
-    dispatch(setShowResponsibilitiesButton(false));
-  };
+    //RESPONSIBILITIES
+    const onSetResponsibilities = (responsibilities) => {
+      dispatch(setResponsibilities(responsibilities));
+    };
+    const onSetResponsibilitiesToHtml = (responsibilitiesToHtml) => {
+      dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
+      console.log(responsibilitiesToHtml);
+    };
 
   const onSetQualificationInfo = (e) => {
     e.preventDefault();
@@ -113,6 +112,7 @@ export default function AddResponsibilitiesButtons(props) {
     alert(JSON.stringify(customizedResponsibilities));
   };
 
+
   return (
     <Stack
       spacing={2}
@@ -122,7 +122,11 @@ export default function AddResponsibilitiesButtons(props) {
         Zakres obowiązków
       </Typography>
       <Card className='styled-card'>
-        <IconButton
+       <Wysiwyg contentToEdit={responsibilitiesToHtml} setValueToHtml={onSetResponsibilitiesToHtml}/>
+
+      </Card>
+
+       {/* <IconButton
           className='styled-icon-button'
           component='span'
           onClick={onSetResponsibilities}>
@@ -130,9 +134,9 @@ export default function AddResponsibilitiesButtons(props) {
         </IconButton>
         {responsibilities.length === 0
           ? "Dodaj najczęściej poszukiwane umiejętności na rynku pracy"
-          : "Usuń najczęściej poszukiwane umiejętności na rynku pracy"}
-      </Card>
-      <Card className='styled-card'>
+          : "Usuń najczęściej poszukiwane umiejętności na rynku pracy"} */}
+
+      {/* <Card className='styled-card'>
         <IconButton
           className='styled-icon-button'
           component='span'
@@ -142,10 +146,10 @@ export default function AddResponsibilitiesButtons(props) {
         {showQualificationForm === false
           ? "Dodaj informacje z Rejestru Kwalifikacji"
           : "Ukryj informacje z Rejestru Kwalifikacji"}
-      </Card>
+      </Card> */}
       {showQualificationForm === true && <QualificationInformation />}
       {/* DYNAMIC SECTION*/}
-      <Card
+      {/* <Card
         className='styled-card'
         style={{ display: "flex", flexDirection: "column" }}>
         {customizedResponsibilities.map((element, index) => (
@@ -184,7 +188,7 @@ export default function AddResponsibilitiesButtons(props) {
             ? "Dodaj swój element"
             : "Dodaj kolejny element"}
         </div>
-      </Card>
+      </Card> */}
     </Stack>
   );
 }
