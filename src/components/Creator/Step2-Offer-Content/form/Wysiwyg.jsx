@@ -15,7 +15,7 @@ import {
 
 export default function Wysiwyg (props) {
 
-//   const { responsibilities, customizedResponsibilities, copiedQualificationEffects, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
+//   const { responsibilities, customizedResponsibilities, copiedSelectedText } = useSelector((state) => state.stepTwoReducer);
  
   
   const contentBlock = htmlToDraft(props.contentToEdit);

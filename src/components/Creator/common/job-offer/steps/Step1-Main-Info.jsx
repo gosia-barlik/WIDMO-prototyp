@@ -37,29 +37,6 @@ export default function Step1MainInfo(props) {
     logo,
     logoPreview,
   } = useSelector((state) => state.stepOneReducer);
-  // const {
-  //   responsibilities,
-  //   customizedResponsibilities,
-  //   copiedQualificationEffects,
-  //   copiedSelectedText,
-  //   requirements,
-  //   customizedRequirements,
-  //   educationLevel,
-  //   studiesName,
-  //   studiesStage,
-  //   certificateName,
-  //   certificateStage,
-  //   benefits,
-  //   showEducationForm,
-  //   customizedBenefits,
-  // } = useSelector((state) => state.stepTwoReducer);
-  // const {
-  //   rodo,
-  //   applicationWay,
-  //   applicationExpectation,
-  //   applicationDate,
-  //   contactInformation,
-  // } = useSelector((state) => state.stepThreeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {

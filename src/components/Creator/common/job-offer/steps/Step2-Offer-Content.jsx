@@ -21,9 +21,9 @@ export default function Step2OfferContent(props) {
     responsibilities,
     responsibilitiesToHtml,
     customizedResponsibilities,
-    copiedQualificationEffects,
     copiedSelectedText,
     requirements,
+    requirementsToHtml,
     customizedRequirements,
     educationLevel,
     studiesName,
@@ -31,61 +31,56 @@ export default function Step2OfferContent(props) {
     certificateName,
     certificateStage,
     benefits,
+    benefitsToHtml,
     showEducationForm,
     customizedBenefits,
   } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
-  const removeQualificationEffect = (effect) => {
-    const filteredCopiedQualificationEffects =
-      copiedQualificationEffects.filter((obj) => obj != effect);
-    dispatch(setCopiedQualificationEffects(filteredCopiedQualificationEffects));
-  };
+  // const removeSelectedText = (text) => {
+  //   const filteredSelectedText = copiedSelectedText.filter(
+  //     (obj) => obj != text
+  //   );
+  //   dispatch(setCopiedSelectedText(filteredSelectedText));
+  // };
+  // const removeResponsibility = (responsibility) => {
+  //   const filteredResponsibilities = responsibilities.filter(
+  //     (obj) => obj != responsibility
+  //   );
+  //   dispatch(setResponsibilities(filteredResponsibilities));
+  // };
+  // const removeCustomizedResponsibility = (responsibility) => {
+  //   const filteredResponsibilities = customizedResponsibilities.filter(
+  //     (obj) => obj != responsibility
+  //   );
+  //   dispatch(setCustomizedResponsibilities(filteredResponsibilities));
+  // };
 
-  const removeSelectedText = (text) => {
-    const filteredSelectedText = copiedSelectedText.filter(
-      (obj) => obj != text
-    );
-    dispatch(setCopiedSelectedText(filteredSelectedText));
-  };
-  const removeResponsibility = (responsibility) => {
-    const filteredResponsibilities = responsibilities.filter(
-      (obj) => obj != responsibility
-    );
-    dispatch(setResponsibilities(filteredResponsibilities));
-  };
-  const removeCustomizedResponsibility = (responsibility) => {
-    const filteredResponsibilities = customizedResponsibilities.filter(
-      (obj) => obj != responsibility
-    );
-    dispatch(setCustomizedResponsibilities(filteredResponsibilities));
-  };
+  // const removeRequirement = (requirement) => {
+  //   const filteredRequirements = requirements.filter(
+  //     (obj) => obj != requirement
+  //   );
+  //   dispatch(setRequirements(filteredRequirements));
+  // };
 
-  const removeRequirement = (requirement) => {
-    const filteredRequirements = requirements.filter(
-      (obj) => obj != requirement
-    );
-    dispatch(setRequirements(filteredRequirements));
-  };
+  // const removeCustomizedRequirement = (requirement) => {
+  //   const filteredRequirements = customizedRequirements.filter(
+  //     (obj) => obj != requirement
+  //   );
+  //   dispatch(setCustomizedRequirements(filteredRequirements));
+  // };
 
-  const removeCustomizedRequirement = (requirement) => {
-    const filteredRequirements = customizedRequirements.filter(
-      (obj) => obj != requirement
-    );
-    dispatch(setCustomizedRequirements(filteredRequirements));
-  };
+  // const removeBenefit = (benefit) => {
+  //   const filteredBenefits = benefits.filter((obj) => obj != benefit);
+  //   dispatch(setBenefits(filteredBenefits));
+  // };
 
-  const removeBenefit = (benefit) => {
-    const filteredBenefits = benefits.filter((obj) => obj != benefit);
-    dispatch(setBenefits(filteredBenefits));
-  };
-
-  const removeCustomizedBenefit = (customizedBenefit) => {
-    const filteredBenefits = customizedBenefits.filter(
-      (obj) => obj != customizedBenefit
-    );
-    dispatch(setCustomizedBenefits(filteredBenefits));
-  };
+  // const removeCustomizedBenefit = (customizedBenefit) => {
+  //   const filteredBenefits = customizedBenefits.filter(
+  //     (obj) => obj != customizedBenefit
+  //   );
+  //   dispatch(setCustomizedBenefits(filteredBenefits));
+  // };
 
   return (
     <>
@@ -125,22 +120,6 @@ export default function Step2OfferContent(props) {
             ))}
           </>
         )}
-
-        {copiedQualificationEffects && (
-          <>
-            {copiedQualificationEffects.map((effect) => (
-              <Chip
-                className='styled-chip'
-                key={effect}
-                onDelete={() => {
-                  removeQualificationEffect(effect);
-                }}
-                variant='outlined'
-                label={effect}
-              />
-            ))}
-          </>
-        )}
         {copiedSelectedText && (
           <>
             {copiedSelectedText.map((text) => (
@@ -162,36 +141,7 @@ export default function Step2OfferContent(props) {
           style={{ marginTop: "6px" }}>
           Wymagania
         </Typography>
-        {(requirements.length > 0 || customizedRequirements.length > 0) && (
-          <>
-            {requirements.map((requirement, index) => (
-              <Grow
-                in={true}
-                {...(requirement ? { timeout: index * 1000 } : {})}>
-                <Chip
-                  className='styled-chip'
-                  key={requirement}
-                  onDelete={() => {
-                    removeRequirement(requirement);
-                  }}
-                  variant='outlined'
-                  label={requirement}
-                />
-              </Grow>
-            ))}
-            {customizedRequirements.map((reuirement) => (
-              <Chip
-                className='styled-chip'
-                key={reuirement.name}
-                onDelete={() => {
-                  removeCustomizedRequirement(reuirement);
-                }}
-                variant='outlined'
-                label={reuirement.name}
-              />
-            ))}
-          </>
-        )}
+        {requirementsToHtml && <Typography dangerouslySetInnerHTML={{__html: requirementsToHtml}}></Typography>}
 
         {showEducationForm == true && (
           <>
@@ -304,41 +254,7 @@ export default function Step2OfferContent(props) {
           style={{ marginTop: "6px" }}>
           Benefity
         </Typography>
-        {(benefits.length > 0 || customizedBenefits.length > 0) && (
-          <>
-            <Stack
-              direction='row'
-              spacing={1}
-              style={{ display: "inline-block" }}>
-              {benefits.map((benefit, index) => (
-                <Grow in={true} {...(benefit ? { timeout: index * 1000 } : {})}>
-                  <Chip
-                    className='styled-chip'
-                    key={benefit}
-                    onDelete={() => {
-                      removeBenefit(benefit);
-                    }}
-                    variant='outlined'
-                    label={benefit}
-                    style={{ margin: "2px" }}
-                  />
-                </Grow>
-              ))}
-              {customizedBenefits.map((benefit) => (
-                <Chip
-                  className='styled-chip'
-                  key={benefit.name}
-                  onDelete={() => {
-                    removeCustomizedBenefit(benefit);
-                  }}
-                  variant='outlined'
-                  label={benefit.name}
-                  style={{ margin: "2px" }}
-                />
-              ))}
-            </Stack>
-          </>
-        )}
+        {benefitsToHtml && <Typography dangerouslySetInnerHTML={{__html: benefitsToHtml}}></Typography>}
       </Stack>
     </>
   );

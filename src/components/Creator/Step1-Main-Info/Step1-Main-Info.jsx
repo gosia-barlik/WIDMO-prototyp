@@ -18,11 +18,7 @@ export default function Step1MainInfo(props) {
 
   return (
     <Grid container className='step-1-container'>
-
-      <Grid
-        item
-        xs={4}
-        className='form-container'>
+      <Grid item xs={4} className='form-container'>
         <Typography
           variant='body2'
           style={{ color: "#00000099" }}
@@ -33,18 +29,15 @@ export default function Step1MainInfo(props) {
         <Paper className='form-container-box'>
           <SearchBar />
 
-          {showResults && <><SearchResults /> <AboutCompany /> <AdditionalInformation /> <MainActionButtons
-              handleBack={props.handleVerticalStepperBack}
-              handleNext={props.handleMainStepperNext}
-            /></>}
-
-
+          {showResults && (
+            <>
+              <SearchResults /> <AboutCompany /> <AdditionalInformation />{" "}
+              <MainActionButtons handleNext={props.handleMainStepperNext} />
+            </>
+          )}
         </Paper>
       </Grid>
-      <Grid
-        item
-        xs={4}
-        className='job-offer-container'>
+      <Grid item xs={4} className='job-offer-container'>
         <Typography
           variant='body2'
           style={{ color: "#00000099" }}
@@ -53,9 +46,9 @@ export default function Step1MainInfo(props) {
           Podgląd ogłoszenia
         </Typography>
         <Paper className='job-offer-container-box' elevation={0}>
-          <JobOffer activeStep={props.activeStep} />
+          <JobOffer />
         </Paper>
-         <AlertAbout />
+        <AlertAbout />
       </Grid>
     </Grid>
   );

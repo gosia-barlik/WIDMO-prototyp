@@ -1,15 +1,13 @@
 import {
   RESPONSIBILITIES,
   CUSTOMIZEDRESPONSIBILITIES,
-  SHOWRESPONSIBILITIESBUTTON,
   SHOWQUALIFICATIONFORM,
   QUALIFICATIONNAME,
   QUALIFICATIONCHARACTERISTIC,
-  QUALIFICATIONEFFECTS,
-  COPIEDQUALIFICATIONEFFECTS,
   COPIEDSELECTEDTEXT,
   RESPONSIBILITIESTOHTML,
   REQUIREMENTS,
+  REQUIREMENTSTOHTML,
   CUSTOMIZEDREQUIREMENTS,
   SHOWREQUIREMENTSBUTTON,
   SHOWEDUCATIONFORM,
@@ -19,7 +17,7 @@ import {
   CERTIFICATENAME,
   CERTIFICATESTAGE,
   BENEFITS,
-  SHOWBENEFITSBUTTON,
+  BENEFITSTOHTML,
   CUSTOMIZEDBENEFITS
 } from "../creatorConsts";
 
@@ -29,9 +27,6 @@ export const setResponsibilities = (responsibilities) => {
 };
 export const setCustomizedResponsibilities = (customizedResponsibilities) => {
   return { type: CUSTOMIZEDRESPONSIBILITIES, payload: customizedResponsibilities };
-};
-export const setShowResponsibilitiesButton = () => {
-  return { type: SHOWRESPONSIBILITIESBUTTON, payload: false };
 };
 export const setResponsibilitiesToHtml = (responsibilitiesToHtml) => {
   return { type: RESPONSIBILITIESTOHTML, payload: responsibilitiesToHtml };
@@ -51,15 +46,7 @@ export const setQualificationCharacteristic = (qualificationCharacteristic) => {
     payload: qualificationCharacteristic,
   };
 };
-export const setQualificationEffects = (qualificationEffects) => {
-  return { type: QUALIFICATIONEFFECTS, payload: qualificationEffects };
-};
-export const setCopiedQualificationEffects = (copiedQualificationEffects) => {
-  return {
-    type: COPIEDQUALIFICATIONEFFECTS,
-    payload: copiedQualificationEffects,
-  };
-};
+
 export const setCopiedSelectedText = (copiedSelectedText) => {
   return { type: COPIEDSELECTEDTEXT, payload: copiedSelectedText };
 };
@@ -68,11 +55,12 @@ export const setCopiedSelectedText = (copiedSelectedText) => {
 export const setRequirements = (requirements) => {
   return { type: REQUIREMENTS, payload: requirements };
 };
+export const setRequirementsToHtml = (requirementsToHtml) => {
+  return { type: REQUIREMENTSTOHTML, payload: requirementsToHtml };
+};
+
 export const setCustomizedRequirements = (customizedRequirements) => {
   return { type: CUSTOMIZEDREQUIREMENTS, payload: customizedRequirements };
-};
-export const setShowRequirementsButton = (isButtonShown) => {
-  return { type: SHOWREQUIREMENTSBUTTON, payload: isButtonShown };
 };
 
 
@@ -98,8 +86,8 @@ export const setCertificateStage = (certificateStage) => {
 export const setBenefits = (benefits) => {
   return { type: BENEFITS, payload: benefits };
 };
-export const setShowBenefitsButton = (isButtonShown) => {
-  return { type: SHOWBENEFITSBUTTON, payload: isButtonShown };
+export const setBenefitsToHtml = (benefitsToHtml) => {
+  return { type: BENEFITSTOHTML, payload: benefitsToHtml };
 };
 export const setCustomizedBenefits = (customizedBenefits) => {
   return { type: CUSTOMIZEDBENEFITS, payload: customizedBenefits };

@@ -11,7 +11,11 @@ import {
 import {
   setResponsibilities,
   setResponsibilitiesToHtml,
-  setShowResponsibilitiesButton
+  setRequirements,
+  setRequirementsToHtml,
+  setBenefits,
+  setBenefitsToHtml
+
 } from "../../../../store/actions/stepTwoActions";
 import { jobPositionSchema } from "../../common/validations/stepOneSchema";
 
@@ -23,33 +27,71 @@ export default function SearchBar(props) {
 
   const { searchedPosition } = useSelector((state) => state.stepOneReducer);
 
-  const { responsibilities, responsibilitiesToHtml } = useSelector((state) => state.stepTwoReducer);
+  const { responsibilities, requirements, benefits } = useSelector(
+    (state) => state.stepTwoReducer
+  );
 
-  const responsibilitesFixture = [
+  const responsibilitiesFixture = [
     "diagnozowanie usterek mechanicznych",
     "wykonywanie napraw",
     "bieżące usuwanie awarii i usterek",
   ];
 
+  const requirementsFixture = [
+    "wiedza z zakresu mechaniki/elektromechaniki",
+    "wykształcenie zawodowe lub średnie techniczne",
+    "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
+  ];
+
+  const benefitsFixture = ["benefit1", "benefit2", "benefit3"];
 
   const onSetResponsibilities = (e) => {
-    let newResponsibilites;
+    let newResponsibilities;
+    if (responsibilities.length > 0) newResponsibilities = [];
+    else newResponsibilities = responsibilitiesFixture;
 
-    if (responsibilities.length > 0) newResponsibilites = [];
-    else newResponsibilites = responsibilitesFixture;
-
-    const responsibilitiesToHtml = `
-    <ul>
-      ${newResponsibilites.map(
-        (responsibility) =>
-          `<li key=${responsibility}>${responsibility}</li>`
+    const responsibilitiesToHtml = 
+    `<ul>
+      ${newResponsibilities.map(
+        (responsibility) => `<li key=${responsibility}>${responsibility}</li>`
       )}
-   </ul> `;
+    </ul> `;
 
-    dispatch(setResponsibilities(newResponsibilites));
-    dispatch(setShowResponsibilitiesButton(false));
+    dispatch(setResponsibilities(newResponsibilities));
     dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
-    console.log(responsibilitiesToHtml);
+  };
+
+  const onSetRequirements = () => {
+    let newRequirements;
+    if (requirements.length === 0) newRequirements = requirementsFixture;
+    else newRequirements = [];
+
+    const requirementsToHtml = 
+    `<ul>
+     ${newRequirements.map(
+       (requirement) => `<li key=${requirement}>${requirement}</li>`
+     )}
+    </ul> `;
+
+    dispatch(setRequirements(newRequirements));
+    dispatch(setRequirementsToHtml(requirementsToHtml));
+  };
+
+  const onSetBenefits = () => {
+    let newBenefits;
+    if (benefits.length > 0) newBenefits = [];
+    else newBenefits = benefitsFixture;
+
+    const benefitsToHtml = 
+    `<ul>
+     ${newBenefits.map(
+       (benefit) => `<li key=${benefit}>${benefit}</li>`
+     )}
+    </ul> `;
+
+    dispatch(setBenefits(newBenefits));
+    dispatch(setBenefitsToHtml(benefitsToHtml));
+ 
   };
 
   useEffect(() => {
@@ -80,6 +122,8 @@ export default function SearchBar(props) {
       dispatch(setShowResults(true));
     }
     onSetResponsibilities();
+    onSetRequirements();
+    onSetBenefits();
   };
 
   return (
@@ -101,13 +145,6 @@ export default function SearchBar(props) {
           name='searchPosition'
           sx={{ ml: 1, flex: 1 }}
           placeholder='szukam osoby na stanowisko...'
-          // InputProps={{
-          //   classes: {
-          //     root: classes.root,
-          //     disabled: classes.disabled,
-          //     notchedOutline: classes.notchedOutline,
-          //   },
-          // }}
           onChange={handleInputChange}
           style={{ width: "85%", fontSize: "14px" }}
         />

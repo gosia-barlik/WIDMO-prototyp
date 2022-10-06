@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 
 export default function RichTextEditor(props) {
   const { companyName, searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilities, customizedResponsibilities, copiedQualificationEffects, copiedSelectedText, requirements, customizedRequirements, educationLevel, studiesName, studiesStage, benefits, customizedBenefits } = useSelector((state) => state.stepTwoReducer);
+  const { responsibilities, customizedResponsibilities, copiedSelectedText, requirements, customizedRequirements, educationLevel, studiesName, studiesStage, benefits, customizedBenefits } = useSelector((state) => state.stepTwoReducer);
   const { rodo, applicationWay, applicationExpectation, applicationDate, contactInformation} = useSelector((state) => state.stepThreeReducer);
 
   const contentToEdit = `<div className="job-offer-summary" contentEditable="true"> 
@@ -34,10 +34,6 @@ export default function RichTextEditor(props) {
       (responsibility) =>
         `<li key=${responsibility}>${responsibility}</li>`
     )}
- ${copiedQualificationEffects.map(
-   (effect) =>
-     `<li key=${effect}>${effect}</li>`
- )}
  ${copiedSelectedText.map(
    (text) =>
      `<li key=${text}>${text}</li>`

@@ -1,17 +1,15 @@
 import {
   RESPONSIBILITIES,
   CUSTOMIZEDRESPONSIBILITIES,
-  SHOWRESPONSIBILITIESBUTTON,
   SHOWQUALIFICATIONFORM,
   QUALIFICATIONNAME,
   QUALIFICATIONCHARACTERISTIC,
-  QUALIFICATIONEFFECTS,
-  COPIEDQUALIFICATIONEFFECTS,
   COPIEDSELECTEDTEXT,
   RESPONSIBILITIESTOHTML,
   REQUIREMENTS,
+  REQUIREMENTSTOHTML,
   CUSTOMIZEDREQUIREMENTS,
-  SHOWREQUIREMENTSBUTTON,
+ 
   SHOWEDUCATIONFORM,
   EDUCATIONLEVEL,
   STUDIESNAME,
@@ -19,7 +17,8 @@ import {
   CERTIFICATENAME,
   CERTIFICATESTAGE,
   BENEFITS,
-  SHOWBENEFITSBUTTON,
+  BENEFITSTOHTML,
+
   RODO,
   CUSTOMIZEDBENEFITS
 } from "../../creatorConsts";
@@ -27,27 +26,25 @@ import {
 const initialState = {
   responsibilities: [],
   customizedResponsibilities: [],
-  showResponsibilitiesButton: true,
   showQualificationForm: false,
   qualificationName: "",
   qualificationCharacteristic: "",
-  qualificationEffects: [],
-  copiedQualificationEffects: [],
   copiedSelectedText: [],
   responsibilitiesToHtml: "",
 
   requirements: [],
   customizedRequirements: [],
-  showRequirementsButton: true,
   showEducationForm: false,
+  requirementsToHtml: "",
   
   educationLevel: [],
   studiesName: [],
   studiesStage: [],
   certificateName: [],
   certificateStage: [],
+  
   benefits: [],
-  showBenefitsButton: true,
+  benefitsToHtml: [],
   customizedBenefits: [],
 
 };
@@ -68,12 +65,6 @@ export const stepTwoReducer = (state = initialState, action) => {
         customizedResponsibilities: action.payload,
       };
     }
-    case SHOWRESPONSIBILITIESBUTTON: {
-      return {
-        ...state,
-        showResponsibilitiesButton: action.payload,
-      };
-    }
     case SHOWQUALIFICATIONFORM: {
       return {
         ...state,
@@ -90,18 +81,6 @@ export const stepTwoReducer = (state = initialState, action) => {
       return {
         ...state,
         qualificationCharacteristic: action.payload,
-      };
-    }
-    case QUALIFICATIONEFFECTS: {
-      return {
-        ...state,
-        qualificationEffects: action.payload,
-      };
-    }
-    case COPIEDQUALIFICATIONEFFECTS: {
-      return {
-        ...state,
-        copiedQualificationEffects: action.payload,
       };
     }
     case COPIEDSELECTEDTEXT: {
@@ -123,16 +102,16 @@ export const stepTwoReducer = (state = initialState, action) => {
         requirements: action.payload,
       };
     }
+    case REQUIREMENTSTOHTML: {
+      return {
+        ...state,
+        requirementsToHtml: action.payload,
+      };
+    }
     case CUSTOMIZEDREQUIREMENTS: {
       return {
         ...state,
         customizedRequirements: action.payload,
-      };
-    }
-    case SHOWREQUIREMENTSBUTTON: {
-      return {
-        ...state,
-        showRequirementsButton: action.payload,
       };
     }
     case SHOWEDUCATIONFORM: {
@@ -175,6 +154,12 @@ export const stepTwoReducer = (state = initialState, action) => {
       return {
         ...state,
         benefits: action.payload,
+      };
+    }
+    case BENEFITSTOHTML: {
+      return {
+        ...state,
+        benefitsToHtml: action.payload,
       };
     }
     case CUSTOMIZEDBENEFITS: {

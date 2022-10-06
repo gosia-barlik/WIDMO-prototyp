@@ -5,61 +5,53 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Link from '@mui/material/Link';
 import { useSelector } from "react-redux";
 
 export default function SearchResults(props) {
   const { searchedPosition } = useSelector((state) => state.stepOneReducer);
+
+  const qualificationsFixture = [
+    {
+      name: "Elektromechanik pojazdów samochodowych",
+      description:
+        'Efekty uczenia się kwalifikacji pełnej (efekty kształcenia dla zawodu) można przejrzeć w jej kwalifikacjach cząstkowych/poprzedzających. Aby sprawdzić, jakie kwalifikacje wchodzą w skład danego zawodu należy wejść w zakładkę powyżej "Informacje o w kwalifikacji", dalej "Wymagane kwalifikacje poprzedzające i inne warunki jakie są niezbędne do uzyskania kwalifikacji", "Kwalifikacje poprzedzające". Wchodząc w konkretną kwalifikację z listy, a następnie w zakładkę "Efekty uczenia się" zapoznamy się z efektami uczenia się dla danej kwalifikacji cząstkowej/poprzedzającej.',
+      link:'https://kwalifikacje.gov.pl/k?id_kw=12907'
+    },
+    {
+      name: "Przeprowadzenie procesu renowacji i naprawy powłoki lakierowej - lakiernik samochodowy",
+      description:
+        'Osoba posiadająca kwalifikację rynkową "Przeprowadzenie procesu renowacji i naprawy powłoki lakierowej - lakiernik samochodowy" jest gotowa do samodzielnego planowania, organizowania i przeprowadzenia procesu lakierowania. Ocenia stan powierzchni, która ma zostać lakierowana. Dobiera technologię przygotowania elementu do lakierowania. Wykonuje prace przygotowawcze w tym: odtłuszcza, oczyszcza powierzchnię, wykonuje maskowanie powierzchni, które nie będą lakierowane, zabezpiecza antykorozyjnie, nakłada materiały wypełniające oraz przygotowuje powierzchnię do dalszych prac lakierniczych. Dobiera system ochronno-dekoracyjny zgodnie z zaleceniami producenta. Samodzielnie aplikuje system ochronno-dekoracyjny. Kontroluje jakość wykonanych czynności, poleruje, a w razie potrzeby przeprowadza korektę lakierowanych elementów. Podczas prac wykorzystuje wyposażenie lakierni np. promienniki podczerwieni, kabiny lakiernicze, pistolety lakiernicze, inny sprzęt dodatkowy wykorzystywany przy naprawach pojazdów. Posługuje się wiedzą z zakresu lakiernictwa. Osoba posiadająca kwalifikację jest gotowa do nadzorowania procesów lakierniczych, w tym tworzenia harmonogramu prac lakierniczych, wyznaczania zadań pomocnika lakiernika oraz kontrolowania stanu wykonywanych prac. W swojej pracy stosuje zasady samoochrony oraz przestrzega zasad bezpieczeństwa i higieny pracy (BHP). Segreguje odpady lakiernicze zgodnie z wymogami ochrony środowiska',
+        link:'https://kwalifikacje.gov.pl/k?id_kw=13891'
+    },
+    {
+      name: "Technik pojazdów samochodowych",
+      description:
+        'Efekty uczenia się kwalifikacji pełnej (efekty kształcenia dla zawodu) można przejrzeć w jej kwalifikacjach cząstkowych/poprzedzających. Aby sprawdzić, jakie kwalifikacje wchodzą w skład danego zawodu należy wejść w zakładkę powyżej "Informacje o w kwalifikacji", dalej "Wymagane kwalifikacje poprzedzające i inne warunki jakie są niezbędne do uzyskania kwalifikacji", "Kwalifikacje poprzedzające". Wchodząc w konkretną kwalifikację z listy, a następnie w zakładkę "Efekty uczenia się" zapoznamy się z efektami uczenia się dla danej kwalifikacji cząstkowej/poprzedzającej.',
+        link:'https://kwalifikacje.gov.pl/k?id_kw=12911'
+    },
+    
+  ];
 
   return (
     <Paper
       className='job-position-search-results-wrapper'
       elevation={0}
       style={{ marginTop: "20px" }}>
-      <Typography style={{ display: "inline-block" }}>
-        Dla stanowiska 
-      </Typography>
-      {/* <Paper
-        style={{
-          display: "inline-block",
-          height: "25px",
-          padding: "8px 12px 5px 12px",
-          marginLeft: "20px",
-        }}> */}
-        <Typography variant={"subtitle2"} style={{ display: "inline-block" }}> &nbsp; {searchedPosition} </Typography>
-      {/* </Paper> */}
-      <Typography style={{ display: "inline" }}>
-      &nbsp; znaleźliśmy poniższe kwalifikacje i standardy kompetencji zawodowych. Na ich podstawie formułowane będą podpowiedzi na dalszych etapach tworzenia ogłoszenia:
-      </Typography>
-      <Accordion style={{ marginTop: "10px" }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls='panel1a-content'
-          id='panel1a-header'>
-          <Typography>Kwalifikacja: Elektromechanik pojazdów samochodowych</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-          "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych"
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-
-      <Accordion style={{ marginTop: "10px" }}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls='panel1a-content'
-          id='panel1a-header'>
-          <Typography>
-            Standard kompetencji zawodowych: Dolor sit amet
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
+      {qualificationsFixture.map((fixture) => (
+        <Accordion style={{ marginTop: "10px" }}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls='panel1a-content'
+            id='panel1a-header'>
+            <Typography>{fixture.name}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>{fixture.description}</Typography>
+            <Link href ={fixture.link} target="_blank" >{fixture.link}</Link>
+          </AccordionDetails>
+        </Accordion>
+      ))}
     </Paper>
   );
 }

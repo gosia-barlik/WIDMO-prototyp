@@ -12,8 +12,6 @@ export default function Creator() {
   const [updateState, setUpdateState] = useState(0);
   //MAIN STEPPER
   const [activeStep, setActiveStep] = useState(0);
-  //VERTICAL STEPPER
-  const [activeVerticalStep, setActiveVerticalStep] = useState(0);
 
   const mainStepperLabels = [
     { name: "Informacje podstawowe" },
@@ -25,25 +23,12 @@ export default function Creator() {
   // MAIN STEPPER
   const handleStep = (step) => {
     setActiveStep(step);
-    setActiveVerticalStep(0);
   };
   const handleMainStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setActiveVerticalStep(0);
   };
   const handleMainStepperBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    setActiveVerticalStep(2);
-  };
-  const handleMainStepperBackAndReset = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    // resetShowQualificationForm();
-    setUpdateState((prevState) => prevState + 1);
-    setActiveVerticalStep(2);
-  };
-  const handleMainStepperNextAndReset = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    // setShowEducationForm(false);
   };
 
   return (
@@ -81,8 +66,6 @@ export default function Creator() {
           activeStep={activeStep}
           handleMainStepperBack={handleMainStepperBack}
           handleMainStepperNext={handleMainStepperNext}
-          handleMainStepperNextAndReset={handleMainStepperNextAndReset}
-          handleMainStepperBackAndReset={handleMainStepperBackAndReset}
           updateState={updateState}
 
         />

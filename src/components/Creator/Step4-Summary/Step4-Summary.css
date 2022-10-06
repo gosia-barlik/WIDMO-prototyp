@@ -871,7 +871,7 @@
 }
 
 .rdw-editor-main {
-  min-height: 50vh;
+  /* min-height: 50vh; */
   max-height: 80vh;
   overflow: auto;
   box-sizing: border-box;

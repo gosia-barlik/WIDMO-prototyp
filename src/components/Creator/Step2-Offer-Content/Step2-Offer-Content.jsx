@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import StepperVertical from "../common/Stepper-vertical";
 import JobOffer from "../common/job-offer/Job-offer";
 import ResponsibilitiesSection from "./form/Responsibilities-Section.jsx";
-import AddRequirementsButtons from "./form/Add- Requirements-Buttons.jsx";
-import AddBenefitsButtons from "./form/Add-Benefits-Buttons.jsx";
+import RequirementsSection from "./form/Requirements-Section.jsx";
+import BenefitsSection from "./form/Benefits-Section.jsx";
 import MainActionButtons from "../common/Main-Action-Buttons.jsx";
 import EducationExperience from "./form/Education-Experience-Form.jsx/Education-Experience.jsx";
 import "./Step2-Offer-Content.css";
@@ -56,29 +55,20 @@ export default function Step2OfferContent(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-         
             <>
               <ResponsibilitiesSection />
-              <MainActionButtons
-                handleBack={props.handleMainStepperBackAndReset}
-                handleNext={props.handleVerticalStepperNext}
-              />
             </>
           
-
-          
             <>
-              <AddRequirementsButtons />
+              <RequirementsSection />
               
             </>
-         
 
-         
             <>
-              <AddBenefitsButtons />
+              <BenefitsSection />
               <MainActionButtons
-                handleBack={props.handleVerticalStepperBack}
-                handleNext={props.handleMainStepperNextAndReset}
+                handleBack={props.handleMainStepperBack}
+                handleNext={props.handleMainStepperNext}
               />
             </>
          
