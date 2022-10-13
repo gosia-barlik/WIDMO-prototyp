@@ -26,7 +26,7 @@ const initialState = {
   showResults: false,//todo przeniesc do state
   activeStep: 0,//todo przeniesc do state
   salaryType: "",
-  salaryFrom: "Wynagrodzenie",
+  salaryFrom: "",
   salaryTo: "",
   salaryCurrency: "",
   salaryTime: "",
@@ -38,8 +38,8 @@ const initialState = {
   contractType: "Rodzaj umowy",
   workModel: "Tryb pracy",
   recruitmentMode: "Tryb rekrutacji",
-  companyName: "Nazwa firmy",
-  aboutCompany: "Krótki opis firmy",
+  companyName: "",
+  aboutCompany: "",
   logo: "",
   logoPreview: "",
 };

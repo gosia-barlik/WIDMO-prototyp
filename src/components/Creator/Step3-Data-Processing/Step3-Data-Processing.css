@@ -1,9 +1,5 @@
 @import "../../common/variables.css";
 
-.step-3-container {
-  width:100% !important;
-  padding-left: 16% !important;
-}
 
 .step-3-container .styled-button {
   color: var(--primary)!important;

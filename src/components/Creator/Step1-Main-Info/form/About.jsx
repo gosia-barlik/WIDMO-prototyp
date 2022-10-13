@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import TextField from "@material-ui/core/TextField";
+import Paper from '@mui/material/Paper';
 import IconButton from "@material-ui/core/IconButton";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import { makeStyles } from "@material-ui/core/styles";
@@ -74,8 +75,8 @@ export default function AboutCompany(props) {
   };
 
   return (
-    <>
-      <Typography variant='subtitle2' gutterBottom component='div'>
+    <Paper style={{padding:"24px", marginTop:"24px"}}>
+      <Typography variant='h6' gutterBottom component='div'>
         O firmie
       </Typography>
       <TextField
@@ -137,6 +138,6 @@ export default function AboutCompany(props) {
           />
         </div>
       </div>
-    </>
+    </Paper>
   );
 }

@@ -31,13 +31,15 @@ export default function Step1MainInfo(props) {
 
           {showResults && (
             <>
-              <SearchResults /> <AboutCompany /> <AdditionalInformation />{" "}
+              <SearchResults /> 
+              <AboutCompany /> 
+              <AdditionalInformation />
               <MainActionButtons handleNext={props.handleMainStepperNext} />
             </>
           )}
         </Paper>
       </Grid>
-      <Grid item xs={4} className='job-offer-container'>
+      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography
           variant='body2'
           style={{ color: "#00000099" }}
@@ -45,7 +47,7 @@ export default function Step1MainInfo(props) {
           component='div'>
           Podgląd ogłoszenia
         </Typography>
-        <Paper className='job-offer-container-box' elevation={0}>
+        <Paper className='job-offer-container' elevation={0}>
           <JobOffer />
         </Paper>
         <AlertAbout />

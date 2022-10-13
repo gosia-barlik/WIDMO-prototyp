@@ -1,22 +1,5 @@
 @import "../../common/variables.css";
 
-.step-1-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.step-1-container .form-container {
-  margin: 20px;
-  margin-top: 50px;
-  text-align: left;
-}
-.job-offer-container .MuiSvgIcon-root {
-  color: var(--primary);
-  margin-right: 8px;
-  
-}
 
 .form-container-box {
   background-color: var(--white) !important ;
@@ -37,19 +20,6 @@
 .css-1i1x89v-MuiInputBase-root-MuiOutlinedInput-root {
   font-size: 14px !important ;
 }
-
-
-/* .form-container-box .css-173wfxe span {
-  padding-bottom: 5px;
-  font-size: 10px;
-}
-.job-offer-container {
-  box-sizing: border-box;
-}
-.job-offer-container-box {
-  padding: 18px;
-  box-sizing: border-box;
-} */
 
 .add-logo {
   margin-top: 12px;

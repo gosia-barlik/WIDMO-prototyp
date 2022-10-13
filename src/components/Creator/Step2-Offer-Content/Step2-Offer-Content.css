@@ -1,17 +1,5 @@
 @import "../../common/variables.css";
 
-.step-2-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.step-2-container .form-container {
-  margin: 20px;
-  margin-top: 50px;
-  text-align: left;
-}
 
 .step-2-container .styled-card {
   /* color: var(--primary) !important; */

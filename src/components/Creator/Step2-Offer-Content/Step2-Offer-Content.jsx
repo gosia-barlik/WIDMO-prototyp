@@ -55,26 +55,20 @@ export default function Step2OfferContent(props) {
           Obszar roboczy
         </Typography>
         <Paper className='form-container-box'>
-            <>
-              <ResponsibilitiesSection />
-            </>
           
-            <>
+              <ResponsibilitiesSection />
+         
               <RequirementsSection />
-              
-            </>
-
-            <>
+          
               <BenefitsSection />
               <MainActionButtons
                 handleBack={props.handleMainStepperBack}
                 handleNext={props.handleMainStepperNext}
               />
-            </>
-         
         </Paper>
       </Grid>
-      <Grid item xs={4} style={{ margin: "50px 20px 20px", textAlign: "left" }}>
+
+      <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
         <Typography
           variant='body2'
           style={{ color: "#00000099" }}

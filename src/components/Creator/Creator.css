@@ -25,3 +25,20 @@ body {
   border: 1px solid var(--neutral)!important;
 }
 
+.step-1-container,
+.step-2-container,
+.step-3-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.step-1-container .form-container,
+.step-2-container .form-container,
+.step-3-container .form-container {
+  margin: 20px;
+  margin-top: 50px;
+  text-align: left;
+}
+

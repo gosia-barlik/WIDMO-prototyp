@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Step3DataProcessing(props) {
+export default function JobOfferData(props) {
   const {
     rodo,
     applicationWay,
@@ -14,7 +14,7 @@ export default function Step3DataProcessing(props) {
 
   return (
     <>
-      <Stack style={{ marginBottom: "20px" }}>
+      <Stack className='offer-section-container section-data'>
         <Typography
           variant='subtitle2'
           component='div'

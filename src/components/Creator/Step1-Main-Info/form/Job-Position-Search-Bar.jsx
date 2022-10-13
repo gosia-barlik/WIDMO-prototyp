@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
+import Paper from '@mui/material/Paper';
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@mui/material/Typography";
@@ -56,7 +57,7 @@ export default function SearchBar(props) {
         (responsibility) => `<li key=${responsibility}>${responsibility}</li>`
       )}
     </ul> `;
-
+   
     dispatch(setResponsibilities(newResponsibilities));
     dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
   };
@@ -72,7 +73,7 @@ export default function SearchBar(props) {
        (requirement) => `<li key=${requirement}>${requirement}</li>`
      )}
     </ul> `;
-
+  
     dispatch(setRequirements(newRequirements));
     dispatch(setRequirementsToHtml(requirementsToHtml));
   };
@@ -121,20 +122,21 @@ export default function SearchBar(props) {
       dispatch(setSearchedPosition(searchedPosition));
       dispatch(setShowResults(true));
     }
+    onSetBenefits();
     onSetResponsibilities();
     onSetRequirements();
-    onSetBenefits();
+  
   };
 
   return (
-    <>
-      <Typography variant='subtitle2' gutterBottom component='div'>
+    <Paper style={{padding:"24px"}}>
+      <Typography variant='h6' gutterBottom component='div'>
         Stanowisko
       </Typography>
 
       <form onSubmit={handleSearch}>
         <TextField
-          spellcheck='true'
+          spellCheck='true'
           error={text.length >= jobPositionSchema.MAX_LENGTH}
           helperText={errorMessage}
           required
@@ -153,6 +155,6 @@ export default function SearchBar(props) {
           <SearchIcon />
         </IconButton>
       </form>
-    </>
+    </Paper>
   );
 }

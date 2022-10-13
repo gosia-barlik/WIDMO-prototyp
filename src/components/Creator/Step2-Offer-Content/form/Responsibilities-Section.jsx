@@ -1,12 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@mui/material/Typography";
-import TextField from "@material-ui/core/TextField";
-import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
-import IconButton from "@mui/material/IconButton";
+import Card from "@mui/material/Card";
 import QualificationInformation from "./Qualification-Information";
 import Wysiwyg from "./Wysiwyg";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +10,6 @@ import {
   setResponsibilities,
   setResponsibilitiesToHtml,
   setCustomizedResponsibilities,
-  // setShowResponsibilitiesButton,
   setShowQualificationForm,
   setQualificationName,
   setQualificationCharacteristic,
@@ -39,11 +34,7 @@ export default function ResponsibilitiesSection(props) {
   } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
-  const qualificationNameFixture = "Elektromechanik pojazdów samochodowych";
-  const qualitficationCharacteristicFixture =
-    "Absolwent szkoły prowadzącej kształcenie w zawodzie elektromechanik pojazdów samochodowych powinien być przygotowany do wykonywania zadań zawodowych w zakresie kwalifikacji MOT.02. Obsługa, diagnozowanie oraz naprawa mechatronicznych systemów pojazdów samochodowych: 1) przeprowadzania obsługi instalacji i konserwacji mechatronicznych systemów pojazdów samochodowych; 2) diagnozowania stanu technicznego mechatronicznych systemów pojazdów samochodowych; 3) wykonywania napraw elektrycznych i elektronicznych układów pojazdów samochodowych";
   
-
     //RESPONSIBILITIES
     const onSetResponsibilities = (responsibilities) => {
       dispatch(setResponsibilities(responsibilities));
@@ -52,45 +43,42 @@ export default function ResponsibilitiesSection(props) {
       dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
     };
 
-  const onSetQualificationInfo = (e) => {
-    e.preventDefault();
-    dispatch(setShowQualificationForm(!showQualificationForm));
-    dispatch(setQualificationName(qualificationNameFixture));
-    dispatch(
-      setQualificationCharacteristic(qualitficationCharacteristicFixture)
-    );
-  };
-  // const resetShowQualificationForm = (e) => {
-  //   dispatch(setShowQualificationForm(false));
+  // const onSetQualificationInfo = (e) => {
+  //   e.preventDefault();
+  //   dispatch(setShowQualificationForm(!showQualificationForm));
+  //   dispatch(setQualificationName(qualificationNameFixture));
+  //   dispatch(
+  //     setQualificationCharacteristic(qualitficationCharacteristicFixture)
+  //   );
   // };
 
   // DYNAMIC SECTION
-  let handleChange = (i, e) => {
-    let newResponsibilities = [...customizedResponsibilities];
-    newResponsibilities[i][e.target.name] = e.target.value;
-    dispatch(setCustomizedResponsibilities(newResponsibilities));
-    console.log(customizedResponsibilities);
-  };
+  // let handleChange = (i, e) => {
+  //   let newResponsibilities = [...customizedResponsibilities];
+  //   newResponsibilities[i][e.target.name] = e.target.value;
+  //   dispatch(setCustomizedResponsibilities(newResponsibilities));
+  //   console.log(customizedResponsibilities);
+  // };
 
-  let addFormFields = () => {
-    dispatch(
-      setCustomizedResponsibilities([
-        ...customizedResponsibilities,
-        { name: "" },
-      ])
-    );
-  };
+  // let addFormFields = () => {
+  //   dispatch(
+  //     setCustomizedResponsibilities([
+  //       ...customizedResponsibilities,
+  //       { name: "" },
+  //     ])
+  //   );
+  // };
 
-  let removeFormFields = (i) => {
-    let newResponsibilities = [...customizedResponsibilities];
-    newResponsibilities.splice(i, 1);
-    dispatch(setCustomizedResponsibilities(newResponsibilities));
-  };
+  // let removeFormFields = (i) => {
+  //   let newResponsibilities = [...customizedResponsibilities];
+  //   newResponsibilities.splice(i, 1);
+  //   dispatch(setCustomizedResponsibilities(newResponsibilities));
+  // };
 
-  let handleSubmit = (event) => {
-    event.preventDefault();
-    alert(JSON.stringify(customizedResponsibilities));
-  };
+  // let handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   alert(JSON.stringify(customizedResponsibilities));
+  // };
 
 
   return (
@@ -98,7 +86,7 @@ export default function ResponsibilitiesSection(props) {
       spacing={2}
       direction='column'
       style={{ justifyContent: "right", paddingTop: "5px" }}>
-      <Typography variant='subtitle2' gutterBottom component='div'>
+      <Typography variant='h6' gutterBottom component='div'>
         Zakres obowiązków
       </Typography>
       <Card className='styled-card'>

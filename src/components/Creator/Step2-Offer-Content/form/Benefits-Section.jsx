@@ -37,8 +37,8 @@ export default function BenefitsSection(props) {
     <Stack
       spacing={2}
       direction='column'
-      style={{ justifyContent: "right", paddingTop: "5px" }}>
-      <Typography variant='subtitle2' gutterBottom component='div'>
+      style={{ justifyContent: "right", paddingTop: "24px" }}>
+      <Typography variant='h6' gutterBottom component='div'>
         Benefity
       </Typography>
       

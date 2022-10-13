@@ -14,10 +14,10 @@ export default function Creator() {
   const [activeStep, setActiveStep] = useState(0);
 
   const mainStepperLabels = [
-    { name: "Informacje podstawowe" },
+    { name: "Główne informacje" },
     { name: "Treść ogłoszenia" },
-    { name: "Informacje uzupełniające" },
-    { name: "Podsumowanie" },
+    { name: "Dodatkowe informacje" },
+    { name: "Gotowe ogłoszenie" },
   ];
 
   // MAIN STEPPER

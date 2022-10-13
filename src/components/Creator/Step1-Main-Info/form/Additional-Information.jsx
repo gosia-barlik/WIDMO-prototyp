@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Paper from '@mui/material/Paper';
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -62,9 +63,9 @@ export default function AdditionalInformation(props) {
 
 
   return (
-    <>
+    <Paper style={{padding:"24px", marginTop:"24px"}}>
       <form className={classes.root} noValidate>
-      <Typography variant='subtitle2' gutterBottom component='div' style={{ width: "100%", marginTop:"24px"}}>
+      <Typography variant='h6' gutterBottom component='div' style={{ width: "100%"}}>
         Szczegóły
       </Typography>
         <Typography variant='subtitle2' component='div'>
@@ -247,6 +248,6 @@ export default function AdditionalInformation(props) {
           </div>
         </div>
       </form>
-    </>
+    </Paper>
   );
 }

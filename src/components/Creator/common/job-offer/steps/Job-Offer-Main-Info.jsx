@@ -16,7 +16,7 @@ import {
   setLogoPreview,
 } from "../../../../../store/actions/stepOneActions";
 
-export default function Step1MainInfo(props) {
+export default function JobOfferMainInfo(props) {
   const {
     searchedPosition,
     salaryTo,
@@ -54,7 +54,7 @@ export default function Step1MainInfo(props) {
 
   return (
     <>
-      <Stack style={{ marginBottom: "20px" }}>
+      <Stack className='offer-section-container section-maininfo'>
         {searchedPosition ? (
           <Typography variant='h6' gutterBottom component='div'>
             {searchedPosition}
@@ -65,40 +65,47 @@ export default function Step1MainInfo(props) {
           </Typography>
         )}
 
-        {companyName && (
-          <>
-            <Typography variant='body2' gutterBottom component='div'>
-              {companyName}
-            </Typography>
-          </>
+        {companyName ? (
+          <Typography variant='body2' gutterBottom component='div'>
+            {companyName}
+          </Typography>
+        ) : (
+          <Typography variant='body2' gutterBottom component='div'>
+            Nazwa firmy
+          </Typography>
         )}
 
-        {aboutCompany && (
-          <>
-            <Typography variant='body2' gutterBottom component='div'>
-              {aboutCompany}
-            </Typography>
-          </>
+        {aboutCompany ? (
+          <Typography variant='body2' gutterBottom component='div'>
+            {aboutCompany}
+          </Typography>
+        ) : (
+          <Typography variant='body2' gutterBottom component='div'>
+            Krótki opis firmy
+          </Typography>
         )}
+
         {logoPreview && (
           <img className='logo-preview' src={logoPreview} id={"logo-photo"} />
         )}
 
-        {(salaryType ||
-          salaryFrom ||
-          salaryTo ||
-          salaryCurrency ||
-          salaryTime ||
-          salaryContract) && (
-          <>
-            <Typography variant='subtitle2' gutterBottom component='div'>
-              {salaryFrom} {salaryTo ? " - " + salaryTo : ""}{" "}
-              {" " + salaryCurrency} {salaryTime ? "/ " + salaryTime : ""}{" "}
-              {salaryType} {salaryContract}
-            </Typography>
-          </>
+        {salaryType ||
+        salaryFrom ||
+        salaryTo ||
+        salaryCurrency ||
+        salaryTime ||
+        salaryContract ? (
+          <Typography variant='subtitle2' gutterBottom component='div'>
+            {salaryFrom} {salaryTo ? " - " + salaryTo : ""}
+            {" " + salaryCurrency} {salaryTime ? "/ " + salaryTime : ""}
+            {salaryType} {salaryContract}
+          </Typography>
+        ) : (
+          <Typography variant='subtitle2' gutterBottom component='div'>
+            Wynagrodzenie
+          </Typography>
         )}
-        <Grid container spacing={3}>
+        <Grid container spacing={3} style={{marginTop:"24px"}}>
           {workModel && (
             <Grid item xs={6}>
               <Typography variant='body2' gutterBottom component='div'>
@@ -145,18 +152,6 @@ export default function Step1MainInfo(props) {
           )}
         </Grid>
       </Stack>
-
-      {/* {(responsibilities.length > 0 ||
-        customizedResponsibilities.length > 0 ||
-        requirements.length > 0 ||
-        customizedRequirements.length > 0 ||
-        benefits.length > 0 ||
-        customizedBenefits.length > 0) && <Step2Accordion />}
-      {(rodo ||
-        applicationWay ||
-        applicationExpectation ||
-        applicationDate ||
-        contactInformation) && <Step3Accordion />} */}
     </>
   );
 }

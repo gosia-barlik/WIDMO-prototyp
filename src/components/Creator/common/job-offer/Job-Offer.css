@@ -1,25 +1,27 @@
+@import "../../../common/variables.css";
+
 .job-offer-container-box {
   box-shadow: none !important;
 }
-.step-1-container .job-offer-container {
-  margin: 20px 20px 4px 20px;
-  margin-top: 50px;
-  text-align: left;
+
+
+.job-offer-container .offer-section-container {
+  margin-bottom: 20px
 }
 
-/* .styled-accordion {
-  top: -10px;
-  width: calc(100% + 18px) !important;
-  left: -9px;
-} */
+.job-offer-container .MuiSvgIcon-root {
+  color: var(--primary);
+  margin-right: 8px;
+}
 
-.styled-chip {
+
+/* .styled-chip {
   text-align: left;
   margin-top: 8px;
   justify-content: flex-start;
   width: fit-content;
   max-width: 550px !important;
-}
+} */
 .css-ejgmvm-MuiTypography-root,
 .wrap-text {
   overflow-wrap: break-word !important;
