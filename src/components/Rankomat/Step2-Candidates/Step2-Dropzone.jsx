@@ -94,7 +94,7 @@ export default function Step2Dropzone(props) {
   }, [resumes]);
 
   return (
-    <section className='container'>
+    <section className='container' style={{marginTop:"40px"}}>
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         <Button className='button-outlined' variant='outlined' onClick={open}>

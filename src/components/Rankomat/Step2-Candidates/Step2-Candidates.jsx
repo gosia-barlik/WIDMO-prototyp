@@ -14,8 +14,7 @@ export default function Step2Candidates(props) {
         xs={4}
         style={{ marginTop: "50px", textAlign: "left"}}>
         <Typography variant='body2' gutterBottom component='div'>
-          Wprowadź życiorysy kandydatów, które chciałbyś dopasować do ogłoszenia
-          o pracę
+        Wprowadź <span style={{fontWeight:"700"}}>CV</span> kandydatów, które chciałbyś przeanalizować
         </Typography>
         <Step2Dropzone />
         <MainActionButtons

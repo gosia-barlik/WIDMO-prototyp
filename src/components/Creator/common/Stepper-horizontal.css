@@ -2,7 +2,6 @@
 
 .stepper-horizontal-container {
   margin-top: 140px;
-
   justify-content: center !important;
   align-items: center;
 }
@@ -30,7 +29,7 @@
 .stepper-horizontal-container
   .stepper-nonlinear
   .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
-  color: rgb(255, 255, 255);
+  color: var(--white) !important;
   width: 16px;
   height: 16px;
   border-radius: 8px;
@@ -47,5 +46,5 @@
 }
 
 .stepper-horizontal-container .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active .MuiStepIcon-text {
-    fill: rgb(255, 255, 255);
+    fill: var(--white);
   }

@@ -13,7 +13,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import "./Header.css";
-import logo from '../../assets/logo.jpg';
+import logo from "../../assets/logo.jpg";
 
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,15 +41,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   menuPopover: {
-    marginTop:48,
+    marginTop: 48,
     top: 48,
     fontSize: 14,
   },
   menuItem: {
     fontSize: 14,
   },
-  logo:{
-    width: "100%"
+  logo: {
+    width: "100%",
   },
   title: {
     flexGrow: 1,
@@ -57,8 +57,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Montserrat",
     fontSize: "24px",
   },
-
-
 }));
 
 export default function Header() {
@@ -69,16 +67,27 @@ export default function Header() {
     (state) => state.userReducer
   );
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [isAccountMenuOpen, setAccountMenuOpen] = React.useState(null);
+  const [isModulesMenuOpen, setModulesMenuOpen] = React.useState(null);
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const openAccountMenu = Boolean(isAccountMenuOpen);
+  const openModulesMenu = Boolean(isModulesMenuOpen);
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  //ACCOUNT MENU
+  const handleAccountMenu = (event) => {
+    setAccountMenuOpen(event.currentTarget);
   };
+  const closeAccountMenu = () => {
+    setAccountMenuOpen(null);
+  };
+  //MODULES MENU
+  const handleModulesMenu = (event) => {
+    setModulesMenuOpen(event.currentTarget);
+  };
+  const closeModulesMenu = () => {
+    setModulesMenuOpen(null);
+  };
+  //LOGIN FORM
   const openLoginForm = () => {
     dispatch(setIsLoginOpen(true));
   };
@@ -95,33 +104,33 @@ export default function Header() {
       <AppBar position='fixed' className='navbar' elevation={1}>
         <Toolbar className='appbar-toolbar'>
           {isLoggedIn && (
-            <div className={classes.navbar}
-          >
+            <div className={classes.navbar}>
               <IconButton
                 className={classes.menuButton}
                 aria-label='menu'
                 onClick={toggleUserDrawer}>
                 <MenuIcon />
               </IconButton>
-              
+
               <NavLink to='/' component='div' className={classes.logo}>
-              <img src={logo} className="App-logo" alt="logo" />
+                <img src={logo} className='App-logo' alt='logo' />
                 {/* <Typography variant='h6' className={classes.title}>
                   AIRA
                 </Typography> */}
               </NavLink>
+
               <div>
                 <IconButton
                   aria-label='account of current user'
-                  aria-controls='menu-appbar'
+                  aria-controls='account-menu'
                   aria-haspopup='true'
-                  onClick={handleMenu}>
+                  onClick={handleAccountMenu}>
                   <AccountCircle />
                 </IconButton>
                 <Menu
-                className={classes.menuPopover}
-                  id='menu-appbar'
-                  anchorEl={anchorEl}
+                  className={classes.menuPopover}
+                  id='account-menu'
+                  anchorEl={isAccountMenuOpen}
                   anchorOrigin={{
                     vertical: "top",
                     horizontal: "right",
@@ -131,26 +140,83 @@ export default function Header() {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                  open={open}
-                  onClose={handleClose}>
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>Profil</MenuItem>
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>Ustawienia</MenuItem>
-                  <MenuItem className={classes.menuItem} onClick={logOut}>Wyloguj</MenuItem>
+                  open={openAccountMenu}
+                  onClose={closeAccountMenu}>
+                  <MenuItem
+                    className={classes.menuItem}
+                    onClick={closeAccountMenu}>
+                    Profil
+                  </MenuItem>
+                  <MenuItem
+                    className={classes.menuItem}
+                    onClick={closeAccountMenu}>
+                    Ustawienia
+                  </MenuItem>
+                  <MenuItem className={classes.menuItem} onClick={logOut}>
+                    Wyloguj
+                  </MenuItem>
                 </Menu>
               </div>
             </div>
           )}
 
           {isLoggedIn == false && (
-            <div
-            className={classes.navbar}>
-              <NavLink to='/' component='div' className={classes.logo}>
-              <img src={logo} className="App-logo" alt="logo" />
-                {/* <Typography variant='h6' className={classes.title}>
+            <div className={classes.navbar}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <NavLink to='/' component='div' className={classes.logo}>
+                  <img src={logo} className='App-logo' alt='logo' />
+                  {/* <Typography variant='h6' className={classes.title}>
                   AIRA
                 </Typography> */}
-              </NavLink>
-              
+                </NavLink>
+
+                <div style={{ paddingTop: "12px", paddingLeft:"24px" }}>
+                  <IconButton
+                    aria-label='app modules'
+                    aria-controls='modules-menu'
+                    aria-haspopup='true'
+                    onClick={handleModulesMenu}
+                    className='modules-button'>
+                    Moduły
+                  </IconButton>
+                  <Menu
+                    className={classes.menuPopover}
+                    id='modules-menu'
+                    anchorEl={isModulesMenuOpen}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={openModulesMenu}
+                    onClose={closeModulesMenu}>
+                    <NavLink NavLink to='/creator'>
+                      <MenuItem
+                        className={classes.menuItem}
+                        onClick={closeModulesMenu}>
+                        Tworzenie ogłoszenia
+                      </MenuItem>
+                    </NavLink>
+                    <NavLink to='/rankomat'>
+                      <MenuItem
+                        className={classes.menuItem}
+                        onClick={closeModulesMenu}>
+                        Analizowanie CV
+                      </MenuItem>
+                    </NavLink>
+                    <MenuItem
+                      className={classes.menuItem}
+                      onClick={closeModulesMenu}>
+                      Poradnik rekrutera
+                    </MenuItem>
+                  </Menu>
+                </div>
+              </div>
+
               <Button
                 onClick={openLoginForm}
                 color='primary'

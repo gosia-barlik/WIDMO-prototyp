@@ -29,6 +29,9 @@
 .MuiButton-label {
   text-transform: none;
 }
+.modules-button {
+  font-size: 14px !important
+}
 
 /* .navbar .aira {
   position: absolute;

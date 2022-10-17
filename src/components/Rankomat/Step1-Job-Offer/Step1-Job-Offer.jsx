@@ -24,10 +24,9 @@ export default function Step1JobOffer(props) {
         xs={4}
         className='rankomat-step-1-container-box'>
         <Typography variant='body2' gutterBottom component='div' style={{lineHeight:"1.5rem"}}>
-          Wprowadź ogłoszenie o pracę, do którego chciałbyś dopasować życiorysy
-          kandydatów
+          Wprowadź <span style={{fontWeight:"700"}}> ogłoszenie </span>o pracę, pod kątem którego chciałbyś analizować CV
         </Typography>
-        <Typography variant='body2' gutterBottom component='div'>
+        <Typography variant='body2' gutterBottom component='div' style={{marginTop:"24px"}}>
           1.
           <label htmlFor='contained-button-file'>
             <Input
@@ -41,12 +40,31 @@ export default function Step1JobOffer(props) {
               component='span'
               className='button-outlined upload-button'
               style={{ marginTop: "0" }}>
-              Załaduj plik
+              Wybierz ze swoich ogłoszeń
             </Button>
           </label>
           lub
         </Typography>
-        <Typography variant='body2' gutterBottom component='div'>
+        <Typography variant='body2' gutterBottom component='div'style={{marginTop:"24px"}}>
+          2.
+          <label htmlFor='contained-button-file'>
+            <Input
+              accept='image/*'
+              id='contained-button-file'
+              multiple
+              type='file'
+            />
+            <Button
+              variant='outlined'
+              component='span'
+              className='button-outlined upload-button'
+              style={{ marginTop: "0" }}>
+              Wybierz z dysku
+            </Button>
+          </label>
+          lub
+        </Typography>
+        <Typography variant='body2' gutterBottom component='div' style={{marginTop:"24px"}}>
           2. Wpisz albo wklej tekst w pole tekstowe znajdujące się poniżej
         </Typography>
         <TextareaAutosize

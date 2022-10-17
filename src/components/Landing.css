@@ -22,6 +22,8 @@ body {
 
 .landing .primary{
   color: var(--primaryDark);
+  font-size: 34px;
+  line-height: 40px;
 }
 
 .landing .section-cards {
@@ -55,8 +57,8 @@ object-fit: contain;
   box-sizing: content-box;
   font-weight: 400;
   line-height: 22px;
-  color: var(--textMain);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  color: var(--textLighter);
+  -webkit-text-stroke: var(--textLighter);
   font-size: 14px;
   font-family: Montserrat, Arial;
   margin-top: 24px;
@@ -64,7 +66,7 @@ object-fit: contain;
 
 .landing .card-container .card1 .rankomat-text1 .rankomat-text1-0,
 .landing .card-container .card1 .hero-text1 .rankomat-text1-0 {
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
@@ -74,7 +76,7 @@ object-fit: contain;
 }
 
 .landing .card-container .card1 .rankomat-text1 .rankomat-text1-14 {
-  color: rgba(98, 0, 238, 1);
+  color: var(--primary);
   font-weight: 700;
   font-style: normal;
   font-size: 16px;
@@ -90,7 +92,7 @@ object-fit: contain;
 .section-cards .section-title {
   line-height: 26px;
   letter-spacing: 0px;
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
   font-size: 22px;
   font-weight: 700;
@@ -99,7 +101,7 @@ object-fit: contain;
 }
 
 .landing .card-container .card1 .rankomat-text2 .rankomat-text2-0 {
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   font-weight: 500;
   font-style: normal;
   font-size: 22px;
@@ -109,7 +111,7 @@ object-fit: contain;
 }
 
 .landing .card-container .card1 .rankomat-text2 .rankomat-text2-3 {
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   font-weight: 700;
   font-size: 22px;
   font-family: Montserrat, Arial;
@@ -117,7 +119,7 @@ object-fit: contain;
   text-decoration: none;
 }
 .button-primary-contained {
-  background-color: rgba(98, 0, 238, 1) !important;
+  background-color: var(--primary) !important;
   font-family: Montserrat, Arial;
   color: white !important;
   text-transform: none !important;
@@ -129,18 +131,12 @@ object-fit: contain;
  
 }
 
-.icon-wrapper {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  color:  rgba(98, 0, 238, 1) !important;
-}
-
 a:link,
 a:visited,
 a:hover,
 a:active {
   text-decoration: none;
+  color: var(--textMain);
 }
 
 
@@ -154,7 +150,7 @@ a:active {
   text-align: left;
   line-height: 30px;
   letter-spacing: 0px;
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
   font-size: 16px;
   font-weight: 400;
@@ -165,7 +161,7 @@ a:active {
 }
 
 .landing .text-landing .text-landing-0 {
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   font-weight: 500;
   font-style: normal;
   font-size: 24px;
@@ -175,7 +171,7 @@ a:active {
 }
 
 .landing .text-landing .text-landing-4 {
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
@@ -185,7 +181,7 @@ a:active {
 }
 
 .landing .text-landing .text-landing-46 {
-  color: rgba(23, 24, 48, 1);
+  color: var(--textMain);
   font-weight: 400;
   font-style: normal;
   font-size: 16px;

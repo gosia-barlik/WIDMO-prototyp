@@ -1,11 +1,17 @@
-/* .stepper-horizontal-container {
-    margin-top: 200px;
-    margin-left: 10%;
+@import "../../common/variables.css";
+
+.rankomat-stepper {
+
 }
 
-.stepper-horizontal-container .horizontal-stepper-navlink {
-    text-decoration: none
-} */
-.css-1n7tyfz-MuiStack-root {
-    margin-left: 10% !important;
+.rankomat-stepper .MuiStepper-horizontal {
+    width: 500px; 
 }
+ .rankomat-stepper .MuiStepLabel-horizontal {
+display: flex;
+flex-direction: column
+ }
+
+ .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+    color: var(--primary) !important;
+ }
