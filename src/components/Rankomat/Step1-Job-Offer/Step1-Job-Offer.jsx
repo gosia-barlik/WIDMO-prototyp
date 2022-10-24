@@ -21,7 +21,7 @@ export default function Step1JobOffer(props) {
     <Grid container spacing={4} className='rankomat-step-1-container'>
       <Grid
         item
-        xs={4}
+        xs={10}
         className='rankomat-step-1-container-box'>
         <Typography variant='body2' gutterBottom component='div' style={{lineHeight:"1.5rem"}}>
           Wprowadź <span style={{fontWeight:"700"}}> ogłoszenie </span>o pracę, pod kątem którego chciałbyś analizować CV

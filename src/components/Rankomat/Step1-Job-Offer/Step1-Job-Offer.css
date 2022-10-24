@@ -17,7 +17,7 @@
 
 .rankomat-step-1-container-box{
     justify-content: left !important;
-    margin-top: 50px !important;
+    margin: 50px 320px 50px 320px !important;
     text-align: left !important;
     
   
@@ -29,7 +29,7 @@
 @media only screen and (max-width: 900px) {
   
     .rankomat-step-1-container-box {
-        width:100%
+        margin: 50px 20px 50px 20px !important;
     }
     .rankomat-step-1-container textarea, .rankomat-step-1-container textarea {
         width:100%

@@ -2,16 +2,27 @@ import { React, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import CvList from "./Step3-Cv-List";
+import CvList from "./Step3-Analysis-Box/Step3-Cv-List";
 import MainActionButtons from "../common/MainActionButtons";
 import Step3Filters from "./Step3-Filters/Step3-Filters";
 import config from "../../../config";
 import { useEffect } from "react";
 import CvPreview from "./Step3-Cv-Preview/Step3-Cv-Preview";
 import CvDetails from "./Step3-Cv-Preview/Step3-Cv-Details";
+import AnalysisSidebar from "./Step3-Analysis-Box/Step3-Analysis-Sidebar";
+import AnalysisTopbar from "./Step3-Analysis-Box/Step3-Analysis-Topbar";
 import "./Step3-Match.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setKeyword, setResumes } from "../../../store/actions/rankomatActions/rankomatStepTwoActions";
+import {
+  setKeyword,
+  setResumes,
+} from "../../../store/actions/rankomatActions/rankomatStepTwoActions";
+
+import {
+  setFavorites,
+  setReserves,
+  setRejected,
+} from "../../../store/actions/rankomatActions/rankomatStepThreeActions";
 
 export default function Step3Match(props) {
   const [text, setText] = useState("");
@@ -30,10 +41,19 @@ export default function Step3Match(props) {
     "Soft skill": true,
   });
 
-  // const [skills, setSkills] = useState([]);
+  const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
+  const {
+    all,
+    favorites,
+    rejected,
+    reserves,
+    showAll,
+    showReserves,
+    showFavorites,
+    showRejected,
+  } = useSelector((state) => state.rankomatStepThreeReducer);
   const dispatch = useDispatch();
 
-  const { resumes } = useSelector((state) => state.stepTwoReducer);
   const onSetKeyWord = (newKeyWord) => dispatch(setKeyword(newKeyWord));
 
   // ADD SPLICE TO STRING PROTOTYPE
@@ -65,7 +85,7 @@ export default function Step3Match(props) {
         sortLabels(data.entities);
         setResponse(data.entities);
         sortResponse(data.entities);
-      })
+      });
   };
 
   const sortLabels = (data) => {
@@ -133,28 +153,45 @@ export default function Step3Match(props) {
   };
 
   const sortResponse = (array) => {
-    const sorted=[...array]
-    sorted.sort(function(a, b) {
-      return (a.label < b.label) ? -1 : (a.label > b.label) ? 1 : 0;
-  });
-  setSortedResponse(sorted)
-  }
+    const sorted = [...array];
+    sorted.sort(function (a, b) {
+      return a.label < b.label ? -1 : a.label > b.label ? 1 : 0;
+    });
+    setSortedResponse(sorted);
+  };
 
   const clearPreview = () => {
     setResponse([]);
-  }
+  };
 
   return (
     <>
-      <Grid container spacing={4} className='rankomat' style={{width: "auto"}}>
+      <AnalysisSidebar />
+      <Grid
+        container
+        spacing={4}
+        className='rankomat'
+        style={{ width: "auto" }}>
         {response.length === 0 && (
-          <Grid item xs={5}  className='CV-list-container'>
-            <Typography variant='subtitle2' gutterBottom component='div'>
-              Lista życiorysów
-            </Typography>
+          <Grid item xs={5} className='CV-list-container'>
             <Paper className='form-container-box'>
-              <CvList handleOnClick={handleOnClick} />
+              {showAll && (
+                <>
+                  <AnalysisTopbar />
+                  <CvList handleOnClick={handleOnClick} resumes={all} />
+                </>
+              )}
+              {showFavorites && (
+                <CvList handleOnClick={handleOnClick} resumes={favorites} />
+              )}
+              {showReserves && (
+                <CvList handleOnClick={handleOnClick} resumes={reserves} />
+              )}
+              {showRejected && (
+                <CvList handleOnClick={handleOnClick} resumes={rejected} />
+              )}
             </Paper>
+
             <MainActionButtons
               handleBack={props.handleStepperBack}
               handleNext={props.handleStepperNext}
@@ -178,11 +215,8 @@ export default function Step3Match(props) {
         )}
 
         {response.length === 0 && (
-          <Grid item xs={4} className='filters-container'>
-            <Typography variant='subtitle2' gutterBottom component='div'>
-              Filtry
-            </Typography>
-            <Paper >
+          <Grid item xs={3} className='filters-container'>
+            <Paper>
               <Step3Filters
                 // onSetQualificationName={props.onSetQualificationName}
                 // onSetExperienceLevel={props.onSetExperienceLevel}

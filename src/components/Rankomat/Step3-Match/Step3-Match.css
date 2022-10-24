@@ -1,3 +1,5 @@
+@import "../../common/variables.css";
+
 .rankomat {
 justify-content: center;
   display: flex;
@@ -11,16 +13,14 @@ justify-content: center;
 }
 
 .rankomat .filters-container {
-  max-width: 20%;
+ 
   margin-top: 50px;
   text-align: left;
 }
 
-.rankomat .MuiListItemText-root span {
-  color: white;
-}
+.rankomat .MuiListItemText-root span,
 .rankomat .styled-checkbox svg {
-  color: white;
+  color: var(--white);
 }
 
 /* FILTERS */
@@ -44,7 +44,7 @@ justify-content: center;
 
 .checkbox-container .MuiFormControlLabel-root {
   width: 220px;
-  padding: 20px 20px 20px 60px;
+  padding: 20px 20px 20px 40px;
 }
 
 #menu- ul {
@@ -55,7 +55,6 @@ justify-content: center;
 
 #menu- li {
   display: block !important;
-  padding-left: 12px;
   font-size: 0.875rem;
 }
 
@@ -99,9 +98,7 @@ justify-content: center;
   color: #61988e !important;
 }
 
-.checkbox-container .MuiIconButton-root {
-  width: 10px !important;
-}
+
 .checkbox-container .MuiOutlinedInput-input {
   font-size: 0.875rem !important;
 }

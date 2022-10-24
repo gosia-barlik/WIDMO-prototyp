@@ -10,7 +10,7 @@ import "./Creator.css";
 export default function Creator() {
   const { showResults } = useSelector((state) => state.stepOneReducer);
   const [updateState, setUpdateState] = useState(0);
-  //MAIN STEPPER
+  //STEPPER
   const [activeStep, setActiveStep] = useState(0);
 
   const mainStepperLabels = [
@@ -20,7 +20,7 @@ export default function Creator() {
     { name: "Gotowe ogłoszenie" },
   ];
 
-  // MAIN STEPPER
+  // STEPPER
   const handleStep = (step) => {
     setActiveStep(step);
   };

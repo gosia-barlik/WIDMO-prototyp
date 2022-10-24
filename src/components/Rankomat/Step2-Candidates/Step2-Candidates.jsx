@@ -11,8 +11,9 @@ export default function Step2Candidates(props) {
     <Grid container spacing={4} className='rankomat-step-1-container'>
       <Grid
         item
-        xs={4}
-        style={{ marginTop: "50px", textAlign: "left"}}>
+        xs={10}
+        className='rankomat-step-1-container-box'
+        style={{ textAlign: "left"}}>
         <Typography variant='body2' gutterBottom component='div'>
         Wprowadź <span style={{fontWeight:"700"}}>CV</span> kandydatów, które chciałbyś przeanalizować
         </Typography>

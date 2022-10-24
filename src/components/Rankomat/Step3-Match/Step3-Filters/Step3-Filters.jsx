@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import CustomizedInput from "./Customized-Input";
+import Card from '@mui/material/Card';
 import { FormControlLabel, FormGroup, Checkbox } from "@material-ui/core";
 import { alpha, withStyles } from "@material-ui/core/styles";
 import Button from "@mui/material/Button";
@@ -42,7 +43,7 @@ export default function Step3Filters(props) {
       id: 0,
       label: "Umiejętności twarde",
       weight: null,
-      checked: false
+      checked: false,
     },
     {
       name: "Soft skill",
@@ -50,7 +51,7 @@ export default function Step3Filters(props) {
       id: 1,
       label: "Umiejętności miękkie",
       weight: null,
-      checked: false
+      checked: false,
     },
     {
       name: "Language skill",
@@ -58,7 +59,7 @@ export default function Step3Filters(props) {
       id: 2,
       label: "Umiejętności językowe",
       weight: null,
-      checked: false
+      checked: false,
     },
     {
       name: "Education",
@@ -66,40 +67,40 @@ export default function Step3Filters(props) {
       id: 3,
       label: "Edukacja",
       weight: null,
-      checked: false
+      checked: false,
     },
-    {
-      name: "Experience",
-      value: "experience",
-      id: 4,
-      label: "Doświadczenie",
-      weight: null,
-      checked: false
-    },
-    {
-      name: "Certificates",
-      value: "certificates",
-      id: 5,
-      label: "Certyfikaty",
-      weight: null,
-      checked: false
-    },
-    {
-      name: "Job-position",
-      value: "job-position",
-      id: 6,
-      label: "Nazwa stanowiska",
-      weight: null,
-      checked: false
-    },
-    {
-      name: "Company-name",
-      value: "company-name",
-      id: 7,
-      label: "Nazwa firmy",
-      weight: null,
-      checked: false
-    },
+    // {
+    //   name: "Experience",
+    //   value: "experience",
+    //   id: 4,
+    //   label: "Doświadczenie",
+    //   weight: null,
+    //   checked: false,
+    // },
+    // {
+    //   name: "Certificates",
+    //   value: "certificates",
+    //   id: 5,
+    //   label: "Certyfikaty",
+    //   weight: null,
+    //   checked: false,
+    // },
+    // {
+    //   name: "Job-position",
+    //   value: "job-position",
+    //   id: 6,
+    //   label: "Nazwa stanowiska",
+    //   weight: null,
+    //   checked: false,
+    // },
+    // {
+    //   name: "Company-name",
+    //   value: "company-name",
+    //   id: 7,
+    //   label: "Nazwa firmy",
+    //   weight: null,
+    //   checked: false,
+    // },
   ];
 
   const keyWordLabel = "Słowo kluczowe";
@@ -108,18 +109,16 @@ export default function Step3Filters(props) {
   const [checkboxes, setCheckboxes] = React.useState(checkboxesInitial);
 
   const handleSelectChange = (e, checkboxId) => {
-    const newCheckboxes = checkboxes.map(o => {
-      if(o.id == checkboxId)
-        o.weight = e.target.value;
+    const newCheckboxes = checkboxes.map((o) => {
+      if (o.id == checkboxId) o.weight = e.target.value;
       return o;
     });
     setCheckboxes(newCheckboxes);
   };
 
   const handleCheckboxToggle = (checkbox) => () => {
-    const newCheckboxes = checkboxes.map(e => {
-      if(e.id == checkbox.id)
-        e.checked = !e.checked;
+    const newCheckboxes = checkboxes.map((e) => {
+      if (e.id == checkbox.id) e.checked = !e.checked;
       return e;
     });
 
@@ -134,15 +133,23 @@ export default function Step3Filters(props) {
   return (
     <>
       <Typography
-        variant='subtitle2'
-        gutterBottom
+        variant='h6'
         component='div'
-        style={{ padding: "40px 20px 20px 60px" }}>
-        Filtry zaawansowane
+        style={{ padding: "20px 20px 0 20px" }}>
+        Filtry
+      </Typography>
+      <Typography
+        variant='body'
+        component='div'
+        style={{ padding: "20px" }}>
+        Uporządkuj CV według wybranej kategorii
       </Typography>
 
       {checkboxes.map((checkbox) => (
-        <FormGroup row className='o-form checkbox-container' key={'form-group'+checkbox.id}>
+        <FormGroup
+          row
+          className='o-form checkbox-container'
+          key={"form-group" + checkbox.id}>
           <FormControlLabel
             key={checkbox.value}
             className={`filters-checkbox-${checkbox.id}`}
@@ -167,7 +174,9 @@ export default function Step3Filters(props) {
               id={`filters-weight-${checkbox.id}`}
               autoWidth
               onChange={(e) => handleSelectChange(e, checkbox.id)}
-              input={<BootstrapInput value={checkbox.weight ? checkbox.weight : 0}/>}>
+              input={
+                <BootstrapInput value={checkbox.weight ? checkbox.weight : 0} />
+              }>
               <MenuItem value=''>
                 <em>0</em>
               </MenuItem>
@@ -178,7 +187,6 @@ export default function Step3Filters(props) {
           </FormControl>
         </FormGroup>
       ))}
-      
 
       <CustomizedInput
         label={keyWordLabel}

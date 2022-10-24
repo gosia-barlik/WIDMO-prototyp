@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setResumes } from "../../../store/actions/rankomatActions/rankomatStepTwoActions";
+import { setAll } from "../../../store/actions/rankomatActions/rankomatStepThreeActions";
 
 const thumbsContainer = {
   display: "flex",
@@ -35,7 +36,7 @@ const img = {
   width: "auto",
   height: "100%",
   fontSize: "12px",
-  backgroundColor: "white"
+  backgroundColor: "white",
 };
 
 // CAROUSEL
@@ -60,8 +61,11 @@ const img = {
 export default function Step2Dropzone(props) {
   const dispatch = useDispatch();
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
-  const onSetResumes = (newResumes) => dispatch(setResumes(newResumes));
-  
+  const onSetResumes = (newResumes) => {
+    dispatch(setResumes(newResumes));
+    dispatch(setAll(newResumes));
+  };
+
   // const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     noClick: true,
@@ -69,7 +73,7 @@ export default function Step2Dropzone(props) {
     accept: "image/*, .doc, .docx, .pdf",
     onDrop: (acceptedFiles) => {
       let i = 0;
-      acceptedFiles.forEach((file)=>(file.id= i++));
+      acceptedFiles.forEach((file) => (file.id = i++));
       onSetResumes(
         acceptedFiles.map((file) =>
           Object.assign(file, {
@@ -83,7 +87,7 @@ export default function Step2Dropzone(props) {
   const thumbs = resumes.map((resume) => (
     <div style={thumb} key={resume.name}>
       <div style={thumbInner}>
-        <img src={resume.preview} style={img} alt={resume.name}/>
+        <img src={resume.preview} style={img} alt={resume.name} />
       </div>
     </div>
   ));
@@ -94,7 +98,7 @@ export default function Step2Dropzone(props) {
   }, [resumes]);
 
   return (
-    <section className='container' style={{marginTop:"40px"}}>
+    <section className='container' style={{ marginTop: "40px" }}>
       <div {...getRootProps({ className: "dropzone" })}>
         <input {...getInputProps()} />
         <Button className='button-outlined' variant='outlined' onClick={open}>
