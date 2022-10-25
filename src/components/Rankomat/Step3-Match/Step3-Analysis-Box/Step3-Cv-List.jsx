@@ -71,7 +71,6 @@ export default function CvList(props) {
     }
     dispatch(setChecked(newChecked));
     dispatch(setSelected(newSelected));
-    console.log(selected);
 
   }
 

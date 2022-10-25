@@ -11,12 +11,16 @@ import ThumbDownAltOutlinedIcon from "@material-ui/icons/ThumbDownAltOutlined";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ThumbsUpDownOutlinedIcon from "@material-ui/icons/ThumbsUpDownOutlined";
 import { useDispatch, useSelector } from "react-redux";
-import { setFavorites, setAll } from "../../../../store/actions/rankomatActions/rankomatStepThreeActions";
+import {
+  setFavorites,
+  setAll,
+} from "../../../../store/actions/rankomatActions/rankomatStepThreeActions";
 import { setResumes } from "../../../../store/actions/rankomatActions/rankomatStepTwoActions";
 
-export default function AnalysisTopbar() {
-
-  const { checked, all, selected } = useSelector((state) => state.rankomatStepThreeReducer);
+export default function AnalysisTopbar(props) {
+  const { checked, all, selected } = useSelector(
+    (state) => state.rankomatStepThreeReducer
+  );
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -25,19 +29,6 @@ export default function AnalysisTopbar() {
   };
   const closeMoveToMenu = () => {
     setAnchorEl(null);
-  };
-  const moveToFavorites = () => {
-    
-    dispatch(setFavorites(selected));
-    dispatch(setAll(compareArrays(all,selected)));
-   
-  };
-
-const compareArrays = (arr1, arr2)=> {
-    let difference = arr1.filter(x => !arr2.includes(x));
-    console.log(difference);
-    return difference
-    
   };
 
   return (
@@ -81,26 +72,25 @@ const compareArrays = (arr1, arr2)=> {
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-
-        <MenuItem onClick={moveToFavorites}>
-          <ListItemIcon>
-            <ThumbUpAltOutlinedIcon fontSize='small' />
-          </ListItemIcon>
-          Wybrane
-        </MenuItem>
-        <MenuItem onClick={() => console.log("przenieś do Rezerwowe")}>
-          <ListItemIcon>
-            <ThumbsUpDownOutlinedIcon fontSize='small' />
-          </ListItemIcon>
-          Rezerwowe
-        </MenuItem>
-        <MenuItem onClick={() => console.log("przenieś do Odrzucone")}>
-          <ListItemIcon>
-            <ThumbDownAltOutlinedIcon fontSize='small' />
-          </ListItemIcon>
-          Odrzucone
-        </MenuItem>
-
+        {props.topbarMenu.map((text, index) => (
+          <MenuItem>
+            {index === 0 && (
+              <div onClick={props.moveToFavorites}>
+                {text}
+              </div>
+            )}
+            {index === 1 && (
+              <div onClick={props.moveToReserves}>
+                {text}
+              </div>
+            )}
+            {index === 2 && (
+              <div onClick={props.moveToRejected}>
+                {text}
+              </div>
+            )}
+          </MenuItem>
+        ))}
       </Menu>
     </React.Fragment>
   );

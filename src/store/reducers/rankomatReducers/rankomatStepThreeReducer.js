@@ -25,6 +25,7 @@ const initialState = {
   showRejected: false,
 };
 
+
 export const rankomatStepThreeReducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL: {

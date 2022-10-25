@@ -20,8 +20,11 @@ import {
 
 import {
   setFavorites,
+  setAll,
   setReserves,
   setRejected,
+  setSelected,
+  setChecked,
 } from "../../../store/actions/rankomatActions/rankomatStepThreeActions";
 
 export default function Step3Match(props) {
@@ -40,6 +43,10 @@ export default function Step3Match(props) {
     "Professional skill": true,
     "Soft skill": true,
   });
+  const topbarMenuAll = ["Wybrane", "Rezerwowe", "Odrzucone"];
+  const topbarMenuFavorites = ["Wszystkie", "Rezerwowe", "Odrzucone"];
+  const topbarMenuReserves = ["Wszystkie", "Wybrane", "Odrzucone"];
+  const topbarMenuRejected = ["Wszystkie", "Wybrane", "Rezerwowe"];
 
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
   const {
@@ -47,6 +54,7 @@ export default function Step3Match(props) {
     favorites,
     rejected,
     reserves,
+    selected,
     showAll,
     showReserves,
     showFavorites,
@@ -163,6 +171,64 @@ export default function Step3Match(props) {
   const clearPreview = () => {
     setResponse([]);
   };
+  // TOPBAR MENU
+  const compareArrays = (arr1, arr2) => {
+    let difference = arr1.filter((x) => !arr2.includes(x));
+    return difference;
+  };
+  const patchArray = (arr1, arr2) => {
+    let difference = arr1
+      .filter((x) => !arr2.includes(x))
+      .concat(arr2.filter((x) => !arr1.includes(x)));
+    return difference;
+  };
+
+  const moveToFavorites = () => {
+ 
+    dispatch(setFavorites(patchArray(selected, favorites)));
+    if (showAll) {
+      dispatch(setAll(compareArrays(all, selected)));
+    }
+    if (showRejected) {
+      dispatch(setRejected(compareArrays(rejected, selected)));
+    } else {
+      dispatch(setReserves(compareArrays(reserves, selected)));
+    }
+
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
+
+  const moveToReserves = () => {
+    dispatch(setReserves(selected));
+
+    showAll
+      ? dispatch(setAll(compareArrays(all, selected)))
+      : showRejected
+      ? dispatch(setRejected(compareArrays(rejected, selected)))
+      : dispatch(setFavorites(compareArrays(favorites, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
+
+  const moveToRejected = () => {
+    dispatch(setRejected(selected));
+
+    showAll
+      ? dispatch(setAll(compareArrays(all, selected)))
+      : showReserves
+      ? dispatch(setReserves(compareArrays(reserves, selected)))
+      : dispatch(setFavorites(compareArrays(favorites, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
+
+  // const moveFromAllToReserves = () => {
+  //   dispatch(setReserves(selected));
+  //   dispatch(setAll(compareArrays(all, selected)));
+  //   dispatch(setSelected([]));
+  //   dispatch(setSelected([]));
+  // };
 
   return (
     <>
@@ -177,18 +243,48 @@ export default function Step3Match(props) {
             <Paper className='form-container-box'>
               {showAll && (
                 <>
-                  <AnalysisTopbar />
+                  <AnalysisTopbar
+                    topbarMenu={topbarMenuAll}
+                    moveToFavorites={moveToFavorites}
+                    moveToReserves={moveToReserves}
+                    moveToRejected={moveToRejected}
+                  />
                   <CvList handleOnClick={handleOnClick} resumes={all} />
                 </>
               )}
               {showFavorites && (
-                <CvList handleOnClick={handleOnClick} resumes={favorites} />
+                <>
+                  <AnalysisTopbar
+                    topbarMenu={topbarMenuFavorites}
+                    moveToFavorites={moveToFavorites}
+                    moveToReserves={moveToReserves}
+                    moveToRejected={moveToRejected}
+                  />
+                  <CvList handleOnClick={handleOnClick} resumes={favorites} />
+                </>
               )}
+
               {showReserves && (
-                <CvList handleOnClick={handleOnClick} resumes={reserves} />
+                <>
+                  <AnalysisTopbar
+                    topbarMenu={topbarMenuReserves}
+                    moveToFavorites={moveToFavorites}
+                    moveToReserves={moveToReserves}
+                    moveToRejected={moveToRejected}
+                  />
+                  <CvList handleOnClick={handleOnClick} resumes={reserves} />
+                </>
               )}
               {showRejected && (
-                <CvList handleOnClick={handleOnClick} resumes={rejected} />
+                <>
+                  <AnalysisTopbar
+                    topbarMenu={topbarMenuRejected}
+                    moveToFavorites={moveToFavorites}
+                    moveToReserves={moveToReserves}
+                    moveToRejected={moveToRejected}
+                  />
+                  <CvList handleOnClick={handleOnClick} resumes={rejected} />
+                </>
               )}
             </Paper>
 
