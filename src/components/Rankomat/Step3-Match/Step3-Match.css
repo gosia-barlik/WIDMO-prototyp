@@ -22,6 +22,12 @@ justify-content: center;
 .rankomat .styled-checkbox svg {
   color: var(--white);
 }
+/* ANALISYS BOX */
+.MuiList-root .active {
+  background-color: #d5d5d5 !important;
+}
+
+
 
 /* FILTERS */
 

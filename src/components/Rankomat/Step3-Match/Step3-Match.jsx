@@ -45,8 +45,8 @@ export default function Step3Match(props) {
   });
   const topbarMenuAll = ["Wybrane", "Rezerwowe", "Odrzucone"];
   const topbarMenuFavorites = ["Wszystkie", "Rezerwowe", "Odrzucone"];
-  const topbarMenuReserves = ["Wszystkie", "Wybrane", "Odrzucone"];
-  const topbarMenuRejected = ["Wszystkie", "Wybrane", "Rezerwowe"];
+  const topbarMenuReserves = ["Wybrane", "Wszystkie", "Odrzucone"];
+  const topbarMenuRejected = ["Wybrane", "Rezerwowe", "Wszystkie" ];
 
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
   const {
@@ -183,24 +183,26 @@ export default function Step3Match(props) {
     return difference;
   };
 
-  const moveToFavorites = () => {
- 
-    dispatch(setFavorites(patchArray(selected, favorites)));
-    if (showAll) {
-      dispatch(setAll(compareArrays(all, selected)));
-    }
-    if (showRejected) {
-      dispatch(setRejected(compareArrays(rejected, selected)));
-    } else {
-      dispatch(setReserves(compareArrays(reserves, selected)));
-    }
+  const moveToAll = () => {
+    dispatch(setAll(patchArray(selected, all)));
+    showFavorites && dispatch(setAll(compareArrays(favorites, selected)));
+    showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
+    showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
 
+  const moveToFavorites = () => {
+    dispatch(setFavorites(patchArray(selected, favorites)));
+    showAll && dispatch(setAll(compareArrays(all, selected)));
+    showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
+    showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
     dispatch(setChecked([]));
     dispatch(setSelected([]));
   };
 
   const moveToReserves = () => {
-    dispatch(setReserves(selected));
+    dispatch(setReserves(patchArray(selected, reserves)));
 
     showAll
       ? dispatch(setAll(compareArrays(all, selected)))
@@ -212,7 +214,7 @@ export default function Step3Match(props) {
   };
 
   const moveToRejected = () => {
-    dispatch(setRejected(selected));
+    dispatch(setRejected(patchArray(selected, rejected)));
 
     showAll
       ? dispatch(setAll(compareArrays(all, selected)))
@@ -222,13 +224,6 @@ export default function Step3Match(props) {
     dispatch(setChecked([]));
     dispatch(setSelected([]));
   };
-
-  // const moveFromAllToReserves = () => {
-  //   dispatch(setReserves(selected));
-  //   dispatch(setAll(compareArrays(all, selected)));
-  //   dispatch(setSelected([]));
-  //   dispatch(setSelected([]));
-  // };
 
   return (
     <>
@@ -256,7 +251,7 @@ export default function Step3Match(props) {
                 <>
                   <AnalysisTopbar
                     topbarMenu={topbarMenuFavorites}
-                    moveToFavorites={moveToFavorites}
+                    moveToAll={moveToAll}
                     moveToReserves={moveToReserves}
                     moveToRejected={moveToRejected}
                   />
@@ -269,7 +264,7 @@ export default function Step3Match(props) {
                   <AnalysisTopbar
                     topbarMenu={topbarMenuReserves}
                     moveToFavorites={moveToFavorites}
-                    moveToReserves={moveToReserves}
+                    moveToAll={moveToAll}
                     moveToRejected={moveToRejected}
                   />
                   <CvList handleOnClick={handleOnClick} resumes={reserves} />
@@ -281,7 +276,7 @@ export default function Step3Match(props) {
                     topbarMenu={topbarMenuRejected}
                     moveToFavorites={moveToFavorites}
                     moveToReserves={moveToReserves}
-                    moveToRejected={moveToRejected}
+                    moveToAll={moveToAll}
                   />
                   <CvList handleOnClick={handleOnClick} resumes={rejected} />
                 </>

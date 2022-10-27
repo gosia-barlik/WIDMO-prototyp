@@ -1,6 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar";
 import ThumbDownAltOutlinedIcon from "@material-ui/icons/ThumbDownAltOutlined";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import ThumbsUpDownOutlinedIcon from "@material-ui/icons/ThumbsUpDownOutlined";
@@ -14,12 +12,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
-import MailIcon from "@material-ui/icons/Mail";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   setShowAll,
   setShowFavorites,
@@ -73,59 +69,93 @@ export default function AnalysisSidebar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [active, setActive] = React.useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const onSetShowSelected = (index) => {
-    if (index == 0) {
+  const onSetShowAll = () => {
+    setActive(0);
+    console.log(active);
       dispatch(setShowAll(true));
       dispatch(setShowFavorites(false));
       dispatch(setShowReserves(false));
       dispatch(setShowRejected(false));
-    }
-    if (index == 1) {
-      dispatch(setShowFavorites(true));
-      dispatch(setShowAll(false));
-      dispatch(setShowReserves(false));
-      dispatch(setShowRejected(false));
-    }
-    if (index == 2) {
-      dispatch(setShowReserves(true));
-      dispatch(setShowFavorites(false));
-      dispatch(setShowAll(false));
-      dispatch(setShowRejected(false));
-    }
-    if (index == 3) {
-      dispatch(setShowRejected(true));
-      dispatch(setShowFavorites(false));
-      dispatch(setShowAll(false));
-      dispatch(setShowReserves(false));
-    }
-  };
+  }
+
+  const onSetShowFavorites = () => {
+    setActive(1);
+    console.log(active);
+    dispatch(setShowFavorites(true));
+    dispatch(setShowAll(false));
+    dispatch(setShowReserves(false));
+    dispatch(setShowRejected(false));
+  }
+
+  const onSetShowReserves = () => {
+    setActive(2);
+    console.log(active);
+    dispatch(setShowReserves(true));
+    dispatch(setShowFavorites(false));
+    dispatch(setShowAll(false));
+    dispatch(setShowRejected(false));
+  }
+
+  const onSetShowRejected = () => {
+    setActive(3);
+    console.log(active);
+    dispatch(setShowRejected(true));
+    dispatch(setShowFavorites(false));
+    dispatch(setShowAll(false));
+    dispatch(setShowReserves(false));
+  }
 
   const drawer = (
     <div style={{ zIndex: "1" }}>
       <div className={classes.toolbar} style={{ height: "210px" }} />
       <Divider />
       <List>
-        {["Wszystkie", "Wybrane", "Rezerwowe", "Odrzucone"].map(
-          (text, index) => (
-            <ListItem
-              button
-              key={text}
-              onClick={() => onSetShowSelected(index)}>
-              <ListItemIcon>
-                {index === 0 && <MoveToInboxOutlinedIcon />}
-                {index === 1 && <ThumbUpAltOutlinedIcon />}
-                {index === 2 && <ThumbsUpDownOutlinedIcon />}
-                {index === 3 && <ThumbDownAltOutlinedIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+        <ListItem
+          button
+          key="wszystkie"
+          className={active == "0" ? "active" : ""}
+          onClick={() => onSetShowAll()}>
+          <ListItemIcon>
+            <MoveToInboxOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Wszystkie' />
+        </ListItem>
+        <ListItem
+          button
+          key="wybrane"
+          className={active == "1" ? "active" : ""}
+          onClick={() => onSetShowFavorites()}>
+          <ListItemIcon>
+            <ThumbUpAltOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Wybrane' />
+        </ListItem>
+        <ListItem
+          button
+          key="rezerwowe"
+          className={active == "2" ? "active" : ""}
+          onClick={() => onSetShowReserves()}>
+          <ListItemIcon>
+            <ThumbsUpDownOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Rezerwowe' />
+        </ListItem>
+        <ListItem
+          button
+          key="odrzucone"
+          className={active == "3" ? "active" : ""}
+          onClick={() => onSetShowRejected()}>
+          <ListItemIcon>
+            <ThumbDownAltOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary='Odrzucone' />
+        </ListItem>
       </List>
       <Divider />
       <List>
