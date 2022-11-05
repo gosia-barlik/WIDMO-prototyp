@@ -4,20 +4,20 @@ body {
   height: 100% !important;
   width: 100%;
   background-color: rgb(245, 245, 245);
-  font-family: Arial !important;
+
 }
 
 .button-outlined {
   margin: 15px 5px 0 5px !important;
   border: 1px solid var(--primary)!important;
   color: var(--primary) !important;
-  font-family: Arial !important;
+
 }
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
   background-color: var(--primary)!important;
-  font-family: Arial !important;
+
 }
 
 .Mui-disabled.button-outlined {

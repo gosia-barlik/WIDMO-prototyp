@@ -7,8 +7,9 @@ import MainActionButtons from "../common/MainActionButtons";
 import Step3Filters from "./Step3-Filters/Step3-Filters";
 import config from "../../../config";
 import { useEffect } from "react";
-import CvPreview from "./Step3-Cv-Preview/Step3-Cv-Preview";
-import CvDetails from "./Step3-Cv-Preview/Step3-Cv-Details";
+
+import CvPreview from "./Step3-Cv-Details/Step3-Cv-Preview";
+import CvQualifications from "./Step3-Cv-Details/Step3-Cv-Qualifications";
 import AnalysisSidebar from "./Step3-Analysis-Box/Step3-Analysis-Sidebar";
 import AnalysisTopbar from "./Step3-Analysis-Box/Step3-Analysis-Topbar";
 import "./Step3-Match.css";
@@ -26,12 +27,18 @@ import {
   setSelected,
   setChecked,
 } from "../../../store/actions/rankomatActions/rankomatStepThreeActions";
+import CVDetails from "./Step3-Cv-Details/Step3-Cv-Details";
 
 export default function Step3Match(props) {
   const [text, setText] = useState("");
   const [annotatedText, setAnnotatedText] = useState("");
   const [response, setResponse] = useState([]);
   const [sortedResponse, setSortedResponse] = useState([]);
+  const [professionalSkills, setProfessionalSkills] = useState([]);
+  const [softSkills, setSoftSkills] = useState([]);
+  const [languageSkills, setLanguageSkills] = useState([]);
+  const [itSkills, setItSkills] = useState([]);
+  const [education, setEducation] = useState([]);
   const [annotations, setAnnotations] = useState({
     "IT skill": true, //TODO: zamienić na zwracane z backendu code-namy
     Company: true,
@@ -43,10 +50,11 @@ export default function Step3Match(props) {
     "Professional skill": true,
     "Soft skill": true,
   });
+  const [open, setOpen] = useState(false);
   const topbarMenuAll = ["Wybrane", "Rezerwowe", "Odrzucone"];
   const topbarMenuFavorites = ["Wszystkie", "Rezerwowe", "Odrzucone"];
   const topbarMenuReserves = ["Wybrane", "Wszystkie", "Odrzucone"];
-  const topbarMenuRejected = ["Wybrane", "Rezerwowe", "Wszystkie" ];
+  const topbarMenuRejected = ["Wybrane", "Rezerwowe", "Wszystkie"];
 
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
   const {
@@ -75,6 +83,13 @@ export default function Step3Match(props) {
     if (response.length > 0 && text.length > 0) addHighlightedLabels();
   }, [response, text]);
 
+  const handleDetailOpen = () => {
+    setOpen(true);
+  };
+  const handleDetailClose = () => {
+    setOpen(false);
+  };
+
   const handleOnClick = (e) => {
     e.preventDefault();
     const url = `${config.NER_BASE_URL}/ner_text/`;
@@ -94,6 +109,7 @@ export default function Step3Match(props) {
         setResponse(data.entities);
         sortResponse(data.entities);
       });
+    handleDetailOpen();
   };
 
   const sortLabels = (data) => {
@@ -162,10 +178,26 @@ export default function Step3Match(props) {
 
   const sortResponse = (array) => {
     const sorted = [...array];
+
     sorted.sort(function (a, b) {
       return a.label < b.label ? -1 : a.label > b.label ? 1 : 0;
     });
+    const professional = sorted.filter(
+      (skill) => skill.label == "Professional skill"
+    );
+    const soft = sorted.filter((skill) => skill.label == "Soft skill");
+    const informationTechnology = sorted.filter(
+      (skill) => skill.label == "IT skill"
+    );
+    const education = sorted.filter((skill) => skill.label == "Education");
+    const language = sorted.filter((skill) => skill.label == "Language skill");
+
     setSortedResponse(sorted);
+    setProfessionalSkills(professional);
+    setSoftSkills(soft);
+    setLanguageSkills(language);
+    setItSkills(informationTechnology);
+    setEducation(education);
   };
 
   const clearPreview = () => {
@@ -233,102 +265,121 @@ export default function Step3Match(props) {
         spacing={4}
         className='rankomat'
         style={{ width: "auto" }}>
-        {response.length === 0 && (
-          <Grid item xs={5} className='CV-list-container'>
-            <Paper className='form-container-box'>
-              {showAll && (
-                <>
-                  <AnalysisTopbar
-                    topbarMenu={topbarMenuAll}
-                    moveToFavorites={moveToFavorites}
-                    moveToReserves={moveToReserves}
-                    moveToRejected={moveToRejected}
-                  />
-                  <CvList handleOnClick={handleOnClick} resumes={all} />
-                </>
-              )}
-              {showFavorites && (
-                <>
-                  <AnalysisTopbar
-                    topbarMenu={topbarMenuFavorites}
-                    moveToAll={moveToAll}
-                    moveToReserves={moveToReserves}
-                    moveToRejected={moveToRejected}
-                  />
-                  <CvList handleOnClick={handleOnClick} resumes={favorites} />
-                </>
-              )}
+        <Grid item xs={5} className='CV-list-container'>
+          <Paper className='form-container-box'>
+            {showAll && (
+              <>
+                <AnalysisTopbar
+                  topbarMenu={topbarMenuAll}
+                  moveToFavorites={moveToFavorites}
+                  moveToReserves={moveToReserves}
+                  moveToRejected={moveToRejected}
+                />
+                <CvList
+                  handleOnClick={handleOnClick}
+                  handleDetailClose={handleDetailClose}
+                  open={open}
+                  resumes={all}
+                  annotatedText={annotatedText}
+                  sortedResponse={sortedResponse}
+                  professionalSkills={professionalSkills}
+                  softSkills={softSkills}
+                  languageSkills={languageSkills}
+                  itSkills={itSkills}
+                  education={education}
+                />
+              </>
+            )}
+            {showFavorites && (
+              <>
+                <AnalysisTopbar
+                  topbarMenu={topbarMenuFavorites}
+                  moveToAll={moveToAll}
+                  moveToReserves={moveToReserves}
+                  moveToRejected={moveToRejected}
+                />
+                <CvList
+                  handleOnClick={handleOnClick}
+                  handleDetailClose={handleDetailClose}
+                  open={open}
+                  resumes={favorites}
+                  annotatedText={annotatedText}
+                  sortedResponse={sortedResponse}
+                  professionalSkills={professionalSkills}
+                  softSkills={softSkills}
+                  languageSkills={languageSkills}
+                  itSkills={itSkills}
+                  education={education}
+                />
+              </>
+            )}
 
-              {showReserves && (
-                <>
-                  <AnalysisTopbar
-                    topbarMenu={topbarMenuReserves}
-                    moveToFavorites={moveToFavorites}
-                    moveToAll={moveToAll}
-                    moveToRejected={moveToRejected}
-                  />
-                  <CvList handleOnClick={handleOnClick} resumes={reserves} />
-                </>
-              )}
-              {showRejected && (
-                <>
-                  <AnalysisTopbar
-                    topbarMenu={topbarMenuRejected}
-                    moveToFavorites={moveToFavorites}
-                    moveToReserves={moveToReserves}
-                    moveToAll={moveToAll}
-                  />
-                  <CvList handleOnClick={handleOnClick} resumes={rejected} />
-                </>
-              )}
-            </Paper>
+            {showReserves && (
+              <>
+                <AnalysisTopbar
+                  topbarMenu={topbarMenuReserves}
+                  moveToFavorites={moveToFavorites}
+                  moveToAll={moveToAll}
+                  moveToRejected={moveToRejected}
+                />
+                <CvList
+                  handleOnClick={handleOnClick}
+                  handleDetailClose={handleDetailClose}
+                  open={open}
+                  resumes={reserves}
+                  annotatedText={annotatedText}
+                  sortedResponse={sortedResponse}
+                  professionalSkills={professionalSkills}
+                  softSkills={softSkills}
+                  languageSkills={languageSkills}
+                  itSkills={itSkills}
+                  education={education}
+                />
+              </>
+            )}
+            {showRejected && (
+              <>
+                <AnalysisTopbar
+                  topbarMenu={topbarMenuRejected}
+                  moveToFavorites={moveToFavorites}
+                  moveToReserves={moveToReserves}
+                  moveToAll={moveToAll}
+                />
+                <CvList
+                  handleOnClick={handleOnClick}
+                  handleDetailClose={handleDetailClose}
+                  open={open}
+                  resumes={rejected}
+                  annotatedText={annotatedText}
+                  sortedResponse={sortedResponse}
+                  professionalSkills={professionalSkills}
+                  softSkills={softSkills}
+                  languageSkills={languageSkills}
+                  itSkills={itSkills}
+                  education={education}
+                />
+              </>
+            )}
+          </Paper>
 
-            <MainActionButtons
-              handleBack={props.handleStepperBack}
-              handleNext={props.handleStepperNext}
+          <MainActionButtons
+            handleBack={props.handleStepperBack}
+            handleNext={props.handleStepperNext}
+          />
+        </Grid>
+
+        <Grid item xs={3} className='filters-container'>
+          <Paper>
+            <Step3Filters
+              // onSetQualificationName={props.onSetQualificationName}
+              // onSetExperienceLevel={props.onSetExperienceLevel}
+              // onSetPosition={props.onSetPosition}
+              // onSetCompanyName={props.onSetCompanyName}
+              onSetKeyWord={onSetKeyWord}
             />
-          </Grid>
-        )}
-
-        {response.length !== 0 && (
-          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-            <Typography variant='subtitle2' gutterBottom component='div'>
-              Widok szczegółowy
-            </Typography>
-            <Paper className='form-container-box'>
-              <CvPreview text={annotatedText}></CvPreview>
-            </Paper>
-            <MainActionButtons
-              handleBack={clearPreview}
-              handleNext={props.handleStepperNext}
-            />
-          </Grid>
-        )}
-
-        {response.length === 0 && (
-          <Grid item xs={3} className='filters-container'>
-            <Paper>
-              <Step3Filters
-                // onSetQualificationName={props.onSetQualificationName}
-                // onSetExperienceLevel={props.onSetExperienceLevel}
-                // onSetPosition={props.onSetPosition}
-                // onSetCompanyName={props.onSetCompanyName}
-                onSetKeyWord={onSetKeyWord}
-              />
-            </Paper>
-          </Grid>
-        )}
-
-        {response.length !== 0 && (
-          <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-            <Typography variant='subtitle2' gutterBottom component='div'>
-              Statystyki
-            </Typography>
-            <Paper className='job-offer-container-box'>
-              <CvDetails response={sortedResponse} />
-            </Paper>
-          </Grid>
-        )}
+          </Paper>
+        </Grid>
+        {/* <CVDetails annotatedText={annotatedText} sortedResponse={sortedResponse}/> */}
       </Grid>
     </>
   );

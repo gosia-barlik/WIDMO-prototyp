@@ -1,7 +1,7 @@
 @import "../../common/variables.css";
 
 .rankomat {
-justify-content: center;
+  justify-content: center;
   display: flex;
   flex-direction: row;
 }
@@ -13,7 +13,6 @@ justify-content: center;
 }
 
 .rankomat .filters-container {
- 
   margin-top: 50px;
   text-align: left;
 }
@@ -24,10 +23,17 @@ justify-content: center;
 }
 /* ANALISYS BOX */
 .MuiList-root .active {
-  background-color: #d5d5d5 !important;
+  background-color: var(--background) !important;
 }
 
-
+/* CV DETAILS */
+.MuiDialogTitle-root + .css-ypiqx9-MuiDialogContent-root {
+  display: flex;
+  flex-direction: row;
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  background-color: var(--background) !important;
+}
 
 /* FILTERS */
 
@@ -104,60 +110,65 @@ justify-content: center;
   color: #61988e !important;
 }
 
-
 .checkbox-container .MuiOutlinedInput-input {
   font-size: 0.875rem !important;
 }
 
 /* HIGHLIGHTS */
+.cv-qualifications-item-Soft,
+.cv-qualifications-item-Professional,
+.cv-qualifications-item-Education,
+.cv-qualifications-item-Experience,
+.cv-qualifications-item-IT,
+.cv-qualifications-item-Language
+ {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between,
+}
 
 /* Professional Skill */
 .cv-text .profskl,
-.cv-details-item-Professional {
-  background-color: rgb(244, 197, 255);
-  color: rgb(91, 63, 168);
+.cv-qualifications-item-Professional {
+  /* background-color: rgb(244, 197, 255); */
+  color: #6900ff;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* Soft Skill */
 .cv-text .softskl,
-.cv-details-item-Soft {
-  background-color: rgb(255, 206, 233) !important;
-  color: rgb(91, 63, 168);
+.cv-qualifications-item-Soft {
+  /* background-color: rgb(255, 206, 233) !important; */
+  color: #c500ff;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* Language Skill */
 .cv-text .langskl {
-  background-color: #fc9286 !important;
-  color: rgb(91, 63, 168);
+  /* background-color: #fc9286 !important; */
+  color: #00bdee;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* Education */
 .cv-text .educatn,
-.cv-details-item-Education {
-  background-color: rgb(250, 216, 223) !important;
-  color: rgb(91, 63, 168);
-  line-height: 1.5;
+.cv-qualifications-item-Education {
+  /* background-color: rgb(250, 216, 223) !important; */
+  color: #5d7dc9;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* Experience */
 .cv-text .experce,
-.cv-details-item-Experience {
+.cv-qualifications-item-Experience {
   background-color: rgb(204, 186, 190) !important;
   color: rgb(91, 63, 168);
   padding: 4px 5px 4px 5px;
@@ -167,54 +178,50 @@ justify-content: center;
 
 /* Certificates */
 .cv-text .certifi,
-.cv-details-item-Certificate {
-  background-color: rgb(211, 188, 188) !important;
-  color: rgb(91, 63, 168);
+.cv-qualifications-item-Certificate {
+  /* background-color: rgb(211, 188, 188) !important; */
+  color: rgb(0, 44, 238);
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* Occupation name*/
 .cv-text .occname {
-  background-color: #b1c7b8 !important;
-  color: rgb(91, 63, 168);
+  /* background-color: #b1c7b8 !important; */
+  color: #01aea8;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* Company */
 .cv-text .company,
-.cv-details-item-Company {
-  background-color: #95ecdc !important;
-  color: rgb(91, 63, 168);
+.cv-qualifications-item-Company {
+  /* background-color: #54fedf !important; */
+  color: #54fedf;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
 /* IT skill*/
 .cv-text .itskill,
-.cv-details-item-IT {
-  background-color: #b9cac7 !important;
-  color: rgb(91, 63, 168);
+.cv-qualifications-item-IT {
+  /* background-color: #b9cac7 !important; */
+  color: #01aea8;
   padding: 4px 5px 4px 5px;
   border-radius: 5px;
-  font-weight: 600;
   cursor: pointer;
 }
 
-.cv-details-label-IT,
-.cv-details-label-Company,
-.cv-details-label-Certificate,
-.cv-details-label-Experience,
-.cv-details-label-Education,
-.cv-details-label-Soft,
-.cv-details-label-Professional {
+.cv-qualifications-label-IT,
+.cv-qualifications-label-Company,
+.cv-qualifications-label-Certificate,
+.cv-qualifications-label-Experience,
+.cv-qualifications-label-Education,
+.cv-qualifications-label-Soft,
+.cv-qualifications-label-Professional {
   background-color: #ffffff !important;
   padding: 4px 5px 4px 5px;
   max-width: 100px;
@@ -235,7 +242,6 @@ justify-content: center;
   }
   .checkbox-container .MuiFormControlLabel-root {
     width: 160px;
-
   }
   .rankomat .CV-list-container,
   .rankomat .filters-container {
@@ -244,22 +250,26 @@ justify-content: center;
 }
 
 @media only screen and (max-width: 1200px) {
-
 }
 
 @media only screen and (max-width: 1024px) {
   .rankomat {
     flex-direction: column !important;
   }
-  .rankomat .CV-list-container .form-container-box{
+  .rankomat .CV-list-container .form-container-box {
     max-width: 95%;
   }
-  .rankomat .CV-list-container {
+  s .rankomat .CV-list-container {
     max-width: 90%;
   }
   .rankomat .filters-container {
     max-width: 90%;
     margin-top: 10px;
-
   }
+}
+
+/* CV DETAILS */
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  max-width: 90vw !important;
 }

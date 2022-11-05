@@ -4,9 +4,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
+import CVDetails from "../Step3-Cv-Details/Step3-Cv-Details";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useDispatch, useSelector } from "react-redux";
-import { setChecked, setSelected } from "../../../../store/actions/rankomatActions/rankomatStepThreeActions";
+import {
+  setChecked,
+  setSelected,
+} from "../../../../store/actions/rankomatActions/rankomatStepThreeActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CvList(props) {
-  const { checked, selected } = useSelector((state) => state.rankomatStepThreeReducer);
+  const { checked, selected } = useSelector(
+    (state) => state.rankomatStepThreeReducer
+  );
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -64,50 +70,61 @@ export default function CvList(props) {
 
     if (currentIndex === -1) {
       newChecked.push(value.id);
-      newSelected.push(value)
+      newSelected.push(value);
     } else {
       newChecked.splice(currentIndex, 1);
       newSelected.splice(currentIndex, 1);
     }
     dispatch(setChecked(newChecked));
     dispatch(setSelected(newSelected));
-
-  }
-
+  };
 
   return (
-    <List dense className={classes.root}>
-      {props.resumes.map((resume) => {
-        const labelId = `checkbox-list-secondary-label-${resume.id}`;
-        const color = getColor(resume.id);
-        return (
-          <ListItem
-            key={resume.id}
-            button
-            style={{
-              backgroundColor: color,
-              marginBottom: "2px",
-              borderRadius: "4px",
-              width: "100%",
-            }}
-            onClick={props.handleOnClick}>
-            <ListItemText
-              id={labelId}
-              primary={`${resume.name} ${resume.id + 1}`}
-              style={{ color: "white" }}
-            />
-            <ListItemSecondaryAction>
-              <Checkbox
-                className='styled-checkbox'
-                edge='end'
-                onChange={handleToggleCheck(resume)}
-                checked={checked.indexOf(resume.id) !== -1}
-                inputProps={{ "aria-labelledby": labelId }}
+    <div>
+      <List dense className={classes.root}>
+        {props.resumes.map((resume) => {
+          const labelId = `checkbox-list-secondary-label-${resume.id}`;
+          const color = getColor(resume.id);
+          return (
+            <ListItem
+              key={resume.id}
+              button
+              style={{
+                backgroundColor: color,
+                marginBottom: "2px",
+                borderRadius: "4px",
+                width: "100%",
+              }}
+              onClick={props.handleOnClick}>
+              <ListItemText
+                id={labelId}
+                primary={`${resume.name} ${resume.id + 1}`}
+                style={{ color: "white" }}
               />
-            </ListItemSecondaryAction>
-          </ListItem>
-        );
-      })}
-    </List>
+              <ListItemSecondaryAction>
+                <Checkbox
+                  className='styled-checkbox'
+                  edge='end'
+                  onChange={handleToggleCheck(resume)}
+                  checked={checked.indexOf(resume.id) !== -1}
+                  inputProps={{ "aria-labelledby": labelId }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
+      </List>
+      <CVDetails
+        open={props.open}
+        handleDetailClose={props.handleDetailClose}
+        annotatedText={props.annotatedText}
+        sortedResponse={props.sortedResponse}
+        professionalSkills={props.professionalSkills}
+        softSkills={props.softSkills}
+        languageSkills={props.languageSkills}
+        itSkills={props.itSkills}
+        education={props.education}
+      />
+    </div>
   );
 }

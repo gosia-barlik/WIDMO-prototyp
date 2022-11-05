@@ -18,7 +18,7 @@ import {
 import { setResumes } from "../../../../store/actions/rankomatActions/rankomatStepTwoActions";
 
 export default function AnalysisTopbar(props) {
-  const { checked, all, selected } = useSelector(
+  const { checked, all, selected, showAll, showRejected, showReserves, showFavorites } = useSelector(
     (state) => state.rankomatStepThreeReducer
   );
   const dispatch = useDispatch();
@@ -73,7 +73,7 @@ export default function AnalysisTopbar(props) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
         {props.topbarMenu.map((text, index) => (
-          <MenuItem>
+          showAll ? (<MenuItem>
             {index === 0 && (
               <div onClick={props.moveToFavorites}>
                 {text}
@@ -89,7 +89,58 @@ export default function AnalysisTopbar(props) {
                 {text}
               </div>
             )}
-          </MenuItem>
+          </MenuItem>):
+          showFavorites ? (<MenuItem>
+            {index === 0 && (
+              <div onClick={props.moveToAll}>
+                {text}
+              </div>
+            )}
+            {index === 1 && (
+              <div onClick={props.moveToReserves}>
+                {text}
+              </div>
+            )}
+            {index === 2 && (
+              <div onClick={props.moveToRejected}>
+                {text}
+              </div>
+            )}
+          </MenuItem>):
+                  showReserves ? (<MenuItem>
+                    {index === 0 && (
+                      <div onClick={props.moveToFavorites}>
+                        {text}
+                      </div>
+                    )}
+                    {index === 1 && (
+                      <div onClick={props.moveToAll}>
+                        {text}
+                      </div>
+                    )}
+                    {index === 2 && (
+                      <div onClick={props.moveToRejected}>
+                        {text}
+                      </div>
+                    )}
+                  </MenuItem>):
+                  (<MenuItem>
+                    {index === 0 && (
+                      <div onClick={props.moveToFavorites}>
+                        {text}
+                      </div>
+                    )}
+                    {index === 1 && (
+                      <div onClick={props.moveToReserves}>
+                        {text}
+                      </div>
+                    )}
+                    {index === 2 && (
+                      <div onClick={props.moveToAll}>
+                        {text}
+                      </div>
+                    )}
+                  </MenuItem>)
         ))}
       </Menu>
     </React.Fragment>
