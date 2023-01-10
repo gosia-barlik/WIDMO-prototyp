@@ -24,7 +24,7 @@ export default function CVDetails(props) {
       onClose={props.handleDetailClose}
       aria-labelledby='responsive-dialog-title'>
       <DialogTitle id='responsive-dialog-title'>{""}</DialogTitle>
-      <DialogContent>
+      <DialogContent style={{ minWidth: "600px" }}>
         <Grid
           item
           xs={7}
@@ -37,7 +37,9 @@ export default function CVDetails(props) {
           item
           xs={5}
           style={{ margin: "50px 20px 20px 20px", textAlign: "left" }}>
-          <Paper className='form-container-box' style={{marginBottom:"12px"}}>
+          <Paper
+            className='form-container-box'
+            style={{ marginBottom: "12px" }}>
             <Typography variant='subtitle1' style={{ fontWeight: "600" }}>
               Dopasowanie
             </Typography>
@@ -54,8 +56,8 @@ export default function CVDetails(props) {
             />
           </Paper>
 
-          <Paper className='form-container-box' style={{marginTop:"12px"}}>
-          <Typography variant='subtitle1' style={{ fontWeight: "600" }}>
+          <Paper className='form-container-box' style={{ marginTop: "12px" }}>
+            <Typography variant='subtitle1' style={{ fontWeight: "600" }}>
               Inne umiejętności
             </Typography>
           </Paper>
@@ -63,7 +65,11 @@ export default function CVDetails(props) {
       </DialogContent>
 
       <DialogActions>
-        <Button autoFocus onClick={props.handleDetailClose}>
+        <Button
+          className='button-outlined'
+          variant='outlined'
+          autoFocus
+          onClick={props.handleDetailClose}>
           ZAMKNIJ
         </Button>
       </DialogActions>

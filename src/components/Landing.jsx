@@ -44,7 +44,7 @@ class Landing extends React.Component {
             },
           }}>
           <Card sx={{ minWidth: 275 }} className='card-container'>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box sx={{ display: "flex", flexDirection: "column" }} style={{marginLeft:"20px"}}>
               <CardContent
                 className='card1 card-hero'
                 sx={{ flex: "1 0 auto" }}>
@@ -97,7 +97,7 @@ class Landing extends React.Component {
               alt='job posting creator screen shot'
               sx={{ width: 400 }}
             />
-            <Box sx={{ display: "flex", flexDirection: "column", width: 400 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", width: 400 }}style={{marginLeft:"20px"}}>
               <CardContent className='card1' sx={{ flex: "1 0 auto" }}>
                 <div className='rankomat-text2'>
                   <Typography variant='body' component='div'>

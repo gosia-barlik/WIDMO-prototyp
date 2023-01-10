@@ -9,7 +9,7 @@ export default function CvQualifications(props) {
       </Typography>
       {props.professionalSkills.length > 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Typography variant='subtitle2' style={{ color: "#6900ff" }}>
+          <Typography variant='subtitle2' style={{ color: "#6900ff", fontWeight:"700" }}>
             Umiejętności twarde
           </Typography>
           <div className='cv-qualifications-item'>
@@ -26,7 +26,7 @@ export default function CvQualifications(props) {
       )}
       {props.softSkills.length > 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Typography variant='subtitle2' style={{ color: "#c500ff" }}>
+          <Typography variant='subtitle2' style={{ color: "#c500ff", fontWeight:"700" }}>
             Umiejętności miękkie
           </Typography>
           <div className='cv-qualifications-item'>
@@ -42,7 +42,7 @@ export default function CvQualifications(props) {
       )}
       {props.itSkills.length > 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Typography variant='subtitle2' style={{ color: "#01aea8" }}>
+          <Typography variant='subtitle2' style={{ color: "#01aea8", fontWeight:"700" }}>
             Umiejętności IT
           </Typography>
           <div className='cv-qualifications-item'>
@@ -58,7 +58,7 @@ export default function CvQualifications(props) {
       )}
       {props.languageSkills.length > 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Typography variant='subtitle2' style={{ color: "#00bdee" }}>
+          <Typography variant='subtitle2' style={{ color: "#00bdee", fontWeight:"700" }}>
             Umiejętności językowe
           </Typography>
           <div className='cv-qualifications-item'>
@@ -74,7 +74,7 @@ export default function CvQualifications(props) {
       )}
       {props.education.length > 0 && (
         <div style={{ marginTop: "20px" }}>
-          <Typography variant='subtitle2' style={{ color: "#5d7dc9" }}>
+          <Typography variant='subtitle2' style={{ color: "#5d7dc9", fontWeight:"700" }}>
             Edukacja
           </Typography>
           <div className='cv-qualifications-item'>

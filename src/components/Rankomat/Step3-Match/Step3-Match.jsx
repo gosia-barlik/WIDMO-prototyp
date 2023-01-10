@@ -101,13 +101,20 @@ export default function Step3Match(props) {
       }), //TODO::text from CV will be send here
     })
       .then((response) => {
-        return response.json();
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error("Something went wrong");
       })
       .then((data) => {
         setText(data.text);
         sortLabels(data.entities);
         setResponse(data.entities);
         sortResponse(data.entities);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
       });
     handleDetailOpen();
   };
@@ -173,10 +180,12 @@ export default function Step3Match(props) {
     });
 
     setAnnotatedText(baseText);
-    // console.log(baseText);
+    console.log(baseText);
   };
 
   const sortResponse = (array) => {
+    array.forEach((skill,index)=> skill.id=1000+index)
+    console.log(array);
     const sorted = [...array];
 
     sorted.sort(function (a, b) {
@@ -198,6 +207,7 @@ export default function Step3Match(props) {
     setLanguageSkills(language);
     setItSkills(informationTechnology);
     setEducation(education);
+    console.log(professional);
   };
 
   const clearPreview = () => {

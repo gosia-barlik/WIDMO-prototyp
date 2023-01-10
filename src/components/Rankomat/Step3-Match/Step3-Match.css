@@ -115,26 +115,12 @@
 }
 
 /* HIGHLIGHTS */
-.cv-qualifications-item-Soft,
-.cv-qualifications-item-Professional,
-.cv-qualifications-item-Education,
-.cv-qualifications-item-Experience,
-.cv-qualifications-item-IT,
-.cv-qualifications-item-Language
- {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between,
-}
 
 /* Professional Skill */
 .cv-text .profskl,
 .cv-qualifications-item-Professional {
   /* background-color: rgb(244, 197, 255); */
   color: #6900ff;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Soft Skill */
@@ -142,18 +128,12 @@
 .cv-qualifications-item-Soft {
   /* background-color: rgb(255, 206, 233) !important; */
   color: #c500ff;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Language Skill */
 .cv-text .langskl {
   /* background-color: #fc9286 !important; */
   color: #00bdee;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Education */
@@ -161,19 +141,13 @@
 .cv-qualifications-item-Education {
   /* background-color: rgb(250, 216, 223) !important; */
   color: #5d7dc9;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Experience */
 .cv-text .experce,
 .cv-qualifications-item-Experience {
-  background-color: rgb(204, 186, 190) !important;
+  /* background-color: rgb(204, 186, 190) !important; */
   color: rgb(91, 63, 168);
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Certificates */
@@ -181,18 +155,12 @@
 .cv-qualifications-item-Certificate {
   /* background-color: rgb(211, 188, 188) !important; */
   color: rgb(0, 44, 238);
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Occupation name*/
 .cv-text .occname {
   /* background-color: #b1c7b8 !important; */
   color: #01aea8;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Company */
@@ -200,9 +168,6 @@
 .cv-qualifications-item-Company {
   /* background-color: #54fedf !important; */
   color: #54fedf;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* IT skill*/
@@ -210,23 +175,23 @@
 .cv-qualifications-item-IT {
   /* background-color: #b9cac7 !important; */
   color: #01aea8;
-  padding: 4px 5px 4px 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.cv-qualifications-label-IT,
-.cv-qualifications-label-Company,
-.cv-qualifications-label-Certificate,
-.cv-qualifications-label-Experience,
-.cv-qualifications-label-Education,
-.cv-qualifications-label-Soft,
-.cv-qualifications-label-Professional {
-  background-color: #ffffff !important;
+div[class^="cv-qualifications-label-"] {
+  background-color: #ffffff;
   padding: 4px 5px 4px 5px;
   max-width: 100px;
   border-radius: 5px;
   max-height: 36px;
+}
+
+div[class^="cv-qualifications-item-"] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 4px 5px 4px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* .annotation-name {
