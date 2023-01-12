@@ -10,11 +10,19 @@ import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
 import AlertAbout from "./alerts/Alert-About.jsx";
-import { useSelector } from "react-redux";
+import Switch from "@material-ui/core/Switch";
+import Grow from "@material-ui/core/Grow";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowJobOffer } from "../../../store/actions/stepOneActions";
 
 export default function Step1MainInfo(props) {
-  const { showResults } = useSelector((state) => state.stepOneReducer);
-  const disabled = true;
+  const { showResults, showJobOffer } = useSelector((state) => state.stepOneReducer);
+  const dispatch = useDispatch();
+
+  const handleShowJobOffer = () => {
+    showJobOffer ? dispatch (setShowJobOffer(false)) : dispatch (setShowJobOffer(true));
+  };
 
   return (
     <Grid container className='step-1-container'>
@@ -31,8 +39,8 @@ export default function Step1MainInfo(props) {
 
           {showResults && (
             <>
-              <SearchResults /> 
-              <AboutCompany /> 
+              <SearchResults />
+              <AboutCompany />
               <AdditionalInformation />
               <MainActionButtons handleNext={props.handleMainStepperNext} />
             </>
@@ -40,17 +48,16 @@ export default function Step1MainInfo(props) {
         </Paper>
       </Grid>
       <Grid item xs={4} style={{ marginTop: "50px", textAlign: "left" }}>
-        <Typography
-          variant='body2'
-          style={{ color: "#00000099" }}
-          gutterBottom
-          component='div'>
-          Podgląd ogłoszenia
-        </Typography>
-        <Paper className='job-offer-container' elevation={0}>
-          <JobOffer />
-        </Paper>
-        <AlertAbout />
+        <FormControlLabel
+          control={<Switch checked={showJobOffer} onChange={() => handleShowJobOffer()} />}
+          label='Podgląd ogłoszenia'
+        />
+        <Grow in={showJobOffer}>
+          <Paper className='job-offer-container' elevation={0}>
+            <JobOffer />
+          </Paper>
+        </Grow>
+        {showResults && <AlertAbout />}
       </Grid>
     </Grid>
   );

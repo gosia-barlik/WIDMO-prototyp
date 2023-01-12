@@ -18,7 +18,8 @@ import {
   COMPANYNAME,
   ABOUTCOMPANY,
   LOGO,
-  LOGOPREVIEW
+  LOGOPREVIEW,
+  SHOWJOBOFFER,
 } from "../creatorConsts";
 
 //position
@@ -87,3 +88,7 @@ export const setLogoPreview = (logoPreview) => {
   return { type: LOGOPREVIEW, payload: logoPreview };
 };
 
+//joboffer
+export const setShowJobOffer = (showJobOffer) => {
+  return { type: SHOWJOBOFFER, payload: showJobOffer };
+};

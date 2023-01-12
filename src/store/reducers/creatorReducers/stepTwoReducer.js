@@ -20,7 +20,8 @@ import {
   BENEFITSTOHTML,
 
   RODO,
-  CUSTOMIZEDBENEFITS
+  CUSTOMIZEDBENEFITS,
+  SHOWJOBOFFER,
 } from "../../creatorConsts";
 
 const initialState = {
@@ -47,6 +48,7 @@ const initialState = {
   benefitsToHtml: [],
   customizedBenefits: [],
 
+  showJobOffer: false,
 };
 
 
@@ -168,7 +170,12 @@ export const stepTwoReducer = (state = initialState, action) => {
         customizedBenefits: action.payload,
       }
     }
-
+    case SHOWJOBOFFER: {
+      return {
+        ...state,
+        showJobOffer: action.payload,
+      };
+    }
     default:
       return state;
   }
