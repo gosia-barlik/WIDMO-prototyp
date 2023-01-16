@@ -20,6 +20,7 @@ import {
   LOGO,
   LOGOPREVIEW,
   SHOWJOBOFFER,
+  SHOWZRK
 } from "../creatorConsts";
 
 //position
@@ -91,4 +92,9 @@ export const setLogoPreview = (logoPreview) => {
 //joboffer
 export const setShowJobOffer = (showJobOffer) => {
   return { type: SHOWJOBOFFER, payload: showJobOffer };
+};
+
+//ZRK
+export const setShowZRK = (showZRK) => {
+  return { type: SHOWZRK, payload: showZRK };
 };

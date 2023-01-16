@@ -20,6 +20,7 @@ import {
   LOGO,
   LOGOPREVIEW,
   SHOWJOBOFFER,
+  SHOWZRK,
 } from "../../creatorConsts";
 
 const initialState = {
@@ -43,7 +44,8 @@ const initialState = {
   aboutCompany: "",
   logo: "",
   logoPreview: "",
-  showJobOffer: false,
+  showJobOffer: true,
+  showZRK: false,
 };
 
 export const stepOneReducer = (state = initialState, action) => {
@@ -174,6 +176,12 @@ export const stepOneReducer = (state = initialState, action) => {
         ...state,
         showJobOffer: action.payload,
       };
+    }
+    case SHOWZRK: {
+      return {
+        ...state,
+        showZRK: action.payload
+      }
     }
     default:
       return state;

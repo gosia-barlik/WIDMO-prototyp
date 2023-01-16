@@ -19,7 +19,6 @@ import {
   BENEFITS,
   BENEFITSTOHTML,
   CUSTOMIZEDBENEFITS,
-  SHOWJOBOFFER,
 } from "../creatorConsts";
 
 //RESPONSIBILITIES
@@ -94,10 +93,7 @@ export const setCustomizedBenefits = (customizedBenefits) => {
   return { type: CUSTOMIZEDBENEFITS, payload: customizedBenefits };
 };
 
-//joboffer
-export const setShowJobOffer = (showJobOffer) => {
-  return { type: SHOWJOBOFFER, payload: showJobOffer };
-};
+
 
 
 

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
+import DoneIcon from "@material-ui/icons/Done";
 import Typography from "@mui/material/Typography";
+import Button from "@material-ui/core/Button";
+import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setSearchedPosition,
@@ -15,8 +18,7 @@ import {
   setRequirements,
   setRequirementsToHtml,
   setBenefits,
-  setBenefitsToHtml
-
+  setBenefitsToHtml,
 } from "../../../../store/actions/stepTwoActions";
 import { jobPositionSchema } from "../../common/validations/stepOneSchema";
 
@@ -51,13 +53,12 @@ export default function SearchBar(props) {
     if (responsibilities.length > 0) newResponsibilities = [];
     else newResponsibilities = responsibilitiesFixture;
 
-    const responsibilitiesToHtml = 
-    `<ul>
+    const responsibilitiesToHtml = `<ul>
       ${newResponsibilities.map(
         (responsibility) => `<li key=${responsibility}>${responsibility}</li>`
       )}
     </ul> `;
-   
+
     dispatch(setResponsibilities(newResponsibilities));
     dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
   };
@@ -67,13 +68,12 @@ export default function SearchBar(props) {
     if (requirements.length === 0) newRequirements = requirementsFixture;
     else newRequirements = [];
 
-    const requirementsToHtml = 
-    `<ul>
+    const requirementsToHtml = `<ul>
      ${newRequirements.map(
        (requirement) => `<li key=${requirement}>${requirement}</li>`
      )}
     </ul> `;
-  
+
     dispatch(setRequirements(newRequirements));
     dispatch(setRequirementsToHtml(requirementsToHtml));
   };
@@ -83,16 +83,12 @@ export default function SearchBar(props) {
     if (benefits.length > 0) newBenefits = [];
     else newBenefits = benefitsFixture;
 
-    const benefitsToHtml = 
-    `<ul>
-     ${newBenefits.map(
-       (benefit) => `<li key=${benefit}>${benefit}</li>`
-     )}
+    const benefitsToHtml = `<ul>
+     ${newBenefits.map((benefit) => `<li key=${benefit}>${benefit}</li>`)}
     </ul> `;
 
     dispatch(setBenefits(newBenefits));
     dispatch(setBenefitsToHtml(benefitsToHtml));
- 
   };
 
   useEffect(() => {
@@ -125,16 +121,17 @@ export default function SearchBar(props) {
     onSetBenefits();
     onSetResponsibilities();
     onSetRequirements();
-  
   };
 
   return (
-    <Paper style={{padding:"24px"}}>
+    <Paper style={{ padding: "24px" }}>
       <Typography variant='h6' gutterBottom component='div'>
         Stanowisko
       </Typography>
 
-      <form onSubmit={handleSearch}>
+      <form
+        onSubmit={handleSearch}
+        sx={{ display: "flex", flexDirection: "row" }}>
         <TextField
           spellCheck='true'
           error={text.length >= jobPositionSchema.MAX_LENGTH}
@@ -148,12 +145,38 @@ export default function SearchBar(props) {
           sx={{ ml: 1, flex: 1 }}
           placeholder='szukam osoby na stanowisko...'
           onChange={handleInputChange}
-          style={{ width: "85%", fontSize: "14px" }}
+          style={{ width: "75%", fontSize: "14px" }}
         />
 
-        <IconButton type='submit' sx={{ p: "10px" }} aria-label='search'>
-          <SearchIcon />
-        </IconButton>
+        {searchedPosition && (
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            style={{ marginLeft: "30px" }}
+            endIcon={<DoneIcon />}>
+            Zatwierdź
+          </Button>
+        )}
+
+        {searchedPosition == false && (
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            disabled
+            style={{ marginLeft: "30px" }}
+            endIcon={<DoneIcon />}>
+            Zatwierdź
+          </Button>
+        )}
+
+        {/* <IconButton
+          type='submit'
+          sx={{ p: "10px", fontSize: "14px" }}
+          aria-label='search'>
+          <SearchIcon /> 
+        </IconButton> */}
       </form>
     </Paper>
   );

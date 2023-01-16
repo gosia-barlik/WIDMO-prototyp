@@ -5,8 +5,9 @@
   background-color: var(--white) !important ;
   padding: 18px;
 }
-.form-container-box .job-position-search-results-wrapper {
+.job-position-search-results-wrapper {
   background-color: var(--white) !important ;
+  background-color: rgb(235, 241, 255) !important ;
 }
 
 /*Error message*/
