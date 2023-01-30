@@ -16,7 +16,7 @@ export default function EducationExperience(props) {
   const { educationLevel, studiesName, studiesStage, certificateName, certificateStage, showEducationForm} = useSelector((state) => state.stepTwoReducer);
 
   const educationLabel = "Poziom wykształcenia";
-  const educationLevelFixture = ["podstawowe", "średnie", "zawodowe", "wyższe"];
+  const educationLevelFixture = ["podstawowe", "gimnazjalne", "średnie", "średnie branżowe", "zasadnicze zawodowe", "zasadnicze branżowe", "wyższe", "wyższe I stopnia", "wyższe II stopnia", "wyższe III stopnia"];
 
   const studiesLabel = "Nazwa kierunku";
   const studiesNameFixture = ["Technik pojazdów samochodowych", "Technik mechanik"];

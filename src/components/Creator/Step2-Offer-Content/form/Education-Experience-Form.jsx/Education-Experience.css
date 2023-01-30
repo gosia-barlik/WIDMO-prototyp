@@ -1,0 +1,5 @@
+@import "../../../../common/variables.css";
+
+#customized-hook-demo-listbox li[aria-selected='true'] svg {
+    color: var(--primary) !important;
+}

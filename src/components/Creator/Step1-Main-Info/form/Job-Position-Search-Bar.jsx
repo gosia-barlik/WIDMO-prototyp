@@ -145,7 +145,7 @@ export default function SearchBar(props) {
           sx={{ ml: 1, flex: 1 }}
           placeholder='szukam osoby na stanowisko...'
           onChange={handleInputChange}
-          style={{ width: "75%", fontSize: "14px" }}
+          style={{ fontSize: "14px", marginBottom: "24px" }}
         />
 
         {searchedPosition && (
@@ -153,7 +153,6 @@ export default function SearchBar(props) {
             type='submit'
             variant='contained'
             color='primary'
-            style={{ marginLeft: "30px" }}
             endIcon={<DoneIcon />}>
             Zatwierdź
           </Button>
@@ -165,7 +164,6 @@ export default function SearchBar(props) {
             variant='contained'
             color='primary'
             disabled
-            style={{ marginLeft: "30px" }}
             endIcon={<DoneIcon />}>
             Zatwierdź
           </Button>

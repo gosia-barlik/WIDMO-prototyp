@@ -11,9 +11,41 @@ import htmlToDraft from "html-to-draftjs";
 import { useSelector } from "react-redux";
 
 export default function RichTextEditor(props) {
-  const { companyName, searchedPosition, salaryTo, salaryFrom, salaryTime, salaryType, salaryContract, aboutCompany } = useSelector((state) => state.stepOneReducer);
-  const { responsibilitiesToHtml, requirementsToHtml, benefitsToHtml } = useSelector((state) => state.stepTwoReducer);
-  const { rodo, applicationWay, applicationExpectation, applicationDate, contactInformation} = useSelector((state) => state.stepThreeReducer);
+  const {
+    companyName,
+    searchedPosition,
+    salaryTo,
+    salaryFrom,
+    salaryTime,
+    salaryType,
+    salaryContract,
+    aboutCompany,
+  } = useSelector((state) => state.stepOneReducer);
+  const {
+    responsibilitiesToHtml,
+    requirementsToHtml,
+    benefitsToHtml,
+    educationLevel,
+    studiesName,
+    studiesStage,
+    certificateName,
+    certificateStage,
+  } = useSelector((state) => state.stepTwoReducer);
+
+  const {
+    rodo,
+    applicationWay,
+    applicationExpectation,
+    applicationDate,
+    contactInformation,
+  } = useSelector((state) => state.stepThreeReducer);
+
+  const education =
+    !studiesName ?
+    `<h6> Wykształcenie: </h6>
+    <span> ${educationLevel}</span>`:
+    `<h6> Wykształcenie: </h6>
+    <span> ${educationLevel} ${studiesName}</span>`
 
   const contentToEdit = `<div className="job-offer-summary" contentEditable="true"> 
 <h3>${searchedPosition} 
@@ -22,11 +54,7 @@ export default function RichTextEditor(props) {
 </h5> 
 <h6> ${aboutCompany} 
 </h6> 
-<h6> ${salaryFrom} - ${
-    salaryTo
-  } ${salaryType} / ${salaryTime} ${
-    salaryContract
-  } 
+<h6> ${salaryFrom} - ${salaryTo} ${salaryType} / ${salaryTime} ${salaryContract} 
 </h6>   
 <h6> Zakres obowiązków: <span> 
 ${responsibilitiesToHtml} </span>
@@ -34,6 +62,8 @@ ${responsibilitiesToHtml} </span>
 <h6> Wymagania: <span>
 ${requirementsToHtml}</span>
 </h6>
+${education}
+
 <h6> Benefity: <span>
 ${benefitsToHtml}</span>
 </h6>
@@ -47,16 +77,20 @@ ${benefitsToHtml}</span>
 <p>Dane kontaktowe: <span>${contactInformation} </span></p>
 </div>`;
 
-
   const contentBlock = htmlToDraft(contentToEdit);
-  const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+  const contentState = ContentState.createFromBlockArray(
+    contentBlock.contentBlocks
+  );
 
   // const [editorState, setEditorState] = useState(EditorState.createEmpty())
-  const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(contentState)
+  );
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
   };
 
   return (
@@ -66,7 +100,7 @@ ${benefitsToHtml}</span>
         wrapperClassName='text-editor-wrapper'
         editorClassName='text-editor'
         onEditorStateChange={onEditorStateChange}
-        editorStyle={{lineHeight: '90%'}}
+        editorStyle={{ lineHeight: "90%" }}
       />
       {/* <textarea
           disabled

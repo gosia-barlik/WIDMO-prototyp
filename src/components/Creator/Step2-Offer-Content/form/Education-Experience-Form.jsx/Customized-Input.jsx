@@ -5,6 +5,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import CloseIcon from '@material-ui/icons/Close';
 import { styled } from '@mui/material/styles';
 import { useEffect } from 'react';
+import './Education-Experience'
 
 const Root = styled('div')(
   ({ theme }) => `
@@ -34,11 +35,11 @@ const InputWrapper = styled('div')(
   flex-wrap: wrap;
 
   &:hover {
-    border-color: ${theme.palette.mode === 'dark' ? '#177ddc' : '#40a9ff'};
+    border-color: ${theme.palette.mode === 'dark' ? '#000000' : '#000000'};
   }
 
   &.focused {
-    border-color: ${theme.palette.mode === 'dark' ? '#177ddc' : '#40a9ff'};
+    border-color: ${theme.palette.mode === 'dark' ? '#651fff' : '#651fff'};
     box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
   }
 
@@ -93,7 +94,7 @@ const StyledTag = styled(Tag)(
   overflow: hidden;
 
   &:focus {
-    border-color: ${theme.palette.mode === 'dark' ? '#784af4' : '#784af4'};
+    border-color: ${theme.palette.mode === 'dark' ? '#651fff' : '#651fff'};
     background-color: ${theme.palette.mode === 'dark' ? '#003b57' : '#e6f7ff'};
   }
 

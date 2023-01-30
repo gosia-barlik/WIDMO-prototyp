@@ -98,7 +98,7 @@ export default function JobOfferMainInfo(props) {
           <Typography variant='subtitle2' gutterBottom component='div'>
             {salaryFrom} {salaryTo ? " - " + salaryTo : ""}
             {" " + salaryCurrency} {salaryTime ? "/ " + salaryTime : ""}
-            {salaryType} {salaryContract}
+            {" " + salaryType} {" " + salaryContract}
           </Typography>
         ) : (
           <Typography variant='subtitle2' gutterBottom component='div'>

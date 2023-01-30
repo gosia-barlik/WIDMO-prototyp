@@ -38,9 +38,11 @@ export default function ResponsibilitiesSection(props) {
     //RESPONSIBILITIES
     const onSetResponsibilities = (responsibilities) => {
       dispatch(setResponsibilities(responsibilities));
+      console.log(responsibilities)
     };
     const onSetResponsibilitiesToHtml = (responsibilitiesToHtml) => {
       dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
+      console.log(responsibilitiesToHtml)
     };
 
   // const onSetQualificationInfo = (e) => {

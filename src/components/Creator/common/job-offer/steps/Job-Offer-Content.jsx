@@ -59,7 +59,7 @@ export default function JobOfferContent(props) {
         {showEducationForm == true && (
           <>
             <Typography
-              variant='body2'
+             variant='subtitle2'
               gutterBottom
               component='div'
               style={{ marginTop: "8px" }}>
