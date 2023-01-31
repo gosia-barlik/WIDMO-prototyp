@@ -3,17 +3,24 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Card from "@mui/material/Card";
+import Fab from "@material-ui/core/Fab";
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 import QualificationInformation from "./Qualification-Information";
 import Wysiwyg from "./Wysiwyg";
+import TransferList from "./TransferList";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setResponsibilities,
   setResponsibilitiesToHtml,
+  setShowResponsibilitiesList,
   setCustomizedResponsibilities,
   setShowQualificationForm,
   setQualificationName,
   setQualificationCharacteristic,
 } from "../../../../store/actions/stepTwoActions";
+
 
 const useStyles = makeStyles((theme) => ({
   textField: {
@@ -23,26 +30,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ResponsibilitiesSection(props) {
-
   const classes = useStyles();
   const {
-    responsibilities,
     responsibilitiesToHtml,
-    customizedResponsibilities,
-    copiedSelectedText,
     showQualificationForm,
+    showResponsibilitiesList,
   } = useSelector((state) => state.stepTwoReducer);
   const dispatch = useDispatch();
 
-  
-    //RESPONSIBILITIES
-    const onSetResponsibilities = (responsibilities) => {
-      dispatch(setResponsibilities(responsibilities));
-      console.log(responsibilities)
-    };
-    const onSetResponsibilitiesToHtml = (responsibilitiesToHtml) => {
-      dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
-      console.log(responsibilitiesToHtml)
+  //RESPONSIBILITIES
+  const onSetResponsibilities = (responsibilities) => {
+    dispatch(setResponsibilities(responsibilities));
+  };
+  const onSetResponsibilitiesToHtml = (responsibilitiesToHtml1) => {
+    console.log(responsibilitiesToHtml1)
+    dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml1));
+  };
+  const onSetShowResponsibilitiesList = () =>
+    {dispatch(setShowResponsibilitiesList(!showResponsibilitiesList))
     };
 
   // const onSetQualificationInfo = (e) => {
@@ -82,7 +87,6 @@ export default function ResponsibilitiesSection(props) {
   //   alert(JSON.stringify(customizedResponsibilities));
   // };
 
-
   return (
     <Stack
       spacing={2}
@@ -92,8 +96,16 @@ export default function ResponsibilitiesSection(props) {
         Zakres obowiązków
       </Typography>
       <Card className='styled-card'>
-       <Wysiwyg contentToEdit={responsibilitiesToHtml} setValueToHtml={onSetResponsibilitiesToHtml}/>
+        <Wysiwyg
+          contentToEdit={responsibilitiesToHtml}
+          setValueToHtml={onSetResponsibilitiesToHtml}
+        />
+        <IconButton className='styled-icon-button' title='Pokaż podpowiedzi'
+          component='span' onClick={onSetShowResponsibilitiesList}>
+          {showResponsibilitiesList ? <RemoveIcon />: <AddIcon />}
+        </IconButton>
       </Card>
+      {showResponsibilitiesList && < TransferList/>}
 
       {showQualificationForm === true && <QualificationInformation />}
 

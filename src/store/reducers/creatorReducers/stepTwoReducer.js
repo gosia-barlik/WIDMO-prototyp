@@ -9,6 +9,7 @@ import {
   REQUIREMENTS,
   REQUIREMENTSTOHTML,
   CUSTOMIZEDREQUIREMENTS,
+  SHOWRESPONSIBILITIESLIST,
  
   SHOWEDUCATIONFORM,
   EDUCATIONLEVEL,
@@ -29,13 +30,14 @@ const initialState = {
   showQualificationForm: false,
   qualificationName: "",
   qualificationCharacteristic: "",
-  copiedSelectedText: [],
+  copiedSelectedText: [], //unused
   responsibilitiesToHtml: "",
 
   requirements: [],
-  customizedRequirements: [],
+  customizedRequirements: [], //unused
   showEducationForm: false,
   requirementsToHtml: "",
+  showResponsibilitiesList: false,
   
   educationLevel: [],
   studiesName: [],
@@ -45,7 +47,7 @@ const initialState = {
   
   benefits: [],
   benefitsToHtml: [],
-  customizedBenefits: [],
+  customizedBenefits: [], //unused
 
 };
 
@@ -167,6 +169,12 @@ export const stepTwoReducer = (state = initialState, action) => {
         ...state,
         customizedBenefits: action.payload,
       }
+    }
+    case SHOWRESPONSIBILITIESLIST: {
+      return {
+        ...state,
+        showResponsibilitiesList: action.payload,
+      };
     }
     default:
       return state;

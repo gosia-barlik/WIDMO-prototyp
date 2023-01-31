@@ -1,14 +1,14 @@
 import {
   RESPONSIBILITIES,
-  CUSTOMIZEDRESPONSIBILITIES,
+  CUSTOMIZEDRESPONSIBILITIES, //unused
   SHOWQUALIFICATIONFORM,
   QUALIFICATIONNAME,
   QUALIFICATIONCHARACTERISTIC,
-  COPIEDSELECTEDTEXT,
+  COPIEDSELECTEDTEXT, //unused
   RESPONSIBILITIESTOHTML,
   REQUIREMENTS,
   REQUIREMENTSTOHTML,
-  CUSTOMIZEDREQUIREMENTS,
+  CUSTOMIZEDREQUIREMENTS, //unused
   SHOWREQUIREMENTSBUTTON,
   SHOWEDUCATIONFORM,
   EDUCATIONLEVEL,
@@ -18,7 +18,8 @@ import {
   CERTIFICATESTAGE,
   BENEFITS,
   BENEFITSTOHTML,
-  CUSTOMIZEDBENEFITS,
+  CUSTOMIZEDBENEFITS, //unusedList
+  SHOWRESPONSIBILITIESLIST,
 } from "../creatorConsts";
 
 //RESPONSIBILITIES
@@ -26,12 +27,18 @@ export const setResponsibilities = (responsibilities) => {
   return { type: RESPONSIBILITIES, payload: responsibilities };
 };
 export const setCustomizedResponsibilities = (customizedResponsibilities) => {
-  return { type: CUSTOMIZEDRESPONSIBILITIES, payload: customizedResponsibilities };
+  return {
+    type: CUSTOMIZEDRESPONSIBILITIES,
+    payload: customizedResponsibilities,
+  };
 };
 export const setResponsibilitiesToHtml = (responsibilitiesToHtml) => {
   return { type: RESPONSIBILITIESTOHTML, payload: responsibilitiesToHtml };
 };
 
+export const setShowResponsibilitiesList = (showResponsibilitiesList) => {
+  return { type: SHOWRESPONSIBILITIESLIST, payload: showResponsibilitiesList };
+};
 
 //QULIFICATIONS
 export const setShowQualificationForm = (isFormshown) => {
@@ -63,7 +70,6 @@ export const setCustomizedRequirements = (customizedRequirements) => {
   return { type: CUSTOMIZEDREQUIREMENTS, payload: customizedRequirements };
 };
 
-
 //EDUCATION
 export const setShowEducationForm = (isFormShown) => {
   return { type: SHOWEDUCATIONFORM, payload: isFormShown };
@@ -92,8 +98,3 @@ export const setBenefitsToHtml = (benefitsToHtml) => {
 export const setCustomizedBenefits = (customizedBenefits) => {
   return { type: CUSTOMIZEDBENEFITS, payload: customizedBenefits };
 };
-
-
-
-
-

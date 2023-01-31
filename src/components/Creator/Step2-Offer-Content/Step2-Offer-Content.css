@@ -1,3 +1,6 @@
 @import "../../common/variables.css";
 
 
+.styled-icon-button {
+     color: var(--primary)!important;
+   }
