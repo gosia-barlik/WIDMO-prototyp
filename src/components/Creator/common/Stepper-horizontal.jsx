@@ -17,7 +17,7 @@ export default function StepperHorizontal(props) {
         alternativeLabel>
         {props.mainStepperLabels.map((label, index) => (
           <Step key={label.name}>
-            <StepButton onClick={() => props.handleStep(index)}>
+            <StepButton onClick={() => props.handleStep(index)} style={{width:"100px"}}>
               {label.name}
             </StepButton>
           </Step>

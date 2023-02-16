@@ -1,14 +1,17 @@
-.step-4-container {
-  width:100% !important;
-  margin-top: 70px !important;
-  padding-left: 20% !important;
+.step-1-container .step-4-container {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
+  flex-shrink: 3;
 }
 
 .step-4-container .form-container-box {
-  width:74%
+  margin-top: 18px;
 }
 
-.step-4-container .job-offer-summary {
+/* .step-4-container .job-offer-summary {
   box-sizing:border-box;
     width: 100%;
     min-height: 600px;
@@ -19,7 +22,7 @@
     padding: 30px;
     padding-left: 60px;
 
-}
+} */
 
 .job-offer-summary span{
   font-weight: 500;

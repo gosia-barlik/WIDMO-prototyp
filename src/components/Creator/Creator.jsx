@@ -37,7 +37,7 @@ export default function Creator() {
     { name: "Główne informacje" },
     { name: "Treść ogłoszenia" },
     { name: "Dodatkowe informacje" },
-    { name: "Gotowe ogłoszenie" },
+    // { name: "Gotowe ogłoszenie" },
   ];
 
   const handleStep = (step) => {
@@ -73,7 +73,7 @@ export default function Creator() {
         />
       )}
 
-      {showResults && (
+      {(showResults && activeStep !== 3)&& (
         <StepperHorizontal
           activeStep={activeStep}
           handleStep={handleStep}
@@ -118,7 +118,7 @@ export default function Creator() {
 
         {activeStep !== 3 && <JobOfferContainer />}
 
-        {showResults && <ZRKInfo />}
+        {(showResults && activeStep !== 3)&& <ZRKInfo />}
       </Grid>
     </>
   );

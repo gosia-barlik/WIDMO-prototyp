@@ -10,8 +10,8 @@ import "./Step4-Summary.css";
 
 export default function Step4Summary(props) {
   return (
-    <Grid container spacing={4} className='step-4-container'>
-      <Typography variant='subtitle2' gutterBottom component='div'></Typography>
+    <Grid container className='step-4-container'>
+      <Typography variant='h6' gutterBottom component='div' align='center'> Twoje ogłoszenie</Typography>
       <Paper className='form-container-box'>
         <>
           <RichTextEditor/>
