@@ -65,7 +65,7 @@ export default function AdditionalInformation(props) {
   ];
   const salaryContractFixture = [
     "umowa o pracę",
-    " umowa o dzieło",
+    "umowa o dzieło",
     "umowa zlecenie",
     "kontrakt B2B",
     "umowa na zastępstwo",

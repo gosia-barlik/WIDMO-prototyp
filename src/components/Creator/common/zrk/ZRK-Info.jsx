@@ -9,6 +9,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
 import { setShowZRK } from "../../../../store/actions/stepOneActions";
 import { useDispatch, useSelector } from "react-redux";
+import "./ZRK-Info.css";
 
 const PurpleSwitch = withStyles({
   switchBase: {
@@ -36,13 +37,8 @@ export default function ZRKInfo(props) {
     <Grid
       item
       xs={2}
-      style={{
-        margin: "10px",
-        marginTop: "50px",
-        textAlign: "left",
-        position: "absolute",
-        transform: "translate(180%)",
-      }}>
+      className='zrk-container'
+     >
       <FormControlLabel style ={{marginLeft: "120%"}}
         control={<PurpleSwitch checked={showZRK}  onChange={() => handleShowZRK()} />}
         label='ZRK'

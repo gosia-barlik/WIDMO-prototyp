@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import ResponsibilitiesSection from "./form/Responsibilities-Section.jsx";
 import RequirementsSection from "./form/Requirements-Section.jsx";
 import BenefitsSection from "./form/Benefits-Section.jsx";
-import MainActionButtons from "../common/Main-Action-Buttons.jsx";
+import ActionButtons from "./form/Action-Buttons.jsx";
 import "./Step2-Offer-Content.css";
 import { useSelector } from "react-redux";
 
@@ -29,7 +29,7 @@ export default function Step2OfferContent(props) {
           <RequirementsSection />
 
           <BenefitsSection />
-          <MainActionButtons
+          <ActionButtons
             handleBack={props.handleMainStepperBack}
             handleNext={props.handleMainStepperNext}
           />

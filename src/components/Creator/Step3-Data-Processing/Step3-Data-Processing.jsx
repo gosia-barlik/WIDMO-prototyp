@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import MainActionButtons from "../common/Main-Action-Buttons.jsx";
+import ActionButtons from "./form/Action-Buttons.jsx";
 import DataProcessing from "./form/Data-Processing.jsx";
 import OrganizationalData from "./form/Organizational-Data.jsx";
 import "./Step3-Data-Processing.css";
@@ -24,7 +24,7 @@ export default function Step3DataProcessing(props) {
         <Paper className='form-container-box'>
           <DataProcessing />
           <OrganizationalData />
-          <MainActionButtons
+          <ActionButtons
             handleBack={props.handleMainStepperBack}
             handleNext={props.handleMainStepperNext}
           />

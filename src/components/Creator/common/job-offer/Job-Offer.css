@@ -1,9 +1,9 @@
 @import "../../../common/variables.css";
 
+
 .job-offer-container-box {
   box-shadow: none !important;
 }
-
 
 .job-offer-container .offer-section-container {
   margin-bottom: 20px

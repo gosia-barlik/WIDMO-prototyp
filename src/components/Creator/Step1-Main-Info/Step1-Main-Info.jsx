@@ -4,8 +4,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import SearchBar from "./form/Job-Position-Search-Bar";
 import SearchResults from "./form/Job-Position-Search-Results";
-import MainActionButtons from "../common/Main-Action-Buttons.jsx";
+import ActionButtons from "./form/Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
 import { useSelector } from "react-redux";
@@ -30,7 +32,7 @@ export default function Step1MainInfo(props) {
             
             <AboutCompany />
             <AdditionalInformation />
-            <MainActionButtons handleNext={props.handleMainStepperNext} />
+            <ActionButtons handleNext={props.handleMainStepperNext} />
           </>
         )}
       </Paper>

@@ -51,16 +51,16 @@ export default function Creator() {
   };
 
   //JOB OFFER PREVIEW
-  const handleShowJobOffer = () => {
-    showJobOffer
-      ? dispatch(setShowJobOffer(false))
-      : dispatch(setShowJobOffer(true));
-  };
+  // const handleShowJobOffer = () => {
+  //   showJobOffer
+  //     ? dispatch(setShowJobOffer(false))
+  //     : dispatch(setShowJobOffer(true));
+  // };
 
   //ZRK
-  const handleShowZRK = () => {
-    showZRK ? dispatch(setShowZRK(false)) : dispatch(setShowZRK(true));
-  };
+  // const handleShowZRK = () => {
+  //   showZRK ? dispatch(setShowZRK(false)) : dispatch(setShowZRK(true));
+  // };
 
   return (
     <>
