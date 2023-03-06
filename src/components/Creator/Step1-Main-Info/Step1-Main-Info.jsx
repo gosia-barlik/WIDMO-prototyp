@@ -14,26 +14,26 @@ import { setJobOfferId, setJobOffer } from "../../../store/actions/stepOneAction
 
 export default function Step1MainInfo() {
   const stepOneReducer = useSelector((state) => state.stepOneReducer);
+  const { jobOffer } = useSelector((state) => state.stepOneReducer);
   const dispatch = useDispatch();
-
   const handleNext = () => {dispatch(horizontalStepForward())}
 
   useEffect(() => {
-    stepOneReducer.isEdit && getMainInfo(stepOneReducer.jobOfferId);
+    stepOneReducer.isEdit && getMainInfo(jobOffer.jobOfferId);
   }, []);
 
   const sendMainInfo = async () => {
-    if(stepOneReducer.jobOfferId)
-      await MainInfoAPI.update(stepOneReducer)
+    if(jobOffer.jobOfferId)
+      await MainInfoAPI.update(jobOffer)
     else {
-      const jobOfferId = await MainInfoAPI.create(stepOneReducer);
+      const jobOfferId = await MainInfoAPI.create(jobOffer);
       dispatch(setJobOfferId(jobOfferId));
     }
   };
   
   const getMainInfo = async (jobOfferId) => {
-      const jobOffer = await MainInfoAPI.get(jobOfferId);
-      dispatch(setJobOffer(jobOffer));
+      const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
+      dispatch(setJobOffer(jobOfferResponse));
   };
 
   return (

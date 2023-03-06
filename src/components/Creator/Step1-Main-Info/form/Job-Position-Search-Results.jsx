@@ -6,11 +6,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Link from '@mui/material/Link';
-import { useSelector } from "react-redux";
 
 export default function SearchResults(props) {
-  const { searchedPosition } = useSelector((state) => state.stepOneReducer);
-
   const qualificationsFixture = [
     {
       name: "Elektromechanik pojazdów samochodowych",

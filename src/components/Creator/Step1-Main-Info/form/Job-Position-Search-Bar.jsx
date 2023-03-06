@@ -45,9 +45,8 @@ export default function SearchBar(props) {
 
   const dispatch = useDispatch();
 
-  const { searchedPosition } = useSelector((state) => state.stepOneReducer);
-  const reducer = useSelector((state) => state.stepOneReducer);
-
+  const stepOneReducer = useSelector((state) => state.stepOneReducer);
+  const { jobOffer } = useSelector((state) => state.stepOneReducer);
 
   const { responsibilities, requirements, benefits } = useSelector(
     (state) => state.stepTwoReducer
@@ -134,7 +133,7 @@ export default function SearchBar(props) {
   const handleSearch = (e) => {
     e.preventDefault();
     if (text.length < jobPositionSchema.MAX_LENGTH) {
-      dispatch(setSearchedPosition(searchedPosition));
+      dispatch(setSearchedPosition(stepOneReducer.searchedPosition));
       dispatch(setShowResults(true));
     }
     onSetBenefits();
@@ -167,7 +166,7 @@ export default function SearchBar(props) {
           style={{ fontSize: "14px", marginBottom: "24px" }}
         />
 
-        {searchedPosition && (
+        {stepOneReducer.searchedPosition && (
           <Button
             type='submit'
             variant='contained'
@@ -178,7 +177,7 @@ export default function SearchBar(props) {
           </Button>
         )}
 
-        {searchedPosition == false && (
+        {stepOneReducer.searchedPosition == false && (
           <Button
             type='submit'
             variant='contained'

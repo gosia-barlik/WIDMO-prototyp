@@ -1,9 +1,9 @@
-import {
-    JOBOFFER
-  } from "../../rankomatConsts";
+// import {
+//     JOBOFFER
+//   } from "../../rankomatConsts";
   
-  export const setJobOffer = (jobOffers) => {
-    return { type: JOBOFFER, payload: jobOffers };
-  };
+//   export const setJobOffer = (jobOffers) => {
+//     return { type: JOBOFFER, payload: jobOffers };
+//   };
   
   

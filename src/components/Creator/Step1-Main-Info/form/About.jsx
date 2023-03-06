@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutCompany(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { companyLogo, companyLogoPreview, companyName, companyDescription } = useSelector((state) => state.stepOneReducer);
+  const { companyLogo, companyLogoPreview, companyName, companyDescription } = useSelector((state) => state.stepOneReducer.jobOffer);
 
   useEffect(() => {
     if (!companyLogo) {

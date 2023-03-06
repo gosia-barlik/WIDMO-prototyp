@@ -83,7 +83,7 @@ const recruitmentModeFixture = ["rekrutacja stacjonarna", "rekrutacja zdalna"];
 export default function AdditionalInformation(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const stepOneReducer = useSelector((state) => state.stepOneReducer);
+  const { jobOffer } = useSelector((state) => state.stepOneReducer);
 
   const onSetSalaryType = (salaryType) => dispatch(setSalaryType(salaryType));
   const onSetSalaryFrom = (salaryFrom) => dispatch(setSalaryFrom(salaryFrom));
@@ -116,7 +116,7 @@ export default function AdditionalInformation(props) {
         <div style={{ width: "100%" }}>
           <FormControl variant='outlined' className={classes.formControl}>
             <TextField
-              defaultValue = {stepOneReducer.salaryFrom}
+              defaultValue = {jobOffer.salaryFrom}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -130,7 +130,7 @@ export default function AdditionalInformation(props) {
           </FormControl>
           <FormControl variant='outlined' className={classes.formControl}>
             <TextField
-              defaultValue = {stepOneReducer.salaryTo}
+              defaultValue = {jobOffer.salaryTo}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -145,7 +145,7 @@ export default function AdditionalInformation(props) {
           <FormControl variant='outlined' className={classes.formControl}>
             <InputLabel id='select-currency-label'>waluta</InputLabel>
             <Select
-              defaultValue = {stepOneReducer.salaryCurrency}
+              defaultValue = {jobOffer.salaryCurrency}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -162,7 +162,7 @@ export default function AdditionalInformation(props) {
           <FormControl variant='outlined' className={classes.formControl}>
             <InputLabel id='select-time-label'>okres rozliczenia</InputLabel>
             <Select
-              defaultValue = {stepOneReducer.salaryTime}
+              defaultValue = {jobOffer.salaryTime}
               className={classes.textField}
               style={{ minWidth: "180px" }}
               variant='outlined'
@@ -180,7 +180,7 @@ export default function AdditionalInformation(props) {
           <FormControl variant='outlined' className={classes.formControl}>
             <InputLabel id='select-time-label'>wartość</InputLabel>
             <Select
-              defaultValue = {stepOneReducer.salaryType}
+              defaultValue = {jobOffer.salaryType}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -201,7 +201,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
-              defaultValue = {stepOneReducer.workModel}
+              defaultValue = {jobOffer.workModel}
               className={classes.textField}
               variant='outlined'
               style={{ minWidth: "180px" }}
@@ -223,7 +223,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
-              defaultValue = {stepOneReducer.salaryContract}
+              defaultValue = {jobOffer.salaryContract}
               className={classes.textField}
               variant='outlined'
               style={{ minWidth: "180px" }}
@@ -245,7 +245,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
-              defaultValue = {stepOneReducer.workMode}
+              defaultValue = {jobOffer.workMode}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -266,7 +266,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
-              defaultValue = {stepOneReducer.recruitmentMode}
+              defaultValue = {jobOffer.recruitmentMode}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -286,7 +286,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <div>
             <TextField
-              defaultValue = {stepOneReducer.addressStreet}
+              defaultValue = {jobOffer.addressStreet}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -299,7 +299,7 @@ export default function AdditionalInformation(props) {
             />
 
             <TextField
-              defaultValue = {stepOneReducer.addressCity}
+              defaultValue = {jobOffer.addressCity}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -312,7 +312,7 @@ export default function AdditionalInformation(props) {
             />
 
             <TextField
-              defaultValue = {stepOneReducer.addressCountry}
+              defaultValue = {jobOffer.addressCountry}
               className={classes.textField}
               variant='outlined'
               size='small'
