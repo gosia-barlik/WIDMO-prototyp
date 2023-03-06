@@ -46,11 +46,7 @@ export default function SearchBar(props) {
   const dispatch = useDispatch();
 
   const stepOneReducer = useSelector((state) => state.stepOneReducer);
-  const { jobOffer } = useSelector((state) => state.stepOneReducer);
-
-  const { responsibilities, requirements, benefits } = useSelector(
-    (state) => state.stepTwoReducer
-  );
+  const { responsibilities, requirements, benefits } = useSelector((state) => state.stepTwoReducer);
 
   const onSetResponsibilities = (e) => {
     let newResponsibilities;
@@ -118,7 +114,7 @@ export default function SearchBar(props) {
 
   const  handleSearchPositionSubmit = (e) => {
     dispatch(setName(text + '-' + getCurrentDate()));
-    dispatch(setPositionName(text + '-' + getCurrentDate()));
+    dispatch(setPositionName(text));
   };
 
   const getCurrentDate = () => {
@@ -152,6 +148,7 @@ export default function SearchBar(props) {
         sx={{ display: "flex", flexDirection: "row" }}>
         <TextField
           spellCheck='true'
+          defaultValue={ stepOneReducer.searchedPosition }
           error={text.length >= jobPositionSchema.MAX_LENGTH}
           helperText={errorMessage}
           required

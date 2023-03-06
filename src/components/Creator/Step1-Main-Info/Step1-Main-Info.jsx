@@ -10,7 +10,7 @@ import AboutCompany from "./form/About.jsx";
 import {useDispatch, useSelector } from "react-redux";
 import { horizontalStepForward } from "../../../store/actions/stepperActions.js";
 import { MainInfoAPI } from "../../../api/mainInfoApi";
-import { setJobOfferId, setJobOffer } from "../../../store/actions/stepOneActions";
+import { setJobOfferId, setJobOffer, setSearchedPosition, setShowResults } from "../../../store/actions/stepOneActions";
 
 export default function Step1MainInfo() {
   const stepOneReducer = useSelector((state) => state.stepOneReducer);
@@ -34,6 +34,8 @@ export default function Step1MainInfo() {
   const getMainInfo = async (jobOfferId) => {
       const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
       dispatch(setJobOffer(jobOfferResponse));
+      dispatch(setShowResults(true));
+      dispatch(setSearchedPosition(jobOfferResponse.positionName));
   };
 
   return (
@@ -46,7 +48,7 @@ export default function Step1MainInfo() {
         Obszar roboczy
       </Typography>
       <Paper className='form-container-box'>
-        <SearchBar />
+        <SearchBar searchedPosition = {stepOneReducer.searchedPosition} />
 
         {stepOneReducer.showResults && (
           <>

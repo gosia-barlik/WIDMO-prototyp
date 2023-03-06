@@ -31,11 +31,11 @@ import {
 
 const initialState = {
   activeStep: 0, //todo przeniesc do state
-  isEdit: false,
+  isEdit: true,
   searchedPosition: "", //name i positionName
   jobOffer:{
-    // jobOfferId : "981FE190-3956-48AF-97EA-F328D483DD03",
-    jobOfferId : null,
+    jobOfferId : "59ED8D99-2600-417C-BBE8-BA577FA8B6F3",
+    // jobOfferId : null,
     name: "",
     positionName: "",
     salaryType: "",
