@@ -6,11 +6,15 @@ import ActionButtons from "./form/Action-Buttons.jsx";
 import DataProcessing from "./form/Data-Processing.jsx";
 import OrganizationalData from "./form/Organizational-Data.jsx";
 import "./Step3-Data-Processing.css";
-import {  useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { horizontalStepForward, horizontalStepBack } from "../../../store/actions/stepperActions.js";
 
 export default function Step3DataProcessing(props) {
 
   const { rodo } = useSelector((state) => state.stepThreeReducer);
+  const dispatch = useDispatch();
+  const handleNext = () => {dispatch(horizontalStepForward())}
+  const handleBack = () => {dispatch(horizontalStepBack())}
 
   return (
       <Grid item xs={4} className='form-container'>
@@ -25,8 +29,8 @@ export default function Step3DataProcessing(props) {
           <DataProcessing />
           <OrganizationalData />
           <ActionButtons
-            handleBack={props.handleMainStepperBack}
-            handleNext={props.handleMainStepperNext}
+            handleBack={handleBack}
+            handleNext={handleNext}
           />
         </Paper>
       </Grid>

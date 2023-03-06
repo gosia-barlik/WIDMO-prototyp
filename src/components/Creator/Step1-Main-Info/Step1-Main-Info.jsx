@@ -7,13 +7,16 @@ import ActionButtons from "./form/Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
+import {useDispatch, useSelector } from "react-redux";
+import { horizontalStepForward } from "../../../store/actions/stepperActions.js";
 import { MainInfoAPI } from "../../../api/mainInfoApi";
-import { useDispatch, useSelector } from "react-redux";
 import { setJobOfferId, setJobOffer } from "../../../store/actions/stepOneActions";
 
-export default function Step1MainInfo(props) {
+export default function Step1MainInfo() {
   const stepOneReducer = useSelector((state) => state.stepOneReducer);
   const dispatch = useDispatch();
+
+  const handleNext = () => {dispatch(horizontalStepForward())}
 
   useEffect(() => {
     stepOneReducer.isEdit && getMainInfo(stepOneReducer.jobOfferId);
@@ -51,7 +54,7 @@ export default function Step1MainInfo(props) {
             <AdditionalInformation />
             <ActionButtons
               onSubmit = { sendMainInfo }
-              handleNext = { props.handleMainStepperNext }
+              handleNext = { handleNext }
             />
           </>
         )}
