@@ -41,69 +41,63 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+const currencyFixture = ["PLN", "EUR", "USD"];
+const salaryTimeFixture = [
+  "godzina",
+  "dzień",
+  "tydzień",
+  "miesiąc",
+  "rok",
+  "inne",
+];
+const salaryTypeFixture = ["brutto", "netto"];
+const workModelFixture = [
+  "praca stacjonarna",
+  "praca hybrydowa",
+  "praca zdalna",
+  "praca mobilna",
+  "inna",
+];
+const salaryContractFixture = [
+  "umowa o pracę",
+  "umowa o dzieło",
+  "umowa zlecenie",
+  "kontrakt B2B",
+  "umowa na zastępstwo",
+  "umowa agencyjna",
+  "umowa o pracę tymczasową",
+  "umowa o staż / praktyki",
+  "inny",
+];
+const workModeFixture = [
+  "część etatu",
+  "dodatkowa / tymczasowa",
+  "pełny etat",
+  "pół etatu",
+  "inny",
+];
+
+const recruitmentModeFixture = ["rekrutacja stacjonarna", "rekrutacja zdalna"];
+
 export default function AdditionalInformation(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  // const { currency } = useSelector((state) => state.stepOneReducer);
-
-  const currencyFixture = ["PLN", "EUR", "USD"];
-  const salaryTimeFixture = [
-    "godzina",
-    "dzień",
-    "tydzień",
-    "miesiąc",
-    "rok",
-    "inne",
-  ];
-  const salaryTypeFixture = ["brutto", "netto"];
-  const workModelFixture = [
-    "praca stacjonarna",
-    "praca hybrydowa",
-    "praca zdalna",
-    "praca mobilna",
-    "inna",
-  ];
-  const salaryContractFixture = [
-    "umowa o pracę",
-    "umowa o dzieło",
-    "umowa zlecenie",
-    "kontrakt B2B",
-    "umowa na zastępstwo",
-    "umowa agencyjna",
-    "umowa o pracę tymczasową",
-    "umowa o staż / praktyki",
-    "inny",
-  ];
-  const workModeFixture = [
-    "część etatu",
-    "dodatkowa / tymczasowa",
-    "pełny etat",
-    "pół etatu",
-    "inny",
-  ];
-  const recruitmentModeFixture = ["rekrutacja stacjonarna", "rekrutacja zdalna"];
+  const stepOneReducer = useSelector((state) => state.stepOneReducer);
 
   const onSetSalaryType = (salaryType) => dispatch(setSalaryType(salaryType));
   const onSetSalaryFrom = (salaryFrom) => dispatch(setSalaryFrom(salaryFrom));
   const onSetSalaryTo = (salaryTo) => dispatch(setSalaryTo(salaryTo));
-  const onSetSalaryCurrency = (e) => {
-    dispatch(setSalaryCurrency(e.target.value));
-  };
+  const onSetSalaryCurrency = (e) => dispatch(setSalaryCurrency(e.target.value));;
 
   const onSetSalaryTime = (salaryTime) => dispatch(setSalaryTime(salaryTime));
-  const onSetSalaryContract = (salaryContract) =>
-    dispatch(setSalaryContract(salaryContract));
-  const onSetAddressCountry = (addressCountry) =>
-    dispatch(setAddressCountry(addressCountry));
-  const onSetAddressCity = (addressCity) =>
-    dispatch(setAddressCity(addressCity));
-  const onSetAddressStreet = (addressStreet) =>
-    dispatch(setAddressStreet(addressStreet));
-  const onSetRecruitmentMode = (recruitmentMode) =>
-    dispatch(setRecruitmentMode(recruitmentMode));
+  // const onSetSalaryContract = (salaryContract) => dispatch(setSalaryContract(salaryContract));
+  const onSetAddressCountry = (addressCountry) => dispatch(setAddressCountry(addressCountry));
+  const onSetAddressCity = (addressCity) => dispatch(setAddressCity(addressCity));
+  const onSetAddressStreet = (addressStreet) => dispatch(setAddressStreet(addressStreet));
+  const onSetRecruitmentMode = (recruitmentMode) => dispatch(setRecruitmentMode(recruitmentMode));
   const onSetWorkMode = (workMode) => dispatch(setWorkMode(workMode));
-  // const onSetContractType = (contractType) =>
-  //   dispatch(setContractType(contractType));
+  const onSetContractType = (contractType) => dispatch(setContractType(contractType));
   const onSetWorkModel = (workModel) => dispatch(setWorkModel(workModel));
 
   return (
@@ -122,6 +116,7 @@ export default function AdditionalInformation(props) {
         <div style={{ width: "100%" }}>
           <FormControl variant='outlined' className={classes.formControl}>
             <TextField
+              defaultValue = {stepOneReducer.salaryFrom}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -135,6 +130,7 @@ export default function AdditionalInformation(props) {
           </FormControl>
           <FormControl variant='outlined' className={classes.formControl}>
             <TextField
+              defaultValue = {stepOneReducer.salaryTo}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -149,6 +145,7 @@ export default function AdditionalInformation(props) {
           <FormControl variant='outlined' className={classes.formControl}>
             <InputLabel id='select-currency-label'>waluta</InputLabel>
             <Select
+              defaultValue = {stepOneReducer.salaryCurrency}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -165,6 +162,7 @@ export default function AdditionalInformation(props) {
           <FormControl variant='outlined' className={classes.formControl}>
             <InputLabel id='select-time-label'>okres rozliczenia</InputLabel>
             <Select
+              defaultValue = {stepOneReducer.salaryTime}
               className={classes.textField}
               style={{ minWidth: "180px" }}
               variant='outlined'
@@ -182,6 +180,7 @@ export default function AdditionalInformation(props) {
           <FormControl variant='outlined' className={classes.formControl}>
             <InputLabel id='select-time-label'>wartość</InputLabel>
             <Select
+              defaultValue = {stepOneReducer.salaryType}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -202,6 +201,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
+              defaultValue = {stepOneReducer.workModel}
               className={classes.textField}
               variant='outlined'
               style={{ minWidth: "180px" }}
@@ -223,6 +223,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
+              defaultValue = {stepOneReducer.salaryContract}
               className={classes.textField}
               variant='outlined'
               style={{ minWidth: "180px" }}
@@ -230,7 +231,7 @@ export default function AdditionalInformation(props) {
               id='outlined-basic'
               type='text'
               name='contract-type-input'
-              onChange={(e) => onSetSalaryContract(e.target.value)}>
+              onChange={(e) => onSetContractType(e.target.value)}>
               {salaryContractFixture.map((contract) => (
                 <MenuItem value={contract}>{contract}</MenuItem>
               ))}
@@ -244,6 +245,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
+              defaultValue = {stepOneReducer.workMode}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -264,6 +266,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <FormControl variant='outlined' className={classes.formControl}>
             <Select
+              defaultValue = {stepOneReducer.recruitmentMode}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -283,6 +286,7 @@ export default function AdditionalInformation(props) {
           </Typography>
           <div>
             <TextField
+              defaultValue = {stepOneReducer.addressStreet}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -295,6 +299,7 @@ export default function AdditionalInformation(props) {
             />
 
             <TextField
+              defaultValue = {stepOneReducer.addressCity}
               className={classes.textField}
               variant='outlined'
               size='small'
@@ -307,6 +312,7 @@ export default function AdditionalInformation(props) {
             />
 
             <TextField
+              defaultValue = {stepOneReducer.addressCountry}
               className={classes.textField}
               variant='outlined'
               size='small'

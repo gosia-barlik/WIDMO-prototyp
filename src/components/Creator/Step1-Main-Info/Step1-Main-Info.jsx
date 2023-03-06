@@ -1,19 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import SearchBar from "./form/Job-Position-Search-Bar";
-import SearchResults from "./form/Job-Position-Search-Results";
 import ActionButtons from "./form/Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
-import { useSelector } from "react-redux";
+import { MainInfoAPI } from "../../../api/mainInfoApi";
+import { useDispatch, useSelector } from "react-redux";
+import { setJobOfferId, setJobOffer } from "../../../store/actions/stepOneActions";
 
 export default function Step1MainInfo(props) {
-  const { showResults } = useSelector((state) => state.stepOneReducer);
+  const stepOneReducer = useSelector((state) => state.stepOneReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    stepOneReducer.isEdit && getMainInfo(stepOneReducer.jobOfferId);
+  }, []);
+
+  const sendMainInfo = async () => {
+    if(stepOneReducer.jobOfferId)
+      await MainInfoAPI.update(stepOneReducer)
+    else {
+      const jobOfferId = await MainInfoAPI.create(stepOneReducer);
+      dispatch(setJobOfferId(jobOfferId));
+    }
+  };
+  
+  const getMainInfo = async (jobOfferId) => {
+      const jobOffer = await MainInfoAPI.get(jobOfferId);
+      dispatch(setJobOffer(jobOffer));
+  };
 
   return (
     <Grid item xs={4} className='form-container'>
@@ -27,12 +45,14 @@ export default function Step1MainInfo(props) {
       <Paper className='form-container-box'>
         <SearchBar />
 
-        {showResults && (
+        {stepOneReducer.showResults && (
           <>
-            
             <AboutCompany />
             <AdditionalInformation />
-            <ActionButtons handleNext={props.handleMainStepperNext} />
+            <ActionButtons
+              onSubmit = { sendMainInfo }
+              handleNext = { props.handleMainStepperNext }
+            />
           </>
         )}
       </Paper>

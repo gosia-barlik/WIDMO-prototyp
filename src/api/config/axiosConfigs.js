@@ -2,7 +2,8 @@ import axios from "axios"
 
 export const api = axios.create({
   withCredentials: true,
-  baseURL: "https://aira.com/api/v1",
+  // baseURL: "https://aira.com/api/v1",
+  baseURL: "https://localhost:5000/api/v1",
 })
 
 const errorHandler = (error) => {

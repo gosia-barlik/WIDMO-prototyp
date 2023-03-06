@@ -1,5 +1,7 @@
 import {
   SEARCHEDPOSITION,
+  NAME,
+  POSITIONNAME,
   SHOWRESULTS,
   ACTIVESTEP,
   SALARYTYPE,
@@ -16,45 +18,78 @@ import {
   WORKMODEL,
   RECRUITMENTMODE,
   COMPANYNAME,
-  ABOUTCOMPANY,
-  LOGO,
-  LOGOPREVIEW,
+  COMPANYDESCRIPTION,
+  COMPANYLOGO,
+  COMPANYLOGOPREVIEW,
   SHOWJOBOFFER,
   SHOWZRK,
+  STEPONE,
+  ISEDIT,
+  JOBOFFERID,
+  JOBOFFER
 } from "../../creatorConsts";
 
 const initialState = {
-  searchedPosition: "",
-  showResults: false,//todo przeniesc do state
-  activeStep: 0,//todo przeniesc do state
+  // jobOfferId : null,
+  jobOfferId : "981FE190-3956-48AF-97EA-F328D483DD03",
+  isEdit: true,
+  searchedPosition: "", //name i positionName
+  name: "",
+  positionName: "",
+  showResults: false, //todo przeniesc do state
+  activeStep: 0, //todo przeniesc do state
   salaryType: "",
   salaryFrom: "",
   salaryTo: "",
   salaryCurrency: "",
   salaryTime: "",
   salaryContract: "",
-  addressCountry: "",
-  addressCity: "Lokalizacja miejsca pracy",
-  addressStreet: "",
-  workMode: "Wymiar zatrudnienia",
+  addressCountry: "", 
+  addressCity: "Lokalizacja miejsca pracy", 
+  addressStreet: "", 
+  workMode: "Wymiar zatrudnienia", 
   contractType: "Rodzaj umowy",
   workModel: "Tryb pracy",
   recruitmentMode: "Tryb rekrutacji",
   companyName: "",
-  aboutCompany: "",
-  logo: "",
-  logoPreview: "",
+  companyDescription: "", //companyDescription
+  companylogo: "",
+  companyLogoPreview: "",
   showJobOffer: true,
   showZRK: false,
 };
 
 export const stepOneReducer = (state = initialState, action) => {
   switch (action.type) {
+    case JOBOFFERID: {
+      return { 
+        ...state,
+        jobOfferId: action.payload,
+      }
+    };
+    case JOBOFFER: {
+      return action.payload;
+    }
+    case STEPONE: {
+      return action.payload;
+    }
     case SEARCHEDPOSITION: {
       return {
         ...state,
         searchedPosition: action.payload.charAt(0).toUpperCase()
         + action.payload.slice(1),
+      };
+    }
+    case NAME: {
+      return {
+        ...state,
+        name: action.payload,
+      };
+    }
+    case POSITIONNAME: {
+      return {
+        ...state,
+        positionName: action.payload,
       };
     }
     case SHOWRESULTS: {
@@ -153,22 +188,22 @@ export const stepOneReducer = (state = initialState, action) => {
         companyName: action.payload,
       };
     }
-    case ABOUTCOMPANY: {
+    case COMPANYDESCRIPTION: {
       return {
         ...state,
-        aboutCompany: action.payload,
+        companyDescription: action.payload,
       };
     }
-    case LOGO: {
+    case COMPANYLOGO: {
       return {
         ...state,
-        logo: action.payload,
+        companyLogo: action.payload,
       };
     }
-    case LOGOPREVIEW: {
+    case COMPANYLOGOPREVIEW: {
       return {
         ...state,
-        logoPreview: action.payload,
+        companyLogoPreview: action.payload,
       };
     }
     case SHOWJOBOFFER: {
@@ -181,6 +216,12 @@ export const stepOneReducer = (state = initialState, action) => {
       return {
         ...state,
         showZRK: action.payload
+      }
+    }
+    case ISEDIT: {
+      return {
+        ...state,
+        isEdit: action.payload
       }
     }
     default:

@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setSearchedPosition,
   setShowResults,
+  setName,
+  setPositionName,
 } from "../../../../store/actions/stepOneActions";
 import {
   setResponsibilities,
@@ -18,9 +20,24 @@ import {
   setRequirements,
   setRequirementsToHtml,
   setBenefits,
-  setBenefitsToHtml,
+  setBenefitsToHtml
 } from "../../../../store/actions/stepTwoActions";
 import { jobPositionSchema } from "../../common/validations/stepOneSchema";
+
+
+const responsibilitiesFixture = [
+  "diagnozowanie usterek mechanicznych",
+  "wykonywanie napraw",
+  "bieżące usuwanie awarii i usterek",
+];
+
+const requirementsFixture = [
+  "wiedza z zakresu mechaniki/elektromechaniki",
+  "wykształcenie zawodowe lub średnie techniczne",
+  "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
+];
+
+const benefitsFixture = ["benefit1", "benefit2", "benefit3"];
 
 export default function SearchBar(props) {
   const [text, setText] = useState("");
@@ -29,24 +46,12 @@ export default function SearchBar(props) {
   const dispatch = useDispatch();
 
   const { searchedPosition } = useSelector((state) => state.stepOneReducer);
+  const reducer = useSelector((state) => state.stepOneReducer);
+
 
   const { responsibilities, requirements, benefits } = useSelector(
     (state) => state.stepTwoReducer
   );
-
-  const responsibilitiesFixture = [
-    "diagnozowanie usterek mechanicznych",
-    "wykonywanie napraw",
-    "bieżące usuwanie awarii i usterek",
-  ];
-
-  const requirementsFixture = [
-    "wiedza z zakresu mechaniki/elektromechaniki",
-    "wykształcenie zawodowe lub średnie techniczne",
-    "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
-  ];
-
-  const benefitsFixture = ["benefit1", "benefit2", "benefit3"];
 
   const onSetResponsibilities = (e) => {
     let newResponsibilities;
@@ -112,6 +117,20 @@ export default function SearchBar(props) {
     setText(e.target.value);
   };
 
+  const  handleSearchPositionSubmit = (e) => {
+    dispatch(setName(text + '-' + getCurrentDate()));
+    dispatch(setPositionName(text + '-' + getCurrentDate()));
+  };
+
+  const getCurrentDate = () => {
+    const dateNow = new Date();
+    
+    const year = dateNow.getFullYear();
+    const month = dateNow.getMonth();
+    const day = dateNow.getDate();
+    return `${day}/${month}/${year}`;
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (text.length < jobPositionSchema.MAX_LENGTH) {
@@ -153,6 +172,7 @@ export default function SearchBar(props) {
             type='submit'
             variant='contained'
             color='primary'
+            onClick={handleSearchPositionSubmit}
             endIcon={<DoneIcon />}>
             Zatwierdź
           </Button>
@@ -164,6 +184,7 @@ export default function SearchBar(props) {
             variant='contained'
             color='primary'
             disabled
+            onClick={handleSearchPositionSubmit}
             endIcon={<DoneIcon />}>
             Zatwierdź
           </Button>
