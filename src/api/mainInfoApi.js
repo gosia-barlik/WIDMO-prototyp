@@ -5,7 +5,6 @@ export const MainInfoAPI = {
 
   //zapisanie ogłoszenia
   create: async function (mainInfo, cancel = false) {
-    console.log(mainInfo);
     const response = await api.request({
       url: '/Creator/JobOffer',
       method: "POST",
@@ -39,7 +38,19 @@ export const MainInfoAPI = {
       signal: cancel ? cancelApiObject[this.get.name].handleRequestCancellation().signal : undefined,
     })
 
-    return response.data
+    return response.data;
+  },
+
+  //pobranie listy ogłoszeń
+  list: async function (cancel = false) {
+    const response = await api.request({
+      url: "/Creator/JobOffer/List",
+      method: "GET",
+      withCredentials:false,
+      signal: cancel ? cancelApiObject[this.get.name].handleRequestCancellation().signal : undefined,
+    })
+
+    return response.data;
   }
 }
 

@@ -37,7 +37,6 @@ export default function Creator() {
           <Step1MainInfo
             activeStep={horizontalStepper}
             // onFileUpload={onFileUpload}
-         
           />
         )}
         {horizontalStepper === 1 && (

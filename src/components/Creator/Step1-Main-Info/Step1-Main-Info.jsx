@@ -18,9 +18,9 @@ export default function Step1MainInfo() {
   const dispatch = useDispatch();
   const handleNext = () => {dispatch(horizontalStepForward())}
 
-  useEffect(() => {
-    stepOneReducer.isEdit && getMainInfo(jobOffer.jobOfferId);
-  }, []);
+  // useEffect(() => {
+  //   stepOneReducer.isEdit && getMainInfo(jobOffer.jobOfferId);
+  // }, []);
 
   const sendMainInfo = async () => {
     if(jobOffer.jobOfferId)
@@ -31,12 +31,12 @@ export default function Step1MainInfo() {
     }
   };
   
-  const getMainInfo = async (jobOfferId) => {
-      const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
-      dispatch(setJobOffer(jobOfferResponse));
-      dispatch(setShowResults(true));
-      dispatch(setSearchedPosition(jobOfferResponse.positionName));
-  };
+  // const getMainInfo = async (jobOfferId) => {
+  //     const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
+  //     dispatch(setJobOffer(jobOfferResponse));
+  //     dispatch(setShowResults(true));
+  //     dispatch(setSearchedPosition(jobOfferResponse.positionName));
+  // };
 
   return (
     <Grid item xs={4} className='form-container'>
