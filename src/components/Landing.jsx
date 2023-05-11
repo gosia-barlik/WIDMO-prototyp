@@ -57,10 +57,10 @@ class Landing extends React.Component {
                   </Typography>
                   <div className='hero-text1'>
                     <Typography variant='body' component='div'>
-                      AIRA to bezpłatne narzędzie wspomagające proces
-                      rekrutacji, wykorzystujące informacje zawarte w
-                      Zintegrowanym Rejestrze Kwalifikacji oraz aktualnych
-                      rynkowych ofertach pracy
+                    <b>AIRA</b> to bezpłatne narzędzie wspomagające proces rekrutacji, wykorzystujące informacje zawarte w <b>Zintegrowanym Rejestrze Kwalifikacji, <br></br>
+                    aktualnych rynkowych ofertach pracy, <br></br>
+                    standardach kompetencji, <br></br>
+                    ESCO </b><br></br>oraz <b>Sektorowej Ramie Kwalifikacji.</b> 
                     </Typography>
                   </div>
                 </div>

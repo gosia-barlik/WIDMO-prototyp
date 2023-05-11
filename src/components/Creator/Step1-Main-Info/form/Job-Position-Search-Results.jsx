@@ -36,8 +36,7 @@ export default function SearchResults(props) {
   return (
     <Paper
       className='job-position-search-results-wrapper'
-      elevation={1}
-      style={{ padding: "20px" }}>
+      elevation={1}>
       {qualificationsFixture.map((fixture) => (
         <Accordion style={{ marginTop: "10px" }}>
           <AccordionSummary

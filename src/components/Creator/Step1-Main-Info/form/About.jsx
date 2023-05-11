@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
   setCompanyName,
-  setAboutCompany,
+  setCompanyDescription,
   setLogo,
   setLogoPreview,
 } from "../../../../store/actions/stepOneActions";
@@ -33,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutCompany(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { logo, logoPreview } = useSelector((state) => state.stepOneReducer);
+  const { companyLogo, companyLogoPreview, companyName, companyDescription } = useSelector((state) => state.stepOneReducer);
 
   useEffect(() => {
-    if (!logo) {
+    if (!companyLogo) {
       dispatch(setLogoPreview(undefined));
       return;
     }
 
-    const objectUrl = URL.createObjectURL(logo);
+    const objectUrl = URL.createObjectURL(companyLogo);
     dispatch(setLogoPreview(objectUrl));
 
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
-  }, [logo]);
+  }, [companyLogo]);
 
   //COMPANY NAME
   const onSetCompanyName = (companyName) => {
@@ -54,8 +54,8 @@ export default function AboutCompany(props) {
   };
 
   //ABOUT COMPANY
-  const onSetAboutCompany = (aboutCompany) => {
-    dispatch(setAboutCompany(aboutCompany));
+  const onCompanyDescription = (companyDescription) => {
+    dispatch(setCompanyDescription(companyDescription));
   };
 
   const onSetLogo = (e) => {
@@ -80,6 +80,7 @@ export default function AboutCompany(props) {
         O firmie
       </Typography>
       <TextField
+        defaultValue={companyName}
         className={classes.textField}
         fullWidth
         variant='outlined'
@@ -90,13 +91,14 @@ export default function AboutCompany(props) {
         onChange={(e) => onSetCompanyName(e.target.value)}
       />
       <TextField
+        defaultValue={companyDescription}
         className={classes.textField}
         variant='outlined'
         id='textarea'
         label='kilka słów o firmie'
         fullWidth
         multiline
-        onChange={(e) => onSetAboutCompany(e.target.value)}
+        onChange={(e) => onCompanyDescription(e.target.value)}
         aria-label='about company'
         minRows={3}
       />
@@ -107,7 +109,7 @@ export default function AboutCompany(props) {
         style={{ marginTop: "20px" }}>
         Jeśli chcesz, możesz dodać logotyp
       </Typography>
-      <div className='add-logo'>
+      {/* <div className='add-logo'>
         <div className={"input-file-wrapper"}>
           <label>
             <IconButton
@@ -118,10 +120,10 @@ export default function AboutCompany(props) {
               onClick={(e) => onSetLogo(e)}>
               <PhotoCamera />
             </IconButton>
-            {logoPreview && (
+            {companyLogoPreview && (
               <img
                 className='logo-preview'
-                src={logoPreview}
+                src={companyLogoPreview}
                 id={"logo-photo"}
                 onClick={(e) => onSetLogo(e)}
               />
@@ -137,7 +139,7 @@ export default function AboutCompany(props) {
             id={"add-photo"}
           />
         </div>
-      </div>
+      </div> */}
     </Paper>
   );
 }

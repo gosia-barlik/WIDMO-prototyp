@@ -16,40 +16,46 @@ import {
   WORKMODEL,
   RECRUITMENTMODE,
   COMPANYNAME,
-  ABOUTCOMPANY,
-  LOGO,
-  LOGOPREVIEW,
+  COMPANYDESCRIPTION,
+  COMPANYLOGO,
+  COMPANYLOGOPREVIEW,
   SHOWJOBOFFER,
   SHOWZRK,
+  STEPONE
 } from "../../creatorConsts";
 
 const initialState = {
-  searchedPosition: "",
-  showResults: false,//todo przeniesc do state
-  activeStep: 0,//todo przeniesc do state
+  searchedPosition: "", //name i positionName
+  name: "",
+  positionName: "",
+  showResults: false, //todo przeniesc do state
+  activeStep: 0, //todo przeniesc do state
   salaryType: "",
   salaryFrom: "",
   salaryTo: "",
   salaryCurrency: "",
   salaryTime: "",
   salaryContract: "",
-  addressCountry: "",
-  addressCity: "Lokalizacja miejsca pracy",
-  addressStreet: "",
-  workMode: "Wymiar zatrudnienia",
+  addressCountry: "", 
+  addressCity: "Lokalizacja miejsca pracy", 
+  addressStreet: "", 
+  workMode: "Wymiar zatrudnienia", 
   contractType: "Rodzaj umowy",
   workModel: "Tryb pracy",
   recruitmentMode: "Tryb rekrutacji",
   companyName: "",
-  aboutCompany: "",
-  logo: "",
-  logoPreview: "",
+  companyDescription: "", //companyDescription
+  companylogo: "",
+  companyLogoPreview: "",
   showJobOffer: true,
   showZRK: false,
 };
 
 export const stepOneReducer = (state = initialState, action) => {
   switch (action.type) {
+    case STEPONE: {
+      return action.payload;
+    }
     case SEARCHEDPOSITION: {
       return {
         ...state,
@@ -153,22 +159,22 @@ export const stepOneReducer = (state = initialState, action) => {
         companyName: action.payload,
       };
     }
-    case ABOUTCOMPANY: {
+    case COMPANYDESCRIPTION: {
       return {
         ...state,
-        aboutCompany: action.payload,
+        companyDescription: action.payload,
       };
     }
-    case LOGO: {
+    case COMPANYLOGO: {
       return {
         ...state,
-        logo: action.payload,
+        companyLogo: action.payload,
       };
     }
-    case LOGOPREVIEW: {
+    case COMPANYLOGOPREVIEW: {
       return {
         ...state,
-        logoPreview: action.payload,
+        companyLogoPreview: action.payload,
       };
     }
     case SHOWJOBOFFER: {

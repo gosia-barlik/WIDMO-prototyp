@@ -16,11 +16,12 @@ import {
   WORKMODEL,
   RECRUITMENTMODE,
   COMPANYNAME,
-  ABOUTCOMPANY,
-  LOGO,
-  LOGOPREVIEW,
+  COMPANYDESCRIPTION,
+  COMPANYLOGO,
+  COMPANYLOGOPREVIEW,
   SHOWJOBOFFER,
-  SHOWZRK
+  SHOWZRK,
+  STEPONE
 } from "../creatorConsts";
 
 //position
@@ -35,6 +36,9 @@ export const setActiveStep = (activeStep) => {
 };
 
 //job info
+export const setStepOne = (stepOne) => {
+  return { type: STEPONE, payload: stepOne };
+};
 export const setSalaryType = (salaryType) => {
   return { type: SALARYTYPE, payload: salaryType };
 };
@@ -79,14 +83,14 @@ export const setWorkModel = (workModel) => {
 export const setCompanyName = (companyName) => {
   return { type: COMPANYNAME, payload: companyName };
 };
-export const setAboutCompany = (aboutCompany) => {
-  return { type: ABOUTCOMPANY, payload: aboutCompany };
+export const setCompanyDescription = (companyDescription) => {
+  return { type: COMPANYDESCRIPTION, payload: companyDescription };
 };
 export const setLogo = (companyLogo) => {
-  return { type: LOGO, payload: companyLogo };
+  return { type: COMPANYLOGO, payload: companyLogo };
 };
-export const setLogoPreview = (logoPreview) => {
-  return { type: LOGOPREVIEW, payload: logoPreview };
+export const setLogoPreview = (companyLogoPreview) => {
+  return { type: COMPANYLOGOPREVIEW, payload: companyLogoPreview };
 };
 
 //joboffer

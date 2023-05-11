@@ -3,6 +3,9 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 export default function ActionButtons(props) {
+
+  const submitAndGoForward = () => {props.onSubmit(); props.handleNext()}
+  
   return (
     <Stack
       spacing={2}
@@ -11,7 +14,7 @@ export default function ActionButtons(props) {
       <Button
         className='button-contained'
         variant='contained'
-        onClick={props.handleNext}>
+        onClick={submitAndGoForward}>
         Dalej
       </Button>
     </Stack>
