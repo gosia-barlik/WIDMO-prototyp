@@ -50,42 +50,27 @@ export default function ResponsibilitiesSection(props) {
     {dispatch(setShowResponsibilitiesList(!showResponsibilitiesList))
     };
 
-  // const onSetQualificationInfo = (e) => {
-  //   e.preventDefault();
-  //   dispatch(setShowQualificationForm(!showQualificationForm));
-  //   dispatch(setQualificationName(qualificationNameFixture));
-  //   dispatch(
-  //     setQualificationCharacteristic(qualitficationCharacteristicFixture)
-  //   );
-  // };
-
-  // DYNAMIC SECTION
-  // let handleChange = (i, e) => {
-  //   let newResponsibilities = [...customizedResponsibilities];
-  //   newResponsibilities[i][e.target.name] = e.target.value;
-  //   dispatch(setCustomizedResponsibilities(newResponsibilities));
-  //   console.log(customizedResponsibilities);
-  // };
-
-  // let addFormFields = () => {
-  //   dispatch(
-  //     setCustomizedResponsibilities([
-  //       ...customizedResponsibilities,
-  //       { name: "" },
-  //     ])
-  //   );
-  // };
-
-  // let removeFormFields = (i) => {
-  //   let newResponsibilities = [...customizedResponsibilities];
-  //   newResponsibilities.splice(i, 1);
-  //   dispatch(setCustomizedResponsibilities(newResponsibilities));
-  // };
-
-  // let handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   alert(JSON.stringify(customizedResponsibilities));
-  // };
+    const newResponsibilitiesFixture = [
+      "Zapoznawanie się z pozyskanymi informacjami oraz dokonywanie ich selekcji pod kątem merytorycznym i rodzajowym",
+      "Katalogowanie wyselekcjonowanych treści",
+      "Pozyskiwanie informacji z różnych źródeł, ich selekcjonowanie, przetwarzanie oraz opublikowanie na stronie internetowej",
+      "Przetwarzanie (optymalizowanie) treści na potrzeby internetu zgodnie z wymaganiami wyszukiwarek internetowych",
+      "Publikowanie treści na stronie internetowej zgodnie z otrzymanymi wytycznymi",
+      "Modyfikowanie, moderowanie i edytowanie zawartości serwisów internetowych",
+      "Optymalizowanie zawartości serwisów internetowych pod kątem wyszukiwarek internetowych",
+      "Zamienianie na postać cyfrową treści otrzymanych w formie tradycyjnej (drukowanej) z wykorzystaniem skanerów, programów przekształcających grafikę na tekst oraz edytorów tekstów",
+      "Przeprowadzanie badań środków masowego przekazu",
+      "Analiza otoczenia wewnętrznego i zewnętrznego pod kątem przygotowania treści",
+      "Analizowanie ruchu użytkowników na stronie internetowej",
+      "Analizowanie tendencji zakupowych konsumentów",
+      "Przygotowywanie raportów oceniających jakość przeprowadzonej kampanii marketingowej",
+      "Przygotowywanie i tworzenie materiałów audiowizualnych",
+      "Przygotowywanie infografik",
+      "Przygotowanie i organizowanie wydarzeń i akcji (np. webinarów, akcji CSR)",
+      "Organizacja sesji zdjęciowych",
+      "Kontrolowanie publikowanych treści pod kątem ich zgodności ze statusem organizacji oraz zgodności z prawem",
+      "Współpraca z innymi pracownikami",
+    ];
 
   return (
     <Stack
@@ -105,51 +90,11 @@ export default function ResponsibilitiesSection(props) {
           {showResponsibilitiesList ? <RemoveIcon />: <AddIcon />}
         </IconButton>
       </Card>
-      {showResponsibilitiesList && < TransferList/>}
+      {showResponsibilitiesList && < TransferList listItems={newResponsibilitiesFixture}/>}
 
-      {showQualificationForm === true && <QualificationInformation />}
+      {/* {showQualificationForm === true && <QualificationInformation />} */}
 
-      {/* DYNAMIC SECTION*/}
-      {/* <Card
-        className='styled-card'
-        style={{ display: "flex", flexDirection: "column" }}>
-        {customizedResponsibilities.map((element, index) => (
-          <div className='form-inline' key={index}>
-            <TextField
-              className={classes.textField}
-              variant='outlined'
-              size='small'
-              label='Obowiązek'
-              placeholder='Wpisz swój obowiązek'
-              fullWidth
-              type='text'
-              name='name'
-              value={element.name || ""}
-              onChange={(e) => handleChange(index, e)}
-            />
-            {index ? (
-              <IconButton
-                component='span'
-                className='styled-icon-button'
-                style={{ marginTop: "-4px" }}
-                onClick={() => removeFormFields(index)}>
-                <RemoveIcon />
-              </IconButton>
-            ) : null}
-          </div>
-        ))}
-        <div className='button-section'>
-          <IconButton
-            className='styled-icon-button'
-            component='span'
-            onClick={() => addFormFields()}>
-            <AddIcon />
-          </IconButton>
-          {customizedResponsibilities.length === 0
-            ? "Dodaj swój element"
-            : "Dodaj kolejny element"}
-        </div>
-      </Card> */}
+    
     </Stack>
   );
 }

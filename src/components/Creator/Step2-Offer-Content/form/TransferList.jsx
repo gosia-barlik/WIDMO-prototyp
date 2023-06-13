@@ -1,11 +1,12 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import Paper from '@material-ui/core/Paper';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import AddIcon from "@material-ui/icons/Add";
+import FilterNoneIcon from '@material-ui/icons/FilterNone';
+import Paper from "@material-ui/core/Paper";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setResponsibilities,
@@ -15,86 +16,64 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: 'auto',
+    margin: "auto",
   },
   paper: {
-    width: '100%',
+    width: "100%",
     height: 230,
-    overflow: 'auto',
+    overflow: "auto",
   },
   button: {
     margin: theme.spacing(0.5, 0),
   },
+  icon: {
+    height: 16,
+    width: 16,
+    marginBottom: 4,
+  }
 }));
 
-export default function TransferList() {
-  const {
-    responsibilities,
-    responsibilitiesToHtml,
-    showResponsibilitiesList,
-  } = useSelector((state) => state.stepTwoReducer);
+export default function TransferList(props) {
+  const { responsibilities, responsibilitiesToHtml, showResponsibilitiesList } =
+    useSelector((state) => state.stepTwoReducer);
 
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [checked, setChecked] = React.useState([]);
- 
+  const [added, setAdded] = React.useState([]);
 
-  const newResponsibilitiesFixture = [
-    "Stosuje pojęcia związane z bezpieczeństwem i higieną pracy, ochroną przeciwpożarową, ochroną środowiska i ergonomią",
-    "Klasyfikuje zadania i uprawnienia instytucji oraz służb działających w zakresie ochrony pracy, ochrony przeciwpożarowej oraz ochrony środowiska",
-    "Stosuje prawa i obowiązki pracownika oraz pracodawcy w zakresie bezpieczeństwa i higieny pracy",
-    "Opisuje skutki oddziaływania czynników wpływających negatywnie na organizm człowieka",
-    "Identyfikuje zagrożenia dla zdrowia i życia człowieka oraz mienia i środowiska związane z wykonywaniem zadań zawodowych",
-    "Przestrzega zasad bezpieczeństwa i higieny pracy oraz przepisów prawa dotyczących ochrony przeciwpożarowej i ochrony środowiska"
-  ];
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-    
+  const handleResponsibilities =(value)=>{
     let newResponsibilities = [...responsibilities];
-    let responsibilitiesIndex = newResponsibilities.indexOf(value);
-
-    if(responsibilitiesIndex < 0) 
-      newResponsibilities.push(value);
-    else
-      newResponsibilities.splice(responsibilitiesIndex, 1);
-
-    const responsibilitiesToHtml = 
-      `<ul> ${newResponsibilities.map((responsibility) => 
-        `<li key=${responsibility}>${responsibility}</li>`
-        )}
+    newResponsibilities.push(value);
+    const responsibilitiesToHtml = `<ul> ${newResponsibilities.map(
+      (responsibility) => `<li key=${responsibility}>${responsibility}</li>`
+    )}
       </ul> `;
-
     dispatch(setResponsibilities(newResponsibilities));
     dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
+  }
+
+  const handleAdd = (value) => () => {
+    const newAdded = [...added];
+    newAdded.push(value);
+    setAdded(newAdded);
+    showResponsibilitiesList && handleResponsibilities(value);
   };
-
-
 
   return (
     <Paper className={classes.paper}>
-      <List dense component="div" role="list">
-        {newResponsibilitiesFixture.map((value) => {
+      <List dense component='div' role='list'>
+        {props.listItems.map((value) => {
           const labelId = `${value}`;
 
           return (
-            <ListItem key={value} role="listitem" button onClick={handleToggle(value)}>
-              <ListItemIcon>
-                <Checkbox
-                  checked={checked.indexOf(value) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
+            <ListItem
+              key={value}
+              role='listitem'
+              button
+              title='Skopiuj do ogłoszenia'
+              onClick={handleAdd(value)}>
+              <ListItemIcon >
+                <FilterNoneIcon className={classes.icon}/>
               </ListItemIcon>
               <ListItemText id={labelId} primary={`${value}`} />
             </ListItem>

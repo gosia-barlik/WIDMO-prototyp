@@ -7,6 +7,11 @@ import DoneIcon from "@material-ui/icons/Done";
 import Typography from "@mui/material/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@mui/material/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setSearchedPosition,
@@ -22,17 +27,38 @@ import {
 } from "../../../../store/actions/stepTwoActions";
 import { jobPositionSchema } from "../../common/validations/stepOneSchema";
 
+const jobPositionsFixture = [
+  "Specjalista ds. Marketingu",
+  "Dyrektor ds. Marketingu",
+  "Asystent ds. marketingu",
+  "Specjalista ds. e-commerce",
+  "Asystent ds. promocji",
+  "Specjalista ds. badań rynku",
+  "Specjalista ds. planowania mediów",
+  "Specjalista ds. mediów społecznościowych",
+  "Specjalista ds. marketingu cyfrowego",
+  "Menedżer marki",
+  "Kierownik ds. marketingu",
+  "Kierownik ds. produktu",
+];
 
 const responsibilitiesFixture = [
-  "diagnozowanie usterek mechanicznych",
-  "wykonywanie napraw",
-  "bieżące usuwanie awarii i usterek",
+  "Opracowywanie planów mediów",
+  "Realizowanie kampanii reklamowych",
+  "Opracowywanie harmonogramów na potrzeby mediów",
+  "Organizowanie działań w zakresie employer branding",
+  "Udział w tworzeniu strategii dla klientów",
+  "Budowanie i utrzymywanie relacji z klientami",
+  "Planowanie i tworzenie treści",
+  "Redagowanie i przygotowywanie informacji do zamieszczenia w serwisach internetowych",
 ];
 
 const requirementsFixture = [
-  "wiedza z zakresu mechaniki/elektromechaniki",
-  "wykształcenie zawodowe lub średnie techniczne",
-  "dobra organizacja pracy własnej oraz umiejętność pracy w zespole",
+  "Doświadczenie zawodowe w obszarze planowania różnych mediów/ marketingu i zarządzania projektami",
+  "Doświadczenie zawodowe w tworzeniu i prowadzeniu profili w mediach społecznościowych",
+  "Wiedza z obszarów zakupów, planowania i analizy mediów",
+  "Umiejętność obsługi  narzędzi do publikacji postów w social media",
+  "Znajomość modeli rozliczeń z reklamodawcami",
 ];
 
 const benefitsFixture = ["benefit1", "benefit2", "benefit3"];
@@ -109,16 +135,18 @@ export default function SearchBar(props) {
   }, [text, errorMessage]);
 
   const handleInputChange = (e) => {
-    dispatch(setSearchedPosition(e.target.value));
     setText(e.target.value);
+    dispatch(setSearchedPosition(e.target.value));
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (text.length < jobPositionSchema.MAX_LENGTH) {
+      console.log("searchedPosition", searchedPosition);
       dispatch(setSearchedPosition(searchedPosition));
       dispatch(setShowResults(true));
     }
+    console.log("searchedPosition", searchedPosition);
     onSetBenefits();
     onSetResponsibilities();
     onSetRequirements();
@@ -131,6 +159,41 @@ export default function SearchBar(props) {
       </Typography>
 
       <form
+        onSubmit={handleSearch}
+        sx={{ display: "flex", flexDirection: "row" }}>
+        <InputLabel id='searchPosition'>stanowisko</InputLabel>
+        <Select
+          spellCheck='true'
+          error={text.length >= jobPositionSchema.MAX_LENGTH}
+          helperText={errorMessage}
+          required
+          fullWidth
+          labelId='searchPosition'
+          variant='outlined'
+          id='searchPosition'
+          value={text}
+          style={{ minWidth: "400px" }}
+          onChange={handleInputChange}
+          label='szukam osoby na stanowisko'>
+          {jobPositionsFixture.map((jobPosition) => (
+            <MenuItem value={jobPosition} style={{ minWidth: "400px" }}>
+              {jobPosition}
+            </MenuItem>
+          ))}
+        </Select>
+        <FormHelperText>{errorMessage}</FormHelperText>
+
+        <Button
+          type='submit'
+          variant='contained'
+          color='primary'
+          disabled={!searchedPosition}
+          endIcon={<DoneIcon />}>
+          Zatwierdź
+        </Button>
+      </form>
+
+      {/* <form
         onSubmit={handleSearch}
         sx={{ display: "flex", flexDirection: "row" }}>
         <TextField
@@ -149,34 +212,17 @@ export default function SearchBar(props) {
           style={{ fontSize: "14px", marginBottom: "24px" }}
         />
 
-        {searchedPosition && (
-          <Button
-            type='submit'
-            variant='contained'
-            color='primary'
-            endIcon={<DoneIcon />}>
-            Zatwierdź
-          </Button>
-        )}
-
         {searchedPosition == false && (
           <Button
             type='submit'
             variant='contained'
             color='primary'
-            disabled
+            disabled={!searchedPosition}
             endIcon={<DoneIcon />}>
             Zatwierdź
           </Button>
         )}
-
-        {/* <IconButton
-          type='submit'
-          sx={{ p: "10px", fontSize: "14px" }}
-          aria-label='search'>
-          <SearchIcon /> 
-        </IconButton> */}
-      </form>
+      </form> */}
     </Paper>
   );
 }

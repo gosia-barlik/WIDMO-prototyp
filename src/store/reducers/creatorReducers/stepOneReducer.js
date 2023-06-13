@@ -59,8 +59,8 @@ export const stepOneReducer = (state = initialState, action) => {
     case SEARCHEDPOSITION: {
       return {
         ...state,
-        searchedPosition: action.payload.charAt(0).toUpperCase()
-        + action.payload.slice(1),
+        searchedPosition: action.payload
+        // .charAt(0).toUpperCase()+ action.payload.slice(1),
       };
     }
     case SHOWRESULTS: {
