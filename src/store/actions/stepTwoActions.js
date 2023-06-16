@@ -20,6 +20,7 @@ import {
   BENEFITSTOHTML,
   CUSTOMIZEDBENEFITS, //unusedList
   SHOWRESPONSIBILITIESLIST,
+  SHOWREQUIREMENTSLIST,
 } from "../creatorConsts";
 
 //RESPONSIBILITIES
@@ -68,6 +69,9 @@ export const setRequirementsToHtml = (requirementsToHtml) => {
 
 export const setCustomizedRequirements = (customizedRequirements) => {
   return { type: CUSTOMIZEDREQUIREMENTS, payload: customizedRequirements };
+};
+export const setShowRequirementsList = (showRequirementsList) => {
+  return { type: SHOWREQUIREMENTSLIST, payload: showRequirementsList };
 };
 
 //EDUCATION

@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setResponsibilities,
   setResponsibilitiesToHtml,
-  setShowResponsibilitiesList,
+  setRequirements,
+  setRequirementsToHtml,
 } from "../../../../store/actions/stepTwoActions";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
   },
   paper: {
-    width: "100%",
-    height: 230,
+    position:"absolute", 
+    width:600, 
+    height:400, 
+    border:"1px solid MediumSlateBlue",
     overflow: "auto",
-  },
-  button: {
-    margin: theme.spacing(0.5, 0),
+    marginTop: theme.spacing(10),
   },
   icon: {
     height: 16,
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransferList(props) {
-  const { responsibilities, responsibilitiesToHtml, showResponsibilitiesList } =
+  const { responsibilities, requirements, showResponsibilitiesList, showRequirementsList } =
     useSelector((state) => state.stepTwoReducer);
 
   const dispatch = useDispatch();
@@ -52,15 +53,27 @@ export default function TransferList(props) {
     dispatch(setResponsibilitiesToHtml(responsibilitiesToHtml));
   }
 
+  const handleRequirements =(value)=>{
+    let newRequirements = [...requirements];
+    newRequirements.push(value);
+    const requirementsToHtml = `<ul> ${newRequirements.map(
+      (requirement) => `<li key=${requirement}>${requirement}</li>`
+    )}
+      </ul> `;
+    dispatch(setRequirements(newRequirements));
+    dispatch(setRequirementsToHtml(requirementsToHtml));
+  }
+
   const handleAdd = (value) => () => {
     const newAdded = [...added];
     newAdded.push(value);
     setAdded(newAdded);
     showResponsibilitiesList && handleResponsibilities(value);
+    showRequirementsList && handleRequirements(value);
   };
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} >
       <List dense component='div' role='list'>
         {props.listItems.map((value) => {
           const labelId = `${value}`;

@@ -157,11 +157,14 @@ export default function SearchBar(props) {
       <Typography variant='h6' gutterBottom component='div'>
         Stanowisko
       </Typography>
+      <Typography variant='body1'component='div'>
+        Wybierz nazwę stanowiska, na które prowadzisz rekrutację
+      </Typography>
 
       <form
         onSubmit={handleSearch}
         sx={{ display: "flex", flexDirection: "row" }}>
-        <InputLabel id='searchPosition'>stanowisko</InputLabel>
+        {/* <InputLabel id='searchPosition'>stanowisko</InputLabel> */}
         <Select
           spellCheck='true'
           error={text.length >= jobPositionSchema.MAX_LENGTH}
@@ -174,7 +177,7 @@ export default function SearchBar(props) {
           value={text}
           style={{ minWidth: "400px" }}
           onChange={handleInputChange}
-          label='szukam osoby na stanowisko'>
+       >
           {jobPositionsFixture.map((jobPosition) => (
             <MenuItem value={jobPosition} style={{ minWidth: "400px" }}>
               {jobPosition}

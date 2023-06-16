@@ -13,12 +13,6 @@ export default function SearchResults(props) {
 
   const qualificationsFixture = [
     {
-      name: "Organizowanie usług dostosowywania multimediów do standardu WCAG (Web Content Accessibility Guidelines) z podstawowymi umiejętnościami ich dostosowania dla osób z indywidualnymi potrzebami",
-      description:
-        'Osoba posiadająca kwalifikację organizuje usługi dostosowywania multimediów na stronach internetowych zgodnie ze standardem WCAG (dobiera, zamawia i odbiera usługi z zakresu dostępności), a w przypadku nieskomplikowanych i krótkich rodzajów multimediów dostosowuje w stopniu podstawowym multimedia umieszczane na stronach internetowych do wymagań osób ze szczególnymi potrzebami. Współpracuje z tłumaczami, twórcami multimediów, u których zamawia usługi, oraz współpracuje z webmasterami/programistami w kwestiach technicznych, oraz na poziomie podstawowym tworzy napisy dla niesłyszących i pisze skrypty audio deskrypcji. Osoba posiadająca kwalifikację posługuje się zasadami tworzenia dostępnych multimediów, co pozwala na samodzielne podejmowanie decyzji w sytuacjach nietypowych.',
-      link:'https://kwalifikacje.gov.pl/k?id_kw=13876'
-    },
-    {
       name: "Planowanie kampanii automatyzacji marketingu internetowego",
       description:
         'Osoba posiadająca kwalifikację "Planowanie kampanii automatyzacji marketingu internetowego" jest gotowa do samodzielnego wykonywania zadań w zakresie automatyzacji marketingu internetowego. Samodzielnie organizuje swoje stanowisko pracy i przyjmuje odpowiedzialność za podejmowane zadania. Może działać jako niezależny specjalista lub jako członek zespołu zajmującego się automatyzacją marketingu internetowego. Osoba posiadająca certyfikat poświadczający kwalifikację identyfikuje cele i możliwości marketingu internetowego przedsiębiorstwa, identyfikuje i charakteryzuje grupę docelową internetowej kampanii marketingowej oraz przygotowuje plan zautomatyzowanej internetowej kampanii marketingowej. Tworzy diagramy procesów i listy instrukcji dla systemów "marketing automation", przygotowuje wytyczne dotyczące przekazu marketingu internetowego, np. dla grafika. Samodzielnie tworzy nośniki przekazu marketingu internetowego, np. "landing page", szablony newsletterów. Nadzoruje wdrażanie narzędzi automatyzacji marketingu internetowego. Monitoruje efektywność wdrożonej internetowej kampanii marketingowej, testuje ją oraz optymalizuje.',
@@ -43,11 +37,11 @@ export default function SearchResults(props) {
             expandIcon={<ExpandMoreIcon />}
             aria-controls='panel1a-content'
             id='panel1a-header'>
-            <Typography>{fixture.name}</Typography>
+            <Typography style={{fontWeight: 500}}>{fixture.name}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{fixture.description}</Typography>
-            <Link href ={fixture.link} target="_blank" >{fixture.link}</Link>
+            <Typography>{fixture.description}</Typography><br/>
+            <Link style={{color:"blue"}} href ={fixture.link} target="_blank" >{fixture.link}</Link>
           </AccordionDetails>
         </Accordion>
       ))}

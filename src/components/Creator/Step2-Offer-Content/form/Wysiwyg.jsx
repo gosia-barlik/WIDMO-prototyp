@@ -44,7 +44,7 @@ export default function Wysiwyg (props) {
         wrapperClassName='text-editor-wrapper'
         editorClassName='text-editor'
         onEditorStateChange={onEditorStateChange}
-        editorStyle={{lineHeight: '90%'}}
+        editorStyle={{lineHeight: '120%'}}
       />
       {/* <textarea
           disabled
