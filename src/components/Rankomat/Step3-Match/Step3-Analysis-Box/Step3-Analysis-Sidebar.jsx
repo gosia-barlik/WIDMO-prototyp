@@ -78,6 +78,7 @@ export default function AnalysisSidebar(props) {
   const onSetShowAll = () => {
     setActive(0);
     console.log(active);
+    console.log(showAll);
       dispatch(setShowAll(true));
       dispatch(setShowFavorites(false));
       dispatch(setShowReserves(false));

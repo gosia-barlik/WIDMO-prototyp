@@ -1,15 +1,11 @@
 import { React, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
 import CvList from "./Step3-Analysis-Box/Step3-Cv-List";
 import MainActionButtons from "../common/MainActionButtons";
 import Step3Filters from "./Step3-Filters/Step3-Filters";
 import config from "../../../config";
 import { useEffect } from "react";
-
-import CvPreview from "./Step3-Cv-Details/Step3-Cv-Preview";
-import CvQualifications from "./Step3-Cv-Details/Step3-Cv-Qualifications";
 import AnalysisSidebar from "./Step3-Analysis-Box/Step3-Analysis-Sidebar";
 import AnalysisTopbar from "./Step3-Analysis-Box/Step3-Analysis-Topbar";
 import "./Step3-Match.css";
@@ -18,16 +14,6 @@ import {
   setKeyword,
   setResumes,
 } from "../../../store/actions/rankomatActions/rankomatStepTwoActions";
-
-import {
-  setFavorites,
-  setAll,
-  setReserves,
-  setRejected,
-  setSelected,
-  setChecked,
-} from "../../../store/actions/rankomatActions/rankomatStepThreeActions";
-import CVDetails from "./Step3-Cv-Details/Step3-Cv-Details";
 
 export default function Step3Match(props) {
   const [text, setText] = useState("");
@@ -90,7 +76,7 @@ export default function Step3Match(props) {
     setOpen(false);
   };
 
-  const handleOnClick = (e) => {
+  const handleShowCvDetails = (e) => {
     e.preventDefault();
     const url = `${config.NER_BASE_URL}/ner_text/`;
     fetch(url, {
@@ -213,59 +199,7 @@ export default function Step3Match(props) {
   const clearPreview = () => {
     setResponse([]);
   };
-  // TOPBAR MENU
-  const compareArrays = (arr1, arr2) => {
-    let difference = arr1.filter((x) => !arr2.includes(x));
-    return difference;
-  };
-  const patchArray = (arr1, arr2) => {
-    let difference = arr1
-      .filter((x) => !arr2.includes(x))
-      .concat(arr2.filter((x) => !arr1.includes(x)));
-    return difference;
-  };
 
-  const moveToAll = () => {
-    dispatch(setAll(patchArray(selected, all)));
-    showFavorites && dispatch(setAll(compareArrays(favorites, selected)));
-    showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
-    showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
-    dispatch(setChecked([]));
-    dispatch(setSelected([]));
-  };
-
-  const moveToFavorites = () => {
-    dispatch(setFavorites(patchArray(selected, favorites)));
-    showAll && dispatch(setAll(compareArrays(all, selected)));
-    showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
-    showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
-    dispatch(setChecked([]));
-    dispatch(setSelected([]));
-  };
-
-  const moveToReserves = () => {
-    dispatch(setReserves(patchArray(selected, reserves)));
-
-    showAll
-      ? dispatch(setAll(compareArrays(all, selected)))
-      : showRejected
-      ? dispatch(setRejected(compareArrays(rejected, selected)))
-      : dispatch(setFavorites(compareArrays(favorites, selected)));
-    dispatch(setChecked([]));
-    dispatch(setSelected([]));
-  };
-
-  const moveToRejected = () => {
-    dispatch(setRejected(patchArray(selected, rejected)));
-
-    showAll
-      ? dispatch(setAll(compareArrays(all, selected)))
-      : showReserves
-      ? dispatch(setReserves(compareArrays(reserves, selected)))
-      : dispatch(setFavorites(compareArrays(favorites, selected)));
-    dispatch(setChecked([]));
-    dispatch(setSelected([]));
-  };
 
   return (
     <>
@@ -281,12 +215,10 @@ export default function Step3Match(props) {
               <>
                 <AnalysisTopbar
                   topbarMenu={topbarMenuAll}
-                  moveToFavorites={moveToFavorites}
-                  moveToReserves={moveToReserves}
-                  moveToRejected={moveToRejected}
+                 
                 />
                 <CvList
-                  handleOnClick={handleOnClick}
+                  handleShowCvDetails={handleShowCvDetails}
                   handleDetailClose={handleDetailClose}
                   open={open}
                   resumes={all}
@@ -305,12 +237,10 @@ export default function Step3Match(props) {
               <>
                 <AnalysisTopbar
                   topbarMenu={topbarMenuFavorites}
-                  moveToAll={moveToAll}
-                  moveToReserves={moveToReserves}
-                  moveToRejected={moveToRejected}
+                 
                 />
                 <CvList
-                  handleOnClick={handleOnClick}
+                  handleShowCvDetails={handleShowCvDetails}
                   handleDetailClose={handleDetailClose}
                   open={open}
                   resumes={favorites}
@@ -329,12 +259,10 @@ export default function Step3Match(props) {
               <>
                 <AnalysisTopbar
                   topbarMenu={topbarMenuReserves}
-                  moveToFavorites={moveToFavorites}
-                  moveToAll={moveToAll}
-                  moveToRejected={moveToRejected}
+                
                 />
                 <CvList
-                  handleOnClick={handleOnClick}
+                  handleShowCvDetails={handleShowCvDetails}
                   handleDetailClose={handleDetailClose}
                   open={open}
                   resumes={reserves}
@@ -352,12 +280,10 @@ export default function Step3Match(props) {
               <>
                 <AnalysisTopbar
                   topbarMenu={topbarMenuRejected}
-                  moveToFavorites={moveToFavorites}
-                  moveToReserves={moveToReserves}
-                  moveToAll={moveToAll}
+                 
                 />
                 <CvList
-                  handleOnClick={handleOnClick}
+                  handleShowCvDetails={handleShowCvDetails}
                   handleDetailClose={handleDetailClose}
                   open={open}
                   resumes={rejected}

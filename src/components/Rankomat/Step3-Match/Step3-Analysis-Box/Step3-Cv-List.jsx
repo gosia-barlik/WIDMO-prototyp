@@ -23,6 +23,7 @@ export default function CvList(props) {
   const { checked, selected } = useSelector(
     (state) => state.rankomatStepThreeReducer
   );
+  
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -95,7 +96,7 @@ export default function CvList(props) {
                 borderRadius: "4px",
                 width: "100%",
               }}
-              onClick={props.handleOnClick}>
+              onClick={props.handleShowCvDetails}>
               <ListItemText
                 id={labelId}
                 primary={`${resume.name} ${resume.id + 1}`}

@@ -10,6 +10,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters } from "../../../../store/actions/rankomatActions/rankomatStepThreeActions";
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -36,45 +38,12 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 
 export default function Step3Filters(props) {
-  const checkboxesInitial = [
-    {
-      name: "Professional skill",
-      value: "professional skill",
-      id: 0,
-      label: "Umiejętności twarde",
-      weight: null,
-      checked: false,
-    },
-    {
-      name: "Soft skill",
-      value: "soft skill",
-      id: 1,
-      label: "Umiejętności miękkie",
-      weight: null,
-      checked: false,
-    },
-    {
-      name: "Language skill",
-      value: "language skill",
-      id: 2,
-      label: "Umiejętności językowe",
-      weight: null,
-      checked: false,
-    },
-    {
-      name: "Education",
-      value: "education",
-      id: 3,
-      label: "Edukacja",
-      weight: null,
-      checked: false,
-    }
-  ];
-
-  const keyWordLabel = "Słowo kluczowe";
-  const keyWord = ["IPS", "technologie DLP", "PKI", "AZURE/MS365"];
-
-  const [checkboxes, setCheckboxes] = React.useState(checkboxesInitial);
+  const dispatch = useDispatch();
+  const { initialFilters } = useSelector(
+    (state) => state.rankomatStepThreeReducer
+  );
+ 
+  const [checkboxes, setCheckboxes] = React.useState(initialFilters);
 
   const handleSelectChange = (e, checkboxId) => {
     const newCheckboxes = checkboxes.map((o) => {
@@ -82,6 +51,7 @@ export default function Step3Filters(props) {
       return o;
     });
     setCheckboxes(newCheckboxes);
+    dispatch(setFilters(newCheckboxes));
   };
 
   const handleCheckboxToggle = (checkbox) => () => {
@@ -91,6 +61,7 @@ export default function Step3Filters(props) {
     });
 
     setCheckboxes(newCheckboxes);
+    dispatch(setFilters(newCheckboxes));
   };
 
   const getDisabled = (val) => {
