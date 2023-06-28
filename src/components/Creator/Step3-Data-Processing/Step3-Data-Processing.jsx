@@ -17,7 +17,7 @@ export default function Step3DataProcessing(props) {
   const handleBack = () => {dispatch(horizontalStepBack())}
 
   return (
-      <Grid item xs={4} className='form-container'>
+      <Grid item xs={6} className='form-container'>
         <Typography
           variant='body2'
           style={{ color: "#00000099" }}

@@ -68,39 +68,7 @@ export default function Step3Filters(props) {
       label: "Edukacja",
       weight: null,
       checked: false,
-    },
-    // {
-    //   name: "Experience",
-    //   value: "experience",
-    //   id: 4,
-    //   label: "Doświadczenie",
-    //   weight: null,
-    //   checked: false,
-    // },
-    // {
-    //   name: "Certificates",
-    //   value: "certificates",
-    //   id: 5,
-    //   label: "Certyfikaty",
-    //   weight: null,
-    //   checked: false,
-    // },
-    // {
-    //   name: "Job-position",
-    //   value: "job-position",
-    //   id: 6,
-    //   label: "Nazwa stanowiska",
-    //   weight: null,
-    //   checked: false,
-    // },
-    // {
-    //   name: "Company-name",
-    //   value: "company-name",
-    //   id: 7,
-    //   label: "Nazwa firmy",
-    //   weight: null,
-    //   checked: false,
-    // },
+    }
   ];
 
   const keyWordLabel = "Słowo kluczowe";
@@ -177,22 +145,19 @@ export default function Step3Filters(props) {
               input={
                 <BootstrapInput value={checkbox.weight ? checkbox.weight : 0} />
               }>
-              <MenuItem value=''>
-                <em>0</em>
-              </MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={1}>mało ważne</MenuItem>
+              <MenuItem value={2}>średnio ważne</MenuItem>
+              <MenuItem value={3}>bardzo ważne</MenuItem>
             </Select>
           </FormControl>
         </FormGroup>
       ))}
 
-      <CustomizedInput
+      {/* <CustomizedInput
         label={keyWordLabel}
         options={keyWord}
         onSetKeyWord={props.onSetKeyWord}
-      />
+      /> */}
       <Button variant='contained' className='button-contained' style={{}}>
         Filtruj
       </Button>

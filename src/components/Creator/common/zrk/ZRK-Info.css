@@ -1,6 +1,6 @@
 .zrk-container {
   position: fixed;
-  top:220px;
+  top:270px;
   text-align: left;
-  transform: translate(180%);
+  transform: translate(100%);
 }

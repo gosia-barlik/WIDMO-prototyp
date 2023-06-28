@@ -46,7 +46,7 @@ export default function JobOfferContent(props) {
           Zakres obowiązków
         </Typography>
         
-        {responsibilitiesToHtml && <Typography dangerouslySetInnerHTML={{__html: responsibilitiesToHtml.toString().replaceAll('</li>,', '</li>')}}></Typography>}
+        {responsibilitiesToHtml && <Typography style={{fontSize:14}} dangerouslySetInnerHTML={{__html: responsibilitiesToHtml.toString().replaceAll('</li>,', '</li>')}}></Typography>}
         
         <Typography
           variant='subtitle2'
@@ -54,7 +54,7 @@ export default function JobOfferContent(props) {
           style={{ marginTop: "6px" }}>
           Wymagania
         </Typography>
-        {requirementsToHtml && <Typography dangerouslySetInnerHTML={{__html: requirementsToHtml.toString().replaceAll('</li>,', '</li>')}}></Typography>}
+        {requirementsToHtml && <Typography style={{fontSize:14}} dangerouslySetInnerHTML={{__html: requirementsToHtml.toString().replaceAll('</li>,', '</li>')}}></Typography>}
 
         {showEducationForm == true && (
           <>
@@ -169,7 +169,7 @@ export default function JobOfferContent(props) {
           style={{ marginTop: "6px" }}>
           Benefity
         </Typography>
-        {benefitsToHtml && <Typography dangerouslySetInnerHTML={{__html: benefitsToHtml.toString().replaceAll('</li>,', '</li>')}}></Typography>}
+        {benefitsToHtml && <Typography style={{fontSize:14}} dangerouslySetInnerHTML={{__html: benefitsToHtml.toString().replaceAll('</li>,', '</li>')}}></Typography>}
       </Stack>
     </>
   );

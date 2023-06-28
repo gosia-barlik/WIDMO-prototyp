@@ -124,6 +124,7 @@ export default function CvList(props) {
         languageSkills={props.languageSkills}
         itSkills={props.itSkills}
         education={props.education}
+        annotations={props.annotations}
       />
     </div>
   );

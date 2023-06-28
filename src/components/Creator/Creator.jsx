@@ -19,16 +19,18 @@ export default function Creator() {
 
   return (
     <>
-      <Typography variant='body' component='div' className='module-title'>
-        Kreator ogłoszeń
-      </Typography>
+      <Grid container className='step-1-container'>
+        <Typography variant='body' component='div' className='module-title'>
+          Kreator ogłoszeń
+        </Typography>
+      </Grid>
+      <Grid container className='step-1-container'>
+        {showResults === false && <StepperHorizontal nonLinear={false} />}
 
-      {showResults === false && <StepperHorizontal nonLinear={false} />}
-
-      {showResults && horizontalStepper !== 3 && (
-        <StepperHorizontal nonLinear={true} />
-      )}
-
+        {showResults && horizontalStepper !== 3 && (
+          <StepperHorizontal nonLinear={true} />
+        )}
+      </Grid>
       <Grid container className='step-1-container'>
         {horizontalStepper === 0 && (
           <Step1MainInfo

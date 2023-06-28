@@ -297,6 +297,7 @@ export default function Step3Match(props) {
                   languageSkills={languageSkills}
                   itSkills={itSkills}
                   education={education}
+                  annotations={annotations}
                 />
               </>
             )}

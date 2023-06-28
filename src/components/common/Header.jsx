@@ -198,14 +198,14 @@ export default function Header() {
                       <MenuItem
                         className={classes.menuItem}
                         onClick={closeModulesMenu}>
-                        Tworzenie ogłoszenia
+                        Kreator ogłoszeń
                       </MenuItem>
                     </NavLink>
                     <NavLink to='/rankomat'>
                       <MenuItem
                         className={classes.menuItem}
                         onClick={closeModulesMenu}>
-                        Analizowanie CV
+                        Analiza CV
                       </MenuItem>
                     </NavLink>
                     <MenuItem
