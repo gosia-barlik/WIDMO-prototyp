@@ -42,7 +42,6 @@ export default function Step3Filters(props) {
   const { initialFilters } = useSelector(
     (state) => state.rankomatStepThreeReducer
   );
- 
   const [checkboxes, setCheckboxes] = React.useState(initialFilters);
 
   const handleSelectChange = (e, checkboxId) => {
@@ -57,17 +56,22 @@ export default function Step3Filters(props) {
   const handleCheckboxToggle = (checkbox) => () => {
     const newCheckboxes = checkboxes.map((e) => {
       if (e.id == checkbox.id) e.checked = !e.checked;
+      console.log(e);
       return e;
+      
     });
 
     setCheckboxes(newCheckboxes);
     dispatch(setFilters(newCheckboxes));
+    console.log(initialFilters);
   };
 
   const getDisabled = (val) => {
     if (val) return { disabled: true };
     return {};
   };
+
+  const filterCheckboxes = checkboxes.filter((e) => e.checked);
 
   return (
     <>
@@ -107,6 +111,7 @@ export default function Step3Filters(props) {
           <FormControl
             sx={{ m: 1 }}
             variant='standard'
+            style={{ maxWidth: 90, display: checkbox.checked ? 'block' : 'none'}}
             {...getDisabled(!checkbox.checked)}>
             <InputLabel>Waga</InputLabel>
             <Select

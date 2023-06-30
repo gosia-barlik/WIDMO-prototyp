@@ -18,6 +18,10 @@ import {
 import { setResumes } from "../../../../store/actions/rankomatActions/rankomatStepTwoActions";
 
 export default function AnalysisTopbar(props) {
+  const topbarMenuAll = ["Wybrane", "Rezerwowe", "Odrzucone"];
+  const topbarMenuFavorites = ["Wszystkie", "Rezerwowe", "Odrzucone"];
+  const topbarMenuReserves = ["Wybrane", "Wszystkie", "Odrzucone"];
+  const topbarMenuRejected = ["Wybrane", "Rezerwowe", "Wszystkie"];
   const {
     checked,
     all,
@@ -30,6 +34,7 @@ export default function AnalysisTopbar(props) {
     showReserves,
     showFavorites,
   } = useSelector((state) => state.rankomatStepThreeReducer);
+
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -40,60 +45,59 @@ export default function AnalysisTopbar(props) {
     setAnchorEl(null);
   };
 
-    // TOPBAR MENU
-    const compareArrays = (arr1, arr2) => {
-      let difference = arr1.filter((x) => !arr2.includes(x));
-      return difference;
-    };
-    const patchArray = (arr1, arr2) => {
-      let difference = arr1
-        .filter((x) => !arr2.includes(x))
-        .concat(arr2.filter((x) => !arr1.includes(x)));
-      return difference;
-    };
-  
-    const moveToAll = () => {
-      dispatch(setAll(patchArray(selected, all)));
-      showFavorites && dispatch(setAll(compareArrays(favorites, selected)));
-      showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
-      showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
-      dispatch(setChecked([]));
-      dispatch(setSelected([]));
-    };
-  
-    const moveToFavorites = () => {
-      dispatch(setFavorites(patchArray(selected, favorites)));
-      showAll && dispatch(setAll(compareArrays(all, selected)));
-      showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
-      showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
-      dispatch(setChecked([]));
-      dispatch(setSelected([]));
-    };
-  
-    const moveToReserves = () => {
-      dispatch(setReserves(patchArray(selected, reserves)));
-  
-      showAll
-        ? dispatch(setAll(compareArrays(all, selected)))
-        : showRejected
-        ? dispatch(setRejected(compareArrays(rejected, selected)))
-        : dispatch(setFavorites(compareArrays(favorites, selected)));
-      dispatch(setChecked([]));
-      dispatch(setSelected([]));
-    };
-  
-    const moveToRejected = () => {
-      dispatch(setRejected(patchArray(selected, rejected)));
-  
-      showAll
-        ? dispatch(setAll(compareArrays(all, selected)))
-        : showReserves
-        ? dispatch(setReserves(compareArrays(reserves, selected)))
-        : dispatch(setFavorites(compareArrays(favorites, selected)));
-      dispatch(setChecked([]));
-      dispatch(setSelected([]));
-    };
-  
+  // TOPBAR MENU
+  const compareArrays = (arr1, arr2) => {
+    let difference = arr1.filter((x) => !arr2.includes(x));
+    return difference;
+  };
+  const patchArray = (arr1, arr2) => {
+    let difference = arr1
+      .filter((x) => !arr2.includes(x))
+      .concat(arr2.filter((x) => !arr1.includes(x)));
+    return difference;
+  };
+
+  const moveToAll = () => {
+    dispatch(setAll(patchArray(selected, all)));
+    showFavorites && dispatch(setAll(compareArrays(favorites, selected)));
+    showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
+    showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
+
+  const moveToFavorites = () => {
+    dispatch(setFavorites(patchArray(selected, favorites)));
+    showAll && dispatch(setAll(compareArrays(all, selected)));
+    showRejected && dispatch(setRejected(compareArrays(rejected, selected)));
+    showReserves && dispatch(setReserves(compareArrays(reserves, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
+
+  const moveToReserves = () => {
+    dispatch(setReserves(patchArray(selected, reserves)));
+
+    showAll
+      ? dispatch(setAll(compareArrays(all, selected)))
+      : showRejected
+      ? dispatch(setRejected(compareArrays(rejected, selected)))
+      : dispatch(setFavorites(compareArrays(favorites, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
+
+  const moveToRejected = () => {
+    dispatch(setRejected(patchArray(selected, rejected)));
+
+    showAll
+      ? dispatch(setAll(compareArrays(all, selected)))
+      : showReserves
+      ? dispatch(setReserves(compareArrays(reserves, selected)))
+      : dispatch(setFavorites(compareArrays(favorites, selected)));
+    dispatch(setChecked([]));
+    dispatch(setSelected([]));
+  };
 
   return (
     <React.Fragment>
@@ -136,33 +140,41 @@ export default function AnalysisTopbar(props) {
         }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}>
-        {props.topbarMenu.map((text, index) =>
-          showAll ? (
+        {showAll &&
+          topbarMenuAll.map((text, index) => (
             <MenuItem>
               {index === 0 && <div onClick={moveToFavorites}>{text}</div>}
               {index === 1 && <div onClick={moveToReserves}>{text}</div>}
               {index === 2 && <div onClick={moveToRejected}>{text}</div>}
             </MenuItem>
-          ) : showFavorites ? (
+          ))}
+
+        {showFavorites &&
+          topbarMenuFavorites.map((text, index) => (
             <MenuItem>
               {index === 0 && <div onClick={moveToAll}>{text}</div>}
               {index === 1 && <div onClick={moveToReserves}>{text}</div>}
               {index === 2 && <div onClick={moveToRejected}>{text}</div>}
             </MenuItem>
-          ) : showReserves ? (
+          ))}
+
+        {showReserves &&
+          topbarMenuReserves.map((text, index) => (
             <MenuItem>
               {index === 0 && <div onClick={moveToFavorites}>{text}</div>}
               {index === 1 && <div onClick={moveToAll}>{text}</div>}
               {index === 2 && <div onClick={moveToRejected}>{text}</div>}
             </MenuItem>
-          ) : (
+          ))}
+
+        {showRejected &&
+          topbarMenuRejected.map((text, index) => (
             <MenuItem>
               {index === 0 && <div onClick={moveToFavorites}>{text}</div>}
               {index === 1 && <div onClick={moveToReserves}>{text}</div>}
               {index === 2 && <div onClick={moveToAll}>{text}</div>}
             </MenuItem>
-          )
-        )}
+          ))}
       </Menu>
     </React.Fragment>
   );
