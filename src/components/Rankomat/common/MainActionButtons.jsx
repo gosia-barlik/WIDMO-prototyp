@@ -7,7 +7,7 @@ export default function MainActionButtons(props) {
     <Stack
       spacing={2}
       direction='row'
-      style={{ justifyContent: "right", paddingTop: "5px" }}>
+      style={{ justifyContent: "space-between", padding: "12px 0px", marginTop:"24px" }}>
       <Button
         className='button-outlined'
         variant='outlined'

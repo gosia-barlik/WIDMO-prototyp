@@ -15,3 +15,7 @@ export const SHOWRESERVES = "SHOWRESERVES";
 export const SHOWREJECTED = "SHOWREJECTED";
 
 export const INITIALFILTERS = "INITIALFILTERS";
+
+//requests consts
+export const ANALYSISID= "ANALYSISID";
+export const ANALYSISNAME= "ANALYSISNAME";

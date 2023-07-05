@@ -14,7 +14,10 @@ body {
 
 .button-contained {
   margin: 15px 5px 0 5px !important;
-  background-color: var(--primary) !important;
+  background-color: var(--primary)!important;
+  &:disabled {
+    background-color: var(--neutralLight) !important;
+  } 
 }
 
 .Mui-disabled.button-outlined {

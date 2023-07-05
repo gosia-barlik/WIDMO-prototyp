@@ -11,39 +11,41 @@ import "./Step2-Candidates.css";
 export default function Step2Candidates(props) {
   const { resumes } = useSelector((state) => state.rankomatStepTwoReducer);
 
-  const convertToBase64 = async (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    }).then((result) => {
-     
-      return result;
-    }
-    );
-  };
-
+  // const convertToBase64 = async (file) => {
+  //   return new Promise((resolve, reject) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.readAsDataURL(file);
+  //     fileReader.onload = () => {
+  //       resolve(fileReader.result);
+  //     };
+  //     fileReader.onerror = (error) => {
+  //       reject(error);
+  //     };
+  //   }).then((result) => {
+  //     return result;
+  //   }
+  //   );
+  // };
+  const formData = new FormData();
   const handleCvUpload = (e) => {
     e.preventDefault();
     const url = `${config.NER_BASE_URL}/ner_text/`;
-    const resumes_base64 = resumes.map(async (resume) => {  
-      await convertToBase64(resume)
-        .then((result) => { return result });
-    });
-console.log(resumes_base64);
-    resumes_base64.forEach((resume) => 
+   resumes.forEach((resume) => formData.append("cv", resume));
+   console.log(formData.get("cv") );
+    // const resumes_base64 = resumes.map(async (resume) => {  
+    //   await convertToBase64(resume)
+    //     .then((result) => { return result });
+    // });
+
+    resumes.forEach((resume) => 
       fetch(url, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       method: "POST",
-      body: JSON.stringify({
-        analysis_id: "test",
-        cv_base64: resume,
-      }), 
+      body: formData,
+      // JSON.stringify({
+      //   analysis_id: "test",
+      //   cv_base64: resume,
+      // }), 
     })
       .then((response) => {
         if (response.ok) {

@@ -1,9 +1,14 @@
 import {
-  JOBOFFER
+  JOBOFFER,
+  ANALYSISID, 
+  ANALYSISNAME,
+
 } from "../../rankomatConsts";
 
 const initialState = {
-  jobOffer: ""
+  jobOffer: "",
+  analysisId: "",
+  analysisName:"",
 };
 
 export const rankomatStepOneReducer = (state = initialState, action) => {
@@ -14,6 +19,19 @@ export const rankomatStepOneReducer = (state = initialState, action) => {
         keyword: action.payload,
       };
     }
+    case ANALYSISID: {
+      return {
+        ...state,
+        keyword: action.payload,
+      };
+    }
+    case ANALYSISNAME: {
+      return {
+        ...state,
+        keyword: action.payload,
+      };
+    }
+
     default:
       return state;
   }

@@ -1,7 +1,5 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import CustomizedInput from "./Customized-Input";
-import Card from '@mui/material/Card';
 import { FormControlLabel, FormGroup, Checkbox } from "@material-ui/core";
 import { alpha, withStyles } from "@material-ui/core/styles";
 import Button from "@mui/material/Button";
@@ -56,14 +54,11 @@ export default function Step3Filters(props) {
   const handleCheckboxToggle = (checkbox) => () => {
     const newCheckboxes = checkboxes.map((e) => {
       if (e.id == checkbox.id) e.checked = !e.checked;
-      console.log(e);
       return e;
-      
     });
 
     setCheckboxes(newCheckboxes);
     dispatch(setFilters(newCheckboxes));
-    console.log(initialFilters);
   };
 
   const getDisabled = (val) => {
