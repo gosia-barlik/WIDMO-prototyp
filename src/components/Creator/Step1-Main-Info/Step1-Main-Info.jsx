@@ -22,7 +22,9 @@ export default function Step1MainInfo(props) {
   const [errorMessage, setErrorMessage] = useState("Pole obowiązkowe");
 
   useEffect(() => {
-    getMainInfo(id);
+    if(props.isEdit){
+      getMainInfo(id);
+    }
   }, []);
 
   const sendMainInfo = async () => {
@@ -37,13 +39,11 @@ export default function Step1MainInfo(props) {
   };
   
   const getMainInfo = async (jobOfferId) => {
-    if(props.isEdit){
       const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
       dispatch(setJobOffer(jobOfferResponse));
-      dispatch(setIsEdit(true));
+      dispatch(setIsEdit(true));//TOOD:: przenisc do komponentu wyzej
       dispatch(setShowResults(true));
       dispatch(setSearchedPosition(jobOfferResponse.positionName));
-    }
   };
 
   const onFileUpload = () => {

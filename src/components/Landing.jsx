@@ -48,7 +48,6 @@ const [jobOfferList, setjobOfferList] = useState();
 const dispatch = useDispatch();
   useEffect(async () => {
       var response = await MainInfoAPI.list();
-      console.log(response);
       setjobOfferList(response);
   }, []);
   

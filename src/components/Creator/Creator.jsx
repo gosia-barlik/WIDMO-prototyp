@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import "./Creator.css";
 
-export default function Creator() {
+export default function Creator(props) {
   const { showResults } = useSelector((state) => state.stepOneReducer);
   const { horizontalStepper } = useSelector((state) => state.stepperReducer);
   const dispatch = useDispatch();
@@ -34,6 +34,7 @@ export default function Creator() {
       <Grid container className='step-1-container'>
         {horizontalStepper === 0 && (
           <Step1MainInfo
+            isEdit={props.isEdit}
             activeStep={horizontalStepper}
             // onFileUpload={onFileUpload}
           />
