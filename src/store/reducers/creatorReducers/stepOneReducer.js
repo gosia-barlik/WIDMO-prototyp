@@ -42,7 +42,7 @@ const initialState = {
     salaryTo: "",
     salaryCurrency: "",
     salaryTime: "",
-    salaryContract: "",
+    salaryContract: "",//TODO::czy to jest potrzebne?
     addressCountry: "", 
     addressCity: "Lokalizacja miejsca pracy", 
     addressStreet: "", 

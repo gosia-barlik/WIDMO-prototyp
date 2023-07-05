@@ -12,14 +12,8 @@ import { useSelector } from "react-redux";
 
 export default function RichTextEditor(props) {
   const {
-    companyName,
     searchedPosition,
-    salaryTo,
-    salaryFrom,
-    salaryTime,
-    salaryType,
-    salaryContract,
-    aboutCompany,
+    jobOffer
   } = useSelector((state) => state.stepOneReducer);
   const {
     responsibilitiesToHtml,
@@ -50,11 +44,11 @@ export default function RichTextEditor(props) {
   const contentToEdit = `<div className="job-offer-summary" contentEditable="true"> 
 <h3>${searchedPosition} 
 </h3> 
-<h5> ${companyName}
+<h5> ${jobOffer.companyName}
 </h5> 
-<h6> ${aboutCompany} 
+<h6> ${jobOffer.companyDescription} 
 </h6> 
-<h6> ${salaryFrom} - ${salaryTo} ${salaryType} / ${salaryTime} ${salaryContract} 
+<h6> ${jobOffer.salaryFrom} - ${jobOffer.salaryTo} ${jobOffer.salaryType} / ${jobOffer.salaryTime} ${jobOffer.contractType} 
 </h6>   
 <h6> Zakres obowiązków: <span> 
 ${responsibilitiesToHtml} </span>
