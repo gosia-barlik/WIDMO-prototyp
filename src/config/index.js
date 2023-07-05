@@ -1,6 +1,6 @@
 const config = {
     
-    NER_BASE_URL : "http://127.0.0.1:8002"
+    NER_BASE_URL : "http://10.0.3.133:8002/api/v1/nermodule"
   
   }
   

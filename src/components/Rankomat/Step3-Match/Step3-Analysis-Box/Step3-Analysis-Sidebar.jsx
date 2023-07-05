@@ -77,30 +77,27 @@ export default function AnalysisSidebar(props) {
 
   const onSetShowAll = () => {
     setActive(0);
-    console.log(active);
-      dispatch(setShowAll(true));
-      dispatch(setShowFavorites(false));
-      dispatch(setShowReserves(false));
-      dispatch(setShowRejected(false));
-  }
+    dispatch(setShowAll(true));
+    dispatch(setShowFavorites(false));
+    dispatch(setShowReserves(false));
+    dispatch(setShowRejected(false));
+  };
 
   const onSetShowFavorites = () => {
     setActive(1);
-    console.log(active);
     dispatch(setShowFavorites(true));
     dispatch(setShowAll(false));
     dispatch(setShowReserves(false));
     dispatch(setShowRejected(false));
-  }
+  };
 
   const onSetShowReserves = () => {
     setActive(2);
-    console.log(active);
     dispatch(setShowReserves(true));
     dispatch(setShowFavorites(false));
     dispatch(setShowAll(false));
     dispatch(setShowRejected(false));
-  }
+  };
 
   const onSetShowRejected = () => {
     setActive(3);
@@ -109,7 +106,7 @@ export default function AnalysisSidebar(props) {
     dispatch(setShowFavorites(false));
     dispatch(setShowAll(false));
     dispatch(setShowReserves(false));
-  }
+  };
 
   const drawer = (
     <div style={{ zIndex: "1" }}>
@@ -118,7 +115,7 @@ export default function AnalysisSidebar(props) {
       <List>
         <ListItem
           button
-          key="wszystkie"
+          key='wszystkie'
           className={active == "0" ? "active" : ""}
           onClick={() => onSetShowAll()}>
           <ListItemIcon>
@@ -128,7 +125,7 @@ export default function AnalysisSidebar(props) {
         </ListItem>
         <ListItem
           button
-          key="wybrane"
+          key='wybrane'
           className={active == "1" ? "active" : ""}
           onClick={() => onSetShowFavorites()}>
           <ListItemIcon>
@@ -138,7 +135,7 @@ export default function AnalysisSidebar(props) {
         </ListItem>
         <ListItem
           button
-          key="rezerwowe"
+          key='rezerwowe'
           className={active == "2" ? "active" : ""}
           onClick={() => onSetShowReserves()}>
           <ListItemIcon>
@@ -148,7 +145,7 @@ export default function AnalysisSidebar(props) {
         </ListItem>
         <ListItem
           button
-          key="odrzucone"
+          key='odrzucone'
           className={active == "3" ? "active" : ""}
           onClick={() => onSetShowRejected()}>
           <ListItemIcon>

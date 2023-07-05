@@ -9,6 +9,7 @@ import {
   SHOWFAVORITES,
   SHOWREJECTED,
   SHOWRESERVES,
+  INITIALFILTERS,
 } from "../../rankomatConsts";
 
 const initialState = {
@@ -23,6 +24,40 @@ const initialState = {
   showFavorites: false,
   showReserves: false,
   showRejected: false,
+
+  initialFilters: [{
+    name: "Professional skill",
+    value: "professional skill",
+    id: 0,
+    label: "Umiejętności twarde",
+    weight: 2,
+    checked: true,
+  },
+  {
+    name: "Soft skill",
+    value: "soft skill",
+    id: 1,
+    label: "Umiejętności miękkie",
+    weight: 2,
+    checked: true,
+  },
+  {
+    name: "Language skill",
+    value: "language skill",
+    id: 2,
+    label: "Umiejętności językowe",
+    weight: 2,
+    checked: true,
+  },
+  {
+    name: "Education",
+    value: "education",
+    id: 3,
+    label: "Edukacja",
+    weight: 2,
+    checked: true,
+  }
+],
 };
 
 
@@ -88,6 +123,12 @@ export const rankomatStepThreeReducer = (state = initialState, action) => {
       return {
         ...state,
         showRejected: action.payload,
+      };
+    }
+    case INITIALFILTERS: { 
+      return {
+        ...state,
+        initialFilters: action.payload,
       };
     }
     default:

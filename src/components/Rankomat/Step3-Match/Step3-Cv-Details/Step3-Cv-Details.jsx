@@ -30,7 +30,7 @@ export default function CVDetails(props) {
           xs={7}
           style={{ margin: "50px 20px 20px 20px", textAlign: "left" }}>
           <Paper className='form-container-box'>
-            <CvPreview text={props.annotatedText} />
+            <CvPreview text={props.annotatedText} annotations={props.annotations}/>
           </Paper>
         </Grid>
         <Grid
@@ -53,6 +53,7 @@ export default function CVDetails(props) {
               languageSkills={props.languageSkills}
               itSkills={props.itSkills}
               education={props.education}
+              annotations={props.annotations}
             />
           </Paper>
 

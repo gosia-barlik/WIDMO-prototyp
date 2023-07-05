@@ -9,6 +9,7 @@ import {
   SHOWFAVORITES,
   SHOWRESERVES,
   SHOWREJECTED,
+  INITIALFILTERS,
 } from "../../rankomatConsts";
 
 export const setAll = (all) => {
@@ -40,4 +41,7 @@ export const setShowReserves = (boolean) => {
 };
 export const setShowRejected = (boolean) => {
   return { type: SHOWREJECTED, payload: boolean };
+};
+export const setFilters = (initialfilters) => {
+  return { type: INITIALFILTERS, payload: initialfilters };
 };

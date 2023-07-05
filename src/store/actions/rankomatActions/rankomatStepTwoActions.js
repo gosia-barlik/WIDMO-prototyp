@@ -8,5 +8,5 @@ export const setResumes = (resumes) => {
 };
 export const setKeyword = (keyword) => {
   return { type: KEYWORD, payload: keyword };
-};
+};//unused
 

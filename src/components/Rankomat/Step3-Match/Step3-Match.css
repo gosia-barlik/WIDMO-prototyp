@@ -60,13 +60,12 @@
 }
 
 #menu- ul {
-  width: 50px !important;
   display: flex;
-  flex-direction: column !important;
+  flex-direction: column;
 }
 
 #menu- li {
-  display: block !important;
+  display: block;
   font-size: 0.875rem;
 }
 
@@ -79,31 +78,31 @@
 }
 
 .filters-checkbox-0 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: rgb(176, 71, 200) !important;
+  color: rgb(176, 71, 200);
 }
 
 .filters-checkbox-1 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: rgb(219, 105, 167) !important;
+  color: rgb(219, 105, 167);
 }
 
 .filters-checkbox-2 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: #fc9286 !important;
+  color: #fc9286;
 }
 
 .filters-checkbox-3 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: rgb(199, 155, 164) !important;
+  color: rgb(199, 155, 164) ;
 }
 
 .filters-checkbox-4 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: rgb(149, 129, 133) !important;
+  color: rgb(149, 129, 133);
 }
 
 .filters-checkbox-5 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: rgb(78, 78, 78) !important;
+  color: rgb(78, 78, 78);
 }
 
 .filters-checkbox-6 .MuiCheckbox-colorPrimary.Mui-checked {
-  color: #a0b2a6 !important;
+  color: #a0b2a6 ;
 }
 
 .filters-checkbox-7 .MuiCheckbox-colorPrimary.Mui-checked {

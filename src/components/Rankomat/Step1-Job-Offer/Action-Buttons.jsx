@@ -2,10 +2,9 @@ import React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
-
 export default function ActionButtons(props) {
 
-  const submitAndGoForward = () => {props.onSubmit(); props.handleNext()}
+  const submitAndGoForward = () => {props.handleNext()}
   
   return (
     <Stack

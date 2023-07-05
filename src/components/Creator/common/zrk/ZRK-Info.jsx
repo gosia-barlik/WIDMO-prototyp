@@ -36,14 +36,14 @@ export default function ZRKInfo(props) {
   return (
     <Grid
       item
-      xs={2}
+      xs={4}
       className='zrk-container'
      >
-      <FormControlLabel style ={{marginLeft: "120%"}}
+      <FormControlLabel style ={{marginLeft: "80%"}}
         control={<PurpleSwitch checked={showZRK}  onChange={() => handleShowZRK()} />}
         label='ZRK'
       />
-      <Grow in={showZRK} style ={{width:"600px"}}>
+      <Grow in={showZRK} style ={{width:"700px"}}>
         <Paper className='' elevation={0}>
           <SearchResults />
         </Paper>

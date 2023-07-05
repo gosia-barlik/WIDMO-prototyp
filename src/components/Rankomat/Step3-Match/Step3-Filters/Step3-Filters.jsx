@@ -1,7 +1,5 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import CustomizedInput from "./Customized-Input";
-import Card from '@mui/material/Card';
 import { FormControlLabel, FormGroup, Checkbox } from "@material-ui/core";
 import { alpha, withStyles } from "@material-ui/core/styles";
 import Button from "@mui/material/Button";
@@ -10,6 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputBase from "@mui/material/InputBase";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters } from "../../../../store/actions/rankomatActions/rankomatStepThreeActions";
 
 const BootstrapInput = withStyles((theme) => ({
   root: {
@@ -36,77 +36,11 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase);
 
 export default function Step3Filters(props) {
-  const checkboxesInitial = [
-    {
-      name: "Professional skill",
-      value: "professional skill",
-      id: 0,
-      label: "Umiejętności twarde",
-      weight: null,
-      checked: false,
-    },
-    {
-      name: "Soft skill",
-      value: "soft skill",
-      id: 1,
-      label: "Umiejętności miękkie",
-      weight: null,
-      checked: false,
-    },
-    {
-      name: "Language skill",
-      value: "language skill",
-      id: 2,
-      label: "Umiejętności językowe",
-      weight: null,
-      checked: false,
-    },
-    {
-      name: "Education",
-      value: "education",
-      id: 3,
-      label: "Edukacja",
-      weight: null,
-      checked: false,
-    },
-    // {
-    //   name: "Experience",
-    //   value: "experience",
-    //   id: 4,
-    //   label: "Doświadczenie",
-    //   weight: null,
-    //   checked: false,
-    // },
-    // {
-    //   name: "Certificates",
-    //   value: "certificates",
-    //   id: 5,
-    //   label: "Certyfikaty",
-    //   weight: null,
-    //   checked: false,
-    // },
-    // {
-    //   name: "Job-position",
-    //   value: "job-position",
-    //   id: 6,
-    //   label: "Nazwa stanowiska",
-    //   weight: null,
-    //   checked: false,
-    // },
-    // {
-    //   name: "Company-name",
-    //   value: "company-name",
-    //   id: 7,
-    //   label: "Nazwa firmy",
-    //   weight: null,
-    //   checked: false,
-    // },
-  ];
-
-  const keyWordLabel = "Słowo kluczowe";
-  const keyWord = ["IPS", "technologie DLP", "PKI", "AZURE/MS365"];
-
-  const [checkboxes, setCheckboxes] = React.useState(checkboxesInitial);
+  const dispatch = useDispatch();
+  const { initialFilters } = useSelector(
+    (state) => state.rankomatStepThreeReducer
+  );
+  const [checkboxes, setCheckboxes] = React.useState(initialFilters);
 
   const handleSelectChange = (e, checkboxId) => {
     const newCheckboxes = checkboxes.map((o) => {
@@ -114,6 +48,7 @@ export default function Step3Filters(props) {
       return o;
     });
     setCheckboxes(newCheckboxes);
+    dispatch(setFilters(newCheckboxes));
   };
 
   const handleCheckboxToggle = (checkbox) => () => {
@@ -123,12 +58,15 @@ export default function Step3Filters(props) {
     });
 
     setCheckboxes(newCheckboxes);
+    dispatch(setFilters(newCheckboxes));
   };
 
   const getDisabled = (val) => {
     if (val) return { disabled: true };
     return {};
   };
+
+  const filterCheckboxes = checkboxes.filter((e) => e.checked);
 
   return (
     <>
@@ -168,6 +106,7 @@ export default function Step3Filters(props) {
           <FormControl
             sx={{ m: 1 }}
             variant='standard'
+            style={{ maxWidth: 90, display: checkbox.checked ? 'block' : 'none'}}
             {...getDisabled(!checkbox.checked)}>
             <InputLabel>Waga</InputLabel>
             <Select
@@ -177,22 +116,19 @@ export default function Step3Filters(props) {
               input={
                 <BootstrapInput value={checkbox.weight ? checkbox.weight : 0} />
               }>
-              <MenuItem value=''>
-                <em>0</em>
-              </MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={1}>mało ważne</MenuItem>
+              <MenuItem value={2}>średnio ważne</MenuItem>
+              <MenuItem value={3}>bardzo ważne</MenuItem>
             </Select>
           </FormControl>
         </FormGroup>
       ))}
 
-      <CustomizedInput
+      {/* <CustomizedInput
         label={keyWordLabel}
         options={keyWord}
         onSetKeyWord={props.onSetKeyWord}
-      />
+      /> */}
       <Button variant='contained' className='button-contained' style={{}}>
         Filtruj
       </Button>

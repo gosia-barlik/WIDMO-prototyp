@@ -10,6 +10,7 @@ import {
   REQUIREMENTSTOHTML,
   CUSTOMIZEDREQUIREMENTS,
   SHOWRESPONSIBILITIESLIST,
+  SHOWREQUIREMENTSLIST,
  
   SHOWEDUCATIONFORM,
   EDUCATIONLEVEL,
@@ -38,6 +39,7 @@ const initialState = {
   showEducationForm: false,
   requirementsToHtml: "",
   showResponsibilitiesList: false,
+  showRequirementsList: false,
   
   educationLevel: [],
   studiesName: [],
@@ -174,6 +176,12 @@ export const stepTwoReducer = (state = initialState, action) => {
       return {
         ...state,
         showResponsibilitiesList: action.payload,
+      };
+    }
+    case SHOWREQUIREMENTSLIST: {
+      return {
+        ...state,
+        showRequirementsList: action.payload,
       };
     }
     default:

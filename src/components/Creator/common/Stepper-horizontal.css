@@ -1,7 +1,7 @@
 @import "../../common/variables.css";
 
 .stepper-horizontal-container {
-  margin-top: 140px;
+  margin-top: 40px;
   justify-content: center !important;
   align-items: center;
 }
