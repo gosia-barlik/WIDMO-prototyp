@@ -21,12 +21,23 @@ import {
   COMPANYLOGOPREVIEW,
   SHOWJOBOFFER,
   SHOWZRK,
-  STEPONE
+  STEPONE,
+  POSITIONNAME,
+  NAME,
+  JOBOFFERID,
+  JOBOFFER,
+  ISEDIT
 } from "../creatorConsts";
 
 //position
 export const setSearchedPosition = (searchedPosition) => {
   return { type: SEARCHEDPOSITION, payload: searchedPosition };
+};
+export const setName = (name) => {
+  return { type: NAME, payload: name };
+};
+export const setPositionName = (positionName) => {
+  return { type: POSITIONNAME, payload: positionName };
 };
 export const setShowResults = (showResults) => {
   return { type: SHOWRESULTS, payload: showResults };
@@ -36,6 +47,15 @@ export const setActiveStep = (activeStep) => {
 };
 
 //job info
+export const setIsEdit = (isEdit) => {
+  return { type: ISEDIT, payload: isEdit };
+};
+export const setJobOfferId = (jobOfferId) => {
+  return { type: JOBOFFERID, payload: jobOfferId };
+};
+export const setJobOffer = (jobOffer) => {
+  return { type: JOBOFFER, payload: jobOffer };
+};
 export const setStepOne = (stepOne) => {
   return { type: STEPONE, payload: stepOne };
 };

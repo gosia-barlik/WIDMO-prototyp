@@ -1,5 +1,7 @@
 import {
   SEARCHEDPOSITION,
+  NAME,
+  POSITIONNAME,
   SHOWRESULTS,
   ACTIVESTEP,
   SALARYTYPE,
@@ -21,46 +23,86 @@ import {
   COMPANYLOGOPREVIEW,
   SHOWJOBOFFER,
   SHOWZRK,
-  STEPONE
+  STEPONE,
+  ISEDIT,
+  JOBOFFERID,
+  JOBOFFER
 } from "../../creatorConsts";
 
 const initialState = {
-  searchedPosition: "", //name i positionName
-  name: "",
-  positionName: "",
-  showResults: false, //todo przeniesc do state
   activeStep: 0, //todo przeniesc do state
-  salaryType: "",
-  salaryFrom: "",
-  salaryTo: "",
-  salaryCurrency: "",
-  salaryTime: "",
-  salaryContract: "",
-  addressCountry: "", 
-  addressCity: "Lokalizacja miejsca pracy", 
-  addressStreet: "", 
-  workMode: "Wymiar zatrudnienia", 
-  contractType: "Rodzaj umowy",
-  workModel: "Tryb pracy",
-  recruitmentMode: "Tryb rekrutacji",
-  companyName: "",
-  companyDescription: "", //companyDescription
-  companylogo: "",
-  companyLogoPreview: "",
+  isEdit: true,
+  searchedPosition: "", //name i positionName
+  jobOffer:{
+    jobOfferId : "59ED8D99-2600-417C-BBE8-BA577FA8B6F3",
+    // jobOfferId : null,
+    name: "",
+    positionName: "",
+    salaryType: "",
+    salaryFrom: "",
+    salaryTo: "",
+    salaryCurrency: "",
+    salaryTime: "",
+    salaryContract: "",
+    addressCountry: "", 
+    addressCity: "Lokalizacja miejsca pracy", 
+    addressStreet: "", 
+    workMode: "Wymiar zatrudnienia", 
+    contractType: "Rodzaj umowy",
+    workModel: "Tryb pracy",
+    recruitmentMode: "Tryb rekrutacji",
+    companyName: "",
+    companyDescription: "", //companyDescription
+    companylogo: "",
+    companyLogoPreview: "",
+  },
+  showResults: false, //todo przeniesc do state
   showJobOffer: true,
-  showZRK: false,
+  showZRK: false
 };
 
 export const stepOneReducer = (state = initialState, action) => {
   switch (action.type) {
+    case JOBOFFERID: {
+      return { 
+        ...state,
+        jobOffer:{
+          ...state.jobOffer,
+          jobOfferId: action.payload,
+        }
+      }
+    };
+    case JOBOFFER: {
+      return { 
+        ...state,
+        jobOffer:action.payload
+      }
+    }
     case STEPONE: {
       return action.payload;
     }
     case SEARCHEDPOSITION: {
+      return { 
+        ...state,
+        searchedPosition: action.payload.charAt(0).toUpperCase()+ action.payload.slice(1)
+      }
+    };
+    case NAME: {
       return {
         ...state,
-        searchedPosition: action.payload
-        // .charAt(0).toUpperCase()+ action.payload.slice(1),
+        jobOffer:{
+          ...state.jobOffer,
+          name: action.payload,
+        }
+      };
+    }
+    case POSITIONNAME: {
+      return {
+        ...state,
+        jobOffer:{
+          ...state.jobOffer,
+          positionName: action.payload,
+        }
       };
     }
     case SHOWRESULTS: {
@@ -78,103 +120,154 @@ export const stepOneReducer = (state = initialState, action) => {
     case SALARYTYPE: {
       return {
         ...state,
-        salaryType: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          salaryType: action.payload,
+        }
       };
     }
     case SALARYFROM: {
       return {
         ...state,
-        salaryFrom: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          salaryFrom: action.payload,
+        }
       };
     }
     case SALARYTO: {
       return {
         ...state,
-        salaryTo: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          salaryTo: action.payload,
+        }
       };
     }
     case SALARYCURRENCY: {
       return {
         ...state,
-        salaryCurrency: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          salaryCurrency: action.payload,
+        }
       };
     }
     case SALARYTIME: {
       return {
         ...state,
-        salaryTime: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          salaryTime: action.payload,
+        }
       };
     }
     case SALARYCONTRACT: {
       return {
         ...state,
-        salaryContract: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          salaryContract: action.payload,
+        }
       };
     }
     case ADDRESSCOUNTRY: {
       return {
         ...state,
-        addressCountry: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          addressCountry: action.payload,
+        }
       };
     }
     case ADDRESSCITY: {
       return {
         ...state,
-        addressCity: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          addressCity: action.payload,
+        }
       };
     }
     case ADDRESSSTREET: {
       return {
         ...state,
-        addressStreet: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          addressStreet: action.payload,
+        }
       };
     }
     case WORKMODE: {
       return {
         ...state,
-        workMode: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          workMode: action.payload,
+        }
       };
     }
     case CONTRACTTYPE: {
       return {
         ...state,
-        contractType: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          contractType: action.payload,
+        }
       };
     }
     case WORKMODEL: {
       return {
         ...state,
-        workModel: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          workModel: action.payload,
+        }
       };
     }
     case RECRUITMENTMODE: {
       return {
         ...state,
-        recruitmentMode: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          recruitmentMode: action.payload,
+        }
       };
     }
     case COMPANYNAME: {
       return {
         ...state,
-        companyName: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          companyName: action.payload,
+        }
       };
     }
     case COMPANYDESCRIPTION: {
       return {
         ...state,
-        companyDescription: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          companyDescription: action.payload,
+        }
       };
     }
     case COMPANYLOGO: {
       return {
         ...state,
-        companyLogo: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          companyLogo: action.payload,
+        }
       };
     }
     case COMPANYLOGOPREVIEW: {
       return {
         ...state,
-        companyLogoPreview: action.payload,
+        jobOffer:{
+          ...state.jobOffer,
+          companyLogoPreview: action.payload,
+        }
       };
     }
     case SHOWJOBOFFER: {
@@ -187,6 +280,12 @@ export const stepOneReducer = (state = initialState, action) => {
       return {
         ...state,
         showZRK: action.payload
+      }
+    }
+    case ISEDIT: {
+      return {
+        ...state,
+        isEdit: action.payload
       }
     }
     default:

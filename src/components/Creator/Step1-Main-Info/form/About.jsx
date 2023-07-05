@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutCompany(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { companyLogo, companyLogoPreview, companyName, companyDescription } = useSelector((state) => state.stepOneReducer);
+  const { companyLogo, companyLogoPreview, companyName, companyDescription } = useSelector((state) => state.stepOneReducer.jobOffer);
 
   useEffect(() => {
     if (!companyLogo) {
@@ -109,7 +109,7 @@ export default function AboutCompany(props) {
         style={{ marginTop: "20px" }}>
         Jeśli chcesz, możesz dodać logotyp
       </Typography>
-      {/* <div className='add-logo'>
+      <div className='add-logo'>
         <div className={"input-file-wrapper"}>
           <label>
             <IconButton
@@ -139,7 +139,7 @@ export default function AboutCompany(props) {
             id={"add-photo"}
           />
         </div>
-      </div> */}
+      </div>
     </Paper>
   );
 }

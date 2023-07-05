@@ -8,20 +8,50 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Grid from "@mui/material/Grid";
 import { NavLink } from "react-router-dom";
-import AppsIcon from "@material-ui/icons/Apps";
 import Typography from "@mui/material/Typography";
 import background from "../assets/light-purple-background.jpg";
 import creatorIcon from "../assets/creator-screen-shot.png";
 import analizerIcon from "../assets/analize-cv-screen-shot.png";
 import searchInfographic from "../assets/search-infographic.jpg";
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { MainInfoAPI } from "../api/mainInfoApi";
+import { useEffect } from "react";
+import { useState } from "react";
+import { setJobOffer, setSearchedPosition, setShowResults } from "../store/actions/stepOneActions";
+import { useDispatch } from "react-redux";
 
-class Landing extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+// class Landing extends React.Component {
+export default function Landing() {
+  const dispatch = useDispatch();
+  const [jobOfferList, setjobOfferList] = useState();
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     jobOfferList:null
+  //   };
+  // } 
+
+  // componentDidMount = async () =>{
+  //   var response = await MainInfoAPI.list();
+  //   this.setState({
+  //     jobOfferList : response
+  //   });
+  // }
+
+    useEffect(async () => {
+      var response = await MainInfoAPI.list();
+      console.log(response);
+      setjobOfferList(response);
+  }, []);
+
+  const onClickEditJobOffer = async (jobOfferId) =>{
+    const jobOffer = jobOfferList.find(obj => obj.jobOfferId == jobOfferId );
+    dispatch(setJobOffer(jobOffer));
+    dispatch(setShowResults(true));
+    dispatch(setSearchedPosition(jobOffer.positionName));
   }
 
-  render() {
+  // render() {
     return (
       <Grid className='landing' container spacing={4}>
         <img
@@ -134,6 +164,35 @@ class Landing extends React.Component {
               </CardActions>
             </Box>
           </Card>
+
+              <List
+                    sx={{
+                      width: '100%',
+                      maxWidth: 1000,
+                      bgcolor: 'background.paper',
+                      position: 'relative',
+                      overflow: 'auto',
+                      maxHeight: 300,
+                      '& ul': { padding: 0 },
+                    }}
+              >
+                {jobOfferList && jobOfferList.map(jobOffer => {
+                  return (
+                    <NavLink to='/creator' onClick={()=>onClickEditJobOffer(jobOffer.jobOfferId)}>
+                    <ListItem disablePadding>
+                      <ListItemButton>
+                        Nazwa: {jobOffer.name}
+                        Firma: {jobOffer.companyName}
+                        <ListItemIcon>
+                        </ListItemIcon>
+                        <ListItemText primary="Inbox" />
+                      </ListItemButton>
+                    </ListItem>
+                  </NavLink>
+                    )
+                })}
+              </List>
+
           <Card
             className='card-container'
             sx={{ display: "flex", flexDirection: "row" }}>
@@ -186,10 +245,10 @@ class Landing extends React.Component {
       </Grid>
     );
   }
-}
+// }
 
-Landing.propTypes = {};
+// Landing.propTypes = {};
 
-Landing.defaultProps = {};
+// Landing.defaultProps = {};
 
-export default Landing;
+// export default Landing;

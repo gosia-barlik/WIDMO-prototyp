@@ -7,38 +7,39 @@ import ActionButtons from "./form/Action-Buttons.jsx";
 import AdditionalInformation from "./form/Additional-Information";
 import "./Step1-Main-Info.css";
 import AboutCompany from "./form/About.jsx";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { horizontalStepForward } from "../../../store/actions/stepperActions.js";
 import { MainInfoAPI } from "../../../api/mainInfoApi";
-import { setStepOne } from "../../../store/actions/stepOneActions";
+import { setJobOfferId, setJobOffer, setSearchedPosition, setShowResults } from "../../../store/actions/stepOneActions";
 
-export default function Step1MainInfo(props) {
+export default function Step1MainInfo() {
   const stepOneReducer = useSelector((state) => state.stepOneReducer);
+  const { jobOffer } = useSelector((state) => state.stepOneReducer);
   const dispatch = useDispatch();
+  const handleNext = () => {dispatch(horizontalStepForward())}
 
-  const handleNext = () => {
-    console.log("handleNext");
-    dispatch(horizontalStepForward());
+  // useEffect(() => {
+  //   stepOneReducer.isEdit && getMainInfo(jobOffer.jobOfferId);
+  // }, []);
+
+  const sendMainInfo = async () => {
+    if(jobOffer.jobOfferId)
+      await MainInfoAPI.update(jobOffer)
+    else {
+      const jobOfferId = await MainInfoAPI.create(jobOffer);
+      dispatch(setJobOfferId(jobOfferId));
+    }
   };
-
-  useEffect(() => {
-    props.isEdit && getMainInfo(props.jobOfferId);
-  });
-
-  const sendMainInfo = () => {
-    props.isEdit
-      ? MainInfoAPI.update(stepOneReducer)
-      : MainInfoAPI.create(stepOneReducer);
-  };
-
-  const getMainInfo = async (jobOfferId) => {
-    const jobOffer = await MainInfoAPI.get(jobOfferId);
-    //TODO::ustawic ID w store
-    dispatch(setStepOne(jobOffer));
-  };
+  
+  // const getMainInfo = async (jobOfferId) => {
+  //     const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
+  //     dispatch(setJobOffer(jobOfferResponse));
+  //     dispatch(setShowResults(true));
+  //     dispatch(setSearchedPosition(jobOfferResponse.positionName));
+  // };
 
   return (
-    <Grid item xs={6} className='form-container'>
+    <Grid item xs={4} className='form-container'>
       <Typography
         variant='body2'
         style={{ color: "#00000099" }}
@@ -47,13 +48,16 @@ export default function Step1MainInfo(props) {
         Obszar roboczy
       </Typography>
       <Paper className='form-container-box'>
-        <SearchBar />
+        <SearchBar searchedPosition = {stepOneReducer.searchedPosition} />
 
         {stepOneReducer.showResults && (
           <>
             <AboutCompany />
             <AdditionalInformation />
-            <ActionButtons onSubmit={sendMainInfo} handleNext={handleNext} />
+            <ActionButtons
+              onSubmit = { sendMainInfo }
+              handleNext = { handleNext }
+            />
           </>
         )}
       </Paper>

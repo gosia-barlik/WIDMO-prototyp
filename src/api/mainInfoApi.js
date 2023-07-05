@@ -13,7 +13,7 @@ export const MainInfoAPI = {
       signal: cancel ? cancelApiObject[this.create.name].handleRequestCancellation().signal : undefined,
     })
 
-    return response.data.mainInfoDetails;
+    return response.data;
   },
 
   //aktualizacja ogłoszenia
@@ -22,10 +22,11 @@ export const MainInfoAPI = {
       url: '/Creator/JobOffer',
       method: "PUT",
       data: mainInfo,
+      withCredentials:false,
       signal: cancel ? cancelApiObject[this.create.name].handleRequestCancellation().signal : undefined,
     })
 
-    return response.data.mainInfoDetails;
+    return response.data;
   },
 
   //pobranie zapisanego ogłoszenia
@@ -33,10 +34,23 @@ export const MainInfoAPI = {
     const response = await api.request({
       url: `/Creator/JobOffer/${offerId}`,
       method: "GET",
+      withCredentials:false,
       signal: cancel ? cancelApiObject[this.get.name].handleRequestCancellation().signal : undefined,
     })
 
-    return response.data.positionsDetalis
+    return response.data;
+  },
+
+  //pobranie listy ogłoszeń
+  list: async function (cancel = false) {
+    const response = await api.request({
+      url: "/Creator/JobOffer/List",
+      method: "GET",
+      withCredentials:false,
+      signal: cancel ? cancelApiObject[this.get.name].handleRequestCancellation().signal : undefined,
+    })
+
+    return response.data;
   }
 }
 
