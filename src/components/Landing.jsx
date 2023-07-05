@@ -17,40 +17,47 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui
 import { MainInfoAPI } from "../api/mainInfoApi";
 import { useEffect } from "react";
 import { useState } from "react";
-import { setJobOffer, setSearchedPosition, setShowResults } from "../store/actions/stepOneActions";
 import { useDispatch } from "react-redux";
+import { setIsEdit, setJobOffer, setSearchedPosition, setShowResults } from "../store/actions/stepOneActions";
 
-// class Landing extends React.Component {
+const cleanJobOffer = {
+  jobOfferId : null,
+  name: "",
+  positionName: "",
+  salaryType: "",
+  salaryFrom: "",
+  salaryTo: "",
+  salaryCurrency: "",
+  salaryTime: "",
+  salaryContract: "",
+  addressCountry: "", 
+  addressCity: "", 
+  addressStreet: "", 
+  workMode: "", 
+  contractType: "",
+  workModel: "",
+  recruitmentMode: "",
+  companyName: "",
+  companyDescription: "", 
+  companylogo: null,
+  companyLogoPreview: "",
+};
+
 export default function Landing() {
-  const dispatch = useDispatch();
-  const [jobOfferList, setjobOfferList] = useState();
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     jobOfferList:null
-  //   };
-  // } 
-
-  // componentDidMount = async () =>{
-  //   var response = await MainInfoAPI.list();
-  //   this.setState({
-  //     jobOfferList : response
-  //   });
-  // }
-
-    useEffect(async () => {
+const [jobOfferList, setjobOfferList] = useState();
+const dispatch = useDispatch();
+  useEffect(async () => {
       var response = await MainInfoAPI.list();
       setjobOfferList(response);
   }, []);
-
-  const onClickEditJobOffer = async (jobOfferId) =>{
-    const jobOffer = jobOfferList.find(obj => obj.jobOfferId == jobOfferId );
-    dispatch(setJobOffer(jobOffer));
-    dispatch(setShowResults(true));
-    dispatch(setSearchedPosition(jobOffer.positionName));
+  
+  const clearJobOffer = () => {
+    dispatch(setJobOffer(cleanJobOffer));
+    dispatch(setIsEdit(false));
+    dispatch(setSearchedPosition(""));
+    dispatch(setShowResults(false));
   }
 
-  // render() {
     return (
       <Grid className='landing' container spacing={4}>
         <img
@@ -58,7 +65,6 @@ export default function Landing() {
           className='section-background'
           alt='light purple background'
         />
-
         <Stack
           spacing={4}
           direction='column'
@@ -153,7 +159,7 @@ export default function Landing() {
                 </div>
               </CardContent>
               <CardActions className='card1'>
-                <NavLink to='/creator'>
+                <NavLink to='/creator' onClick={()=>clearJobOffer()}>
                   <Button
                     variant='contained'
                     className='button-primary-contained'>
@@ -161,26 +167,31 @@ export default function Landing() {
                   </Button>
                 </NavLink>
               </CardActions>
+              
+
+
             </Box>
           </Card>
 
-              <List
+          <Card  className='card-container'
+            sx={{ display: "flex", flexDirection: "row" }}>
+          <List
                     sx={{
                       width: '100%',
-                      maxWidth: 1000,
+                      maxWidth: 800,
                       bgcolor: 'background.paper',
-                      position: 'relative',
+                      // position: 'relative',
                       overflow: 'auto',
-                      maxHeight: 300,
+                      maxHeight: 400,
                       '& ul': { padding: 0 },
                     }}
               >
                 {jobOfferList && jobOfferList.map(jobOffer => {
                   return (
-                    <NavLink to='/creator' onClick={()=>onClickEditJobOffer(jobOffer.jobOfferId)}>
+                    <NavLink to={`/creator/edit/${jobOffer.jobOfferId}`}>
                     <ListItem disablePadding>
                       <ListItemButton>
-                        Nazwa: {jobOffer.name}
+                        Nazwa: {jobOffer.name} 
                         Firma: {jobOffer.companyName}
                         <ListItemIcon>
                         </ListItemIcon>
@@ -191,6 +202,7 @@ export default function Landing() {
                     )
                 })}
               </List>
+              </Card>
 
           <Card
             className='card-container'
@@ -244,10 +256,3 @@ export default function Landing() {
       </Grid>
     );
   }
-// }
-
-// Landing.propTypes = {};
-
-// Landing.defaultProps = {};
-
-// export default Landing;

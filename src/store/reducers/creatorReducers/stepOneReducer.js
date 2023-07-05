@@ -31,11 +31,10 @@ import {
 
 const initialState = {
   activeStep: 0, //todo przeniesc do state
-  isEdit: true,
+  isEdit: false,
   searchedPosition: "", //name i positionName
   jobOffer:{
-    jobOfferId : "59ED8D99-2600-417C-BBE8-BA577FA8B6F3",
-    // jobOfferId : null,
+    jobOfferId : null,
     name: "",
     positionName: "",
     salaryType: "",
@@ -53,7 +52,7 @@ const initialState = {
     recruitmentMode: "Tryb rekrutacji",
     companyName: "",
     companyDescription: "", //companyDescription
-    companylogo: "",
+    companylogo: null,
     companyLogoPreview: "",
   },
   showResults: false, //todo przeniesc do state

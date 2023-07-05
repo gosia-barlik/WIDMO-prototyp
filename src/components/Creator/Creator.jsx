@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import StepperHorizontal from "./common/Stepper-horizontal.jsx";
 import Step1MainInfo from "./Step1-Main-Info/Step1-Main-Info.jsx";
 import Step2OfferContent from "./Step2-Offer-Content/Step2-Offer-Content.jsx";
@@ -8,15 +8,14 @@ import JobOfferContainer from "./common/job-offer/Job-offer-container.jsx";
 import ZRKInfo from "./common/zrk/ZRK-Info.jsx";
 import Grid from "@mui/material/Grid";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./Creator.css";
 
-export default function Creator() {
+export default function Creator(props) {
   const { showResults } = useSelector(
     (state) => state.stepOneReducer
   );
   const { horizontalStepper } = useSelector((state) => state.stepperReducer);
-  const dispatch = useDispatch();
 
   return (
     <>
@@ -36,7 +35,7 @@ export default function Creator() {
         {horizontalStepper === 0 && (
           <Step1MainInfo
             activeStep={horizontalStepper}
-            // onFileUpload={onFileUpload}
+            isEdit={props.isEdit}
           />
         )}
         {horizontalStepper === 1 && (

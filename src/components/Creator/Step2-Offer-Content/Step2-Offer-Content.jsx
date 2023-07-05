@@ -9,12 +9,34 @@ import ActionButtons from "./form/Action-Buttons.jsx";
 import "./Step2-Offer-Content.css";
 import { useDispatch, useSelector } from "react-redux";
 import { horizontalStepForward, horizontalStepBack } from "../../../store/actions/stepperActions.js";
+import { JobOfferContentAPI } from "../../../api/jobOfferContentApi.js";
+import { setIsEdit, setShowResults } from "../../../store/actions/stepOneActions.js";
 
 export default function Step2OfferContent(props) {
   const dispatch = useDispatch();
   const { showEducationForm } = useSelector((state) => state.stepTwoReducer);
   const handleNext = () => {dispatch(horizontalStepForward())}
   const handleBack = () => {dispatch(horizontalStepBack())}
+
+  const sendMainInfo = async () => {
+    // if(jobOffer.jobOfferId)
+    //   await JobOfferContentAPI.update(jobOfferContent)
+    // else {
+    //   const jobOfferId = await JobOfferContentAPI.create(jobOfferContent);
+    //   dispatch(setJobOfferId(jobOfferId));
+    // };
+    handleNext();
+  };
+  
+  const getMainInfo = async (jobOfferId) => {
+    if(props.isEdit){
+      // const jobOfferResponse = await JobOfferContentAPI.get(jobOfferId);
+      // dispatch(setJobOffer(jobOfferResponse));
+      // dispatch(setIsEdit(true));
+      // dispatch(setShowResults(true));
+    }
+  };
+
 
   return (
     
@@ -31,6 +53,7 @@ export default function Step2OfferContent(props) {
           <RequirementsSection />
           <BenefitsSection />
           <ActionButtons
+            onSubmit = {sendMainInfo}
             handleBack={handleBack}
             handleNext={handleNext}
           />

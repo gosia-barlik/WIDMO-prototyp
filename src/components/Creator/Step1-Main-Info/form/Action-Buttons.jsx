@@ -11,7 +11,7 @@ export default function ActionButtons(props) {
       <Button
         className='button-contained'
         variant='contained'
-        onClick={props.handleNext && props.onSubmit}>
+        onClick={props.onSubmit}>
         Dalej
       </Button>
     </Stack>

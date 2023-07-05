@@ -41,6 +41,27 @@ export const MainInfoAPI = {
     return response.data;
   },
 
+  //aktualizacja ogłoszenia
+  updateLogo: async function (companyLogo, offerId, cancel = false) {
+    var formData = new FormData();
+    formData.append("companyLogo", companyLogo);
+
+    console.log(companyLogo);
+
+    const response = await api.request({
+      url: `/Creator/CompanyLogo/${offerId}`,
+      method: "PUT",
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+      withCredentials: false,
+      signal: cancel ? cancelApiObject[this.create.name].handleRequestCancellation().signal : undefined,
+    })
+
+    return response.data;
+  },
+
   //pobranie listy ogłoszeń
   list: async function (cancel = false) {
     const response = await api.request({

@@ -43,7 +43,7 @@ export default function AboutCompany(props) {
 
     const objectUrl = URL.createObjectURL(companyLogo);
     dispatch(setLogoPreview(objectUrl));
-
+    
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [companyLogo]);
@@ -59,11 +59,11 @@ export default function AboutCompany(props) {
   };
 
   const onSetLogo = (e) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      dispatch(setLogo(undefined));
-      return;
-    }
-    dispatch(setLogo(e.target.files[0]));
+    // if (!e.target.files || e.target.files.length === 0) {
+    //   dispatch(setLogo(undefined));
+    //   return;
+    // }
+    // dispatch(setLogo(e.target.files[0]));
     // document.getElementById("photo-icon").classList.add("hidden")
   };
 

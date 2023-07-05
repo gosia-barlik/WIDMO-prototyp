@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@mui/material/Paper";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import DoneIcon from "@material-ui/icons/Done";
 import Typography from "@mui/material/Typography";
 import Button from "@material-ui/core/Button";
-import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setSearchedPosition,
@@ -23,7 +20,6 @@ import {
   setBenefitsToHtml
 } from "../../../../store/actions/stepTwoActions";
 import { jobPositionSchema } from "../../common/validations/stepOneSchema";
-
 
 const responsibilitiesFixture = [
   "diagnozowanie usterek mechanicznych",
@@ -148,7 +144,7 @@ export default function SearchBar(props) {
         sx={{ display: "flex", flexDirection: "row" }}>
         <TextField
           spellCheck='true'
-          defaultValue={ stepOneReducer.searchedPosition }
+          value={ stepOneReducer.searchedPosition }
           error={text.length >= jobPositionSchema.MAX_LENGTH}
           helperText={errorMessage}
           required

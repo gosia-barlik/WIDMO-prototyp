@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -10,17 +10,20 @@ import AboutCompany from "./form/About.jsx";
 import {useDispatch, useSelector } from "react-redux";
 import { horizontalStepForward } from "../../../store/actions/stepperActions.js";
 import { MainInfoAPI } from "../../../api/mainInfoApi";
-import { setJobOfferId, setJobOffer, setSearchedPosition, setShowResults } from "../../../store/actions/stepOneActions";
+import { setJobOfferId, setJobOffer, setSearchedPosition, setShowResults, setIsEdit } from "../../../store/actions/stepOneActions";
+import { useParams } from "react-router-dom";
 
-export default function Step1MainInfo() {
+export default function Step1MainInfo(props) {
   const stepOneReducer = useSelector((state) => state.stepOneReducer);
-  const { jobOffer } = useSelector((state) => state.stepOneReducer);
+  const { jobOffer, companyLogo } = useSelector((state) => state.stepOneReducer);
   const dispatch = useDispatch();
   const handleNext = () => {dispatch(horizontalStepForward())}
+  const { id } = useParams();
+  const [errorMessage, setErrorMessage] = useState("Pole obowiązkowe");
 
-  // useEffect(() => {
-  //   stepOneReducer.isEdit && getMainInfo(jobOffer.jobOfferId);
-  // }, []);
+  useEffect(() => {
+    getMainInfo(id);
+  }, []);
 
   const sendMainInfo = async () => {
     if(jobOffer.jobOfferId)
@@ -28,15 +31,26 @@ export default function Step1MainInfo() {
     else {
       const jobOfferId = await MainInfoAPI.create(jobOffer);
       dispatch(setJobOfferId(jobOfferId));
-    }
+    };
+    await MainInfoAPI.updateLogo(companyLogo, jobOffer.jobOfferId);
+    handleNext();
   };
   
-  // const getMainInfo = async (jobOfferId) => {
-  //     const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
-  //     dispatch(setJobOffer(jobOfferResponse));
-  //     dispatch(setShowResults(true));
-  //     dispatch(setSearchedPosition(jobOfferResponse.positionName));
-  // };
+  const getMainInfo = async (jobOfferId) => {
+    if(props.isEdit){
+      const jobOfferResponse = await MainInfoAPI.get(jobOfferId);
+      dispatch(setJobOffer(jobOfferResponse));
+      dispatch(setIsEdit(true));
+      dispatch(setShowResults(true));
+      dispatch(setSearchedPosition(jobOfferResponse.positionName));
+    }
+  };
+
+  const onFileUpload = () => {
+    // const formData = new FormData();
+    // formData.append("myFile", logo, logo.name);
+    // axios.post("api/uploadfile", formData);
+  };
 
   return (
     <Grid item xs={4} className='form-container'>
@@ -52,11 +66,13 @@ export default function Step1MainInfo() {
 
         {stepOneReducer.showResults && (
           <>
-            <AboutCompany />
+            <AboutCompany 
+              // setCompanyLogo={setCompanyLogo} 
+              // companyLogo={companyLogo} 
+            />
             <AdditionalInformation />
             <ActionButtons
               onSubmit = { sendMainInfo }
-              handleNext = { handleNext }
             />
           </>
         )}
