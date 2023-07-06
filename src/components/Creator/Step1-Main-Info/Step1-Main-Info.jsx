@@ -73,6 +73,7 @@ export default function Step1MainInfo(props) {
             <AdditionalInformation />
             <ActionButtons
               onSubmit = { sendMainInfo }
+              handleNext = {handleNext}
             />
           </>
         )}
