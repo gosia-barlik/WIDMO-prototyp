@@ -15,6 +15,7 @@ const Input = styled("input")({
 });
 
 export default function Step1JobOffer(props) {
+  const [jobOffer, setJobOffer] = useState(null); 
   const [file, setFile] = useState(null);
   const [jobOfferSource, setJobOfferSource] = useState("");
 
@@ -22,25 +23,32 @@ export default function Step1JobOffer(props) {
 
   const onSetJobOffer = (newJobOffer) => dispatch(setJobOffer(newJobOffer));
 
-  const hiddenFileInput = useRef(null);
+  const {hiddenFileInput, hiddenJobOfferInput}= useRef(null);
+  
 
-  const handleClick = (event) => {
+  const handleFileInput = (event) => {
     hiddenFileInput.current.click();
+  };
+  const handleJobOfferInput = (event) => {
+    hiddenJobOfferInput.current.click();
   };
 
   const handleFileChange = (e) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
       setJobOfferSource("file");
-      console.log(e.target.files[0]);
-
+    }
+  };
+  const handleJobOfferChange = (e) => {
+    if (e.target.files) {
+      setJobOffer(e.target.files[0]);
+      setJobOfferSource("database");
       console.log(jobOfferSource);
-      console.log(file);
     }
   };
 
   const handleFileUpload = () => {
-    if (!file) {
+    if (!file && !jobOffer) {
       return;
     }
 
@@ -76,19 +84,32 @@ export default function Step1JobOffer(props) {
           style={{ marginTop: "24px" }}>
           1.
           <label htmlFor='contained-button-file'>
+          <Button
+              variant='outlined'
+              component='span'
+              className='button-outlined upload-button'
+              style={{ marginTop: "0" }}
+              onClick={handleJobOfferInput}>
+              Wybierz ze swoich ogłoszeń
+            </Button>
             <Input
               accept='image/*'
               id='contained-button-file'
               multiple
               type='file'
+              ref={hiddenJobOfferInput}
+              onChange={handleJobOfferChange}
             />
-            <Button
-              variant='outlined'
-              component='span'
-              className='button-outlined upload-button'
-              style={{ marginTop: "0" }}>
-              Wybierz ze swoich ogłoszeń
-            </Button>
+            <div
+              style={{
+                display: "inline-block",
+                margin: "10px",
+                background: "white",
+                padding: "0 8px",
+                borderRadius: "4px",
+              }}>
+              {jobOffer && `${jobOffer.name}`}{" "}
+            </div>
           </label>
           lub
         </Typography>
@@ -104,7 +125,7 @@ export default function Step1JobOffer(props) {
               component='span'
               className='button-outlined upload-button'
               style={{ marginTop: "0" }}
-              onClick={handleClick}>
+              onClick={handleFileInput}>
               Wybierz z dysku
             </Button>
             <Input
